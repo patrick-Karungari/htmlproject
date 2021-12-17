@@ -1,0 +1,132 @@
+CRITICAL - 2021-12-14 01:14:25 --> Call to undefined method App\Entities\User::row()
+#0 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(164): App\Libraries\Auth->register('email', 'Qwerty', 'legacyblair001@...', Array, Array)
+#1 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->register()
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#6 {main}
+CRITICAL - 2021-12-14 01:34:07 --> Undefined variable: adminEmail
+#0 C:\wamp64\www\htmlproject\app\Views\Auth\email\mail_verify_email.php(129): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\h...', 129, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Auth/email/mail...', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Libraries\Auth.php(280): view('Auth/email/mail...', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(164): App\Libraries\Auth->register('email', 'Qwerty', 'legacyblair001@...', Array, Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->register()
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}
+CRITICAL - 2021-12-14 01:37:58 --> Undefined variable: adminEmail
+#0 C:\wamp64\www\htmlproject\app\Views\Auth\email\mail_verify_email.php(129): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\h...', 129, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Auth/email/mail...', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Libraries\Auth.php(280): view('Auth/email/mail...', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(164): App\Libraries\Auth->register('email', 'Qwerty', 'legacyblair001@...', Array, Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->register()
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}
+CRITICAL - 2021-12-14 01:40:00 --> Undefined variable: adminEmail
+#0 C:\wamp64\www\htmlproject\app\Views\Auth\email\mail_verify_email.php(130): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\h...', 130, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Auth/email/mail...', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Libraries\Auth.php(280): view('Auth/email/mail...', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(164): App\Libraries\Auth->register('email', 'Qwerty', 'legacyblair001@...', Array, Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->register()
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}
+CRITICAL - 2021-12-14 01:52:39 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-12-14 01:55:29 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-12-14 17:11:26 --> Trying to get property 'activation_code' of non-object
+#0 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(364): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\wamp64\\www\\h...', 364, Array)
+#1 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(389): App\Models\AuthModel->getUserByActivationCode('4e3e31a2d6e605b...')
+#2 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(76): App\Models\AuthModel->activate(458, '4e3e31a2d6e605b...')
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->activate(458, '4e3e31a2d6e605b...')
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#8 {main}
+CRITICAL - 2021-12-14 17:16:32 --> Trying to get property 'activation_code' of non-object
+#0 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(364): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\wamp64\\www\\h...', 364, Array)
+#1 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(389): App\Models\AuthModel->getUserByActivationCode('4e3e31a2d6e605b...')
+#2 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(77): App\Models\AuthModel->activate(458, '4e3e31a2d6e605b...')
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->activate(458, '4e3e31a2d6e605b...')
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#8 {main}
+CRITICAL - 2021-12-14 17:21:53 --> Trying to get property 'activation_code' of non-object
+#0 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(367): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\wamp64\\www\\h...', 367, Array)
+#1 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(392): App\Models\AuthModel->getUserByActivationCode('4e3e31a2d6e605b...')
+#2 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(77): App\Models\AuthModel->activate(458, '4e3e31a2d6e605b...')
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->activate(458, '4e3e31a2d6e605b...')
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#8 {main}
+CRITICAL - 2021-12-14 17:24:28 --> Trying to get property 'activation_code' of non-object
+#0 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(367): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\wamp64\\www\\h...', 367, Array)
+#1 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(392): App\Models\AuthModel->getUserByActivationCode('4e3e31a2d6e605b...')
+#2 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(77): App\Models\AuthModel->activate(458, '4e3e31a2d6e605b...')
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->activate(458, '4e3e31a2d6e605b...')
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#8 {main}
+CRITICAL - 2021-12-14 17:24:56 --> Trying to get property 'activation_code' of non-object
+#0 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(363): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\wamp64\\www\\h...', 363, Array)
+#1 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(392): App\Models\AuthModel->getUserByActivationCode('4e3e31a2d6e605b...')
+#2 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(77): App\Models\AuthModel->activate(458, '4e3e31a2d6e605b...')
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->activate(458, '4e3e31a2d6e605b...')
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#8 {main}
+CRITICAL - 2021-12-14 17:27:18 --> Trying to get property 'activation_code' of non-object
+#0 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(363): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\wamp64\\www\\h...', 363, Array)
+#1 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(392): App\Models\AuthModel->getUserByActivationCode('4e3e31a2d6e605b...')
+#2 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(77): App\Models\AuthModel->activate(458, '4e3e31a2d6e605b...')
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->activate(458, '4e3e31a2d6e605b...')
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#8 {main}
+CRITICAL - 2021-12-14 17:34:02 --> Trying to get property 'row' of non-object
+#0 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(360): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\wamp64\\www\\h...', 360, Array)
+#1 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(392): App\Models\AuthModel->getUserByActivationCode('4e3e31a2d6e605b...')
+#2 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(77): App\Models\AuthModel->activate(458, '4e3e31a2d6e605b...')
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->activate(458, '4e3e31a2d6e605b...')
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#8 {main}
+CRITICAL - 2021-12-14 17:34:13 --> Call to a member function row() on array
+#0 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(392): App\Models\AuthModel->getUserByActivationCode('4e3e31a2d6e605b...')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(77): App\Models\AuthModel->activate(458, '4e3e31a2d6e605b...')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->activate(458, '4e3e31a2d6e605b...')
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}

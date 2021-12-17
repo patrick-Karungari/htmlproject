@@ -1,0 +1,136 @@
+{
+    "data": [
+        {
+            "id": "5",
+            "username": "bruce",
+            "email": "collinsogeto12@gmail.com",
+            "phone": "0791856400",
+            "account": "292.5",
+            "registration": "1",
+            "referred_by": null,
+            "first_name": "Collins",
+            "last_name": "Samson"
+        },
+        {
+            "id": "6",
+            "username": "moonstar",
+            "email": "benardlangat000@gmail.com",
+            "phone": "0729381546",
+            "account": "-9",
+            "registration": "1",
+            "referred_by": "5",
+            "first_name": "PETER",
+            "last_name": "LANGAT"
+        },
+        {
+            "id": "8",
+            "username": "geess",
+            "email": "godiewambua@gmail.com",
+            "phone": "0793665835",
+            "account": "80",
+            "registration": "1",
+            "referred_by": "5",
+            "first_name": "Godie",
+            "last_name": "wambua"
+        },
+        {
+            "id": "9",
+            "username": "chloemoschos",
+            "email": "chloemoschos@gmail.com",
+            "phone": "0796417190",
+            "account": "0",
+            "registration": "1",
+            "referred_by": null,
+            "first_name": "Chloe",
+            "last_name": "Moschos"
+        },
+        {
+            "id": "10",
+            "username": "alxtvkhgdy",
+            "email": "Teresiahalex26@gmail.com",
+            "phone": "0115617190",
+            "account": "347.5",
+            "registration": "1",
+            "referred_by": "5",
+            "first_name": "Liz",
+            "last_name": "Kitsao"
+        },
+        {
+            "id": "11",
+            "username": "samba",
+            "email": "Solomonsamba10@gmail.com",
+            "phone": "0712509788",
+            "account": "594.275",
+            "registration": "1",
+            "referred_by": "10",
+            "first_name": "Solomon",
+            "last_name": "Okoth"
+        },
+        {
+            "id": "12",
+            "username": "rogan",
+            "email": "danydanie0@gmail.com",
+            "phone": "0758548659",
+            "account": "0",
+            "registration": "0",
+            "referred_by": "5",
+            "first_name": "Rogan",
+            "last_name": "Wayne"
+        },
+        {
+            "id": "13",
+            "username": "wiza",
+            "email": "jkiunga99@gmail.com",
+            "phone": "0799654900",
+            "account": "0",
+            "registration": "0",
+            "referred_by": "6",
+            "first_name": "Joseph",
+            "last_name": "Macharia"
+        },
+        {
+            "id": "14",
+            "username": "khloe.k",
+            "email": "karungarikhloe@gmail.com",
+            "phone": "0759656867",
+            "account": "9042.3",
+            "registration": "1",
+            "referred_by": null,
+            "first_name": "Beth",
+            "last_name": "Karungari"
+        },
+        {
+            "id": "15",
+            "username": "esther10",
+            "email": "wanjikuhaddasar@gmail.com",
+            "phone": "0792556904",
+            "account": "-58180.25",
+            "registration": "1",
+            "referred_by": null,
+            "first_name": "Esther",
+            "last_name": "Wanjiku"
+        },
+        {
+            "id": "16",
+            "username": "heitz",
+            "email": "khamusiniisaaya336@gmail.com",
+            "phone": "0726898567",
+            "account": "12.25",
+            "registration": "1",
+            "referred_by": null,
+            "first_name": "Isaaya",
+            "last_name": "Khamusini"
+        },
+        {
+            "id": "452",
+            "username": "johndoe",
+            "email": "paatrickkarungari01@gmail.com",
+            "phone": "0710348988",
+            "account": "0",
+            "registration": "0",
+            "referred_by": null,
+            "first_name": "Patrick",
+            "last_name": "Karun"
+        }
+    ]
+}

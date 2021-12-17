@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1639434846;_ci_previous_url|s:35:"http://localhost:8080/auth/register";error|a:2:{s:5:"phone";s:51:"The Phone Number field must contain a unique value.";s:5:"email";s:52:"The Email Address field must contain a unique value.";}__ci_vars|a:1:{s:5:"error";s:3:"old";}

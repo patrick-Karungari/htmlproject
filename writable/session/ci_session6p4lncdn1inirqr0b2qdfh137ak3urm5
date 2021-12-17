@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1639677245;_ci_previous_url|s:38:"http://localhost:8080/auth/mail_verify";_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:2:{s:5:"email";s:24:"legacyblair001@gmail.com";s:2:"id";s:3:"459";}}__ci_vars|a:2:{s:13:"_ci_old_input";s:3:"old";s:4:"data";s:3:"old";}data|a:1:{s:4:"user";a:2:{s:5:"email";s:24:"legacyblair001@gmail.com";s:2:"id";s:3:"459";}}
