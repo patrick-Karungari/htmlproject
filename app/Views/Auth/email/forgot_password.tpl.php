@@ -269,9 +269,8 @@
                                                                 <td
                                                                     style="width:100%;padding-right:0px;padding-left:0px;">
                                                                     <div align="center" style="line-height:10px"><img
-                                                                            class="big" src="images/Btm.png"
-                                                                            style="display: block; height: auto; border: 0; width: 500px; max-width: 100%;"
-                                                                            width="500" /></div>
+                                                                            class="big" src="<?php echo sprintf(base_url('assets/images/Btm.png')) ?>
+" style="display: block; height: auto; border: 0; width: 500px; max-width: 100%;" width="500" /></div>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -380,18 +379,15 @@
                                                                                     href="https://www.facebook.com/"
                                                                                     target="_blank"><img alt="Facebook"
                                                                                         height="32"
-                                                                                        src="images/facebook2x.png"
+                                                                                        src="<?php echo sprintf(base_url('assets/images/facebook2x.png')) ?>"
                                                                                         style="display: block; height: auto; border: 0;"
                                                                                         title="Facebook"
                                                                                         width="32" /></a></td>
                                                                             <td style="padding:0 5px 0 5px;"><a
                                                                                     href="https://twitter.com/"
                                                                                     target="_blank"><img alt="Twitter"
-                                                                                        height="32"
-                                                                                        src="images/twitter2x.png"
-                                                                                        style="display: block; height: auto; border: 0;"
-                                                                                        title="Twitter"
-                                                                                        width="32" /></a></td>
+                                                                                        height="32" src="<?php echo sprintf(base_url('assets/images/twitter2x.png')) ?>
+" style="display: block; height: auto; border: 0;" title="Twitter" width="32" /></a></td>
                                                                             <td style="padding:0 5px 0 5px;"><a
                                                                                     href="https://instagram.com/"
                                                                                     target="_blank"><img alt="Instagram"
