@@ -8,7 +8,7 @@ make.exe: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Dec 15 09:08:14 2021
+# Make data base, printed on Fri Dec 17 14:02:56 2021
 
 # Variables
 
@@ -57,13 +57,13 @@ PROGRAMW6432 = C:\Program Files
 # environment
 PROGRAMDATA = C:\ProgramData
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-da569f9d-4cce-47b3-b384-dd8386f95f2d-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-8c7facb2-1ed4-4c06-bb27-5abad1f7c42e-sock
 # environment
 VSCODE_CWD = C:\Users\Patrick Karungari\AppData\Local\Programs\Microsoft VS Code
 # default
 MAKE_HOST := x86_64-w64-mingw32
 # environment
-PATH = C:\Users\Patrick Karungari\Downloads\MinGW\mingw64\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Patrick Karungari\.gradle\wrapper\dists\gradle-6.5-all\2oz4ud9k3tuxjg84bbf55q0tn\gradle-6.5\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\wamp64\bin\php\php7.3.21;C:\composer;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Guiffy;C:\Users\Patrick Karungari\Downloads\MinGW\mingw64\bin;C:\Program Files\CMake\bin;;C:\WINDOWS\SysWOW64;C:\Users\Patrick Karungari\AppData\Local\Microsoft\WindowsApps;C:\Users\Patrick Karungari\AppData\Local\GitHubDesktop\bin;C:\Users\Patrick Karungari\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Patrick Karungari\AppData\Roaming\Composer\vendor\bin;C:\Users\Patrick Karungari\AppData\Roaming\npm;C:\wamp64\bin\php\php7.4.9;C:\Program Files\JetBrains\PhpStorm\bin;;C:\Users\Patrick Karungari\Downloads\KenCoin\vcpkg\vcpkg.exe;C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe;
+PATH = C:\Users\Patrick Karungari\Downloads\MinGW\mingw64\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Patrick Karungari\.gradle\wrapper\dists\gradle-6.5-all\2oz4ud9k3tuxjg84bbf55q0tn\gradle-6.5\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\wamp64\bin\php\php7.3.21;C:\composer;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Guiffy;C:\Users\Patrick Karungari\Downloads\MinGW\mingw64\bin;C:\Program Files\CMake\bin;;C:\WINDOWS\SysWOW64;C:\Program Files\PuTTY\;C:\Users\Patrick Karungari\AppData\Local\Microsoft\WindowsApps;C:\Users\Patrick Karungari\AppData\Local\GitHubDesktop\bin;C:\Users\Patrick Karungari\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Patrick Karungari\AppData\Roaming\Composer\vendor\bin;C:\Users\Patrick Karungari\AppData\Roaming\npm;C:\wamp64\bin\php\php7.4.9;C:\Program Files\JetBrains\PhpStorm\bin;;C:\Users\Patrick Karungari\Downloads\KenCoin\vcpkg\vcpkg.exe;C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe;
 # environment
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # environment
@@ -89,7 +89,7 @@ PHPSTORM = C:\Program Files\JetBrains\PhpStorm\bin;
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_16352_JGCDTMNMSHJCDVJD
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_9212_OHTDEMWHYOCHPFXS
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -199,7 +199,7 @@ LANG = C
 # environment
 PROCESSOR_LEVEL = 6
 # environment
-VSCODE_PID = 16352
+VSCODE_PID = 9212
 # environment
 USERDOMAIN_ROAMINGPROFILE = PATRICK-KARUNGA
 # variable set hash-table stats:
@@ -211,9 +211,9 @@ USERDOMAIN_ROAMINGPROFILE = PATRICK-KARUNGA
 
 # Directories
 
-# . (key c:/wamp64/www/htmlproject, mtime 1632947159): 21 files, no impossibilities.
+# . (key c:/wamp64/www/htmlproject, mtime 1639764229): 24 files, no impossibilities.
 
-# 21 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -270,12 +270,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 28 / storage = 247 B / avg = 8 B
-# current buf: size = 8162 B / used = 247 B / count = 28 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 31 / storage = 279 B / avg = 9 B
+# current buf: size = 8162 B / used = 279 B / count = 31 / avg = 9 B
 
-# strcache performance: lookups = 30 / hit rate = 6%
+# strcache performance: lookups = 33 / hit rate = 6%
 # hash-table stats:
-# Load=28/8192=0%, Rehash=0, Collisions=1/30=3%
-# Finished Make data base on Wed Dec 15 09:08:14 2021
+# Load=31/8192=0%, Rehash=0, Collisions=1/33=3%
+# Finished Make data base on Fri Dec 17 14:02:56 2021
 
  
