@@ -110,44 +110,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-2"
-                            role="presentation"
-                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f5f5f5;"
-                            width="100%">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0"
-                                            class="row-content stack" role="presentation"
-                                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 500px;"
-                                            width="500">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="column"
-                                                        style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 0px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;"
-                                                        width="100%">
-                                                        <table border="0" cellpadding="0" cellspacing="0"
-                                                            class="image_block" role="presentation"
-                                                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
-                                                            width="100%">
-                                                            <tr>
-                                                                <td
-                                                                    style="width:100%;padding-right:0px;padding-left:0px;">
-                                                                    <div align="center" style="line-height:10px"><img
-                                                                            class="big" src=""
-                                                                            style="display: block; height: auto; border: 0; width: 500px; max-width: 100%;"
-                                                                            width="500" /></div>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
                         <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-3"
                             role="presentation"
                             style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f5f5f5;"
@@ -172,10 +135,9 @@
                                                                 <td
                                                                     style="padding-bottom:5px;padding-left:5px;padding-right:5px;width:100%;">
                                                                     <div align="center" style="line-height:10px"><img
-                                                                            alt="reset-password"
-                                                                            src="images/pass-animate.gif"
-                                                                            style="display: block; height: auto; border: 0; width: 275px; max-width: 100%;"
-                                                                            title="reset-password" width="275" /></div>
+                                                                            alt="reset-password" src="<?php echo sprintf(base_url('assets/images/pass-animate.gif')) ?>
+" style="display: block; height: auto; border: 0; width: 275px; max-width: 100%;" title="reset-password" width="275" />
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -434,18 +396,15 @@
                                                                                     href="https://instagram.com/"
                                                                                     target="_blank"><img alt="Instagram"
                                                                                         height="32"
-                                                                                        src="images/instagram2x.png"
+                                                                                        src="<?php echo sprintf(base_url('assets/images/instagram2x.png')) ?>"
                                                                                         style="display: block; height: auto; border: 0;"
                                                                                         title="Instagram"
                                                                                         width="32" /></a></td>
                                                                             <td style="padding:0 5px 0 5px;"><a
                                                                                     href="https://www.linkedin.com/"
                                                                                     target="_blank"><img alt="LinkedIn"
-                                                                                        height="32"
-                                                                                        src="images/linkedin2x.png"
-                                                                                        style="display: block; height: auto; border: 0;"
-                                                                                        title="LinkedIn"
-                                                                                        width="32" /></a></td>
+                                                                                        height="32" src="<?php echo sprintf(base_url('assets/images/linkedin2x.png')) ?>
+" style="display: block; height: auto; border: 0;" title="LinkedIn" width="32" /></a></td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>
