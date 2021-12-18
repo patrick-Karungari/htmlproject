@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 $deposits = (new \App\Models\Deposits())->where('user', $user->id)->orderBy('id', 'DESC')->findAll();
@@ -50,8 +50,8 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
     <div class="card-body ">
         <h4 class="card-title">Deposits</h4>
         <?php
-        if (count($deposits) > 0) {
-            ?>
+if (count($deposits) > 0) {
+    ?>
         <div class="table-responsive">
             <table class="table">
                 <thead class="thead-light">
@@ -66,10 +66,10 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
                 </thead>
                 <tbody>
                     <?php
-                    $n = 0;
-                    foreach ($deposits as $deposit) {
-                        $n++;
-                        ?>
+$n = 0;
+    foreach ($deposits as $deposit) {
+        $n++;
+        ?>
                     <tr>
                         <td class="pl-0"><?php echo $n; ?></td>
                         <td><?php echo $deposit->phone; ?></td>
@@ -77,35 +77,35 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
                         <td><?php echo $deposit->trx_id; ?></td>
                         <td>
                             <?php
-                                $status = $deposit->status;
-                                if ($status == 'completed') {
-                                    ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
-                                } else if($status == 'pending') {
-                                    ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
-                                } else if($status == 'failed') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
-                                } else if($status == 'cancelled') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
-                                }
-                                ?>
+$status = $deposit->status;
+        if ($status == 'completed') {
+            ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
+} else if ($status == 'pending') {
+            ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
+} else if ($status == 'failed') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
+} else if ($status == 'cancelled') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
+}
+        ?>
                         </td>
                         <td><?php echo $deposit->date->format('d/m/Y h:i a'); ?></td>
                     </tr>
                     <?php
-                    }
-                    ?>
+}
+    ?>
                 </tbody>
             </table>
         </div>
         <?php
-        } else {
-            ?>
+} else {
+    ?>
         <div class="alert alert-warning">
             User not made any deposits yet
         </div>
         <?php
-        }
-        ?>
+}
+?>
     </div>
 </div>
 
@@ -115,8 +115,8 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
     <div class="card-body">
         <h4 class="card-title">Referrals</h4>
         <?php
-        if (count($referrals) > 0) {
-            ?>
+if (count($referrals) > 0) {
+    ?>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -132,11 +132,11 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
                 </thead>
                 <tbody>
                     <?php
-                    $n = 0;
-                    foreach ($referrals as $referral) {
-                        //dd($referral->ref);
-                        $n++;
-                        ?>
+$n = 0;
+    foreach ($referrals as $referral) {
+        //dd($referral->ref);
+        $n++;
+        ?>
                     <tr>
                         <td class="pl-0"><?php echo $n; ?></td>
                         <td><?php echo $referral->ref->name ?? "Deleted User"; ?></td>
@@ -145,35 +145,35 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
                         <td><?php echo $referral->bonus; ?></td>
                         <td>
                             <?php
-                                $status = $referral->status;
-                                if ($status == 'completed') {
-                                    ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
-                                } else if($status == 'pending') {
-                                    ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
-                                } else if($status == 'failed') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
-                                } else if($status == 'cancelled') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
-                                }
-                                ?>
+$status = $referral->status;
+        if ($status == 'completed') {
+            ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
+} else if ($status == 'pending') {
+            ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
+} else if ($status == 'failed') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
+} else if ($status == 'cancelled') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
+}
+        ?>
                         </td>
                         <td><?php echo $referral->date->format('d/m/Y h:i a'); ?></td>
                     </tr>
                     <?php
-                    }
-                    ?>
+}
+    ?>
                 </tbody>
             </table>
         </div>
         <?php
-        } else {
-            ?>
+} else {
+    ?>
         <div class="alert alert-warning">
             User not referred anyone yet
         </div>
         <?php
-        }
-        ?>
+}
+?>
     </div>
 </div>
 
@@ -182,8 +182,8 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
     <div class="card-body">
         <h4 class="card-title">Withdraws</h4>
         <?php
-        if (count($withdraws) > 0) {
-            ?>
+if (count($withdraws) > 0) {
+    ?>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -198,10 +198,10 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
                 </thead>
                 <tbody>
                     <?php
-                    $n = 0;
-                    foreach ($withdraws as $withdraw) {
-                        $n++;
-                        ?>
+$n = 0;
+    foreach ($withdraws as $withdraw) {
+        $n++;
+        ?>
                     <tr>
                         <td class="pl-0"><?php echo $n; ?></td>
                         <td><?php echo $withdraw->phone; ?></td>
@@ -209,33 +209,33 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
                         <td><?php echo $withdraw->trx_id; ?></td>
                         <td>
                             <?php
-                                $status = $withdraw->status;
-                                if ($status == 'completed') {
-                                    ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
-                                } else if($status == 'pending') {
-                                    ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
-                                } else if($status == 'failed') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
-                                }
-                                ?>
+$status = $withdraw->status;
+        if ($status == 'completed') {
+            ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
+} else if ($status == 'pending') {
+            ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
+} else if ($status == 'failed') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
+}
+        ?>
                         </td>
                         <td><?php echo $withdraw->date->format('d/m/Y h:i a'); ?></td>
                     </tr>
                     <?php
-                    }
-                    ?>
+}
+    ?>
                 </tbody>
             </table>
         </div>
         <?php
-        } else {
-            ?>
+} else {
+    ?>
         <div class="alert alert-warning">
             User not made any withdraws yet
         </div>
         <?php
-        }
-        ?>
+}
+?>
     </div>
 </div>
 <div class="card mt-4">
@@ -244,8 +244,8 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
     </div>
     <div class="card-body">
         <?php
-        if (count($investments) > 0) {
-            ?>
+if (count($investments) > 0) {
+    ?>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -261,48 +261,48 @@ $referrals = (new \App\Models\Referrals())->where('user', $user->id)->orderBy('i
                 </thead>
                 <tbody>
                     <?php
-                    $n = 0;
-                    foreach ($investments as $investment) {
-                        $n++;
-                        ?>
+$n = 0;
+    foreach ($investments as $investment) {
+        $n++;
+        ?>
                     <tr>
                         <td class="pl-0"><?php echo $n; ?></td>
                         <td><?php echo $investment->plan->title; ?></td>
-                        <td><?php echo 'Kshs '.number_format($investment->amount, 2); ?></td>
-                        <td><?php echo 'Kshs '.number_format($investment->return, 2); ?></td>
+                        <td><?php echo 'Kshs ' . number_format($investment->amount, 2); ?></td>
+                        <td><?php echo 'Kshs ' . number_format($investment->return, 2); ?></td>
                         <td>
                             <?php
-                                $status = $investment->status;
-                                if ($status == 'completed') {
-                                    ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
-                                } else if($status == 'pending') {
-                                    ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
-                                } else if($status == 'failed') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
-                                } else if($status == 'cancelled') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
-                                }
-                                ?>
+$status = $investment->status;
+        if ($status == 'completed') {
+            ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
+} else if ($status == 'pending') {
+            ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
+} else if ($status == 'failed') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
+} else if ($status == 'cancelled') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
+}
+        ?>
                         </td>
                         <td><?php echo \Carbon\Carbon::createFromTimestamp($investment->end_time)->format('d/m/Y h:i a') ?>
                         </td>
                         <td><?php echo $investment->created_at->format('d/m/Y h:i a'); ?></td>
                     </tr>
                     <?php
-                    }
-                    ?>
+}
+    ?>
                 </tbody>
             </table>
         </div>
         <?php
-        } else {
-            ?>
+} else {
+    ?>
         <div class="alert alert-warning">
             User not made any investments yet
         </div>
         <?php
-        }
-        ?>
+}
+?>
     </div>
 </div>
 
@@ -315,8 +315,8 @@ $transactions = (new \App\Models\Transactions())
     <div class="card-body">
         <h4 class="card-title">My Transactions</h4>
         <?php
-        if (count($transactions) > 0) {
-            ?>
+if (count($transactions) > 0) {
+    ?>
         <table class="table">
             <thead>
                 <tr>
@@ -329,10 +329,10 @@ $transactions = (new \App\Models\Transactions())
             </thead>
             <tbody>
                 <?php
-                $n = 0;
-                foreach ($transactions as $transaction) {
-                    $n++;
-                    ?>
+$n = 0;
+    foreach ($transactions as $transaction) {
+        $n++;
+        ?>
                 <tr>
                     <td><?php echo $n; ?></td>
                     <td><?php echo $transaction->date; ?></td>
@@ -341,19 +341,19 @@ $transactions = (new \App\Models\Transactions())
                     <td><?php echo $transaction->description; ?></td>
                 </tr>
                 <?php
-                }
-                ?>
+}
+    ?>
             </tbody>
         </table>
         <?php
-        } else {
-            ?>
+} else {
+    ?>
         <div class="alert alert-warning">
             No data available
         </div>
         <?php
-        }
-        ?>
+}
+?>
     </div>
 </div>
 <!-- BEGIN: Page Vendor JS-->

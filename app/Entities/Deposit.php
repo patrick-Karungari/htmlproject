@@ -1,20 +1,19 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Entities;
-
 
 use App\Models\Users;
 
 class Deposit extends \CodeIgniter\Entity
 {
     protected $dates = [
-        'date'
+        'date',
     ];
     public function getUser()
     {

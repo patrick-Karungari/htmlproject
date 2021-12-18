@@ -1,10 +1,10 @@
 <?php
 //dd($email);
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 <!DOCTYPE html>
@@ -118,9 +118,9 @@
                             <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
                                 <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                                     <?php
-                                bootstrap_alerts();
-                                echo $_html_content;
-                                ?> </div>
+bootstrap_alerts();
+echo $_html_content;
+?> </div>
                             </div>
                             <!-- /Login-->
                         </div>

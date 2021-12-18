@@ -1,20 +1,17 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Controllers\Admin;
 
 use App\Libraries\Mailer;
-use App\Libraries\MpesaLibrary;
 use App\Models\Transactions;
 use App\Models\Users;
-use App\Models\Withdraws;
 use CodeIgniter\View\Parser;
-
 
 class Deposits extends \App\Controllers\AdminController
 {
@@ -30,15 +27,16 @@ class Deposits extends \App\Controllers\AdminController
         return $this->_renderPage('Deposits/index', $this->data);
     }
 
-    public function approve(int $id) {
+    public function approve(int $id)
+    {
         $model = new \App\Models\Deposits();
         $dep = $model->find($id);
-        if($dep) {
+        if ($dep) {
             $dep->status = "completed";
-            $dep->trx_id = "MA_".$this->secure_random_string(8);;
+            $dep->trx_id = "MA_" . $this->secure_random_string(8);
 
             try {
-               
+
                 $user = $dep->user;
                 //START COPY
                 $data = new \stdClass;
@@ -46,37 +44,37 @@ class Deposits extends \App\Controllers\AdminController
                 $data->MpesaReceiptNumber = $dep->trx_id;
                 $data->PhoneNumber = $dep->phone;
 
-                 if ($user) {
+                if ($user) {
                     $amount = $data->Amount;
                     $account = $user->account;
                     $account = $account + $amount;
 
                     //Create deposit
                     $deposit = [
-                        'id'    => $dep->id,
+                        'id' => $dep->id,
                         'user' => $user->id,
-                        'trx_id'    => $data->MpesaReceiptNumber,
-                        'phone'     => $data->PhoneNumber,
-                        'amount'    => $amount,
-                        'status'    => 'completed',
-                        'description'   => "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $account"
+                        'trx_id' => $data->MpesaReceiptNumber,
+                        'phone' => $data->PhoneNumber,
+                        'amount' => $amount,
+                        'status' => 'completed',
+                        'description' => "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $account",
                     ];
 
                     $model->save($dep);
 
-                    $reg = FALSE;
+                    $reg = false;
                     if ($user->registration != '1') {
                         //Deduct the registration fee if money is enough
                         $registration_fee = get_option('registration_fee', 0);
                         if ($account >= $registration_fee) {
                             $account = $account - $registration_fee;
-                            $reg = TRUE;
+                            $reg = true;
                         }
                     }
 
                     //Otherwise just fund their account
                     try {
-                        if ($reg === TRUE) {
+                        if ($reg === true) {
                             $update = ['account' => $account, 'registration' => '1'];
                         } else {
                             $update = ['account' => $account];
@@ -89,19 +87,19 @@ class Deposits extends \App\Controllers\AdminController
                             'trx' => $data->MpesaReceiptNumber,
                             'status' => 'completed',
                             'type' => 'deposit',
-                            'description' => "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $new_acc"
+                            'description' => "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $new_acc",
                         ];
                         (new Transactions())->save($transaction);
-                       
-                        if ($reg === TRUE) {
-                            $secure_trx = 'REG'.$this->secure_random_string(7);
+
+                        if ($reg === true) {
+                            $secure_trx = 'REG' . $this->secure_random_string(7);
                             $transaction = [
                                 'user' => $user->id,
                                 'amount' => $registration_fee,
                                 'trx' => $secure_trx,
                                 'status' => 'completed',
                                 'type' => 'registration',
-                                'description' => "Registration fee of Kshs $registration_fee paid. New balance is Kshs $account"
+                                'description' => "Registration fee of Kshs $registration_fee paid. New balance is Kshs $account",
                             ];
                             (new Transactions())->save($transaction);
                         }
@@ -111,15 +109,15 @@ class Deposits extends \App\Controllers\AdminController
                         $emails = get_option('deposit_emails_notifications', '');
                         if ($template != '' && $emails != '') {
                             $template_fields = [
-                                'name'  => $user->name,
+                                'name' => $user->name,
                                 'phone' => $user->phone,
                                 'deposit_phone' => $data->PhoneNumber,
-                                'account_balance'   => $new_acc,
-                                'deposit_amount'   => $data->Amount,
-                                'transaction_id'    => $data->MpesaReceiptNumber,
-                                'datetime'  => date('d/m/Y h:i A')
+                                'account_balance' => $new_acc,
+                                'deposit_amount' => $data->Amount,
+                                'transaction_id' => $data->MpesaReceiptNumber,
+                                'datetime' => date('d/m/Y h:i A'),
                             ];
-                            $parser = $parser = \Config\Services::parser();;
+                            $parser = $parser = \Config\Services::parser();
                             $message = $parser->setData($template_fields)->renderString($template);
                             $subject = "[DEPOSIT] New Deposit from $user->username";
                             $emails = explode(',', $emails);
@@ -130,37 +128,38 @@ class Deposits extends \App\Controllers\AdminController
                         $email = $user->email;
                         if ($template != '' && $email != '') {
                             $template_fields = [
-                                'name'  => $user->name,
+                                'name' => $user->name,
                                 'phone' => $user->phone,
                                 'deposit_phone' => $data->PhoneNumber,
-                                'account_balance'   => $new_acc,
-                                'deposit_amount'   => $data->Amount,
-                                'transaction_id'    => $data->MpesaReceiptNumber,
-                                'datetime'  => date('d/m/Y h:i A')
+                                'account_balance' => $new_acc,
+                                'deposit_amount' => $data->Amount,
+                                'transaction_id' => $data->MpesaReceiptNumber,
+                                'datetime' => date('d/m/Y h:i A'),
                             ];
-                            $parser = $parser = \Config\Services::parser();;
+                            $parser = $parser = \Config\Services::parser();
                             $message = $parser->setData($template_fields)->renderString($template);
                             $subject = "[DEPOSIT] New Deposit from $user->username";
-                           // $emails = explode(',', $emails);
+                            // $emails = explode(',', $emails);
                             @(new Mailer())->sendMessage($email, $subject, $message);
                         }
 
                     } catch (\Exception $exception) {
-                         return redirect()->back()->with('error', $e->getMessage());
+                        return redirect()->back()->with('error', $e->getMessage());
                     }
                 }
                 //END COPY
 
-                 return redirect()->back()->with('success', "Approved successfully");
+                return redirect()->back()->with('success', "Approved successfully");
             } catch (\Exception $e) {
                 return redirect()->back()->with('error', $e->getMessage());
             }
         }
 
-         return redirect()->back()->with('error', "Something went wrong");
+        return redirect()->back()->with('error', "Something went wrong");
     }
-    
-    function secure_random_string($length){
+
+    public function secure_random_string($length)
+    {
         $random_string = '';
         for ($i = 0; $i < $length; $i++) {
             $number = random_int(0, 36);

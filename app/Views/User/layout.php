@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/vertical-layout-dark/style.css') ?>">
     <!-- endinject -->
     <link rel="shortcut icon" href="<?php echo base_url('assets/img/logo.png') ?>"/>
-    
+
 </head>
 <body >
 <div class="container-scroller">
@@ -41,14 +41,14 @@
             </button>
             <ul class="navbar-nav navbar-nav-left">
                 <?php
-                if ((new \App\Libraries\Auth())->isAdmin()) {
-                    ?>
+if ((new \App\Libraries\Auth())->isAdmin()) {
+    ?>
                     <li class="nav-item d-none d-lg-block">
                         <a href="<?php echo site_url('admin') ?>" class="nav-link"><p>Admin Dashboard</p></a>
                     </li>
                     <?php
-                }
-                ?>
+}
+?>
                 <li class="nav-item d-none d-lg-block">
                     <a href="<?php echo site_url('user/deposits/create') ?>" class="nav-link"><p>Deposit</p></a>
                 </li>
@@ -184,25 +184,25 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <?php
-                if ($current_user->registration != 1) {
-                    ?>
+if ($current_user->registration != 1) {
+    ?>
                     <div class="alert alert-warning text-center">
                         Please subscribe by paying a one-time fee of <b>Kshs <?php echo get_option('registration_fee') ?></b> to enjoy our investment packages and earn referrals.<br/><br/>
                         <a class="btn btn-primary" href="<?php echo site_url('user/deposits/create') ?>">Deposit Now</a>
                     </div>
                     <?php
-                } else {
-                    ?>
+} else {
+    ?>
                     <div class="alert alert-info">
-                            My referral link: <code><?php echo site_url('auth/register').'?ref='.$current_user->username; ?></code>
+                            My referral link: <code><?php echo site_url('auth/register') . '?ref=' . $current_user->username; ?></code>
                     </div>
                     <?php
-                }
-                ?>
+}
+?>
                 <?php
-                bootstrap_alerts();
-                echo $_html_content;
-                ?>
+bootstrap_alerts();
+echo $_html_content;
+?>
             </div>
             <!-- content-wrapper ends -->
             <footer class="footer">

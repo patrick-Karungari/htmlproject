@@ -1,13 +1,12 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Controllers\Admin;
-
 
 class Plans extends \App\Controllers\AdminController
 {
@@ -45,7 +44,9 @@ class Plans extends \App\Controllers\AdminController
         $model = new \App\Models\Plans();
         $plan = $model->find($id);
 
-        if (empty($plan)) return redirect()->back()->with('error', "Plan does not exist");
+        if (empty($plan)) {
+            return redirect()->back()->with('error', "Plan does not exist");
+        }
 
         if ($this->request->getPost()) {
             try {

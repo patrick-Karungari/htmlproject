@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 <div class="row">
@@ -22,14 +22,14 @@
                 <h4 class="text-center">Deposit via M-Pesa</h4>
                 <hr/>
                 <?php
-                if ($current_user->registration != 1) {
-                    ?>
+if ($current_user->registration != 1) {
+    ?>
                     <div class="alert alert-warning">
                         You will be deducted a registration fee of Kshs <?php echo number_format(get_option('registration_fee', 0)) ?> on your first deposit
                     </div>
                     <?php
-                }
-                ?>
+}
+?>
                 <form method="post">
                     <div class="form-group">
                         <label>Phone Number</label>

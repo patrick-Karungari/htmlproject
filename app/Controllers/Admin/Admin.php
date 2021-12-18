@@ -1,13 +1,12 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Controllers\Admin;
-
 
 use App\Controllers\AdminController;
 
@@ -18,11 +17,10 @@ class Admin extends AdminController
         parent::__construct();
     }
 
-
     public function index(): string
     {
         $data['current_user'] = $this->auth->user();
         return $this->_renderPage('Dashboard/index2', $data);
     }
-    
+
 }

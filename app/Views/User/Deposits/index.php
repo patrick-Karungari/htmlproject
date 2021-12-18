@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 $deposits = (new \App\Models\Deposits())->where('user', $current_user->id)->orderBy('id', 'DESC')->findAll();
@@ -26,8 +26,8 @@ $deposits = (new \App\Models\Deposits())->where('user', $current_user->id)->orde
 <div class="card">
     <div class="card-body">
         <?php
-        if (count($deposits) > 0) {
-            ?>
+if (count($deposits) > 0) {
+    ?>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -43,10 +43,10 @@ $deposits = (new \App\Models\Deposits())->where('user', $current_user->id)->orde
                     </thead>
                     <tbody>
                     <?php
-                    $n = 0;
-                    foreach ($deposits as $deposit) {
-                        $n++;
-                        ?>
+$n = 0;
+    foreach ($deposits as $deposit) {
+        $n++;
+        ?>
                         <tr>
                             <td class="pl-0"><?php echo $n; ?></td>
                             <td><?php echo $deposit->phone; ?></td>
@@ -54,35 +54,35 @@ $deposits = (new \App\Models\Deposits())->where('user', $current_user->id)->orde
                             <td><?php echo $deposit->trx_id; ?></td>
                             <td>
                                 <?php
-                                $status = $deposit->status;
-                                if ($status == 'completed') {
-                                    ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
-                                } else if($status == 'pending') {
-                                    ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
-                                } else if($status == 'failed') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
-                                } else if($status == 'cancelled') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
-                                }
-                                ?>
+$status = $deposit->status;
+        if ($status == 'completed') {
+            ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
+} else if ($status == 'pending') {
+            ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
+} else if ($status == 'failed') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
+} else if ($status == 'cancelled') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
+}
+        ?>
                             </td>
                             <td><?php echo $deposit->description; ?></td>
                             <td><?php echo $deposit->date->format('d/m/Y h:i a'); ?></td>
                         </tr>
                         <?php
-                    }
-                    ?>
+}
+    ?>
                     </tbody>
                 </table>
             </div>
             <?php
-        } else {
-            ?>
+} else {
+    ?>
             <div class="alert alert-warning">
                 You have not made any deposits yet
             </div>
             <?php
-        }
-        ?>
+}
+?>
     </div>
 </div>

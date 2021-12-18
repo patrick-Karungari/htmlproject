@@ -1,16 +1,16 @@
 <?php
 
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 
 <h2 class="card-title font-weight-bold mb-1">Adventure starts here 🚀</h2>
 <p class="card-text mb-2">Make your investing journey management easy and fun!</p>
-<form class="auth-register-form mt-2" action="<?php echo site_url('auth/register')?>" method="POST">
+<form class="auth-register-form mt-2" action="<?php echo site_url('auth/register') ?>" method="POST">
     <div class="form-group">
         <label class="form-label" for="register-username">First name</label>
         <input class="form-control" id="register-username" type="text" name="fname" placeholder="John"
