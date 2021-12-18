@@ -176,10 +176,10 @@ class Auth extends BaseController
                 }
 
             }
-            return redirect()->to(site_url('auth'))->with('error', "An error occurred due to ID");
+            return redirect()->to(site_url('auth'))->with('error', "An error occurred. Try again later");
 
         }
-        return redirect()->to(site_url('auth'))->with('error', "An error occurred passed a get request");
+        return redirect()->to(site_url('auth'))->with('error', "An error occurred. Try again later");
 
     }
 
