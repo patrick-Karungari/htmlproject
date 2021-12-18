@@ -118,13 +118,13 @@ class Auth extends BaseController
                 //dd($flashdata);
                 $id = $flashdata['user']['id'];
                 $email = $flashdata['user']['email'];
-                $flash_key = $flashdata['security'];
+                //$flash_key = $flashdata['security'];
 
             } else {
                 if ($this->request->getPost()) {
                     $email = $this->request->getPost('email');
                     $id = $this->request->getPost('id');
-                    $flash_key = $this->request->getPost('security');
+                   // $flash_key = $this->request->getPost('security');
                     //dd($flash_key);
                     //$this->secure_key = $this->secure_request_key(32);
 
