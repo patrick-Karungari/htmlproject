@@ -96,7 +96,7 @@
                                                                 <td
                                                                     style="padding-bottom:10px;width:100%;padding-right:0px;padding-left:0px;">
                                                                     <div align="center" style="line-height:10px"><img
-                                                                            alt="your-logo" src="<?php echo sprintf(base_url('assets/images/logo/logo.png')) ?>
+                                                                            alt="your-logo" src="<?php echo sprintf(base_url('assets/images/logo/logo.svg')) ?>
 " style="display: block; height: auto; border: 0; width: 175px; max-width: 100%;" title="your-logo" width="175" />
                                                                     </div>
                                                                 </td>
