@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 // dd($_SERVER['REQUEST_URI']);
 ?>
@@ -33,7 +33,7 @@
             href="<?php echo base_url('assets/vendors/css/extensions/toastr.min.css') ?>">
         <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/vendors/css/charts/apexcharts.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/pages/dashboard-ecommerce.css')?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/pages/dashboard-ecommerce.css') ?>">
         <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/css/plugins/charts/chart-apex.css') ?>">
 
@@ -51,7 +51,7 @@
 
         <!-- BEGIN: Page CSS-->
         <link rel="stylesheet" type="text/css"
-            href="<?php echo base_url('assets/bootstrap-icons/font/bootstrap-icons.css')?>">
+            href="<?php echo base_url('assets/bootstrap-icons/font/bootstrap-icons.css') ?>">
         <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/css/core/menu/menu-types/vertical-menu.css') ?>">
         <link rel="stylesheet" type="text/css"
@@ -91,10 +91,10 @@
                     </ul>
                     <ul class="nav navbar-nav bookmark-icons">
                         <li class="nav-item d-none d-lg-block"><a class="nav-link"
-                                href="<?php echo base_url('admin/email')?>" data-toggle="tooltip" data-placement="top"
+                                href="<?php echo base_url('admin/email') ?>" data-toggle="tooltip" data-placement="top"
                                 title="Email"><i class="ficon" data-feather="mail"></i></a></li>
                         <li class="nav-item d-none d-lg-block"><a class="nav-link"
-                                href="<?php echo base_url('admin/chat')?>" data-toggle="tooltip" data-placement="top"
+                                href="<?php echo base_url('admin/chat') ?>" data-toggle="tooltip" data-placement="top"
                                 title="Chat"><i class="ficon" data-feather="message-square"></i></a></li>
                     </ul>
 
@@ -141,7 +141,7 @@
                                     <div class="media d-flex align-items-start">
                                         <div class="media-left">
                                             <div class="avatar"><img
-                                                    src="<?php echo base_url('assets/images/portrait/small/avatar-s-15.jpg')?>"
+                                                    src="<?php echo base_url('assets/images/portrait/small/avatar-s-15.jpg') ?>"
                                                     alt="avatar" width="32" height="32"></div>
                                         </div>
                                         <div class="media-body">
@@ -154,7 +154,7 @@
                                     <div class="media d-flex align-items-start">
                                         <div class="media-left">
                                             <div class="avatar"><img
-                                                    src="<?php echo base_url('assets/images/portrait/small/avatar-s-3.jpg')?>"
+                                                    src="<?php echo base_url('assets/images/portrait/small/avatar-s-3.jpg') ?>"
                                                     alt="avatar" width="32" height="32"></div>
                                         </div>
                                         <div class="media-body">
@@ -238,7 +238,7 @@
                             <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder"
                                     id="user_name_d"><?php echo $current_user->name ?></span><span
                                     class="user-status">Admin</span></div><span class="avatar"><img class="round"
-                                    src="<?php echo base_url('assets/images/portrait/small/avatar-s-11.jpg')?>"
+                                    src="<?php echo base_url('assets/images/portrait/small/avatar-s-11.jpg') ?>"
                                     alt="avatar" height="40" width="40"><span
                                     class="avatar-status-online"></span></span>
                         </a>
@@ -317,18 +317,18 @@
             <div class="main-menu-content">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item" id="dashboard"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/dashboard')?>"><i data-feather="home"></i><span
+                            href="<?php echo base_url('admin/dashboard') ?>"><i data-feather="home"></i><span
                                 class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span></a>
                     </li>
                     <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
                             data-feather="more-horizontal"></i>
                     </li>
                     <li id="email" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/email')?>"><i data-feather="mail"></i><span
+                            href="<?php echo base_url('admin/email') ?>"><i data-feather="mail"></i><span
                                 class="menu-title text-truncate" data-i18n="Email">Email</span></a>
                     </li>
                     <li id="chat" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/chat')?>"><i data-feather="message-square"></i><span
+                            href="<?php echo base_url('admin/chat') ?>"><i data-feather="message-square"></i><span
                                 class="menu-title text-truncate" data-i18n="Chat">Chat</span></a>
                     </li>
                     <li class=" nav-item"><a class="d-flex align-items-center" href=""><i
@@ -336,38 +336,38 @@
                                 data-i18n="Pages">Blog</span></a>
                         <ul class="menu-content">
                             <li id="recent-blog"><a class="d-flex align-items-center"
-                                    href="<?php echo base_url('admin/blog')?>"><i data-feather="circle"></i><span
+                                    href="<?php echo base_url('admin/blog') ?>"><i data-feather="circle"></i><span
                                         class="menu-item text-truncate" data-i18n="Authentication">Recent
                                         Posts</span></a>
                             </li>
                             <li id="my-blog"><a class="d-flex align-items-center"
-                                    href="<?php echo base_url('admin/blog')?>"><i data-feather="circle"></i><span
+                                    href="<?php echo base_url('admin/blog') ?>"><i data-feather="circle"></i><span
                                         class="menu-item text-truncate" data-i18n="Account Settings">My Blogs</span></a>
                             </li>
                             <li id="blog-create"><a class="d-flex align-items-center"
-                                    href="<?php echo base_url('admin/blog/create')?>"><i data-feather="circle"></i><span
+                                    href="<?php echo base_url('admin/blog/create') ?>"><i data-feather="circle"></i><span
                                         class="menu-item text-truncate" data-i18n="Account Settings">New Blog</span></a>
                             </li>
                         </ul>
                     </li>
                     <li id="users" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/users')?>"><i data-feather="user"></i><span
+                            href="<?php echo base_url('admin/users') ?>"><i data-feather="user"></i><span
                                 class="menu-title text-truncate" data-i18n="User">Users</span></a>
                     </li>
                     <li id="plans" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/plans')?>"><i data-feather='user'></i></i><span
+                            href="<?php echo base_url('admin/plans') ?>"><i data-feather='user'></i></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Plans</span></a>
                     </li>
                     <li id="investments" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/investments')?>"><i data-feather='dollar-sign'></i><span
+                            href="<?php echo base_url('admin/investments') ?>"><i data-feather='dollar-sign'></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Investments</span></a>
                     </li>
                     <li id="deposits" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/profile')?>"><i data-feather='chevrons-up'></i><span
+                            href="<?php echo base_url('admin/profile') ?>"><i data-feather='chevrons-up'></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Deposits</span></a>
                     </li>
                     <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/profile')?>"><i data-feather='chevrons-down'></i><span
+                            href="<?php echo base_url('admin/profile') ?>"><i data-feather='chevrons-down'></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Withdrawals</span></a>
                     </li>
                     <li class=" nav-item"><a class="d-flex align-items-center" href=""><i
@@ -393,7 +393,7 @@
                         </ul>
                     </li>
                     <li id="profile" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/profile')?>"><i data-feather='user'></i></i><span
+                            href="<?php echo base_url('admin/profile') ?>"><i data-feather='user'></i></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Profile</span></a>
                     </li>
                     <li class=" nav-item"><a class="d-flex align-items-center" href=""><i
@@ -406,33 +406,33 @@
                                 <ul class="menu-content">
                                     <li id="set-sys">
                                         <a class="d-flex align-items-center"
-                                            href="<?php echo base_url('admin/settings/system')?>"><i
+                                            href="<?php echo base_url('admin/settings/system') ?>"><i
                                                 data-feather='settings'></i></i></i><span
                                                 class="menu-item text-truncate" data-i18n="System settings">System
                                                 Settings</span></a>
                                     </li>
                                     <li id="set-mpesa">
                                         <a class="d-flex align-items-center"
-                                            href="<?php echo base_url('admin/settings/mpesa')?>"><i
+                                            href="<?php echo base_url('admin/settings/mpesa') ?>"><i
                                                 data-feather='smartphone'></i></i><span class="menu-item text-truncate"
                                                 data-i18n="Authentication">M-PESA C2B Settings</span></a>
                                     </li>
                                     <li id="set-b2c">
                                         <a class="d-flex align-items-center"
-                                            href="<?php echo base_url('admin/settings/b2c')?>"><i
+                                            href="<?php echo base_url('admin/settings/b2c') ?>"><i
                                                 data-feather='terminal'></i></i><span class="menu-item text-truncate"
                                                 data-i18n="Authentication">M-PESA B2C Settings</span></a>
                                     </li>
                                     <li id="set-email">
                                         <a class="d-flex align-items-center"
-                                            href="<?php echo base_url('admin/settings/email')?>"><i
+                                            href="<?php echo base_url('admin/settings/email') ?>"><i
                                                 data-feather='mail'></i></i><span class="menu-item text-truncate"
                                                 data-i18n="Authentication">E-MAIL Settings</span></a>
                                     </li>
                                 </ul>
                             </li>
                             <li id="acc-set"><a class="d-flex align-items-center"
-                                    href="<?php echo base_url('admin/settings/profile')?>"><i
+                                    href="<?php echo base_url('admin/settings/profile') ?>"><i
                                         data-feather="sliders"></i><span class="menu-item text-truncate"
                                         data-i18n="Account Settings">Account Settings</span></a>
                             </li>
@@ -455,24 +455,22 @@
                     <!-- Dashboard Analytics Start -->
 
                     <?php
-            bootstrap_alerts();
-            echo $_html_content;
-            if ( $_SERVER['REQUEST_URI'] === "/admin/blog/create"){
-                //dd($_SERVER['REQUEST_URI']);
-                echo "<script src='" .base_url('assets/js/scripts/pages/page-blog-edit.js')."'></script>\n";
-            }elseif(str_contains('/admin/users',$_SERVER['REQUEST_URI'])){
-                echo "<script src='" .base_url('assets/js/scripts/pages/app-user-list.js')."'></script>\n";              
+bootstrap_alerts();
+echo $_html_content;
+if ($_SERVER['REQUEST_URI'] === "/admin/blog/create") {
+    //dd($_SERVER['REQUEST_URI']);
+    echo "<script src='" . base_url('assets/js/scripts/pages/page-blog-edit.js') . "'></script>\n";
+} elseif (str_contains('/admin/users', $_SERVER['REQUEST_URI'])) {
+    echo "<script src='" . base_url('assets/js/scripts/pages/app-user-list.js') . "'></script>\n";
 
-            }elseif($_SERVER['REQUEST_URI'] === "/admin/chat"){
-                echo "<script src='" .base_url('assets/js/scripts/pages/app-chat.js')."'></script>\n";
-            }elseif($_SERVER['REQUEST_URI'] === "/admin/users/view"){
-                echo "<script src='" . base_url('assets/js/scripts/pages/app-users-view.js') . "'></script>\n";
+} elseif ($_SERVER['REQUEST_URI'] === "/admin/chat") {
+    echo "<script src='" . base_url('assets/js/scripts/pages/app-chat.js') . "'></script>\n";
+} elseif ($_SERVER['REQUEST_URI'] === "/admin/users/view") {
+    echo "<script src='" . base_url('assets/js/scripts/pages/app-users-view.js') . "'></script>\n";
 
-            }
+}
 
-
-
-            ?>
+?>
                     <!-- Dashboard Analytics end -->
 
                 </div>
@@ -501,7 +499,7 @@
 <script src="<?php /*echo base_url('assets/vendors/js/editors/quill/highlight.min.js') */?>"></script>
 <script src="<?php /*echo base_url('assets/vendors/js/editors/quill/quill.min.js') */?>"></script>-->
         <!--<script src="<?php /*echo base_url('assets/vendors/js/charts/apexcharts.min.js')*/?>"></script>-->
-        <script src="<?php echo base_url('assets/vendors/js/extensions/toastr.min.js')?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/extensions/toastr.min.js') ?>"></script>
         <!-- END: Blog Vendor JS-->
 
 

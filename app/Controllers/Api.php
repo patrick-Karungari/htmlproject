@@ -1,21 +1,19 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Controllers;
 
-use App\Entities\Referral;
 use App\Libraries\Mailer;
 use App\Libraries\MpesaLibrary;
 use App\Models\Deposits;
 use App\Models\Transactions;
 use App\Models\Users;
 use App\Models\Withdraws;
-use CodeIgniter\Database\BaseBuilder;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\View\Parser;
 
@@ -43,7 +41,7 @@ class Api extends BaseController
         if ($key != $this->key) {
             return $this->response->setJSON([
                 'ResultCode' => 403,
-                'ResponseDesc' => "Forbidden"
+                'ResponseDesc' => "Forbidden",
             ])->setStatusCode(401);
         }
 
@@ -59,7 +57,7 @@ class Api extends BaseController
                 if ($exisiting_id) {
                     return $this->response->setJSON([
                         'ResultCode' => 200,
-                        'ResponseDesc' => "Trx ID exists"
+                        'ResponseDesc' => "Trx ID exists",
                     ])->setStatusCode(401);
                     exit;
                 } // else continue
@@ -74,28 +72,28 @@ class Api extends BaseController
                     //Create deposit
                     $deposit = [
                         'user' => $user->id,
-                        'trx_id'    => $data->MpesaReceiptNumber,
-                        'phone'     => $data->PhoneNumber,
-                        'amount'    => $amount,
-                        'status'    => 'completed',
-                        'description'   => "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $account"
+                        'trx_id' => $data->MpesaReceiptNumber,
+                        'phone' => $data->PhoneNumber,
+                        'amount' => $amount,
+                        'status' => 'completed',
+                        'description' => "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $account",
                     ];
 
                     (new Deposits())->save($deposit);
 
-                    $reg = FALSE;
+                    $reg = false;
                     if ($user->registration != '1') {
                         //Deduct the registration fee if money is enough
                         $registration_fee = get_option('registration_fee', 0);
                         if ($account >= $registration_fee) {
                             $account = $account - $registration_fee;
-                            $reg = TRUE;
+                            $reg = true;
                         }
                     }
 
                     //Otherwise just fund their account
                     try {
-                        if ($reg === TRUE) {
+                        if ($reg === true) {
                             $update = ['account' => $account, 'registration' => '1'];
                         } else {
                             $update = ['account' => $account];
@@ -106,22 +104,22 @@ class Api extends BaseController
                             'user' => $user->id,
                             'amount' => $data->Amount,
                             'status' => 'completed',
-                            'trx' => $data->MpesaReceiptNumber ,
+                            'trx' => $data->MpesaReceiptNumber,
                             'type' => 'deposit',
-                            'description' => "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $new_acc"
+                            'description' => "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $new_acc",
                         ];
                         (new Transactions())->save($transaction);
 
-                        if ($reg === TRUE) {
+                        if ($reg === true) {
                             $secure_trx = 'REG' . $this->secure_random_string(7);
 
                             $transaction = [
                                 'user' => $user->id,
                                 'amount' => $registration_fee,
-                                 'trx' => $secure_trx,
+                                'trx' => $secure_trx,
                                 'status' => 'completed',
                                 'type' => 'registration',
-                                'description' => "Registration fee of Kshs $registration_fee paid. New balance is Kshs $account"
+                                'description' => "Registration fee of Kshs $registration_fee paid. New balance is Kshs $account",
                             ];
                             (new Transactions())->save($transaction);
                         }
@@ -131,15 +129,15 @@ class Api extends BaseController
                         $emails = get_option('deposit_emails_notifications', '');
                         if ($template != '' && $emails != '') {
                             $template_fields = [
-                                'name'  => $user->name,
+                                'name' => $user->name,
                                 'phone' => $user->phone,
                                 'deposit_phone' => $data->PhoneNumber,
-                                'account_balance'   => $new_acc,
-                                'deposit_amount'   => $data->Amount,
-                                'transaction_id'    => $data->MpesaReceiptNumber,
-                                'datetime'  => date('d/m/Y h:i A')
+                                'account_balance' => $new_acc,
+                                'deposit_amount' => $data->Amount,
+                                'transaction_id' => $data->MpesaReceiptNumber,
+                                'datetime' => date('d/m/Y h:i A'),
                             ];
-                            $parser = $parser = \Config\Services::parser();;
+                            $parser = $parser = \Config\Services::parser();
                             $message = $parser->setData($template_fields)->renderString($template);
                             $subject = "[DEPOSIT] New Deposit from $user->username";
                             $emails = explode(',', $emails);
@@ -150,15 +148,15 @@ class Api extends BaseController
                         if ($template != '' && $user->email != '') {
 
                             $template_fields = [
-                                'name'  => $user->name,
+                                'name' => $user->name,
                                 'phone' => $user->phone,
                                 'deposit_phone' => $data->PhoneNumber,
-                                'account_balance'   => $new_acc,
-                                'deposit_amount'   => $data->Amount,
-                                'transaction_id'    => $data->MpesaReceiptNumber,
-                                'datetime'  => date('d/m/Y h:i A')
+                                'account_balance' => $new_acc,
+                                'deposit_amount' => $data->Amount,
+                                'transaction_id' => $data->MpesaReceiptNumber,
+                                'datetime' => date('d/m/Y h:i A'),
                             ];
-                            $parser = $parser = \Config\Services::parser();;
+                            $parser = $parser = \Config\Services::parser();
                             $message = $parser->setData($template_fields)->renderString($template);
                             $subject = "[DEPOSIT] New Deposit from $user->username";
 
@@ -205,7 +203,7 @@ class Api extends BaseController
         if ($key != $this->key) {
             return $this->response->setJSON([
                 'ResultCode' => 403,
-                'ResponseDesc' => "Forbidden"
+                'ResponseDesc' => "Forbidden",
             ])->setStatusCode(401);
         }
 
@@ -229,14 +227,14 @@ class Api extends BaseController
                 $emails = get_option('withdraw_emails_notifications', '');
                 if ($template != '' && $emails != '') {
                     $template_fields = [
-                        'name'  => $user->name,
+                        'name' => $user->name,
                         'phone' => $user->phone,
                         'withdraw_phone' => $user->phone,
-                        'account_balance'   => $user->account,
-                        'withdraw_amount'   => $data->TransactionAmount,
-                        'transaction_id'    => $data->TransactionReceipt,
-                        'datetime'  => date('d/m/Y h:i A'),
-                        'mpesa_name'    => $data->ReceiverPartyPublicName
+                        'account_balance' => $user->account,
+                        'withdraw_amount' => $data->TransactionAmount,
+                        'transaction_id' => $data->TransactionReceipt,
+                        'datetime' => date('d/m/Y h:i A'),
+                        'mpesa_name' => $data->ReceiverPartyPublicName,
                     ];
                     $parser = $parser = \Config\Services::parser();
                     $template = nl2br($template);
@@ -250,14 +248,14 @@ class Api extends BaseController
                 $email = $user->email;
                 if ($template != '' && $email != '') {
                     $template_fields = [
-                        'name'  => $user->name,
+                        'name' => $user->name,
                         'phone' => $user->phone,
                         'withdraw_phone' => $user->phone,
-                        'account_balance'   => $user->account,
-                        'withdraw_amount'   => $data->TransactionAmount,
-                        'transaction_id'    => $data->TransactionReceipt,
-                        'datetime'  => date('d/m/Y h:i A'),
-                        'mpesa_name'    => $data->ReceiverPartyPublicName
+                        'account_balance' => $user->account,
+                        'withdraw_amount' => $data->TransactionAmount,
+                        'transaction_id' => $data->TransactionReceipt,
+                        'datetime' => date('d/m/Y h:i A'),
+                        'mpesa_name' => $data->ReceiverPartyPublicName,
                     ];
                     $parser = $parser = \Config\Services::parser();
                     $template = nl2br($template);
@@ -270,7 +268,7 @@ class Api extends BaseController
             } else {
                 //Return back the money
                 $user = (new Users())->find($userID);
-                if($user) {
+                if ($user) {
                     $trx_fee = ($entry->amount > 1000 ? 22 : 15);
                     $refundable = $trx_fee + $entry->amount;
 
@@ -288,15 +286,15 @@ class Api extends BaseController
                 $emails = get_option('withdraw_emails_notifications', '');
                 if ($template != '' && $emails != '') {
                     $template_fields = [
-                        'name'  => $user->name,
+                        'name' => $user->name,
                         'phone' => $user->phone,
                         'withdraw_phone' => $user->phone,
-                        'account_balance'   => $user->account,
-                        'withdraw_amount'   => @$data->TransactionAmount,
-                        'transaction_id'    => @$data->TransactionReceipt,
-                        'datetime'  => date('d/m/Y h:i A')
+                        'account_balance' => $user->account,
+                        'withdraw_amount' => @$data->TransactionAmount,
+                        'transaction_id' => @$data->TransactionReceipt,
+                        'datetime' => date('d/m/Y h:i A'),
                     ];
-                    $parser = $parser = \Config\Services::parser();;
+                    $parser = $parser = \Config\Services::parser();
                     $message = $parser->setData($template_fields)->renderString($template);
                     $subject = "[WITHDRAW FAILED] Withdraw from $user->username";
                     $emails = explode(',', $emails);
@@ -337,7 +335,7 @@ class Api extends BaseController
                 (new Users())->save($user);
 
                 $dep->amount = 0;
-                $dep->description = "[ERRONEOUS] ".$dep->description.". Kshs $amDeducted has been deducted for this transaction";
+                $dep->description = "[ERRONEOUS] " . $dep->description . ". Kshs $amDeducted has been deducted for this transaction";
                 (new Deposits())->save($dep);
             }
         }
@@ -352,14 +350,14 @@ class Api extends BaseController
         $withdraws = (new Withdraws())->where('status', 'pending')->where('id > ', 260)->findAll();
         foreach ($withdraws as $withdraw) {
             $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, 'http://localhost/tuma/api/withdraw/'.$withdraw->user->id.'/kurtAngl3numB3ROnE');
+            curl_setopt($curl, CURLOPT_URL, 'http://localhost/tuma/api/withdraw/' . $withdraw->user->id . '/kurtAngl3numB3ROnE');
             curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-            curl_setopt($curl, CURLOPT_USERAGENT, "BENNITO254.COM" );
+            curl_setopt($curl, CURLOPT_USERAGENT, "pkarungari.co.ke");
 
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-            curl_setopt($curl, CURLOPT_POST, TRUE);
-            curl_setopt($curl, CURLOPT_FOLLOWLOCATION, FALSE);
-            curl_setopt($curl, CURLOPT_AUTOREFERER, FALSE);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+            curl_setopt($curl, CURLOPT_AUTOREFERER, false);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $b2c);
             $response = curl_exec($curl);
             print_r(curl_error($curl));
@@ -367,15 +365,16 @@ class Api extends BaseController
             print_r($response);
         }
     }
-    public function getusers(){
+    public function getusers()
+    {
         $users = (new \App\Libraries\Auth())->select('users.id, username, email, phone, account, registration, referred_by, first_name, last_name, avatar')->users(2);
         $i = 0;
         $n_users = array();
-        foreach ($users as $user) {           
-            $referrals = count ((new \App\Models\Referrals())->where('user', $user->id)->where('status', 'completed')->orderBy('id', 'DESC')->findAll());
-           // dd($referrals);
+        foreach ($users as $user) {
+            $referrals = count((new \App\Models\Referrals())->where('user', $user->id)->where('status', 'completed')->orderBy('id', 'DESC')->findAll());
+            // dd($referrals);
             $array = json_decode(json_encode($user), true);
-            $n_users[$i++] = array_merge( $array, array ("referrals" =>  $referrals) );            
+            $n_users[$i++] = array_merge($array, array("referrals" => $referrals));
         }
 
         $data['data'] = $n_users;
@@ -383,9 +382,9 @@ class Api extends BaseController
         echo json_encode($data);
 
     }
-    public function getWithdraws(){   
+    public function getWithdraws()
+    {
         $id = $this->request->getPost('id');
-
 
         if ($this->request->getPost('id')) {
             $users = ((new \App\Models\Transactions()))->select('id, amount, trx, status, type, description, date')->where('user', $id)->orderBy('id', 'DESC')->findAll();
@@ -397,10 +396,10 @@ class Api extends BaseController
             echo json_encode($this->request->getPost(''));
         }
 
-       
     }
-    
-    function secure_random_string($length){
+
+    public function secure_random_string($length)
+    {
         $random_string = '';
         for ($i = 0; $i < $length; $i++) {
             $number = random_int(0, 36);

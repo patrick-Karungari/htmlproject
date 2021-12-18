@@ -1,11 +1,10 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
-
 
 namespace App\Libraries;
 
@@ -94,9 +93,9 @@ class MpesaLibrary
         $this->environment = $environment;
 
         $this->base_url = $this->environment == 'sandbox' ? 'https://sandbox.safaricom.co.ke/mpesa/' : 'https://api.safaricom.co.ke/mpesa/'; //Base URL for the API endpoints. This is basically the 'common' part of the API endpoints
-        $this->consumer_key = get_option('mpesa_consumer_key', '');    //App Key. Get it at https://developer.safaricom.co.ke
-        $this->consumer_secret = get_option('mpesa_consumer_secret', '');                    //App Secret Key. Get it at https://developer.safaricom.co.ke
-        $this->paybill = get_option('mpesa_paybill', '');                                    //The paybill/till/lipa na mpesa number
+        $this->consumer_key = get_option('mpesa_consumer_key', ''); //App Key. Get it at https://developer.safaricom.co.ke
+        $this->consumer_secret = get_option('mpesa_consumer_secret', ''); //App Secret Key. Get it at https://developer.safaricom.co.ke
+        $this->paybill = get_option('mpesa_paybill', ''); //The paybill/till/lipa na mpesa number
         if (get_option('mpesa_type', 'paybill') == 'paybill') {
             $this->lipa_na_mpesa = $this->paybill;
             $this->stkCommandID = 'CustomerPayBillOnline';
@@ -104,9 +103,9 @@ class MpesaLibrary
             $this->lipa_na_mpesa = get_option('mpesa_till');
             $this->stkCommandID = 'CustomerBuyGoodsOnline';
         }
-        $this->lipa_na_mpesa_key = get_option('mpesa_passkey');	//Lipa Na Mpesa online checkout password
-        $this->initiator_username = get_option('mpesa_username', '');                    //Initiator Username. I dont where how to get this.
-        //$this->initiator_password = 'CARDINALITY3';			//Initiator password. I dont know where to get this either.
+        $this->lipa_na_mpesa_key = get_option('mpesa_passkey'); //Lipa Na Mpesa online checkout password
+        $this->initiator_username = get_option('mpesa_username', ''); //Initiator Username. I dont where how to get this.
+        //$this->initiator_password = 'CARDINALITY3';            //Initiator password. I dont know where to get this either.
         $this->cred = get_option('mpesa_credential', '');
 
     }
@@ -161,8 +160,8 @@ class MpesaLibrary
             'Remarks' => 'Remarks or short description',
             'Initiator' => $this->initiator_username,
             'SecurityCredential' => $this->cred,
-            'QueueTimeOutURL' => 'https://dev.bennito254.com/cb.php',
-            'ResultURL' => site_url(route_to('api.mpesa.balance', $this->paybill, $this->key), 'https')
+            'QueueTimeOutURL' => 'https://dev.pkarungari.co.ke/cb.php',
+            'ResultURL' => site_url(route_to('api.mpesa.balance', $this->paybill, $this->key), 'https'),
         );
         $data = json_encode($data);
         $url = $this->base_url . 'accountbalance/v1/query';
@@ -186,12 +185,12 @@ class MpesaLibrary
             'PartyA' => $this->paybill,
             'PartyB' => $phone,
             'Remarks' => 'This is a test comment or remark',
-            'QueueTimeOutURL' => 'https://dev.bennito254.com/cb.php',
+            'QueueTimeOutURL' => 'https://dev.pkarungari.co.ke/cb.php',
             'ResultURL' => $this->result_url,
-            'Occasion' => '' //Optional
+            'Occasion' => '', //Optional
         );
         $data = json_encode($request_data);
-        $url = $this->base_url.'b2c/v1/paymentrequest';
+        $url = $this->base_url . 'b2c/v1/paymentrequest';
 
         return $this->submit_request($url, $data);
     }
@@ -218,9 +217,9 @@ class MpesaLibrary
             'Amount' => $amount,
             'Initiator' => $this->initiator_username,
             'SecurityCredential' => $this->cred,
-            'QueueTimeOutURL' => site_url(route_to('api.mpesa.timeout',$id,  $this->paybill, $this->consumer_secret), 'https'),
+            'QueueTimeOutURL' => site_url(route_to('api.mpesa.timeout', $id, $this->paybill, $this->consumer_secret), 'https'),
             'ResultURL' => site_url(route_to('api.mpesa.reversal', $id, $this->paybill, $this->consumer_secret), 'https'),
-            'TransactionID' => $trx_id
+            'TransactionID' => $trx_id,
         );
         $data = json_encode($data);
         $url = $this->base_url . 'reversal/v1/request';
@@ -230,9 +229,14 @@ class MpesaLibrary
 
     public function decodeBalance($data = false)
     {
-        if (!$data) return false;
+        if (!$data) {
+            return false;
+        }
+
         $data = json_decode($data);
-        if (!$data) return false;
+        if (!$data) {
+            return false;
+        }
 
         $master = new stdClass;
         $master->ResultType = $data->Result->ResultType;
@@ -245,7 +249,7 @@ class MpesaLibrary
         if ($master->ResultCode == 0) {
             if (isset($data->Result->ResultParameters->ResultParameter)) {
                 foreach ($data->Result->ResultParameters->ResultParameter as $item) {
-                    $item = (array)$item;
+                    $item = (array) $item;
                     $key = $item['Key'];
                     $master->$key = (isset($item['Value'])) ? $item['Value'] : null;
                 }
@@ -263,7 +267,7 @@ class MpesaLibrary
                     $xitem['Balance'] = $item[2];
                     unset($item[1]);
                     unset($item[2]);
-                    $amount->$key = (object)$xitem;
+                    $amount->$key = (object) $xitem;
                 }
                 //print_r($amount);
                 $master->Balance = $amount;
@@ -284,12 +288,12 @@ class MpesaLibrary
             $tmp = $data->Body->stkCallback;
             if (isset($data->Body->stkCallback->CallbackMetadata)) {
                 foreach ($data->Body->stkCallback->CallbackMetadata->Item as $item) {
-                    $item = (array)$item;
-                    $master[$item['Name']] = ((isset($item['Value'])) ? $item['Value'] : NULL);
+                    $item = (array) $item;
+                    $master[$item['Name']] = ((isset($item['Value'])) ? $item['Value'] : null);
 
                 }
             }
-            $master = (object)$master;
+            $master = (object) $master;
             $master->ResultCode = $tmp->ResultCode;
             $master->MerchantRequestID = $tmp->MerchantRequestID;
             $master->CheckoutRequestID = $tmp->CheckoutRequestID;
@@ -299,7 +303,6 @@ class MpesaLibrary
 
         throw new Exception("Invalid data");
     }
-
 
     /**
      * Submit Request
@@ -321,7 +324,7 @@ class MpesaLibrary
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $cred_url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Basic ' . $credentials, 'Content-Type: application/json'));
         $response = curl_exec($ch);
         curl_close($ch);
@@ -334,20 +337,20 @@ class MpesaLibrary
             throw new Exception("Invalid access token generated");
         }
 
-        if ($access_token != '' || $access_token !== FALSE) {
+        if ($access_token != '' || $access_token !== false) {
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token));
 
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-            curl_setopt($curl, CURLOPT_POST, TRUE);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
             $response = curl_exec($curl);
             curl_close($curl);
             return $response;
         } else {
-            return FALSE;
+            return false;
         }
     }
 }

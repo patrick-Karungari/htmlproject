@@ -1,11 +1,10 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
-
 
 namespace App\Core;
 
@@ -126,7 +125,7 @@ class Hooks
         \reset($this->filters[$tag]);
 
         do {
-            foreach ((array)\current($this->filters[$tag]) as $the_) {
+            foreach ((array) \current($this->filters[$tag]) as $the_) {
                 if (null !== $the_['function']) {
 
                     if (null !== $the_['include_path']) {
@@ -158,7 +157,7 @@ class Hooks
         \reset($this->filters['all']);
 
         do {
-            foreach ((array)\current($this->filters['all']) as $the_) {
+            foreach ((array) \current($this->filters['all']) as $the_) {
                 if (null !== $the_['function']) {
 
                     if (null !== $the_['include_path']) {
@@ -197,8 +196,7 @@ class Hooks
         $function_to_add,
         int $priority = self::PRIORITY_NEUTRAL,
         string $include_path = null
-    ): bool
-    {
+    ): bool {
         return $this->add_filter($tag, $function_to_add, $priority, $include_path);
     }
 
@@ -265,7 +263,7 @@ class Hooks
                 '',
             ];
         } else {
-            $function = (array)$function;
+            $function = (array) $function;
         }
 
         if (\is_object($function[0])) {
@@ -489,7 +487,7 @@ class Hooks
             &&
             1 == \count($arg)
         ) {
-            $args[] =& $arg[0];
+            $args[] = &$arg[0];
         } else {
             $args[] = $arg;
         }
@@ -509,7 +507,7 @@ class Hooks
         \reset($this->filters[$tag]);
 
         do {
-            foreach ((array)\current($this->filters[$tag]) as $the_) {
+            foreach ((array) \current($this->filters[$tag]) as $the_) {
                 if (null !== $the_['function']) {
 
                     \call_user_func_array($the_['function'], $args);
@@ -570,7 +568,7 @@ class Hooks
         \reset($this->filters[$tag]);
 
         do {
-            foreach ((array)\current($this->filters[$tag]) as $the_) {
+            foreach ((array) \current($this->filters[$tag]) as $the_) {
                 if (null !== $the_['function']) {
 
                     if (null !== $the_['include_path']) {
@@ -800,32 +798,32 @@ class Hooks
         // WARNING! Do not change this regex without changing __do_shortcode_tag() and __strip_shortcode_tag()
         // Also, see shortcode_unautop() and shortcode.js.
         return
-            '\\[' // Opening bracket
-            . '(\\[?)' // 1: Optional second opening bracket for escaping shortcodes: [[tag]]
-            . "($tagregexp)" // 2: Shortcode name
-            . '(?![\\w-])' // Not followed by word character or hyphen
-            . '(' // 3: Unroll the loop: Inside the opening shortcode tag
-            . '[^\\]\\/]*' // Not a closing bracket or forward slash
-            . '(?:'
-            . '\\/(?!\\])' // A forward slash not followed by a closing bracket
-            . '[^\\]\\/]*' // Not a closing bracket or forward slash
-            . ')*?'
-            . ')'
-            . '(?:'
-            . '(\\/)' // 4: Self closing tag ...
-            . '\\]' // ... and closing bracket
-            . '|'
-            . '\\]' // Closing bracket
-            . '(?:'
-            . '(' // 5: Unroll the loop: Optionally, anything between the opening and closing shortcode tags
-            . '[^\\[]*+' // Not an opening bracket
-            . '(?:'
-            . '\\[(?!\\/\\2\\])' // An opening bracket not followed by the closing shortcode tag
-            . '[^\\[]*+' // Not an opening bracket
-            . ')*+'
-            . ')'
-            . '\\[\\/\\2\\]' // Closing shortcode tag
-            . ')?'
+        '\\[' // Opening bracket
+         . '(\\[?)' // 1: Optional second opening bracket for escaping shortcodes: [[tag]]
+         . "($tagregexp)"// 2: Shortcode name
+         . '(?![\\w-])' // Not followed by word character or hyphen
+         . '(' // 3: Unroll the loop: Inside the opening shortcode tag
+         . '[^\\]\\/]*' // Not a closing bracket or forward slash
+         . '(?:'
+        . '\\/(?!\\])' // A forward slash not followed by a closing bracket
+         . '[^\\]\\/]*' // Not a closing bracket or forward slash
+         . ')*?'
+        . ')'
+        . '(?:'
+        . '(\\/)' // 4: Self closing tag ...
+         . '\\]' // ... and closing bracket
+         . '|'
+        . '\\]' // Closing bracket
+         . '(?:'
+        . '(' // 5: Unroll the loop: Optionally, anything between the opening and closing shortcode tags
+         . '[^\\[]*+' // Not an opening bracket
+         . '(?:'
+        . '\\[(?!\\/\\2\\])' // An opening bracket not followed by the closing shortcode tag
+         . '[^\\[]*+' // Not an opening bracket
+         . ')*+'
+        . ')'
+        . '\\[\\/\\2\\]' // Closing shortcode tag
+         . ')?'
             . ')'
             . '(\\]?)'; // 6: Optional second closing brocket for escaping shortcodes: [[tag]]
     }
@@ -884,7 +882,7 @@ class Hooks
      */
     public function shortcode_atts($pairs, $atts, $shortcode = ''): array
     {
-        $atts = (array)$atts;
+        $atts = (array) $atts;
         $out = [];
         foreach ($pairs as $name => $default) {
             if (array_key_exists($name, $atts)) {
@@ -970,7 +968,7 @@ class Hooks
         \array_shift($args);
 
         do {
-            foreach ((array)\current($this->filters[$tag]) as $the_) {
+            foreach ((array) \current($this->filters[$tag]) as $the_) {
                 if (null !== $the_['function']) {
 
                     $args[0] = $value;

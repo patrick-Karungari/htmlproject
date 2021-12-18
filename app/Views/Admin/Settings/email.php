@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 <div class="card">
@@ -23,10 +23,10 @@
             <div class="form-group">
                 <label>Delivery Method</label>
                 <select name="mailer_delivery_method" class="form-control" required>
-                    <option <?php echo get_option('mailer_delivery_method', 'no_smtp') == 'no_smtp' ? 'selected' : NULL; ?>
+                    <option <?php echo get_option('mailer_delivery_method', 'no_smtp') == 'no_smtp' ? 'selected' : null; ?>
                         value="no_smtp">Internal Mail
                     </option>
-                    <option <?php echo get_option('mailer_delivery_method') == 'smtp' ? 'selected' : NULL; ?> value="smtp">SMTP
+                    <option <?php echo get_option('mailer_delivery_method') == 'smtp' ? 'selected' : null; ?> value="smtp">SMTP
                         Mail
                     </option>
                 </select>
@@ -40,10 +40,10 @@
                 <div class="form-group">
                     <label>SMTP Requires Authentication?</label>
                     <select name="mailer_authentication" class="form-control">
-                        <option <?php echo get_option('mailer_authentication', 'yes') == 'yes' ? 'selected' : NULL; ?>
+                        <option <?php echo get_option('mailer_authentication', 'yes') == 'yes' ? 'selected' : null; ?>
                             value="yes">YES
                         </option>
-                        <option <?php echo get_option('mailer_authentication') == 'no' ? 'selected' : NULL; ?> value="no">NO
+                        <option <?php echo get_option('mailer_authentication') == 'no' ? 'selected' : null; ?> value="no">NO
                         </option>
                     </select>
                 </div>
@@ -65,22 +65,22 @@
                 <div class="form-group">
                     <label>SMTP Security</label>
                     <select name="mailer_smtp_security" class="form-control">
-                        <option <?php echo get_option('mailer_smtp_security', 'none') == 'none' ? 'selected' : NULL; ?>
+                        <option <?php echo get_option('mailer_smtp_security', 'none') == 'none' ? 'selected' : null; ?>
                             value="none">None
                         </option>
-                        <option <?php echo get_option('mailer_smtp_security') == 'ssl' ? 'selected' : NULL; ?> value="ssl">SSL
+                        <option <?php echo get_option('mailer_smtp_security') == 'ssl' ? 'selected' : null; ?> value="ssl">SSL
                         </option>
-                        <option <?php echo get_option('mailer_smtp_security') == 'tls' ? 'selected' : NULL; ?> value="tls">TLS
+                        <option <?php echo get_option('mailer_smtp_security') == 'tls' ? 'selected' : null; ?> value="tls">TLS
                         </option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Verify SMTP Certificate?</label>
                     <select name="mailer_smtp_verify_certs" class="form-control">
-                        <option <?php echo get_option('mailer_smtp_verify_certs', 'no') == 'no' ? 'selected' : NULL; ?>
+                        <option <?php echo get_option('mailer_smtp_verify_certs', 'no') == 'no' ? 'selected' : null; ?>
                             value="no">NO
                         </option>
-                        <option <?php echo get_option('mailer_smtp_verify_certs') == 'yes' ? 'selected' : NULL; ?> value="yes">
+                        <option <?php echo get_option('mailer_smtp_verify_certs') == 'yes' ? 'selected' : null; ?> value="yes">
                             YES
                         </option>
                     </select>

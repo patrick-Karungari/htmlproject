@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 use App\Libraries\Metrics;
@@ -21,22 +21,22 @@ use App\Libraries\Metrics;
 <div class="card">
     <div class="card-body">
         <?php
-        $minimum_withdraw_amount = get_option('minimum_bonus_withdraw', 0);
-        $minimum_running_investment = get_option('minimum_running_investment', 0);
-        $investmentTotals = (new Metrics())->getUserInvestmentTotals($current_user->id);
-        $acc_bal = $current_user->account;
-        if($minimum_running_investment > $investmentTotals ) {
-            ?>
+$minimum_withdraw_amount = get_option('minimum_bonus_withdraw', 0);
+$minimum_running_investment = get_option('minimum_running_investment', 0);
+$investmentTotals = (new Metrics())->getUserInvestmentTotals($current_user->id);
+$acc_bal = $current_user->account;
+if ($minimum_running_investment > $investmentTotals) {
+    ?>
             <div class="alert alert-warning">
                 <?php
-                echo "You must have running investments of Kshs $minimum_running_investment. Your current running investment is Kshs $investmentTotals";
-                ?>
+echo "You must have running investments of Kshs $minimum_running_investment. Your current running investment is Kshs $investmentTotals";
+    ?>
             </div>
             <?php
-        }else {
-                     
-            ?>
-            
+} else {
+
+    ?>
+
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <h4 class="text-center">Withdraw via M-Pesa</h4>
@@ -55,9 +55,9 @@ use App\Libraries\Metrics;
                     </form>
                 </div>
             </div>
-            <?php 
-             }
-        
-        ?>
+            <?php
+}
+
+?>
     </div>
 </div>

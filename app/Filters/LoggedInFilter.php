@@ -1,13 +1,12 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Filters;
-
 
 use App\Libraries\Auth;
 use CodeIgniter\Filters\FilterInterface;
@@ -26,7 +25,7 @@ class LoggedInFilter implements FilterInterface
     {
         $this->session = \Config\Services::session();
         $this->ionAuth = new Auth();
-        if(!$this->ionAuth->loggedIn()) {
+        if (!$this->ionAuth->loggedIn()) {
             $this->session->setFlashdata('message', "Please login to continue");
             return redirect()->to(site_url('auth'));
         }

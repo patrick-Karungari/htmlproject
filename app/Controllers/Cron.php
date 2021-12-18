@@ -1,19 +1,17 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Controllers;
-
 
 use App\Models\Investments;
 use App\Models\Transactions;
 use App\Models\Users;
 use Carbon\Carbon;
-use App\Models\Withdraws;
 
 class Cron extends BaseController
 {
@@ -27,8 +25,8 @@ class Cron extends BaseController
         // The cron job should run every three minutes.
 
         $investments = $investmentsModel
-            //->where('end_time >=', $three_mins_ago) //What if we just kept on retrying failed settlements?
-            ->where('end_time <=', $right_now)
+        //->where('end_time >=', $three_mins_ago) //What if we just kept on retrying failed settlements?
+        ->where('end_time <=', $right_now)
             ->where('status', 'pending')
             ->findAll();
 
@@ -36,34 +34,32 @@ class Cron extends BaseController
         $usersModel = new Users();
 
         foreach ($deps as $dep) {
-            //dd($dep);
-            if (count((array)$dep) > 1) {
-                //Reverse
-                $user = $usersModel->find($dep->user->id);
-                $current = $user->account;
-                $newAccount = $user->account + $dep->amount;
-                $amDeducted = $dep->amount;
+        //dd($dep);
+        if (count((array)$dep) > 1) {
+        //Reverse
+        $user = $usersModel->find($dep->user->id);
+        $current = $user->account;
+        $newAccount = $user->account + $dep->amount;
+        $amDeducted = $dep->amount;
 
-                $user->account = $newAccount;
-               
+        $user->account = $newAccount;
 
-                $dep->status = "failed";
-                $dep->description = "[FAILED] ".$dep->description.". Kshs $amDeducted has been refunded for this transaction";
-                //dd(count((array)$dep));
-                
+        $dep->status = "failed";
+        $dep->description = "[FAILED] ".$dep->description.". Kshs $amDeducted has been refunded for this transaction";
+        //dd(count((array)$dep));
 
-                $trx =[
-                'user' => $dep->user->id,
-                 'type' => "withdrawal",
-                'amount' => $dep->amount,
-                'date' => date("Y/m/d H:i:s"),
-                'description' => "[FAILED] Withdrawal of Kshs $amDeducted has been refunded for this transaction. New account balance is $newAccount"
-                ];
-                // dd($trx);
-                (new Users())->save($user);
-                (new withdraws())->save($dep);
-                (new transactions())->save($trx);
-            }
+        $trx =[
+        'user' => $dep->user->id,
+        'type' => "withdrawal",
+        'amount' => $dep->amount,
+        'date' => date("Y/m/d H:i:s"),
+        'description' => "[FAILED] Withdrawal of Kshs $amDeducted has been refunded for this transaction. New account balance is $newAccount"
+        ];
+        // dd($trx);
+        (new Users())->save($user);
+        (new withdraws())->save($dep);
+        (new transactions())->save($trx);
+        }
         }*/
         //dd($deps);
         if (count($investments) > 0) {
@@ -73,10 +69,10 @@ class Cron extends BaseController
             foreach ($investments as $investment) {
                 $new_account = $investment->user->account + $investment->total;
                 $transaction = [
-                    'user'  => $investment->user->id,
-                    'amount'    => $investment->total,
-                    'type'  => 'returns',
-                    'description'   => "An investment of Kshs $investment->amount returned Kshs $investment->total. New account balance is Kshs $new_account"
+                    'user' => $investment->user->id,
+                    'amount' => $investment->total,
+                    'type' => 'returns',
+                    'description' => "An investment of Kshs $investment->amount returned Kshs $investment->total. New account balance is Kshs $new_account",
                 ];
                 try {
                     $usersModel->set('account', $new_account)->where('id', $investment->user->id)->update();

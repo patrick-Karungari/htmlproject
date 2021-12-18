@@ -1,13 +1,12 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Controllers;
-
 
 class AdminController extends BaseController
 {
@@ -28,13 +27,13 @@ class AdminController extends BaseController
 
     public function _renderPage($view, $data = [])
     {
-       /* $data['headscripts'] = array('assets/vendors/js/forms/select/select2.full.min.js',
-            'assets/vendors/js/editors/quill/katex.min.js',
-            'assets/vendors/js/editors/quill/highlight.min.js',
-            'assets/vendors/js/editors/quill/quill.min.js',
-            'assets/js/scripts/pages/page-blog-edit.js');*/
+        /* $data['headscripts'] = array('assets/vendors/js/forms/select/select2.full.min.js',
+        'assets/vendors/js/editors/quill/katex.min.js',
+        'assets/vendors/js/editors/quill/highlight.min.js',
+        'assets/vendors/js/editors/quill/quill.min.js',
+        'assets/js/scripts/pages/page-blog-edit.js');*/
         $data = array_merge($this->data, $data);
-        $data['_html_content'] = view('Admin/'.$view, $data);
+        $data['_html_content'] = view('Admin/' . $view, $data);
         $data['current_user'] = $this->auth->user();
 
         return view('Admin/layout2', $data);

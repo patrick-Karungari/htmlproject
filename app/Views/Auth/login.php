@@ -1,10 +1,10 @@
 <?php
 
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 <h2 class="card-title font-weight-bold mb-1">Welcome to Vuexy! 👋</h2>

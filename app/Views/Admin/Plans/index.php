@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 $plans = (new \App\Models\Plans())->findAll();
@@ -15,8 +15,8 @@ $plans = (new \App\Models\Plans())->findAll();
         </div>
 
         <?php
-        if (count($plans) > 0) {
-            ?>
+if (count($plans) > 0) {
+    ?>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -31,10 +31,10 @@ $plans = (new \App\Models\Plans())->findAll();
                     </thead>
                     <tbody>
                     <?php
-                    $n = 0;
-                    foreach ($plans as $plan) {
-                        $n++;
-                        ?>
+$n = 0;
+    foreach ($plans as $plan) {
+        $n++;
+        ?>
                         <tr>
                             <td class="pl-0"><?php echo $n; ?></td>
                             <td><?php echo $plan->title; ?></td>
@@ -42,34 +42,34 @@ $plans = (new \App\Models\Plans())->findAll();
                             <td><?php echo $plan->returns; ?></td>
                             <td class="pr-0">
                                 <?php
-                                if ($plan->active == 1) {
-                                    echo "YES";
-                                } else {
-                                    echo "NO";
-                                }
-                                ?>
+if ($plan->active == 1) {
+            echo "YES";
+        } else {
+            echo "NO";
+        }
+        ?>
                             </td>
                             <td>
                                 <a class="btn btn-sm btn-info" href=""><i class="mdi mdi-eye"></i></a>
-                                <a class="btn btn-sm btn-warning" href="<?php echo site_url('admin/plans/edit/'.$plan->id) ?>"><i class="mdi mdi-pencil"></i></a>
+                                <a class="btn btn-sm btn-warning" href="<?php echo site_url('admin/plans/edit/' . $plan->id) ?>"><i class="mdi mdi-pencil"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="mdi mdi-delete"></i></a>
                             </td>
                         </tr>
                         <?php
-                    }
-                    ?>
+}
+    ?>
                     </tbody>
                 </table>
             </div>
             <?php
-        } else {
-            ?>
+} else {
+    ?>
             <div class="alert alert-warning">
                 No plans available
             </div>
             <?php
-        }
-        ?>
+}
+?>
     </div>
 </div>
 <script>

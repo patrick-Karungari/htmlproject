@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 $investments = (new \App\Models\Investments())->where('user', $current_user->id)->orderBy('id', 'DESC')->findAll();
@@ -22,67 +22,67 @@ $plans = (new \App\Models\Plans())->where('active', '1')->orderBy('days', 'ASC')
 if (count($plans) > 0) {
     ?>
     <div class="card">
-        
+
         <div class="card-body">
             <div class="container text-center">
                 <h4 class="mb-3 mt-5">Start up your investment today</h4>
                 <p class="w-75 mx-auto mb-5">Choose a plan that suits you the best.</p>
                 <div class="row pricing-table">
                     <?php
-                    $n = 0;
-                    foreach ($plans as $plan) {
-                        $n++;
-                        ?>
+$n = 0;
+    foreach ($plans as $plan) {
+        $n++;
+        ?>
                         <div class="col-md-6 col-xl-4 grid-margin stretch-card pricing-card">
-                          
+
                             <div class="card border-primary border pricing-card-body" style="padding: 20px 26px 23px 26px;">
                             <?php
-                             if($plan->days < 2){
-                                $class = "ribbon ribbon-top-right blink_me";
-                                $title ="NEW !!!";
-                             }else{
-                                 $class = "ribbon ribbon-top-right";
-                                  if($plan->days == 3){
-                                        $title = "HOT !!!";
-                                  }elseif($plan->days == 7){
-                                        $title = "POPULAR !!!";
-                                  }else{
-                                        $title ="";
-                                        $class="";
-                                  }
-                                
-                             }
-                             //echo '';
-                                ?>
-                             <div class=" <?php echo $class?>"><span><?php echo $title?></span></div>
+if ($plan->days < 2) {
+            $class = "ribbon ribbon-top-right blink_me";
+            $title = "NEW !!!";
+        } else {
+            $class = "ribbon ribbon-top-right";
+            if ($plan->days == 3) {
+                $title = "HOT !!!";
+            } elseif ($plan->days == 7) {
+                $title = "POPULAR !!!";
+            } else {
+                $title = "";
+                $class = "";
+            }
+
+        }
+        //echo '';
+        ?>
+                             <div class=" <?php echo $class ?>"><span><?php echo $title ?></span></div>
                                 <div class="text-center pricing-card-head">
                                     <h3><?php echo $plan->title ?></h3>
                                     <p><?php echo $plan->days ?> day(s) investment</p>
-                                    <h1 class="font-weight-normal mb-4"><?php echo $plan->returns.'%'; ?></h1>
+                                    <h1 class="font-weight-normal mb-4"><?php echo $plan->returns . '%'; ?></h1>
                                 </div>
                                 <div class="plan-features">
                                     <?php
-                                    echo $plan->description;
-                                    ?>
+echo $plan->description;
+        ?>
                                 </div>
                                 <div class="wrapper">
                                     <form method="post" action="<?php echo site_url('user/invest/create'); ?>">
                                         <input type="hidden" name="plan" value="<?php echo $plan->id; ?>">
                                         <div class="form-group">
                                             <label>Amount to Invest</label>
-                                            <?php 
-                                                
-                                                if($plan->returns >= 100 && $plan->returns <= 150){
-                                                    $minimum_investment = 30000;
-                                                }elseif($plan->returns > 150 && $plan->returns <= 200){
-                                                     $minimum_investment = 65000;
-                                                }elseif($plan->returns > 200){
-                                                    $minimum_investment = 100000;
-                                                }else{
-                                                    $minimum_investment = get_option('minimum_investment', 0);
-                                                }                                              
-                                            ?>
-                                            <input type="number" class="form-control" name="amount" min=" <?php echo $minimum_investment?>" value="<?php echo $minimum_investment ?>" required />
+                                            <?php
+
+        if ($plan->returns >= 100 && $plan->returns <= 150) {
+            $minimum_investment = 30000;
+        } elseif ($plan->returns > 150 && $plan->returns <= 200) {
+            $minimum_investment = 65000;
+        } elseif ($plan->returns > 200) {
+            $minimum_investment = 100000;
+        } else {
+            $minimum_investment = get_option('minimum_investment', 0);
+        }
+        ?>
+                                            <input type="number" class="form-control" name="amount" min=" <?php echo $minimum_investment ?>" value="<?php echo $minimum_investment ?>" required />
                                         </div>
                                         <button type="submit" class="btn btn-block btn-primary">Invest</button>
                                     </form>
@@ -90,8 +90,8 @@ if (count($plans) > 0) {
                             </div>
                         </div>
                             <?php
-                    }
-                    ?>
+}
+    ?>
 
                 </div>
             </div>

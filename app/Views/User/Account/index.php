@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 <style>
@@ -260,18 +260,18 @@ body {
     </div>
     <div class="col-12 col-sm-6 col-md-3 grid-margin stretch-card">
           <?php
-      
-      $deposit_rate = number_format((new \App\Libraries\Metrics())->getDepositRate($current_user->id, 0),2);
-      //$deposit_rate = 30; 
-      if ($deposit_rate < -20){
-        $class = "bg-danger";
-      }elseif ($deposit_rate >= -20 && $deposit_rate <= 20){
-        $class = "bg-warning";
-      }else {
-       $class ="bg-success";
-      }
-    ?>    
-        <div class="card icon-card-dark <?php echo $class?>">
+
+$deposit_rate = number_format((new \App\Libraries\Metrics())->getDepositRate($current_user->id, 0), 2);
+//$deposit_rate = 30;
+if ($deposit_rate < -20) {
+    $class = "bg-danger";
+} elseif ($deposit_rate >= -20 && $deposit_rate <= 20) {
+    $class = "bg-warning";
+} else {
+    $class = "bg-success";
+}
+?>
+        <div class="card icon-card-dark <?php echo $class ?>">
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div class="icon mb-0 mb-md-2 mb-xl-0 mr-2">
@@ -280,7 +280,7 @@ body {
                     <p class="font-weight-medium mb-0">Running Deposit Rate</p>
                 </div>
                 <div class="d-flex align-items-center mt-3 flex-wrap">
-                    <h3 class="font-weight-medium mb-0 mr-2"><?php echo number_format((new \App\Libraries\Metrics())->getDepositRate($current_user->id, 0),2) ?> %</h3>
+                    <h3 class="font-weight-medium mb-0 mr-2"><?php echo number_format((new \App\Libraries\Metrics())->getDepositRate($current_user->id, 0), 2) ?> %</h3>
 
                 </div>
                 <small class="d-block mt-2"><a class="text-white" href="<?php echo site_url('user/withdraws') ?>">Total Deposit Rate</a> </small>
@@ -316,62 +316,62 @@ if (count($plans) > 0) {
                 <p class="w-75 mx-auto mb-5">Choose a plan that suits you the best.</p>
                 <div class="row pricing-table">
                     <?php
-                    $n = 0;
-                    foreach ($plans as $plan) {
-                        $n++;
-                        ?>
-                        
+$n = 0;
+    foreach ($plans as $plan) {
+        $n++;
+        ?>
+
                         <div  class="col-md-6 col-xl-4 grid-margin stretch-card pricing-card">
                             <div class="card border-primary border pricing-card-body" style="padding: 20px 26px 23px 26px;">
                                 <?php
-                             if($plan->days < 2){
-                                $class = "ribbon ribbon-top-right blink_me";
-                                $title ="NEW !!!";
-                             }else{
-                                 $class = "ribbon ribbon-top-right";
-                                  if($plan->days == 3){
-                                        $title = "HOT !!!";
-                                  }elseif($plan->days == 7){
-                                        $title = "POPULAR !!!";
-                                  }else{
-                                        $title ="";
-                                        $class="";
-                                  }
-                                
-                             }
-                             //echo '';
-                                ?>
-                             <div class=" <?php echo $class?>"><span><?php echo $title?></span></div>
-                                
-                                
+if ($plan->days < 2) {
+            $class = "ribbon ribbon-top-right blink_me";
+            $title = "NEW !!!";
+        } else {
+            $class = "ribbon ribbon-top-right";
+            if ($plan->days == 3) {
+                $title = "HOT !!!";
+            } elseif ($plan->days == 7) {
+                $title = "POPULAR !!!";
+            } else {
+                $title = "";
+                $class = "";
+            }
+
+        }
+        //echo '';
+        ?>
+                             <div class=" <?php echo $class ?>"><span><?php echo $title ?></span></div>
+
+
                                 <div class="text-center pricing-card-head">
                                     <h3><?php echo $plan->title ?></h3>
                                     <p><?php echo $plan->days ?> day(s) investment</p>
-                                    <h1 class="font-weight-normal mb-4"><?php echo $plan->returns.'%'; ?></h1>
+                                    <h1 class="font-weight-normal mb-4"><?php echo $plan->returns . '%'; ?></h1>
                                 </div>
                                 <div class="plan-features">
                                     <?php
-                                    echo $plan->description;
-                                    ?>
+echo $plan->description;
+        ?>
                                 </div>
                                 <div class="wrapper">
                                     <form method="post" action="<?php echo site_url('user/invest/create'); ?>">
                                         <input type="hidden" name="plan" value="<?php echo $plan->id; ?>">
                                         <div class="form-group">
                                             <label>Amount to Invest</label>
-                                            <?php 
-                                                
-                                                if($plan->returns >= 100 && $plan->returns <= 150){
-                                                    $minimum_investment = 30000;
-                                                }elseif($plan->returns > 150 && $plan->returns <= 200){
-                                                     $minimum_investment = 65000;
-                                                }elseif($plan->returns > 200){
-                                                    $minimum_investment = 100000;
-                                                }else{
-                                                    $minimum_investment = get_option('minimum_investment', 0);
-                                                }                                              
-                                            ?>
-                                            <input type="number" class="form-control" name="amount" min=" <?php echo $minimum_investment?>" value="<?php echo $minimum_investment ?>" required />
+                                            <?php
+
+        if ($plan->returns >= 100 && $plan->returns <= 150) {
+            $minimum_investment = 30000;
+        } elseif ($plan->returns > 150 && $plan->returns <= 200) {
+            $minimum_investment = 65000;
+        } elseif ($plan->returns > 200) {
+            $minimum_investment = 100000;
+        } else {
+            $minimum_investment = get_option('minimum_investment', 0);
+        }
+        ?>
+                                            <input type="number" class="form-control" name="amount" min=" <?php echo $minimum_investment ?>" value="<?php echo $minimum_investment ?>" required />
                                        </div>
                                         <button type="submit" class="btn btn-block btn-primary">Invest</button>
                                     </form>
@@ -379,10 +379,10 @@ if (count($plans) > 0) {
                             </div>
                         </div>
                             <?php
-                    }
-                    ?>
+}
+    ?>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -403,8 +403,8 @@ if (count($plans) > 0) {
   icon: 'info',
   html:
     'Familiarize yourself with our <b><a href="https://alpha-capital-investments.com/auth/terms">terms and conditions</a></b>'
-  
-  
+
+
 })
 </script>
 

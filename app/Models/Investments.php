@@ -1,19 +1,18 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Models;
-
 
 class Investments extends \CodeIgniter\Model
 {
     protected $table = 'investments';
     protected $allowedFields = [
-        'user', 'plan', 'amount', 'return', 'total', 'status', 'start_time', 'end_time'
+        'user', 'plan', 'amount', 'return', 'total', 'status', 'start_time', 'end_time',
     ];
     protected $returnType = '\App\Entities\Investment';
 }

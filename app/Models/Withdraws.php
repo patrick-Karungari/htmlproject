@@ -1,13 +1,12 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Models;
-
 
 class Withdraws extends \CodeIgniter\Model
 {
@@ -15,6 +14,6 @@ class Withdraws extends \CodeIgniter\Model
     protected $returnType = '\App\Entities\Withdraw';
 
     protected $allowedFields = [
-        'user', 'amount', 'phone', 'trx_id', 'status', 'description'
+        'user', 'amount', 'phone', 'trx_id', 'status', 'description',
     ];
 }
