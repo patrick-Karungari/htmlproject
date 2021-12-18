@@ -46,7 +46,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <strong class="text-warning"><?php echo sprintf($user['email']) ?>
         </strong>.
     </p>
-    <p class="card-text mb-2">Please look out for the activation link in yiur spam if you don't find it in your inbox.
+    <p class="card-text mb-2">Please look out for the activation link in your spam if you don't find it in your inbox.
     </p>
 
     <form class=" auth-forgot-password-form mt-2" action="<?php echo base_url('auth/mail_verify') ?>" method="post">
