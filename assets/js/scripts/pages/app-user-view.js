@@ -477,7 +477,7 @@ if (dtInvestmentsTable.length) {
       order: [[1, 'desc']],
       dom:
         '<"row d-flex justify-content-between align-items-center m-1"' +        
-        '<"d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2"f<"invoice_status ml-2"><"invoice_type ml-2">>' +
+        '<"d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2"f<"investment_status ml-2"><"investment_type ml-2">>' +
         '<"col-lg-6 d-flex align-items-center"l<"dt-action-buttons text-xl-right text-lg-left text-md-right text-left "B>>' +
         '>t' +
         '<"d-flex justify-content-between mx-2 row"' +
@@ -548,7 +548,7 @@ if (dtInvestmentsTable.length) {
             var select = $(
               '<select id="IvestmentStatus" class="form-control ml-50 text-capitalize"><option value=""> Select Investment Status </option></select>'
             )
-              .appendTo('.invoice_status')
+              .appendTo('.investment_status')
               .on('change', function () {
                 var val = $.fn.dataTable.util.escapeRegex($(this).val());
                 column.search(val, true, false).draw();
@@ -571,7 +571,7 @@ if (dtInvestmentsTable.length) {
             var select = $(
               '<select id="IvestmentType" class="form-control ml-50 text-capitalize"><option value=""> Select Ivestment Type </option></select>'
             )
-              .appendTo('.invoice_type')
+              .appendTo('.investment_type')
               .on('change', function () {
                 var val = $.fn.dataTable.util.escapeRegex($(this).val());
                 column.search(val, true, false).draw();
