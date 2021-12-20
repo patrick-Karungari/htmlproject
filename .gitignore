@@ -1,7 +1,8 @@
 /app.zip
-node_modules
+/node_modules
 /writable/debugbar
 /writable/cache
 /writable/logs
 /writable/session
-.vscode
+/.vscode
+/.idea
