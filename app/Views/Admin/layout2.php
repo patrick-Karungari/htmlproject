@@ -33,7 +33,8 @@
             href="<?php echo base_url('assets/vendors/css/extensions/toastr.min.css') ?>">
         <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/vendors/css/charts/apexcharts.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/pages/dashboard-ecommerce.css') ?>">
+        <link rel="stylesheet" type="text/css"
+            href="<?php echo base_url('assets/css/pages/dashboard-ecommerce.css') ?>">
         <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/css/plugins/charts/chart-apex.css') ?>">
 
@@ -345,8 +346,9 @@
                                         class="menu-item text-truncate" data-i18n="Account Settings">My Blogs</span></a>
                             </li>
                             <li id="blog-create"><a class="d-flex align-items-center"
-                                    href="<?php echo base_url('admin/blog/create') ?>"><i data-feather="circle"></i><span
-                                        class="menu-item text-truncate" data-i18n="Account Settings">New Blog</span></a>
+                                    href="<?php echo base_url('admin/blog/create') ?>"><i
+                                        data-feather="circle"></i><span class="menu-item text-truncate"
+                                        data-i18n="Account Settings">New Blog</span></a>
                             </li>
                         </ul>
                     </li>
@@ -453,24 +455,26 @@
                 </div>
                 <div class="content-body">
                     <!-- Dashboard Analytics Start -->
-
+                    <div class="scrollbar" id="style-7">
+                        <div class="force-overflow"></div>
+                    </div>
                     <?php
-bootstrap_alerts();
-echo $_html_content;
-if ($_SERVER['REQUEST_URI'] === "/admin/blog/create") {
-    //dd($_SERVER['REQUEST_URI']);
-    echo "<script src='" . base_url('assets/js/scripts/pages/page-blog-edit.js') . "'></script>\n";
-} elseif (str_contains('/admin/users', $_SERVER['REQUEST_URI'])) {
-    echo "<script src='" . base_url('assets/js/scripts/pages/app-user-list.js') . "'></script>\n";
+                                bootstrap_alerts();
+                                echo $_html_content;
+                                if ($_SERVER['REQUEST_URI'] === "/admin/blog/create") {
+                                    //dd($_SERVER['REQUEST_URI']);
+                                    echo "<script src='" . base_url('assets/js/scripts/pages/page-blog-edit.js') . "'></script>\n";
+                                } elseif (str_contains('/admin/users', $_SERVER['REQUEST_URI'])) {
+                                    echo "<script src='" . base_url('assets/js/scripts/pages/app-user-list.js') . "'></script>\n";
 
-} elseif ($_SERVER['REQUEST_URI'] === "/admin/chat") {
-    echo "<script src='" . base_url('assets/js/scripts/pages/app-chat.js') . "'></script>\n";
-} elseif ($_SERVER['REQUEST_URI'] === "/admin/users/view") {
-    echo "<script src='" . base_url('assets/js/scripts/pages/app-users-view.js') . "'></script>\n";
+                                } elseif ($_SERVER['REQUEST_URI'] === "/admin/chat") {
+                                    echo "<script src='" . base_url('assets/js/scripts/pages/app-chat.js') . "'></script>\n";
+                                } elseif ($_SERVER['REQUEST_URI'] === "/admin/users/view") {
+                                    echo "<script src='" . base_url('assets/js/scripts/pages/app-users-view.js') . "'></script>\n";
 
-}
+                                }
 
-?>
+                            ?>
                     <!-- Dashboard Analytics end -->
 
                 </div>
