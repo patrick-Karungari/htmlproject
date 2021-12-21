@@ -112,12 +112,15 @@ class Auth extends BaseController
     public function mail_verify()
     {
         $adminEmail = $this->config->adminEmail;
+        
         if ($this->request->getPost() || !empty($this->session->getFlashdata('data'))) {
             if (!empty($this->session->getFlashdata('data'))) {
                 $flashdata = $this->session->getFlashdata('data');
                 //dd($flashdata);
                 $id = $flashdata['user']['id'];
                 $email = $flashdata['user']['email'];
+               
+
                 //$flash_key = $flashdata['security'];
 
             } else {
@@ -162,17 +165,17 @@ class Auth extends BaseController
                         'name' => $user->first_name,
                         'activation' => $activationCode,
                     ];
-
+                   
                     if ($this->auth->sendMail($data2, $email)) {
-                        // $this->secure_key = $this->secure_request_key(32);
-                        // $data['security'] = $this->secure_key;
-                        return redirect()->to(site_url('auth'))->withInput()->with('success', "Seccessfully Sent New Ativation Email");
-
+                      
+                        return redirect()->to(site_url('auth'))->withInput()->with('success', "Seccessfully Resent Ativation Email");
                     } else {
                         // redirect them to the forgot password page
                         return redirect()->to(site_url('auth'))->with('error', "An error occurred");
 
                     }
+                    
+                   
                 }
 
             }
@@ -296,9 +299,10 @@ class Auth extends BaseController
                     } catch (\ReflectionException $e) {
                         return redirect()->back()->with('error', $e->getMessage());
                     }
-                    $data = ['user' => ['email' => $email, 'id' => $newID]];
+                    $data = ['user' => ['email' => $email, 'id' => $newID], 'register'=>true];
 
-                    return redirect()->to(site_url('auth/mail_verify'))->with('data', $data);
+                    return redirect()->to(site_url('auth'))->withInput()->with('success', "Please verify your email.");
+
                 } else {
                     return redirect()->back()->with('error', $auth->errorsArray());
                 }
