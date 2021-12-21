@@ -142,7 +142,7 @@ $_deposits['data']=$deposits;
                                 <div class="color-box bg-light-primary">
                                     <i data-feather="user-plus" class="text-primary"></i>
                                 </div>
-                                <div class="ml-1 text-wrap">
+                                <div class="ml-1">
                                     <h5 class="mb-0"><?php echo ' ' . count($referrals); ?></h5>
                                     <small>Total Downlines</small>
                                 </div>
@@ -160,10 +160,10 @@ $_deposits['data']=$deposits;
                 <div class="card-header d-flex justify-content-center align-items-center pt-75 mt-5 pb-1">
                     <h2 class="mb-0 align-items-center ">Available Balance: </h2>
                 </div>
-                <div class=" card-body  d-flex align-items-center">
+                <div class=" card-body d-flex align-items-center">
 
                     <a href="<?php echo base_url('admin/users/pay') ?>"
-                        class=" badge text-wrap badge-light-success text-center btn-block pt-75 pb-75"
+                        class=" badge badge-light-success  text-wrap text-center btn-block pt-75 pb-75"
                         style="font-size: 32px;">Kshs
                         <?php echo number_format($user->account, 2) ?>
                     </a>
@@ -210,20 +210,21 @@ $_deposits['data']=$deposits;
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-2">User Transactions</h4>
+                    <h4 class="card-title mb-2">User Investments</h4>
                 </div>
                 <div class="card-datatable table-responsive pb-1">
                     <table class="investments-list-table table">
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>#</th>
+                                <th>Plan</th>
                                 <th>Amount</th>
-                                <th class="text-truncate">Date</th>
-                                <th>Type</th>
+                                <th>Returns</th>
+                                <th>Total</th>
                                 <th>Status</th>
-                                <th class="cell-fit">Description</th>
-                                <th class="cell-fit">Actions</th>
+                                <th>Date Created</th>
+                                <th>Settlement Date</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                     </table>
