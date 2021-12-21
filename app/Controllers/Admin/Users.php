@@ -96,6 +96,22 @@ class Users extends \App\Controllers\AdminController
         }
 
     }
+    public function ginv()
+    {
+
+        $id = $this->request->getPost('id');
+        //dd($id);
+
+        if ($this->request->getPost('id')) {
+            $users = ((new \App\Models\Investments()))->select('id, plan, amount, return, total, status, created_at, end_time')->where('user', $id)->orderBy('id', 'DESC')->findAll();
+            $data['data'] = $users;
+            //dd($data);
+            echo json_encode($data);
+        } else {
+            echo json_encode($this->request->getPost(''));
+        }
+
+    }
 
     public function secure_random_string($length)
     {

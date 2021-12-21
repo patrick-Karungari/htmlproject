@@ -96,13 +96,14 @@ $(function () {
           targets: 3,
           width: '76px',
           render: function (data, type, full, meta) {
+            //console.log(full['date']);
             var $dueDate = new Date(full['date']);
             // Creates full output for row
             var $rowOutput =
               '<span class="d-none">' +
               moment($dueDate).format('YYYYMMDD') +
               '</span>' +
-              moment($dueDate).format('DD MMM YYYY');
+              moment($dueDate).format('ddd HH:mm DD MMM YYYY');
             $dueDate;
             return $rowOutput;
           }
@@ -110,7 +111,7 @@ $(function () {
         {
           //Invoice Type
           targets: 4,
-          width: '24px',
+          width: '72px',
           render: function (data, type, full, meta) {
             var $type = full['type'];
             return '  <option class="text-capitalize"> <span class="d-none" >' + $type + '</span></option> ';
@@ -148,7 +149,7 @@ $(function () {
           width: '180px',
           render: function (data, type, full, meta) {
             var $total = full['description'];
-            return '<div class="col-2 text-truncate"> <span class="d-none text-truncate">' + $total + '</span> </div>'+ $total ;
+            return '<div class="col-2 text-truncate"> <span class="d-none text-wrap text-truncate">' + $total + '</span> </div>'+ $total ;
           }
         },
        
@@ -280,7 +281,7 @@ $(function () {
               .unique()
               .sort()
               .each(function (d, j) {
-                console.log( d );
+                //console.log( d );
                 select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
               });
           });
@@ -303,7 +304,7 @@ $(function () {
               .unique()
               .sort()
               .each(function (d, j) {
-                console.log( d );
+                //console.log( d );
                 select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
               });
           });
@@ -318,7 +319,7 @@ $(function () {
 if (dtInvestmentsTable.length) {
     var dtInvestments = dtInvestmentsTable.DataTable({
       "ajax": {
-        "url": "../gtrx",
+        "url": "../ginv",
         "type": "POST",
         "data": idObject
       },
@@ -330,12 +331,13 @@ if (dtInvestmentsTable.length) {
       columns: [
         // columns according to JSON
         { data: 'id' },
-        { data: 'trx' },
+        { data: 'plan' },
         { data: 'amount' },
-        { data: 'date' },
-        { data: 'type' },
-        { data: 'status' },
-        { data: 'description' },
+        { data: 'return' },
+        { data: 'total' },
+        { data: 'status' },        
+        { data: 'created_at' },
+        { data: 'end_time' },
         { data: '' }
       ],
       columnDefs: [
@@ -346,57 +348,54 @@ if (dtInvestmentsTable.length) {
           targets: 0
         },
         {
-        // Invoice ID
+        // Plan
           targets: 1,
           responsivePriority: 2,
           width: '24px',
           render: function (data, type, full, meta) {
-             //console.log(data);
-            var $invoiceId = full['trx'];
+             
+            var $Plan = full['plan'];
+           // console.log($Plan.title);
             // Creates full output for row
-            var $rowOutput = '<a class="font-weight-bold" href="' + invoicePreview + '"> #' + $invoiceId + '</a>';
+            var $rowOutput = '<a class="font-weight-bold" href="' + invoicePreview + '"> ' + $Plan.title + '</a>';
             return $rowOutput;
           }
         },
        
        
         {
-          // Total Invoice Amount
+          // Total Investment Amount
           targets: 2,
           responsivePriority: 3,
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['amount'];
-            return '<span class="d-none">' + $total + '</span>$' + $total;
+            return '<span class="d-none">' + Intl.NumberFormat('en-US').format ($total) + '</span>' +  Intl.NumberFormat('en-US').format ($total);
           }
         },
+        
         {
-          // Due Date
+          // Total Return
           targets: 3,
-          width: '76px',
-          render: function (data, type, full, meta) {
-            var $dueDate = new Date(full['date']);
-            // Creates full output for row
-            var $rowOutput =
-              '<span class="d-none">' +
-              moment($dueDate).format('YYYYMMDD') +
-              '</span>' +
-              moment($dueDate).format('DD MMM YYYY');
-            $dueDate;
-            return $rowOutput;
-          }
-        },
-        {
-          //Invoice Type
-          targets: 4,
           width: '24px',
           render: function (data, type, full, meta) {
-            var $type = full['type'];
-            return '  <option class="text-capitalize"> <span class="d-none" >' + $type + '</span></option> ';
+            var $total = full['return'];
+            return '<span class="d-none">' +  Intl.NumberFormat('en-US').format ($total) + '</span>' + Intl.NumberFormat('en-US').format ($total);
           }
         },
+        {
+          // Total Amount
+          targets: 4,
+          responsivePriority: 3,
+          width: '24px',
+          render: function (data, type, full, meta) {
+            var $total = full['total'];
+            return '<span class="d-none">' +  Intl.NumberFormat('en-US').format ($total) + '</span>' +  Intl.NumberFormat('en-US').format ($total);
+          }
+        },
+       
          {
-          // Invoice status
+          // Investment status
           targets: 5,
           width: '130px',
           render: function (data, type, full, meta) {
@@ -404,6 +403,7 @@ if (dtInvestmentsTable.length) {
               roleObj = {                
                 completed: { class: 'bg-light-success', icon: 'check-circle', title: 'Completed' },                
                 pending: { class: 'bg-light-info', icon: 'refresh-ccw', title: 'Pending' },
+                cancelled: { class: 'bg-light-primary', icon: 'refresh-ccw', title: 'Cancelled' },
                 failed: { class: 'bg-light-danger', icon: 'info', title: 'Failed' }
               };
            
@@ -422,18 +422,43 @@ if (dtInvestmentsTable.length) {
           }
         },
         {
-          // Invoice Description
+          // Creation Date
           targets: 6,
-          width: '180px',
+          width: '76px',
           render: function (data, type, full, meta) {
-            var $total = full['description'];
-            return '<div class="col-2 text-truncate"> <span class="d-none text-truncate">' + $total + '</span> </div>'+ $total ;
+           
+            var $dueDate = new Date(full['created_at'].date);
+            //console.log($dueDate);
+            // Creates full output for row
+            var $rowOutput =
+              '<span class="d-none">' +
+              moment($dueDate).format('YYYYMMDD') +
+              '</span>' +
+              moment($dueDate).format(' ddd DD-MM-YYYY HH:mm');
+            
+            return $rowOutput;
+          }
+        },
+         {
+          // Due Date
+          targets: 7,
+          width: '76px',
+          render: function (data, type, full, meta) {
+            var $dueDate = new Date(full['end_time']*1000);
+            // Creates full output for row
+            var $rowOutput =
+              '<span class="d-none">' +
+              moment($dueDate).format('YYYYMMDD') +
+              '</span>' +
+              moment($dueDate).format(' ddd DD-MM-YYYY HH:mm ');
+            
+            return $rowOutput;
           }
         },
        
         {
           // Actions
-          targets: 7,
+          targets: 8,
           title: 'Actions',
           width: '76px',
           orderable: false,
@@ -559,17 +584,17 @@ if (dtInvestmentsTable.length) {
               .unique()
               .sort()
               .each(function (d, j) {
-                console.log( d );
+               // console.log( d );
                 select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
               });
           });
         this.api()
-          .columns(4)
+          .columns(1)
           
           .every(function () {
             var column = this;
             var select = $(
-              '<select id="IvestmentType" class="form-control ml-50 text-capitalize"><option value=""> Select Ivestment Type </option></select>'
+              '<select id="IvestmentType" class="form-control ml-50 text-capitalize"><option value=""> Select Investment Type </option></select>'
             )
               .appendTo('.investment_type')
               .on('change', function () {
@@ -581,9 +606,9 @@ if (dtInvestmentsTable.length) {
               .data()
               .unique()
               .sort()
-              .each(function (d, j) {
-                console.log( d );
-                select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
+              .each(function (d , j) {
+                //console.log( d );
+                select.append('<option value="' + d.title + '" class="text-capitalize">' + d.title + '</option>');
               });
           });
       },
