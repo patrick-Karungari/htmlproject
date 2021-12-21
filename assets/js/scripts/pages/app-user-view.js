@@ -88,7 +88,7 @@ $(function () {
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['amount'];
-            return '<span class="d-none">Ksh ' +  Intl.NumberFormat('en-US').format ($total) + '</span>$' +  Intl.NumberFormat('en-US').format ($total);
+            return '<span class="d-none">Ksh ' +  Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' +  Intl.NumberFormat('en-US').format ($total);
           }
         },
         {
@@ -370,7 +370,7 @@ if (dtInvestmentsTable.length) {
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['amount'];
-            return '<span class="d-none">Ksh ' + Intl.NumberFormat('en-US').format ($total) + '</span>' +  Intl.NumberFormat('en-US').format ($total);
+            return '<span class="d-none">Ksh ' + Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' +  Intl.NumberFormat('en-US').format ($total);
           }
         },
         
@@ -380,7 +380,7 @@ if (dtInvestmentsTable.length) {
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['return'];
-            return '<span class="d-none">Ksh ' +  Intl.NumberFormat('en-US').format ($total) + '</span>' + Intl.NumberFormat('en-US').format ($total);
+            return '<span class="d-none">Ksh ' +  Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' + Intl.NumberFormat('en-US').format ($total);
           }
         },
         {
@@ -390,7 +390,7 @@ if (dtInvestmentsTable.length) {
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['total'];
-            return '<span class="d-none">Ksh ' +  Intl.NumberFormat('en-US').format ($total) + '</span>' +  Intl.NumberFormat('en-US').format ($total);
+            return '<span class="d-none">Ksh ' +  Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' +  Intl.NumberFormat('en-US').format ($total);
           }
         },
        
