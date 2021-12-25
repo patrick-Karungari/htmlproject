@@ -20,6 +20,7 @@ $(function () {
     dtInvestmentsTable = $('.investments-list-table'),
     assetPath = '../../../assets/',
     invoicePreview = 'app-invoice-preview.html',
+     userAvatar = $('.user-avatar'),
     invoiceAdd = 'app-invoice-add.html',
     invoiceEdit = 'app-invoice-edit.html';
 
@@ -33,6 +34,12 @@ $(function () {
   // Plan Expiry Year
   $('.nextYear').text(new Date().getFullYear() + 1);
 
+ // Change user profile picture
+ // console.log(userAvatar.length);
+  if (avatar.length < 1) {
+    userAvatar.attr('src', 'https://api.multiavatar.com/' + U_name + '.svg');
+    console.log('https://api.multiavatar.com/' + U_name + '.png');
+  }
   // User View datatable
   // datatable
   var idObject = {"id":id};

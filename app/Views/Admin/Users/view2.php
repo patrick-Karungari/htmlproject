@@ -46,16 +46,18 @@ $_deposits['data']=$deposits;
                         <div class="col-xl-6 col-lg-12 d-flex flex-column justify-content-between border-container-lg">
                             <div class="user-avatar-section">
                                 <div class="d-flex justify-content-start">
-                                    <img class="img-fluid rounded" src="../../../assets/images/avatars/7.png"
+                                    <img class="img-fluid user-avatar rounded"
+                                        src="<?php echo base_url('assets/uploads/avatars/'.$user->avatar) ?>"
                                         height="104" width="104" alt="User avatar" />
                                     <div class="d-flex flex-column ml-1">
                                         <div class="user-info mb-1">
                                             <h4 class="mb-0"><?php echo ($user->name) ?></h4>
-                                            <span class="card-text"><?php echo ($user->email) ?>
+                                            <span class=" card-text"><?php echo ($user->email) ?>
                                             </span>
                                         </div>
                                         <div class="d-flex flex-wrap">
-                                            <a href="./user-edit.html" class="btn btn-primary">Edit</a>
+                                            <a href="../edit/<?php echo ($user->username) ?>
+" class="btn btn-primary">Edit</a>
                                             <button class="btn btn-outline-danger ml-1">Delete</button>
                                         </div>
                                     </div>
@@ -238,6 +240,8 @@ $_deposits['data']=$deposits;
     <script>
     deposits = '<?php echo json_encode($_deposits)  ;?>';
     withdraws = '<?php echo json_encode($_withdraws ) ;?>';
+    U_name = '<?php echo $user->name ;?>';
+    avatar = '<?php echo $user->avatar ;?>';
     id = '<?php echo $user->id ;?>';
     </script>
 

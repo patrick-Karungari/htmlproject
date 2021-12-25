@@ -66,14 +66,6 @@
         <!-- END: Vendor JS-->
 
 
-        <!-- BEGIN: Blog JS -->
-
-
-
-
-        <!-- END: Blog JS-->
-
-
     </head>
     <!-- END: Head-->
 
@@ -460,6 +452,7 @@
                     </div>
                     <?php
                                 bootstrap_alerts();
+                                
                                 echo $_html_content;
                                 if ($_SERVER['REQUEST_URI'] === "/admin/blog/create") {
                                     //dd($_SERVER['REQUEST_URI']);
@@ -470,6 +463,9 @@
                                 } elseif ($_SERVER['REQUEST_URI'] === "/admin/chat") {
                                     echo "<script src='" . base_url('assets/js/scripts/pages/app-chat.js') . "'></script>\n";
                                 } elseif ($_SERVER['REQUEST_URI'] === "/admin/users/view") {
+                                    echo "<script src='" . base_url('assets/js/scripts/pages/app-users-view.js') . "'></script>\n";
+
+                                }elseif ($_SERVER['REQUEST_URI'] === "/admin/users/edit") {
                                     echo "<script src='" . base_url('assets/js/scripts/pages/app-users-view.js') . "'></script>\n";
 
                                 }
@@ -498,20 +494,9 @@
 
 
         <!-- BEGIN: Blog Vendor JS-->
-        <!--<script src="<?php /*echo base_url('assets/vendors/js/forms/select/select2.full.min.js') */?>"></script>
-<script src="<?php /*echo base_url('assets/vendors/js/editors/quill/katex.min.js') */?>"></script>
-<script src="<?php /*echo base_url('assets/vendors/js/editors/quill/highlight.min.js') */?>"></script>
-<script src="<?php /*echo base_url('assets/vendors/js/editors/quill/quill.min.js') */?>"></script>-->
-        <!--<script src="<?php /*echo base_url('assets/vendors/js/charts/apexcharts.min.js')*/?>"></script>-->
         <script src="<?php echo base_url('assets/vendors/js/extensions/toastr.min.js') ?>"></script>
         <!-- END: Blog Vendor JS-->
 
-
-        <!--<script>
-
-    document.getElementById("all-users").className += " active";
-
-</script>-->
         <!-- BEGIN: Theme JS-->
         <script src="<?php echo base_url('assets/js/core/app-menu.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/core/app.js') ?>"></script>

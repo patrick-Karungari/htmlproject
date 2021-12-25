@@ -28,7 +28,7 @@ $(function () {
       reader.readAsDataURL(files[0]);
     });
   }
-
+ 
   // users language select
   if (languageSelect.length) {
     languageSelect.wrap('<div class="position-relative"></div>').select2({
@@ -38,9 +38,11 @@ $(function () {
     });
   }
 
-  // Users birthdate picker
-  if (birthdayPickr.length) {
-    birthdayPickr.flatpickr();
+  // Change user profile picture
+  console.log(avatar.length);
+  if (avatar.length < 1) {
+    userAvatar.attr('src', 'https://api.multiavatar.com/' + U_name + '.svg');
+    console.log('https://api.multiavatar.com/' + U_name + '.png');
   }
 
   // Validation

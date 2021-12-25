@@ -7,6 +7,7 @@
  */
 
 namespace App\Controllers\Admin;
+use Carbon\Carbon;
 
 class Investments extends \App\Controllers\AdminController
 {
@@ -19,5 +20,19 @@ class Investments extends \App\Controllers\AdminController
     public function index()
     {
         return $this->_renderPage('Investments/index', $this->data);
+    }
+      public function getTotalInvestment()
+    {
+        $model = new \App\Models\Investments();
+        $dateStart = $this->request->getPost('start');
+        $dateEnd = $this->request->getPost('end');
+        if( $dateStart &&  $dateEnd  ){
+            $start_of_day = Carbon::parse($dateStart)->startOfDay()->getTimestamp();
+            $end_of_day = Carbon::parse($dateEnd)->endOfDay()->getTimestamp();
+            $amountCOB = $model->selectSum('total', 'totalAmount')->where('end_time >=', $start_of_day)->where('end_time <=', $end_of_day)->get()->getFirstRow('object')->totalAmount;
+            return $amountCOB;
+        }
+        return null;
+
     }
 }

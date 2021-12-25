@@ -48,12 +48,37 @@
     });
   }
 
-  // Range
+// Range
   if (rangePickr.length) {
     rangePickr.flatpickr({
-      mode: 'range'
+      mode: 'range',
+      dateFormat: 'M, d Y',
+      altFormat: 'M, d Y',
+      onClose: function (selectedDates, dateStr, instance) {
+        var dateStart = instance.formatDate(selectedDates[0], "Y-m-d");
+        var dateEnd = instance.formatDate(selectedDates[1], "Y-m-d");
+
+      $.ajax({
+          url: "investments/getTotalInvestment",
+          data: {"start": dateStart, "end": dateEnd},
+          type: 'POST',
+        success: function (resp) {
+          if (resp != null) {
+            document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
+            alert('Success');
+            }
+           
+          },
+          error: function(e) {
+             alert('Error: '+e);
+          }  
+      });
+      }
     });
+   
   }
+
+
 
   // Human Friendly
   if (humanFriendlyPickr.length) {
