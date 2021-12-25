@@ -33,6 +33,24 @@ class Users extends \App\Controllers\AdminController
 
         return $this->_renderPage('Pay/index', $this->data);
     }
+    public function edit($id)
+    {
+        
+        $user = (new \App\Models\Users())->Where('username', $id)->find();
+        //dd($user);
+        $user = $user[0];
+
+        if (!$user) {
+            return redirect()->back()->with('error', "User does not exist");
+        }
+
+        $this->data['site_title'] = $user->name;
+        $this->data['user'] = $user;
+        //return $this->_renderPage('Users/view2', $this->data);
+
+        return $this->_renderPage('Users/edit', $this->data);
+
+    }
 
     public function view($id)
     {
