@@ -8,23 +8,17 @@
 
 use Carbon\Carbon;
 
-$year = !empty(\Config\Services::request()->getGet('year')) ? \Config\Services::request()->getGet('year') : date('Y');
-$month = !empty(\Config\Services::request()->getGet('month')) ? \Config\Services::request()->getGet('month') : date('m');
-$day = !empty(\Config\Services::request()->getGet('date')) ? \Config\Services::request()->getGet('date') : date('d');
+
 
 $model = new \App\Models\Investments();
 
 $date = date('Y-m-d');
 
-if ($year && $month && $day) {
-    $date = $year . '-' . $month . '-' . $day;
-}
-$start_of_day = Carbon::parse($date)->startOfDay()->getTimestamp();
-$end_of_day = Carbon::parse($date)->endOfDay()->getTimestamp();
 
-$amountCOB = $model->selectSum('total', 'totalAmount')->where('end_time >=', $start_of_day)->where('end_time <=', $end_of_day)->get()->getFirstRow('object')->totalAmount;
+$investments = $model->orderBy('id', 'DESC')->findAll();
 
-$investments = $model->where('user <', '11')->orderBy('id', 'DESC')->findAll();
+//dd($investments);
+
 ?>
 <!-- BEGIN: Vendor CSS-->
 
@@ -38,35 +32,15 @@ $investments = $model->where('user <', '11')->orderBy('id', 'DESC')->findAll();
 <div class="card">
     <div class="card-body justify-content-center text-center">
         <div class="d-flex align-items-start justify-content-between">
-            <p class="card-title flex-grow">Day's Payouts</p>
+            <p class="card-title flex-grow">Investment Payouts</p>
         </div>
-        <form class="">
-            <div class="content-body">
-                <!-- Flatpickr Starts -->
-                <section id="flatpickr">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Flatpickr</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <label for="fp-range">Range</label>
-                                    <input type="text" id="fp-range" class="form-control flatpickr-range"
-                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" />
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
-        </form>
-
-        <h5 id="heading" class="text-white mt-3 mb-3">Payouts for <?php echo Carbon::parse($date)->format('M, d Y') ?>
-        </h5>
-        <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center">Kshs
-            <?php echo number_format($amountCOB, 2); ?></h1>
+        <div class="d-inline-flex  justify-content-center">
+            <input type="text" id="fp-range" class="form-control flatpickr-range"
+                placeholder="MM, DD YYYY to MM, DD YYYY" />
+        </div>
+        <h3 id="heading" class="text-white mt-3 mb-3">
+        </h3>
+        <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center"></h1>
     </div>
 </div>
 <div class="card mt-4">
