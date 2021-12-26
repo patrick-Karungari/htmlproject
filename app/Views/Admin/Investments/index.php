@@ -24,6 +24,12 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
 
 <link rel="stylesheet" type="text/css" href="../../../assets/vendors/css/pickers/pickadate/pickadate.css">
 <link rel="stylesheet" type="text/css" href="../../../assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
+
+<link rel="stylesheet" type="text/css"
+    href="../../../assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css"
+    href="../../../assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="../../../assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css">
 <!-- END: Vendor CSS-->
 <!-- BEGIN: Page CSS-->
 <link rel="stylesheet" type="text/css" href="../../../assets/css/plugins/forms/pickers/form-flat-pickr.css">
@@ -42,90 +48,36 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
         </h3>
         <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center"></h1>
     </div>
+</div><!-- User Invoice Starts-->
+<div class="row invoice-list-wrapper">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-2">User Investments</h4>
+            </div>
+            <div class="card-datatable table-responsive pb-1">
+                <table class="investments-list-table table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>User</th>
+                            <th>Plan</th>
+                            <th>Amount</th>
+                            <th>Returns</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Date Created</th>
+                            <th>Settlement Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="card mt-4">
-    <div class="card-header">
-        <h4 class="card-title">User Investments</h4>
-    </div>
-    <div class="card-body">
-        <?php
-if (count($investments) > 0) {
-    ?>
-        <div class="table-responsive">
-            <table id="table" class="table">
-                <thead>
-                    <tr>
-                        <th class="pl-0 pt-0">ID</th>
-                        <th>Name</th>
-                        <th class="pl-0 pt-0">Days</th>
-                        <th class="pt-0">Investment</th>
-                        <th class="pt-0">Earnings</th>
-                        <th class="pt-0">Total</th>
-                        <th class="pt-0">Status</th>
-                        <th class="pt-0">Investment Date</th>
-                        <th class="pt-0">Settlement Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-$n = 0;
-    foreach ($investments as $investment) {
-        $n++;
-        ?>
-                    <tr>
-                        <td class="pl-0"><?php echo $n; ?></td>
-                        <td>
-                            <?php
-
-        if ($investment->user->name) {
-            ?>
-                            <a
-                                href="<?php echo site_url('admin/users/view/' . $investment->user->id) ?>"><?php echo $investment->user->name; ?></a>
-                            <?php
-} else {
-            echo "Deleted User";
-        }
-        ?>
-                        </td>
-                        <td><?php echo $investment->plan->title; ?></td>
-                        <td><?php echo 'Kshs ' . number_format($investment->amount, 2); ?></td>
-                        <td><?php echo 'Kshs ' . number_format($investment->return, 2); ?></td>
-                        <td><?php echo 'Kshs ' . number_format($investment->total, 2); ?></td>
-                        <td>
-                            <?php
-$status = $investment->status;
-        if ($status == 'completed') {
-            ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label>
-                            <?php
-} else if ($status == 'pending') {
-            ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
-} else if ($status == 'failed') {
-            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
-} else if ($status == 'cancelled') {
-            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
-}
-        ?>
-                        </td>
-                        <td><?php echo $investment->created_at->format('d/m/Y h:i a'); ?></td>
-                        <td><?php echo \Carbon\Carbon::createFromTimestamp($investment->end_time)->format('d/m/Y h:i a') ?>
-                        </td>
-                    </tr>
-                    <?php
-}
-    ?>
-                </tbody>
-            </table>
-        </div>
-        <?php
-} else {
-    ?>
-        <div class="alert alert-warning">
-            You have not made any investments yet
-        </div>
-        <?php
-}
-?>
-    </div>
+<!-- /User Invoice Ends-->
+</div>
 </div>
 <script>
 document.getElementById("investments").className += " active";
@@ -136,6 +88,15 @@ document.getElementById("investments").className += " active";
 <script src="../../../assets/vendors/js/pickers/pickadate/picker.time.js"></script>
 <script src="../../../assets/vendors/js/pickers/pickadate/legacy.js"></script>
 <script src="../../../assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<!-- END: Page Vendor JS-->
+<!-- BEGIN: Page Vendor JS-->
+<script src="../../../assets/vendors/js/extensions/moment.min.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js"></script>
 <!-- END: Page Vendor JS-->
 <!-- BEGIN: Page JS-->
 <script src="../../../assets/js/scripts/forms/pickers/form-pickers.js"></script>

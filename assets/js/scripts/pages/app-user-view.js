@@ -548,7 +548,7 @@ if (dtInvestmentsTable.length) {
           display: $.fn.dataTable.Responsive.display.modal({
             header: function (row) {
               var data = row.data();
-              return 'Details of ' + data['client_name'];
+               return 'Details of ' + data['user'].first_name + ' ' + data['user'].last_name;
             }
           }),
           type: 'column',
@@ -571,6 +571,9 @@ if (dtInvestmentsTable.length) {
         // $('.dataTables_filter').find('.form-control-sm').removeClass('form-control-sm');
         // $('.dataTables_length .custom-select').removeClass('custom-select-sm').removeClass('form-control-sm');
         $(document).find('[data-toggle="tooltip"]').tooltip();
+          var status = [];
+        var uniqueChars = [];
+        let n = 0;
         // Adding role filter once table initialized
         this.api()
           .columns(5)
@@ -615,8 +618,18 @@ if (dtInvestmentsTable.length) {
               .sort()
               .each(function (d , j) {
                 //console.log( d );
-                select.append('<option value="' + d.title + '" class="text-capitalize">' + d.title + '</option>');
+                n++
+                status[n] = d.title;
+                uniqueChars = status.filter((c, index) => {
+                    return status.indexOf(c) === index;
+                });
+                //console.log(uniqueChars);
+                //select.append('<option value="' + d.title + '" class="text-capitalize">' + d.title + '</option>');
               });
+            for (let i = 0; i < uniqueChars.length; i++){
+              console.log(uniqueChars[i]);
+              select.append('<option value="' + uniqueChars[i] + '" class="text-capitalize">' + uniqueChars[i] + '</option>');
+            }
           });
       },
       
