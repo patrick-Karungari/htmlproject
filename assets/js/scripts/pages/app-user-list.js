@@ -204,7 +204,7 @@ $(function () {
                     display: $.fn.dataTable.Responsive.display.modal({
                         header: function (row) {
                             var data = row.data();
-                            return 'Details of ' + data['first_name'] + ' ' + data['last_name'];
+                             return 'Details of ' + data['user'].first_name + ' ' + data['user'].last_name;
                         }
                     }),
                     type: 'column',
