@@ -18,7 +18,7 @@ class Plans extends \App\Controllers\AdminController
 
     public function index(): string
     {
-        return $this->_renderPage('Plans/index', $this->data);
+        return $this->_renderPage('Plans/index2', $this->data);
     }
 
     public function create()
@@ -41,6 +41,10 @@ class Plans extends \App\Controllers\AdminController
 
     public function edit($id)
     {
+        if(!$id){
+            return redirect()->to(current_url())->with('error', "An error occurred");
+
+        }
         $model = new \App\Models\Plans();
         $plan = $model->find($id);
 
@@ -65,8 +69,13 @@ class Plans extends \App\Controllers\AdminController
         return $this->_renderPage('Plans/edit', $this->data);
     }
 
-    public function delete($id)
+    public function getPlans()
     {
+        
+        $plans = (new \App\Models\Plans())->findAll();
+        $plan['data'] = $plans;
+        echo json_encode($plan);
+        //return $plan;
 
     }
 }

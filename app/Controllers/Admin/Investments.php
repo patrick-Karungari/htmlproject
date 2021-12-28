@@ -41,6 +41,6 @@ class Investments extends \App\Controllers\AdminController
             $users = ((new \App\Models\Investments()))->select('id, plan, user, amount, return, total, status, created_at, end_time')->orderBy('id', 'DESC')->findAll();
             $data['data'] = $users;
             //dd($data);
-            echo json_encode($data);   
+            return json_encode($data);   
     }
 }
