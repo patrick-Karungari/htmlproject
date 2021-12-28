@@ -8,7 +8,7 @@ make.exe: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Dec 17 14:02:56 2021
+# Make data base, printed on Mon Dec 27 13:42:03 2021
 
 # Variables
 
@@ -57,7 +57,7 @@ PROGRAMW6432 = C:\Program Files
 # environment
 PROGRAMDATA = C:\ProgramData
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-8c7facb2-1ed4-4c06-bb27-5abad1f7c42e-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-2feecf0d-c27c-4c4e-911d-da1496777663-sock
 # environment
 VSCODE_CWD = C:\Users\Patrick Karungari\AppData\Local\Programs\Microsoft VS Code
 # default
@@ -89,7 +89,7 @@ PHPSTORM = C:\Program Files\JetBrains\PhpStorm\bin;
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_9212_OHTDEMWHYOCHPFXS
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_1112_HBVLDAPNNXBKMKKP
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -109,7 +109,7 @@ PUBLIC = C:\Users\Public
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\Patrick Karungari\AppData\Roaming\Code\CachedData\6cba118ac49a1b88332f312a8f67186f7f3c1643
+VSCODE_CODE_CACHE_PATH = C:\Users\Patrick Karungari\AppData\Roaming\Code\CachedData\899d46d82c4c95423fb7e10e68eba52050e30ba3
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
@@ -153,7 +153,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
 # environment
 OS = Windows_NT
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\966e5aa4b5909008b6b2d87bd64566cf-1.61.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\966e5aa4b5909008b6b2d87bd64566cf-1.63.2-main-sock
 # environment
 HOMEPATH = \Users\Patrick Karungari
 # environment
@@ -199,7 +199,7 @@ LANG = C
 # environment
 PROCESSOR_LEVEL = 6
 # environment
-VSCODE_PID = 9212
+VSCODE_PID = 1112
 # environment
 USERDOMAIN_ROAMINGPROFILE = PATRICK-KARUNGA
 # variable set hash-table stats:
@@ -276,6 +276,6 @@ GNUmakefile:
 # strcache performance: lookups = 33 / hit rate = 6%
 # hash-table stats:
 # Load=31/8192=0%, Rehash=0, Collisions=1/33=3%
-# Finished Make data base on Fri Dec 17 14:02:56 2021
+# Finished Make data base on Mon Dec 27 13:42:03 2021
 
  

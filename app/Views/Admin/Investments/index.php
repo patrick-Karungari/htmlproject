@@ -19,6 +19,7 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
 
 //dd($investments);
 
+
 ?>
 <!-- BEGIN: Vendor CSS-->
 
@@ -48,7 +49,9 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
         </h3>
         <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center"></h1>
     </div>
-</div><!-- User Invoice Starts-->
+</div>
+
+<!-- User Invoice Starts-->
 <div class="row invoice-list-wrapper">
     <div class="col-12">
         <div class="card">
@@ -77,8 +80,7 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
     </div>
 </div>
 <!-- /User Invoice Ends-->
-</div>
-</div>
+
 <script>
 document.getElementById("investments").className += " active";
 </script>
