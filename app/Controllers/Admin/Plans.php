@@ -27,35 +27,52 @@ class Plans extends \App\Controllers\AdminController
             $model = new \App\Models\Plans();
             try {
                 if ($model->save($this->request->getPost())) {
-                    return redirect()->to(current_url())->with('success', "Plan saved successfully");
+                    return redirect()->back()->with('success', "Plan saved successfully");
                 } else {
-                    return redirect()->to(current_url())->with('error', "An error occurred");
+                    return redirect()->back()->with('error', "An error occurred");
                 }
             } catch (\ReflectionException $e) {
-                return redirect()->to(current_url())->with('error', $e->getMessage());
+                return redirect()->back()->with('error', $e->getMessage());
             }
         }
 
-        return $this->_renderPage('Plans/create', $this->data);
-    }
+        return redirect()->back()->with('error', "An error occurred");
 
+
+    }
+    public function delete($id)
+    {
+        $model = new \App\Models\Plans();
+
+        if ($model->delete($id)) {
+            return redirect()->back()->with('success', "Plan deleted successfully");
+        }
+
+        return redirect()->back()->with('error', "Failed to delete the Plan");
+
+    }
     public function edit($id)
     {
         if(!$id){
             return redirect()->to(current_url())->with('error', "An error occurred");
 
         }
+       
         $model = new \App\Models\Plans();
         $plan = $model->find($id);
-
+        //dd($plan);
         if (empty($plan)) {
             return redirect()->back()->with('error', "Plan does not exist");
         }
+        $check_value = isset($_POST['active']) ? 1 : 0;
+        $data = $this->request->getPost();
 
+        $data['active'] = $check_value;
         if ($this->request->getPost()) {
-            try {
-                if ($model->save($this->request->getPost())) {
-                    return redirect()->to(current_url())->with('success', "Plan saved successfully");
+            try {//dd($data);
+                if ($model->save($data)) {
+                    //dd(previous_url());
+                    return redirect()->to(base_url('admin/plans'))->with('success', "Plan edited successfully");;
                 } else {
                     return redirect()->to(current_url())->with('error', "An error occurred");
                 }
