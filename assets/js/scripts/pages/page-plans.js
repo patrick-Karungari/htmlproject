@@ -9,12 +9,13 @@ $(function () {
         };
 
     var assetPath = '../assets/',
-        userView = 'plans/edit/',
-        userEdit = 'plans/edit/';
+        planView = 'plans/edit/',
+        planEdit = 'plans/edit/',
+        planDelete = 'plans/delete/';
     if ($('body').attr('data-framework') === 'laravel') {
         assetPath = $('body').attr('data-asset-path');
-        userView = assetPath + 'app/user/view';
-        userEdit = assetPath + 'app/user/edit';
+        planView = assetPath + 'app/user/view';
+        planEdit = assetPath + 'app/user/edit';
     }
     let n = 0;
   // Users List datatable
@@ -51,12 +52,13 @@ $(function () {
                 {
                     // Title
                     targets: 1,
+                    width: '180px',
                     responsivePriority: 2,
                     render: function (data, type, full, meta) {
                        
                         var $name = full['title'];
                         var $output;
-                        var image;
+                       
                         
                         // For Avatar badge
                         var stateNum = Math.floor(Math.random() * 6) + 1;
@@ -79,7 +81,7 @@ $(function () {
                             '</div>' +
                             '<div class="d-flex flex-column">' +
                             '<a href="' +
-                            userView + full['id'] +
+                            planView + full['id'] +
                             '" class="user_name text-truncate"><span class="font-weight-bold">' +
                             $name +
                             '</span></a>' +
@@ -118,7 +120,7 @@ $(function () {
                 {
                 // Description
                 targets: 5,
-                width: '180px',
+                
                 render: function (data, type, full, meta) {
                     var $total = full['description'];
                     return '<div class="col-2 text-truncate"> <span class="d-none text-wrap text-truncate">' + $total + '</span> </div>'+ $total ;
@@ -127,7 +129,7 @@ $(function () {
                 {
                 //Date Created
                 targets: 6,
-                width: '76px',
+                width: '180px',
                 render: function (data, type, full, meta) {
            
                 var $dueDate = new Date(full['created_at'].date);
@@ -156,16 +158,18 @@ $(function () {
                             '</a>' +
                             '<div class="dropdown-menu dropdown-menu-right">' +
                             '<a href="' +
-                            userView + full['id'] +
+                            planView + full['id'] +
                             '" class="dropdown-item">' +
                             feather.icons['file-text'].toSvg({class: 'font-small-4 mr-50'}) +
                             'Details</a>' +
                             '<a href="' +
-                            userEdit + full['id'] +
+                            planEdit + full['id'] +
                             '" class="dropdown-item">' +
                             feather.icons['archive'].toSvg({class: 'font-small-4 mr-50'}) +
                             'Edit</a>' +
-                            '<a href="javascript:;" class="dropdown-item delete-record">' +
+                            '<a href="' +
+                            planDelete + full['id'] +
+                            '" class="dropdown-item delete-record">' +
                             feather.icons['trash-2'].toSvg({class: 'font-small-4 mr-50'}) +
                             'Delete</a></div>' +
                             '</div>' +
@@ -192,10 +196,9 @@ $(function () {
             // Buttons with Dropdown
             buttons: [
                 {
-                    text: 'Add New User',
+                    text: 'Add New Plan',
                     className: 'add-new btn btn-primary mt-50',
-                    attr: {
-                        'disabled': true,
+                    attr: {                        
                         'data-toggle': 'modal',
                         'data-target': '#modals-slide-in'
                     },
@@ -210,7 +213,7 @@ $(function () {
                     display: $.fn.dataTable.Responsive.display.modal({
                         header: function (row) {
                             var data = row.data();
-                             return 'Details of ' + data['user'].first_name + ' ' + data['user'].last_name;
+                             return 'Details of ' + data['title'];
                         }
                     }),
                     type: 'column',
