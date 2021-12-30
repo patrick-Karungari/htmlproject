@@ -7,8 +7,11 @@
  */
 
 namespace App\Controllers\Admin;
+use Carbon\Carbon;
 
 use App\Models\Transactions;
+
+
 use App\Models\Users;
 
 class Withdraws extends \App\Controllers\AdminController
@@ -108,11 +111,48 @@ class Withdraws extends \App\Controllers\AdminController
         }
         return redirect()->back()->with('success', "Withdrawal successful");
     }
+    
 
     public function index()
     {
 
-        return $this->_renderPage('Withdraws/index', $this->data);
+        return $this->_renderPage('Withdraws/index2', $this->data);
     }
+    public function getWith()
+    {
+       $withdraws = (new \App\Models\Withdraws())->orderBy('date', 'DESC')->findAll();
+       $withdraws = json_encode($withdraws);
+       $withdraws = json_decode($withdraws, TRUE);
+
+       $i = 0;
+
+       foreach($withdraws as $withdraw) {
+           $user =  ['id' => $withdraw['user']['id'], 
+                     'first_name' =>  $withdraw['user']['first_name'],
+                     'last_name' => $withdraw['user']['last_name'],
+                     'avatar' => $withdraw['user']['avatar'],
+                    'username' => $withdraw['user']['username'] ];
+                     
+            $withdraws[$i++]['user'] = $user;
+          
+       }
+       $data ['data'] = $withdraws;
+       return json_encode($data);
+
+    }
+    public function getTotalWithdrawals(){
+        
+        $model = new \App\Models\Withdraws();
+        $dateStart = $this->request->getGet('start');
+        $dateEnd = $this->request->getGet('end');
+        if ($dateStart && $dateEnd) {           
+            
+            $amountCOB = $model->selectSum('amount', 'totalAmount')->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;
+            return $amountCOB;
+        }
+        return "null";
+
+    }
+
 
 }

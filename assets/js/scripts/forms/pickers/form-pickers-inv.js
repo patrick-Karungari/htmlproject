@@ -133,7 +133,7 @@ if (dtInvestmentsTable.length) {
                             $uname = full['user'].username,
                             $image = full['user'].avatar,
                             $name = $first_name + ' ' +  $last_name;
-                        if (full['avatar']) {
+                        if (full['user'].avatar) {
                             // For Avatar image
                             var $output =
                                 '<img src="' + assetPath + 'uploads/avatars/' + $image + '" alt="Avatar" height="32" width="32">';

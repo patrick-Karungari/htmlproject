@@ -8,17 +8,13 @@
 
 use Carbon\Carbon;
 
-
-
 $model = new \App\Models\Investments();
 
 $date = date('Y-m-d');
 
-
 $investments = $model->orderBy('id', 'DESC')->findAll();
 
 //dd($investments);
-
 
 ?>
 <!-- BEGIN: Vendor CSS-->
@@ -39,7 +35,7 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
 <div class="card">
     <div class="card-body justify-content-center text-center">
         <div class="d-flex align-items-start justify-content-between">
-            <p class="card-title flex-grow">Investment Payouts</p>
+            <p class="card-title flex-grow">Day's Withdrawals</p>
         </div>
         <div class="d-inline-flex  justify-content-center">
             <input type="text" id="fp-range" class="form-control flatpickr-range"
@@ -50,13 +46,19 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
         <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center"></h1>
     </div>
 </div>
+<div class="card">
+    <h5 class="card-header">Search Filter</h5>
+    <div class="d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2">
+        <div class="col-md-4 investment_status"></div>
 
+    </div>
+</div>
 <!-- User Invoice Starts-->
 <div class="row invoice-list-wrapper">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title mb-2">User Investments</h4>
+                <h4 class="card-title mb-2">User Withdrawals</h4>
             </div>
             <div class="card-datatable table-responsive pb-1">
                 <table class="investments-list-table table">
@@ -64,13 +66,12 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
                         <tr>
                             <th></th>
                             <th>User</th>
-                            <th>Plan</th>
                             <th>Amount</th>
-                            <th>Returns</th>
-                            <th>Total</th>
+                            <th>Phone</th>
+                            <th>Transaction ID</th>
                             <th>Status</th>
-                            <th>Date Created</th>
-                            <th>Settlement Date</th>
+                            <th>Description</th>
+                            <th>Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -82,7 +83,7 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
 <!-- /User Invoice Ends-->
 
 <script>
-document.getElementById("investments").className += " active";
+document.getElementById("withdrawals").className += " active";
 </script>
 <!-- BEGIN: Page Vendor JS-->
 <script src="../../../assets/vendors/js/pickers/pickadate/picker.js"></script>
@@ -101,5 +102,5 @@ document.getElementById("investments").className += " active";
 <script src="../../../assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js"></script>
 <!-- END: Page Vendor JS-->
 <!-- BEGIN: Page JS-->
-<script src="../../../assets/js/scripts/forms/pickers/form-pickers-inv.js"></script>
+<script src="../../../assets/js/scripts/forms/pickers/form-pickers-with.js"></script>
 <!-- END: Page JS-->
