@@ -18,9 +18,8 @@ class Withdraw extends \CodeIgniter\Entity
 
     public function getUser()
     {
-        $_q = (new Users())->select('id, username, first_name, last_name, phone, account, registration, email')->where('id', $this->attributes['user'])->find();
+       return (new Users())->find($this->attributes['user']);
 
-        return $_q[0];
 
     }
 }

@@ -74,7 +74,7 @@ $(function () {
           targets: 0
         },
         {
-        // Invoice ID
+         //Invoice ID
           targets: 1,
           responsivePriority: 2,
           width: '24px',
