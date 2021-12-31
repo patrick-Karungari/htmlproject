@@ -157,7 +157,41 @@ class Deposits extends \App\Controllers\AdminController
 
         return redirect()->back()->with('error', "Something went wrong");
     }
+    public function getDepo()
+    {
+       $deposits = (new \App\Models\Deposits())->orderBy('date', 'DESC')->findAll();
+       $deposits = json_encode($deposits);
+       $deposits = json_decode($deposits, TRUE);
 
+       $i = 0;
+
+       foreach($deposits as $deposit) {
+           $user =  ['id' => $deposit['user']['id'], 
+                     'first_name' =>  $deposit['user']['first_name'],
+                     'last_name' => $deposit['user']['last_name'],
+                     'avatar' => $deposit['user']['avatar'],
+                    'username' => $deposit['user']['username'] ];
+                     
+            $deposits[$i++]['user'] = $user;
+          
+       }
+       $data ['data'] = $deposits;
+       return json_encode($data);
+
+    }
+    public function getTotalDeposits(){
+        
+        $model = new \App\Models\Deposits();
+        $dateStart = $this->request->getGet('start');
+        $dateEnd = $this->request->getGet('end');
+        if ($dateStart && $dateEnd) {           
+            
+            $amountCOB = $model->selectSum('amount', 'totalAmount')->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;
+            return $amountCOB;
+        }
+        return "null";
+
+    }
     public function secure_random_string($length)
     {
         $random_string = '';

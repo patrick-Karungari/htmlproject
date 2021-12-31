@@ -102,7 +102,8 @@ if (dtInvestmentsTable.length) {
         "emptyTable": "User has not made any Transactions yet"
       },
       headers: { 'X-Requested-With': 'XMLHttpRequest' }, // JSON file to add data
-      autoWidth: false,
+        autoWidth: false,
+        
       columns: [
         // columns according to JSON
         { data: 'id' },
@@ -373,7 +374,7 @@ if (dtInvestmentsTable.length) {
           .every(function () {
             var column = this;
             var select = $(
-              '<select id="IvestmentStatus" class="form-control ml-50 text-capitalize"><option value=""> Select Investment Status </option></select>'
+              '<select id="IvestmentStatus" class="form-control ml-50 text-capitalize"><option value=""> Select Withdrawal Status </option></select>'
             )
               .appendTo('.investment_status')
               .on('change', function () {
