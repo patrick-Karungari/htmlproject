@@ -121,6 +121,7 @@ if (dtInvestmentsTable.length) {
           // For Responsive
           className: 'control',
           orderable: false,
+          width: '8px',
           responsivePriority: 1,
           targets: 0
         },
