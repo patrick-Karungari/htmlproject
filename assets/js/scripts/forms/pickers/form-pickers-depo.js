@@ -311,7 +311,7 @@ if (dtInvestmentsTable.length) {
       language: {
         sLengthMenu: 'Show _MENU_',
         search: 'Search',
-        searchPlaceholder: 'Search Investment',
+        searchPlaceholder: 'Search Deposit',
         paginate: {
           // remove previous & next text from pagination
           previous: '&nbsp;',
@@ -374,7 +374,7 @@ if (dtInvestmentsTable.length) {
           .every(function () {
             var column = this;
             var select = $(
-              '<select id="IvestmentStatus" class="form-control ml-50 text-capitalize"><option value=""> Select Withdrawal Status </option></select>'
+              '<select id="IvestmentStatus" class="form-control ml-50 text-capitalize"><option value=""> Select Deposit Status </option></select>'
             )
               .appendTo('.investment_status')
               .on('change', function () {

@@ -311,7 +311,7 @@ if (dtInvestmentsTable.length) {
       language: {
         sLengthMenu: 'Show _MENU_',
         search: 'Search',
-        searchPlaceholder: 'Search Investment',
+        searchPlaceholder: 'Search Withdrawal',
         paginate: {
           // remove previous & next text from pagination
           previous: '&nbsp;',
