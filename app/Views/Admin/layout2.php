@@ -357,7 +357,7 @@
                                 class="menu-title text-truncate" data-i18n="Profile">Investments</span></a>
                     </li>
                     <li id="deposits" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/profile') ?>"><i data-feather='chevrons-up'></i><span
+                            href="<?php echo base_url('admin/deposits') ?>"><i data-feather='chevrons-up'></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Deposits</span></a>
                     </li>
                     <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
