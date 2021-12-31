@@ -122,14 +122,14 @@ if (dtInvestmentsTable.length) {
           className: 'control',
           orderable: false,
           width: '8px',
-          responsivePriority: 1,
+          responsivePriority: 2,
           targets: 0
         },
         {
             // User full name and username
             targets: 1,
             width: '48px',
-            responsivePriority: 2,
+            responsivePriority: 1,
             render: function (data, type, full, meta) {
                 
                 var $first_name = full['user'].first_name,
