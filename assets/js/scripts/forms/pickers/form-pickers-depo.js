@@ -32,7 +32,7 @@
         var dateEnd = instance.formatDate(selectedDates[1], "Y-m-d");
 
         $.ajax({
-            url: "investments/getTotalInvestment",
+            url: "getTotalDeposits",
             data: {"start": dateStart, "end": dateEnd},
             type: 'GET',
             success: function (resp) {
@@ -40,9 +40,9 @@
               var End = instance.formatDate(selectedDates[1], "M, d Y");
               if (resp != null) {
                 if (dateEnd == dateStart) {
-                  document.getElementById("heading").innerHTML = "Withdrawals for  " + Start;
+                  document.getElementById("heading").innerHTML = "Deposits for  " + Start;
                 } else {
-                  document.getElementById("heading").innerHTML = "Withdrawals for  " + Start + " to "+ End;
+                  document.getElementById("heading").innerHTML = "Deposits for  " + Start + " to "+ End;
                 }
               // document.getElementById("heading").innerHTML = "Payouts for  " + Intl.NumberFormat('en-US').format(resp);
                 document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
@@ -61,13 +61,13 @@
 
   // Default 
   $.ajax({
-            url: "withdraws/getTotalWithdrawals",
+            url: "getTotalDeposits",
             data: {"start": todayDate, "end": todayDate},
             type: 'GET',
             success: function (resp) {
            
               if (resp != null) {
-                document.getElementById("heading").innerHTML = "Withdrawals for  " + mmm
+                document.getElementById("heading").innerHTML = "Deposits for  " + mmm
                   + ", " + dd + " " + yyyy;
                 document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
                
@@ -95,7 +95,7 @@
 if (dtInvestmentsTable.length) {
     var dtInvestments = dtInvestmentsTable.DataTable({
       "ajax": {
-        "url": "withdraws/getwith",
+        "url": "getDepo",
         "type": "GET",     
       },
       "language": {

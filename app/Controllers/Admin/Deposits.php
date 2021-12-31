@@ -24,7 +24,7 @@ class Deposits extends \App\Controllers\AdminController
     public function index()
     {
 
-        return $this->_renderPage('Deposits/index', $this->data);
+        return $this->_renderPage('Deposits/index2', $this->data);
     }
 
     public function approve(int $id)
@@ -162,6 +162,7 @@ class Deposits extends \App\Controllers\AdminController
        $deposits = (new \App\Models\Deposits())->orderBy('date', 'DESC')->findAll();
        $deposits = json_encode($deposits);
        $deposits = json_decode($deposits, TRUE);
+       //dd($deposits);
 
        $i = 0;
 
