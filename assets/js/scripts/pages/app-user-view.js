@@ -46,7 +46,7 @@ $(function () {
   if (dtDepositsTable.length) {
     var dtDeposits = dtDepositsTable.DataTable({
       "ajax": {
-        "url": "../gtrx",
+        "url": "../admin/users/gtrx",
         "type": "POST",
         "data": idObject
       },
@@ -331,7 +331,7 @@ $(function () {
 if (dtInvestmentsTable.length) {
     var dtInvestments = dtInvestmentsTable.DataTable({
       "ajax": {
-        "url": "../ginv",
+        "url": "../admin/users/ginv",
         "type": "POST",
         "data": idObject
       },

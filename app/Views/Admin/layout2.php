@@ -310,18 +310,18 @@
             <div class="main-menu-content">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item" id="dashboard"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/dashboard') ?>"><i data-feather="home"></i><span
+                            href="<?php echo base_url('dashboard') ?>"><i data-feather="home"></i><span
                                 class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span></a>
                     </li>
                     <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
                             data-feather="more-horizontal"></i>
                     </li>
                     <li id="email" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/email') ?>"><i data-feather="mail"></i><span
+                            href="<?php echo base_url('email') ?>"><i data-feather="mail"></i><span
                                 class="menu-title text-truncate" data-i18n="Email">Email</span></a>
                     </li>
                     <li id="chat" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/chat') ?>"><i data-feather="message-square"></i><span
+                            href="<?php echo base_url('chat') ?>"><i data-feather="message-square"></i><span
                                 class="menu-title text-truncate" data-i18n="Chat">Chat</span></a>
                     </li>
                     <li class=" nav-item"><a class="d-flex align-items-center" href=""><i
@@ -345,28 +345,28 @@
                         </ul>
                     </li>
                     <li id="users" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/users') ?>"><i data-feather="user"></i><span
+                            href="<?php echo base_url('users') ?>"><i data-feather="user"></i><span
                                 class="menu-title text-truncate" data-i18n="User">Users</span></a>
                     </li>
                     <li id="plans" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/plans') ?>"><i data-feather='user'></i></i><span
+                            href="<?php echo base_url('plans') ?>"><i data-feather='user'></i></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Plans</span></a>
                     </li>
                     <li id="investments" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/investments') ?>"><i data-feather='dollar-sign'></i><span
+                            href="<?php echo base_url('investments') ?>"><i data-feather='dollar-sign'></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Investments</span></a>
                     </li>
                     <li id="deposits" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/deposits') ?>"><i data-feather='chevrons-up'></i><span
+                            href="<?php echo base_url('deposits') ?>"><i data-feather='chevrons-up'></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Deposits</span></a>
                     </li>
                     <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/withdraws') ?>"><i data-feather='chevrons-down'></i><span
+                            href="<?php echo base_url('withdraws') ?>"><i data-feather='chevrons-down'></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Withdrawals</span></a>
                     </li>
 
                     <li id="profile" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('admin/profile') ?>"><i data-feather='user'></i></i><span
+                            href="<?php echo base_url('profile') ?>"><i data-feather='user'></i></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Profile</span></a>
                     </li>
                     <li class=" nav-item"><a class="d-flex align-items-center" href=""><i

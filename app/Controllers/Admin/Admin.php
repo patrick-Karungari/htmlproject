@@ -20,6 +20,9 @@ class Admin extends AdminController
     public function index(): string
     {
         $data['current_user'] = $this->auth->user();
+       
+        $data['headscripts'] = array('assets/js/scripts/pages/dashboard-ecommerce.js', 'assets/vendors/js/charts/apexcharts.min.js');
+
         return $this->_renderPage('Dashboard/index2', $data);
     }
    
