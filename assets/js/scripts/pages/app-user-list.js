@@ -20,8 +20,8 @@ $(function () {
         };
 
     var assetPath = '../assets/',
-        userView = 'users/view/',
-        userEdit = 'users/edit/';
+        userView = 'view/',
+        userEdit = '/admin/users/edit/';
     if ($('body').attr('data-framework') === 'laravel') {
         assetPath = $('body').attr('data-asset-path');
         userView = assetPath + 'app/user/view';
@@ -34,7 +34,7 @@ $(function () {
             processing: false,
             serverSide: false,
             autoWidth: true,
-            ajax: 'users/gtsr',
+            ajax: 'admin/users/gtsr',
             headers: {'X-Requested-With': 'XMLHttpRequest'},
             // JSON file to add data
             columns: [

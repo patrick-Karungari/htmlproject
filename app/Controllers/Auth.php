@@ -60,7 +60,7 @@ class Auth extends BaseController
                 do_action('user_login_successful', $this->auth->getUserId());
 
                 if ($this->auth->isAdmin()) {
-                    return redirect()->to(site_url('admin/dashboard'));
+                    return redirect()->to(site_url('dashboard'));
                 }
 
                 return redirect()->to(site_url('user/account'));
