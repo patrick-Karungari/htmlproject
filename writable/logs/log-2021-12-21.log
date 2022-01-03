@@ -1,0 +1,135 @@
+CRITICAL - 2021-12-21 00:28:14 --> json_decode() expects parameter 1 to be string, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'json_decode() e...', 'C:\\wamp64\\www\\h...', 25, Array)
+#1 C:\wamp64\www\htmlproject\app\Views\Admin\Users\view2.php(25): json_decode(Array)
+#2 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#3 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#4 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Users/vie...', Array, true)
+#5 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Users/vie...', Array)
+#6 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(49): App\Controllers\AdminController->_renderPage('Users/view2', Array)
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->view('esther10')
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#9 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#11 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#12 {main}
+CRITICAL - 2021-12-21 08:02:35 --> Undefined variable: _investments
+#0 C:\wamp64\www\htmlproject\app\Views\Admin\Users\view2.php(215): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\h...', 215, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Users/vie...', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Users/vie...', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(49): App\Controllers\AdminController->_renderPage('Users/view2', Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->view('esther10')
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}
+CRITICAL - 2021-12-21 08:03:07 --> Undefined variable: _investments
+#0 C:\wamp64\www\htmlproject\app\Views\Admin\Users\view2.php(254): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\h...', 254, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Users/vie...', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Users/vie...', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(49): App\Controllers\AdminController->_renderPage('Users/view2', Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->view('esther10')
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}
+CRITICAL - 2021-12-21 08:20:17 --> Undefined index: user
+#0 C:\wamp64\www\htmlproject\app\Views\Admin\Users\view2.php(219): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\wamp64\\www\\h...', 219, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Users/vie...', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Users/vie...', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(49): App\Controllers\AdminController->_renderPage('Users/view2', Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->view('esther10')
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}
+CRITICAL - 2021-12-21 09:00:07 --> Undefined variable: inv
+#0 C:\wamp64\www\htmlproject\app\Views\Admin\Users\view2.php(222): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\h...', 222, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Users/vie...', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Users/vie...', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(49): App\Controllers\AdminController->_renderPage('Users/view2', Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->view('esther10')
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}
+CRITICAL - 2021-12-21 09:00:22 --> Undefined variable: invest
+#0 C:\wamp64\www\htmlproject\app\Views\Admin\Users\view2.php(226): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\h...', 226, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Users/vie...', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Users/vie...', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(49): App\Controllers\AdminController->_renderPage('Users/view2', Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->view('esther10')
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}
+CRITICAL - 2021-12-21 11:06:55 --> Cannot use [] for reading
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-12-21 11:24:03 --> array_push() expects parameter 1 to be array, int given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'array_push() ex...', 'C:\\wamp64\\www\\h...', 235, Array)
+#1 C:\wamp64\www\htmlproject\app\Views\Admin\Users\view2.php(235): array_push(1, Array)
+#2 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#3 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#4 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Users/vie...', Array, true)
+#5 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Users/vie...', Array)
+#6 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(49): App\Controllers\AdminController->_renderPage('Users/view2', Array)
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->view('esther10')
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#9 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#11 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#12 {main}
+CRITICAL - 2021-12-21 11:26:42 --> array_push() expects parameter 1 to be array, null given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'array_push() ex...', 'C:\\wamp64\\www\\h...', 235, Array)
+#1 C:\wamp64\www\htmlproject\app\Views\Admin\Users\view2.php(235): array_push(NULL, Array)
+#2 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#3 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#4 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Users/vie...', Array, true)
+#5 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Users/vie...', Array)
+#6 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(49): App\Controllers\AdminController->_renderPage('Users/view2', Array)
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->view('esther10')
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#9 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#11 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#12 {main}
+CRITICAL - 2021-12-21 11:27:28 --> Only variables can be passed by reference
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-12-21 11:29:32 --> Only variables can be passed by reference
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-12-21 11:30:09 --> Only variables can be passed by reference
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-12-21 11:30:42 --> Only variables can be passed by reference
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-12-21 13:55:32 --> Undefined variable: _investments
+#0 C:\wamp64\www\htmlproject\app\Views\Admin\Users\view2.php(285): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\wamp64\\www\\h...', 285, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Users/vie...', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Users/vie...', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(49): App\Controllers\AdminController->_renderPage('Users/view2', Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->view('esther10')
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}

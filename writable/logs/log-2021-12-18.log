@@ -1,0 +1,77 @@
+ERROR - 2021-12-18 05:16:51 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2021-12-18 05:16:51 --> Unable to connect to the database.
+#0 C:\wamp64\www\htmlproject\system\Database\BaseConnection.php(618): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\wamp64\www\htmlproject\system\Database\BaseBuilder.php(1866): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\wamp64\www\htmlproject\system\Model.php(836): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\wamp64\www\htmlproject\app\Libraries\Auth.php(125): CodeIgniter\Model->__call('get', Array)
+#4 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(202): App\Libraries\Auth->forgottenPassword('legacyblair001@...')
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->forgot_password()
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#10 {main}
+CRITICAL - 2021-12-18 05:16:51 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\wamp64\www\htmlproject\app\Views\errors\html\error_exception.php:100
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\wamp64\\www\\h...', 100, Array)
+#1 C:\wamp64\www\htmlproject\app\Views\errors\html\error_exception.php(100): print_r(Object(App\Controllers\Auth), true)
+#2 C:\wamp64\www\htmlproject\system\Debug\Exceptions.php(281): include('C:\\wamp64\\www\\h...')
+#3 C:\wamp64\www\htmlproject\system\Debug\Exceptions.php(147): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2021-12-18 05:18:47 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2021-12-18 05:18:47 --> Unable to connect to the database.
+#0 C:\wamp64\www\htmlproject\system\Database\BaseConnection.php(618): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\wamp64\www\htmlproject\system\Database\BaseBuilder.php(1866): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\wamp64\www\htmlproject\system\Model.php(836): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\wamp64\www\htmlproject\app\Libraries\Auth.php(125): CodeIgniter\Model->__call('get', Array)
+#4 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(202): App\Libraries\Auth->forgottenPassword('jadhsajdcsd@gdk...')
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->forgot_password()
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#10 {main}
+CRITICAL - 2021-12-18 05:18:47 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\wamp64\www\htmlproject\app\Views\errors\html\error_exception.php:100
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\wamp64\\www\\h...', 100, Array)
+#1 C:\wamp64\www\htmlproject\app\Views\errors\html\error_exception.php(100): print_r(Object(App\Controllers\Auth), true)
+#2 C:\wamp64\www\htmlproject\system\Debug\Exceptions.php(281): include('C:\\wamp64\\www\\h...')
+#3 C:\wamp64\www\htmlproject\system\Debug\Exceptions.php(147): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2021-12-18 05:20:06 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2021-12-18 05:20:06 --> Unable to connect to the database.
+#0 C:\wamp64\www\htmlproject\system\Database\BaseConnection.php(618): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\wamp64\www\htmlproject\system\Database\BaseBuilder.php(1866): CodeIgniter\Database\BaseConnection->query('SELECT `usernam...', Array, false)
+#2 C:\wamp64\www\htmlproject\app\Models\AuthModel.php(907): CodeIgniter\Database\BaseBuilder->get()
+#3 [internal function]: App\Models\AuthModel->login('userpui', 'supportEmail', true)
+#4 C:\wamp64\www\htmlproject\app\Libraries\Auth.php(108): call_user_func_array(Array, Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(59): App\Libraries\Auth->__call('login', Array)
+#6 C:\wamp64\www\htmlproject\app\Controllers\Auth.php(45): App\Controllers\Auth->login()
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Auth->index()
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#11 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#12 {main}
+CRITICAL - 2021-12-18 05:20:06 --> Uncaught ErrorException: print_r(): Property access is not allowed yet in C:\wamp64\www\htmlproject\app\Views\errors\html\error_exception.php:100
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', 'C:\\wamp64\\www\\h...', 100, Array)
+#1 C:\wamp64\www\htmlproject\app\Views\errors\html\error_exception.php(100): print_r(Object(App\Controllers\Auth), true)
+#2 C:\wamp64\www\htmlproject\system\Debug\Exceptions.php(281): include('C:\\wamp64\\www\\h...')
+#3 C:\wamp64\www\htmlproject\system\Debug\Exceptions.php(147): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
