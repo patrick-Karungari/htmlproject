@@ -1,0 +1,300 @@
+CRITICAL - 2022-01-01 12:38:49 --> Undefined property: CodeIgniter\View\View::$session
+#0 C:\wamp64\www\htmlproject\app\Views\Admin\Pay\index.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\wamp64\\www\\h...', 82, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Pay/index', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Pay/index', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(34): App\Controllers\AdminController->_renderPage('Pay/index', Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->pay()
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}
+CRITICAL - 2022-01-01 12:39:50 --> Use of undefined constant CI_VERSION - assumed 'CI_VERSION' (this will throw an Error in a future version of PHP)
+#0 C:\wamp64\www\htmlproject\app\Views\Admin\Pay\index.php(103): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', 'C:\\wamp64\\www\\h...', 103, Array)
+#1 C:\wamp64\www\htmlproject\system\View\View.php(220): include('C:\\wamp64\\www\\h...')
+#2 C:\wamp64\www\htmlproject\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\wamp64\www\htmlproject\system\Common.php(1217): CodeIgniter\View\View->render('Admin/Pay/index', Array, true)
+#4 C:\wamp64\www\htmlproject\app\Controllers\AdminController.php(36): view('Admin/Pay/index', Array)
+#5 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(34): App\Controllers\AdminController->_renderPage('Pay/index', Array)
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->pay()
+#7 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#8 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#11 {main}
+CRITICAL - 2022-01-01 19:20:08 --> Namespace declaration statement has to be the very first statement or after any declare call in the script
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 19:20:31 --> Namespace declaration statement has to be the very first statement or after any declare call in the script
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 19:21:02 --> include(library/rave.php): failed to open stream: No such file or directory
+#0 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(library...', 'C:\\wamp64\\www\\h...', 9, Array)
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(9): include()
+#2 C:\wamp64\www\htmlproject\system\Router\Router.php(562): include_once('C:\\wamp64\\www\\h...')
+#3 C:\wamp64\www\htmlproject\system\Router\Router.php(170): CodeIgniter\Router\Router->autoRoute('admin/users/pro...')
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(816): CodeIgniter\Router\Router->handle('admin/users/pro...')
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(385): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#9 {main}
+CRITICAL - 2022-01-01 19:21:43 --> Undefined index: PUBLIC_KEY
+#0 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(154): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\wamp64\\www\\h...', 154, Array)
+#1 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#6 {main}
+CRITICAL - 2022-01-01 19:25:03 --> Undefined index: ENV
+#0 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(161): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\wamp64\\www\\h...', 161, Array)
+#1 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#6 {main}
+CRITICAL - 2022-01-01 19:29:31 --> Class 'Flutterwave\Rave' not found
+#0 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#1 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#5 {main}
+CRITICAL - 2022-01-01 19:38:08 --> CodeIgniter\Autoloader\Autoloader::main(): Failed opening required 'C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library/../vendor/autoload.php' (include_path='.;C:\php\pear')
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 19:38:57 --> Class 'App\Libraries\Flutterwave\Library\Rave' not found
+#0 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#1 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#5 {main}
+CRITICAL - 2022-01-01 19:39:36 --> CodeIgniter\Autoloader\Autoloader::main(): Failed opening required 'C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library/../vendor/autoload.php' (include_path='.;C:\php\pear')
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 19:41:06 --> CodeIgniter\Autoloader\Autoloader::main(): Failed opening required 'C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library../../../vendor/autoload.php' (include_path='.;C:\php\pear')
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 19:41:58 --> CodeIgniter\Autoloader\Autoloader::main(): Failed opening required 'C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library../../vendor/autoload.php' (include_path='.;C:\php\pear')
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 19:44:06 --> Class 'App\Libraries\Flutterwave\Library\Rave' not found
+#0 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#1 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#5 {main}
+CRITICAL - 2022-01-01 19:45:54 --> Class 'myEventHandler' not found
+#0 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#1 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#5 {main}
+CRITICAL - 2022-01-01 20:03:55 --> Interface 'App\Libraries\Flutterwave\EventHandlerInterface' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 20:06:11 --> include(app/library/flutterwave/library/rave.php): failed to open stream: No such file or directory
+#0 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(app/lib...', 'C:\\wamp64\\www\\h...', 13, Array)
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(13): include()
+#2 C:\wamp64\www\htmlproject\system\Router\Router.php(562): include_once('C:\\wamp64\\www\\h...')
+#3 C:\wamp64\www\htmlproject\system\Router\Router.php(170): CodeIgniter\Router\Router->autoRoute('admin/users/pro...')
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(816): CodeIgniter\Router\Router->handle('admin/users/pro...')
+#5 C:\wamp64\www\htmlproject\system\CodeIgniter.php(385): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#6 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#9 {main}
+CRITICAL - 2022-01-01 20:12:43 --> Interface 'App\Controllers\Admin\App\Libraries\Flutterwave\Libray\Rave\EventHandlerInterface' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 20:13:37 --> Interface 'App\Libraries\Flutterwave\Libray\Rave\EventHandlerInterface' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 20:15:06 --> Interface 'App\Libraries\Flutterwave\Library\Rave\EventHandlerInterface' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 20:16:03 --> Interface 'App\Controllers\Admin\EventHandlerInterface' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 20:17:23 --> Interface 'App\Controllers\Admin\EventHandlerInterface' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 20:17:57 --> Interface 'App\Libraries\Flutterwave\Library\EventHandlerInterface' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 20:23:06 --> Interface 'App\Libraries\Flutterwave\Library\raveEventHandlerInterface' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 20:23:53 --> Interface 'App\Libraries\Flutterwave\Library\EventHandlerInterface' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 20:24:38 --> Interface 'App\Controllers\Admin\EventHandlerInterface' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-01-01 20:27:55 --> Class 'myEventHandler' not found
+#0 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#1 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#5 {main}
+CRITICAL - 2022-01-01 20:30:06 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:32:25 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:33:15 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:36:36 --> Call to undefined function getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:37:02 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:37:14 --> Call to undefined function getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:37:47 --> Call to undefined function getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:40:12 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:40:44 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:41:03 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:41:06 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:41:08 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 20:49:26 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 21:11:52 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 21:11:57 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 21:17:26 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
+CRITICAL - 2022-01-01 21:28:35 --> Call to undefined function App\Controllers\Admin\getURL()
+#0 C:\wamp64\www\htmlproject\app\Libraries\Flutterwave\Library\rave.php(1267): App\Controllers\Admin\myEventHandler->onCancel('cancelled')
+#1 C:\wamp64\www\htmlproject\app\Controllers\Admin\Users.php(209): App\Libraries\Flutterwave\Library\Rave->paymentCanceled('cancelled')
+#2 C:\wamp64\www\htmlproject\system\CodeIgniter.php(936): App\Controllers\Admin\Users->processPayment()
+#3 C:\wamp64\www\htmlproject\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Users))
+#4 C:\wamp64\www\htmlproject\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\wamp64\www\htmlproject\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\wamp64\www\htmlproject\system\Commands\Server\rewrite.php(45): require_once('C:\\wamp64\\www\\h...')
+#7 {main}
