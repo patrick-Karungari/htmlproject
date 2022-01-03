@@ -53,6 +53,7 @@ $(function () {
                     // Title
                     targets: 1,
                     width: '180px',
+                    className: 'all',
                     responsivePriority: 2,
                     render: function (data, type, full, meta) {
                        
