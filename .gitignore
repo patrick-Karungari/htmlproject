@@ -6,4 +6,4 @@ writable/logs
 writable/session
 .vscode/
 .idea/
-.htaccess/
+.htaccess
