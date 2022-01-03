@@ -1,10 +1,11 @@
 <?php
-namespace Flutterwave;
+namespace App\Libraries\Flutterwave\Library;
+
 
 // Prevent direct access to this class
 //defined('BASEPATH') OR exit('No direct script access allowed'); // Uncomment this link if you need this
 
-require __DIR__ . '/../vendor/autoload.php'; // Uncomment this autoloader if you need it
+//require __DIR__ . '../../vendor/autoload.php'; // Uncomment this autoloader if you need it
 
 use Dotenv;
 use Monolog\Handler\RotatingFileHandler;
@@ -122,7 +123,7 @@ class Rave
             "amount" => $this->amount,
             "tx_ref" => $this->txref,
             "currency" => $this->currency,
-            "payment_options" => "card,mobilemoney,ussd",
+            "payment_options" => "card,ussd,mpesa,barter,mobilemoneyghana,mobilemoneyrwanda,mobilemoneyzambia,mobilemoneyuganda,banktransfer,account",
             "customer" => [
                 "email" => $this->customerEmail,
                 "phone_number" => $this->customerPhone,
@@ -151,7 +152,7 @@ class Rave
         // $hash = hash('sha256', $completeHash);
 
         // $this->integrityHash = $hash;
-        // return $this;
+         return $options;
     }
 
     /**
@@ -624,11 +625,10 @@ class Rave
     function initialize()
     {
 
-        $this->createCheckSum();
 
         echo '<html>';
         echo '<body>';
-        echo '<center>Proccessing...<br /><img src="ajax-loader.gif" /></center>';
+       
 
 
         echo '<script type="text/javascript" src="https://checkout.flutterwave.com/v3.js"></script>';
@@ -1629,4 +1629,3 @@ class Rave
 
 // silencio es dorado
 ?>
-
