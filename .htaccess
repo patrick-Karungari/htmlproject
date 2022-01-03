@@ -19,21 +19,19 @@ Options All -Indexes
 	# Redirect Trailing Slashes...
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_URI} (.+)/$
-      	RewriteRule ^ %1 [L,R=301]
+      RewriteRule ^ %1 [L,R=301]
 
 	# Rewrite "www.example.com -> example.com"
-	RewriteCond %{THE_REQUEST} s/+index.php/admin/ [NC]
 	RewriteCond %{HTTPS} !=on
 	RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 	RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
-	RewriteRule ^index.php/admin(/.*)?$ https://%1$1 [L,NC,NE,R=301]
 
 	# Checks to see if the user is attempting to access a valid file,
     # such as an image or css document, if this isn't true it sends the
     # request to the front controller, system.php
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^([\s\S]*)$ index.php/admin/$1 [L,NC,QSA]
+	RewriteRule ^([\s\S]*)$ index.php/$1 [L,NC,QSA]
 
 	# Ensure Authorization header is passed along
     RewriteCond %{HTTP:Authorization} .
@@ -50,3 +48,10 @@ Options All -Indexes
     ServerSignature Off
 # Disable server signature end
 
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php80” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php80 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
