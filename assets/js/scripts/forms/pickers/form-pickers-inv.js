@@ -160,7 +160,7 @@ if (dtInvestmentsTable.length) {
                             '</div>' +
                             '<div class="d-flex flex-column">' +
                             '<a href="' +
-                            userView + full['username'] +
+                            userView + full['user'].username +
                             '" class="user_name text-truncate"><span class="font-weight-bold">' +
                             $name +
                             '</span></a>' +
