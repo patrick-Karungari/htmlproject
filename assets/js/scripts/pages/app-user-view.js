@@ -77,6 +77,7 @@ $(function () {
          //Invoice ID
           targets: 1,
           responsivePriority: 2,
+           className: 'all',
           width: '24px',
           render: function (data, type, full, meta) {
              //console.log(data);
@@ -92,6 +93,7 @@ $(function () {
           // Total Invoice Amount
           targets: 2,
           responsivePriority: 3,
+           className: 'all',
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['amount'];
@@ -357,6 +359,7 @@ if (dtInvestmentsTable.length) {
         {
         // Plan
           targets: 1,
+           className: 'all',
           responsivePriority: 2,
           width: '24px',
           render: function (data, type, full, meta) {
@@ -374,6 +377,7 @@ if (dtInvestmentsTable.length) {
           // Total Investment Amount
           targets: 2,
           responsivePriority: 3,
+           className: 'all',
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['amount'];
