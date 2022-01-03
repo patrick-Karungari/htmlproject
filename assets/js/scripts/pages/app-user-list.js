@@ -54,7 +54,7 @@ $(function () {
                     // For Responsive
                     className: 'control',
                     orderable: false,
-                    responsivePriority: 1,
+                    responsivePriority: 4,
                     targets: 0,
                     render: function (date, type, full, meta) {
                         return " ";
@@ -63,7 +63,7 @@ $(function () {
                 {
                     // User full name and username
                     targets: 1,
-                    responsivePriority: 2,
+                    responsivePriority: 1,
                     render: function (data, type, full, meta) {
                        
                         var $first_name = full['first_name'],
