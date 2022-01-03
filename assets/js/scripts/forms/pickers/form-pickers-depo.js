@@ -89,8 +89,8 @@
     invoiceEdit = 'app-invoice-edit.html',
     dtInvestmentsTable = $('.investments-list-table');
    var assetPath = '../assets/',
-        userView = 'users/view/',
-        userEdit = 'users/edit/';
+        userView = 'view/',
+        userEdit = 'edit/';
 
 if (dtInvestmentsTable.length) {
     var dtInvestments = dtInvestmentsTable.DataTable({
