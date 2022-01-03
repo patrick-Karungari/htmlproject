@@ -125,7 +125,8 @@ if (dtInvestmentsTable.length) {
          {
                     // User full name and username
                     targets: 1,
-                    responsivePriority: 2,
+           responsivePriority: 2,
+                    className: 'all',
                     render: function (data, type, full, meta) {
                        
                         var $first_name = full['user'].first_name,
