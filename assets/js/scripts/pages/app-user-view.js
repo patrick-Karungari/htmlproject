@@ -71,7 +71,10 @@ $(function () {
           // For Responsive
           className: 'control',
          
-          targets: 0
+          targets: 0,
+          render: function (date, type, full, meta) {
+                        return " ";
+                    }
         },
         {
          //Invoice ID
@@ -353,8 +356,11 @@ if (dtInvestmentsTable.length) {
         {
           // For Responsive
           className: 'control',
-         
-          targets: 0
+          targets: 0,
+         render: function (date, type, full, meta) {
+                        return " ";
+                    }
+          
         },
         {
         // Plan
@@ -552,7 +558,7 @@ if (dtInvestmentsTable.length) {
           display: $.fn.dataTable.Responsive.display.modal({
             header: function (row) {
               var data = row.data();
-               return 'Details of ' + data['user'].first_name + ' ' + data['user'].last_name;
+               return 'Details of ' + data['plan'].title;
             }
           }),
           type: 'column',
