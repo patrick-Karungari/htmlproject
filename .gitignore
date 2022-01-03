@@ -4,5 +4,6 @@ writable/debugbar
 writable/cache
 writable/logs
 writable/session
-.vscode/
-.idea/
+/.vscode
+/.idea
+/.htaccess
