@@ -1,13 +1,12 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Controllers\User;
-
 
 use App\Libraries\MpesaLibrary;
 use Exception;
@@ -31,7 +30,7 @@ class Deposits extends \App\Controllers\UserController
         if ($this->request->getPost()) {
             $phone = $this->request->getPost('phone');
             $amount = $this->request->getPost('amount');
-            
+
             //return redirect()->back()->with('error', "Temporarily disabled. We are fixing the erroneous double deposits incurred from yesterday");
 
             if (!is_numeric($amount) || $amount < 1) {
@@ -46,10 +45,10 @@ class Deposits extends \App\Controllers\UserController
             $phone = substr_replace($phone, '254', 0, 1);
 
             $c2b = new MpesaLibrary(get_option('mpesa_env'));
-            $c2b->lnmo_callback_url = site_url('api/deposit/'.$this->current_user->id.'/'.env("MPESA_KEY", "kurtAngl3numB3ROnE"), 'https');
-            //$c2b->lnmo_callback_url = "https://dev.bennito254.com/cb.php";
+            $c2b->lnmo_callback_url = site_url('api/deposit/' . $this->current_user->id . '/' . env("MPESA_KEY", "kurtAngl3numB3ROnE"), 'https');
+            //$c2b->lnmo_callback_url = "https://dev.pkarungari.co.ke/cb.php";
             try {
-                $response = $c2b->stkPush($amount, $phone, env('MPESA_PREFIX', "USER").$this->current_user->id);
+                $response = $c2b->stkPush($amount, $phone, env('MPESA_PREFIX', "USER") . $this->current_user->id);
                 if ($response = json_decode($response)) {
                     if ($response->ResponseCode == '0') {
                         return redirect()->to(site_url('user/deposits'))->with('success', "Please authorize the transaction by entering your M-Pesa PIN in your phone");

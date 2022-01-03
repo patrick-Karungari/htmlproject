@@ -1,25 +1,28 @@
 <?php
 
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
 <h2 class="card-title font-weight-bold mb-1">Adventure starts here 🚀</h2>
 <p class="card-text mb-2">Make your investing journey management easy and fun!</p>
-<form class="auth-register-form mt-2" action="<?php echo site_url('auth/register')?>" method="POST">
+<form class="auth-register-form mt-2" action="<?php echo site_url('auth/register') ?>" method="POST">
     <div class="form-group">
         <label class="form-label" for="register-username">First name</label>
         <input class="form-control" id="register-username" type="text" name="fname" placeholder="John"
-               aria-describedby="register-username" autofocus="" tabindex="1" required />
+            aria-describedby="register-username" autofocus="" tabindex="1" required />
     </div>
     <div class="form-group">
         <label class="form-label" for="register-username">Last name</label>
         <input class="form-control" id="register-username" type="text" name="lname" placeholder="Doe"
-               aria-describedby="register-username" autofocus="" tabindex="1" required />
+            aria-describedby="register-username" autofocus="" tabindex="1" required />
     </div>
     <div class="form-group">
         <label class="form-label" for="register-username">Username</label>
@@ -32,30 +35,30 @@
             aria-describedby="register-email" tabindex="2" required />
     </div>
     <div class="form-group">
-        <label class="form-label" for="register-phone">M-PESA Number</label>
-        <input class="form-control" id="register-phone" type="tel" name="phone" placeholder="07 12 345 678"
-            aria-describedby="register-email" tabindex="2" min="10" maxlength="10"
-            pattern="^(?:0)?((?:(?:7(?:(?:[01249][0-9])|(?:5[789])|(?:6[89])))|(?:1(?:[1][0-5])))[0-9]{6})$" required />
-        <small>Please use a Safaricom phone number with format : <br><strong>07 12 345 678</strong></small>
+        <label class="form-label" for="register-phone">Phone Number</label>
+    </div>
+    <div class="form-group d-flex justify-content-center">
+        <input class="form-control" id="i-register-phone" type="tel" name="phone" aria-describedby="register-email"
+            tabindex="2" required />
+        <input type="submit" class="btn btn-primary ml-2" value="Verify" />
     </div>
     <div class="form-group">
         <label class="form-label" for="register-password">Password</label>
         <div class="input-group input-group-merge form-password-toggle">
-            <input class="form-control form-control-merge" id="register-password" type="password"
-                   name="password" placeholder="············" aria-describedby="register-password" tabindex="3"
-                required />
+            <input class="form-control form-control-merge" id="register-password" type="password" name="password"
+                placeholder="············" aria-describedby="register-password" tabindex="3" required />
             <div class="input-group-append"><span class="input-group-text cursor-pointer"><i
                         data-feather="eye"></i></span></div>
         </div>
     </div>
     <div class="form-group">
-        <label class="form-label" for="register-password">Password</label>
+        <label class="form-label" for="register-password">Confirm Password</label>
         <div class="input-group input-group-merge form-password-toggle">
             <input class="form-control form-control-merge" id="register-password" type="password"
-                   name="confirm_password" placeholder="············" aria-describedby="register-password" tabindex="3"
-                   required />
+                name="confirm_password" placeholder="············" aria-describedby="register-password" tabindex="3"
+                required />
             <div class="input-group-append"><span class="input-group-text cursor-pointer"><i
-                            data-feather="eye"></i></span></div>
+                        data-feather="eye"></i></span></div>
         </div>
     </div>
     <div class="form-group">
@@ -79,5 +82,30 @@
             data-feather="mail"></i></a><a class="btn btn-github" href="javascript:void(0)"><i
             data-feather="github"></i></a></div>
 <script>
-    document.getElementById('myImage').src = '<?php echo site_url('assets/images/pages/register-v2-dark.svg') ?>';
+document.getElementById('myImage').src = '<?php echo site_url('assets/images/pages/register-v2-dark.svg') ?>';
+</script>
+<script>
+const phoneInputField = document.getElementById('i-register-phone');
+const phoneInput = window.intlTelInput(phoneInputField, {
+    preferredCountries: ["KE", "UG", "NG", "GH", "RW", "ZM", "US"],
+    allowDropdown: false,
+    initialCountry: "auto",
+    geoIpLookup: getIp,
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+});
+
+function getIp(callback) {
+    fetch('https://ipinfo.io/json?token=d449b8666e49bd', {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then((resp) => resp.json())
+        .catch(() => {
+            return {
+                country: 'KE',
+            };
+        })
+        .then((resp) => callback(resp.country));
+}
 </script>

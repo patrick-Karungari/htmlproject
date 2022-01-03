@@ -44,11 +44,12 @@ $data = json_encode(['data' => $users]);
 
     <!-- users filter end -->
     <!-- list section start -->
-    <div class="card">
+    <div class="card pl-2 pr-2">
         <div class="card-datatable table-responsive pt-0">
             <table class="user-list-table table">
                 <thead class="thead-light">
                     <tr>
+
                         <th></th>
                         <th>User</th>
                         <th>Phone</th>

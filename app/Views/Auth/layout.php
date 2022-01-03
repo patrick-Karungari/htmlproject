@@ -1,10 +1,10 @@
 <?php
 //dd($email);
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 <!DOCTYPE html>
@@ -66,7 +66,7 @@
                 <div class="content-body">
                     <div class="auth-wrapper auth-v2">
                         <div class="auth-inner row m-0">
-                            <!-- Brand logo--><a class="brand-logo " href="javascript:void(0);">
+                            <!-- Brand logo--><a class="brand-logo" href="javascript:void(0);">
                                 <svg viewBox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" height="28">
                                     <defs>
@@ -103,7 +103,7 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <h2 class="brand-text align-items-left text-primary ml-1">Ken Coin</h2>
+                                <h2 class="brand-text text-primary ml-1">Ken Coin</h2>
                             </a>
                             <!-- /Brand logo-->
                             <!-- Left Text-->
@@ -118,9 +118,9 @@
                             <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
                                 <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                                     <?php
-                                bootstrap_alerts();
-                                echo $_html_content;
-                                ?> </div>
+bootstrap_alerts();
+echo $_html_content;
+?> </div>
                             </div>
                             <!-- /Login-->
                         </div>

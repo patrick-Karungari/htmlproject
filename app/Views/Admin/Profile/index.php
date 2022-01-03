@@ -1,17 +1,17 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 <head>
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/pages/page-profile.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/pages/page-profile.css') ?>">
     <!-- END: Page CSS-->
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css') ?>">
     <!-- END: Custom CSS-->
 
 </head>
@@ -24,7 +24,7 @@
                 <h2 class="content-header-title float-left mb-0">Profile</h2>
                 <div class="breadcrumb-wrapper">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin')?>">Home</a>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin') ?>">Home</a>
                         </li>
                         <li class="breadcrumb-item active">Profile
                         </li>
@@ -116,7 +116,7 @@
                                     </ul>
                                     <!-- edit button -->
                                     <ul class="nav nav-pills mb-0">
-                                        <a class="nav-link font-weight-bold active" href="<?php echo site_url('admin/settings/profile')?>">
+                                        <a class="nav-link font-weight-bold active" href="<?php echo site_url('admin/settings/profile') ?>">
                                             <i data-feather="rss" class="d-block d-md-none"></i>
                                             <span  class="d-none d-md-block" >Edit</span></a>
 
@@ -994,9 +994,9 @@
 <!-- END: Content-->
 <script>
     document.getElementById('name_p').innerHTML = document.getElementById('user_name_d').innerHTML + "   " + "" +
-        "<img style=\"filter: invert(49%) sepia(79%) saturate(2494%) hue-rotate(179deg) brightness(103%) contrast(90%)\" src=\"<?php echo base_url('assets/bootstrap-icons/icons/patch-check-fill.svg')?>\" alt=\"Bootstrap\" width=\"32\" height=\"32\">";
+        "<img style=\"filter: invert(49%) sepia(79%) saturate(2494%) hue-rotate(179deg) brightness(103%) contrast(90%)\" src=\"<?php echo base_url('assets/bootstrap-icons/icons/patch-check-fill.svg') ?>\" alt=\"Bootstrap\" width=\"32\" height=\"32\">";
 </script>
 
 <!-- BEGIN: Page JS-->
-<script src="<?php echo base_url('assets/js/scripts/pages/page-profile.js')?>"></script>
+<script src="<?php echo base_url('assets/js/scripts/pages/page-profile.js') ?>"></script>
 <!-- END: Page JS-->

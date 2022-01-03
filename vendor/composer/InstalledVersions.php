@@ -25,24 +25,33 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => 'daf9f4166bdd76ac1074790529538bca885d04c7',
     'name' => 'codeigniter4/codeigniter4',
   ),
   'versions' => 
   array (
     'codeigniter4/codeigniter4' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'daf9f4166bdd76ac1074790529538bca885d04c7',
+    ),
+    'firebase/php-jwt' => 
+    array (
+      'pretty_version' => 'v5.5.1',
+      'version' => '5.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '83b609028194aa042ea33b5af2d41a7427de80e6',
     ),
     'flutterwavedev/flutterwave-v3' => 
     array (
@@ -115,6 +124,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '842c0f242dfaaf85f16b72e217bf7f7c19ab12cb',
+    ),
+    'messagebird/php-rest-api' => 
+    array (
+      'pretty_version' => 'v2.1.0',
+      'version' => '2.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3d22eb0b0572fb7e95e09469da1e287c974b2b12',
     ),
     'monolog/monolog' => 
     array (

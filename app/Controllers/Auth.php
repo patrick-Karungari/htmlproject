@@ -1,13 +1,12 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Controllers;
-
 
 use App\Models\Referrals;
 use App\Models\Users;
@@ -33,10 +32,9 @@ class Auth extends BaseController
         $this->session = \Config\Services::session();
         $this->secure_key = $this->secure_request_key(32);
 
-
         $this->data = [
             'site_title' => "Authentication",
-            'site_description'  => 'Login to this system'
+            'site_description' => 'Login to this system',
         ];
     }
 
@@ -51,9 +49,9 @@ class Auth extends BaseController
 
             $username = strtolower(trim($this->request->getPost('username')));
             $password = $this->request->getPost('password');
-            $remember = (bool)$this->request->getPost('remember_me');
+            $remember = (bool) $this->request->getPost('remember_me');
 
-            if (!$username || !$password || $username===''|| $password ===''){
+            if (!$username || !$password || $username === '' || $password === '') {
                 return redirect()->back()->withInput()->with('error', "Please enter your email and password");
             }
             $login = $this->auth->login($username, $password, $remember);
@@ -62,7 +60,7 @@ class Auth extends BaseController
                 do_action('user_login_successful', $this->auth->getUserId());
 
                 if ($this->auth->isAdmin()) {
-                    return redirect()->to(site_url('admin/dashboard'));
+                    return redirect()->to(site_url('dashboard'));
                 }
 
                 return redirect()->to(site_url('user/account'));
@@ -70,36 +68,35 @@ class Auth extends BaseController
                 if (in_array("Account is inactive", $this->auth->errorsArray(), true)) {
                     $data = $this->auth->getData();
                     //$this->secure_key = $this->secure_request_key(32);
-                    //$data['security'] =  $this->secure_key;    
-                    //dd($data);               
+                    //$data['security'] =  $this->secure_key;
+                    //dd($data);
                     return $this->_renderPage('email/wait_verification_email', $data);
 
                 }
-                
+
                 return redirect()->back()->withInput()->with('error', $this->auth->errorsArray());
             }
         }
 
         return $this->_renderPage('login', $this->data);
     }
- 
 
-    public function terms(){
-         return $this->_renderPage('terms', $this->data);
+    public function terms()
+    {
+        return $this->_renderPage('terms', $this->data);
     }
 
-    public function activate(int $id, string $code = ''){
-        
+    public function activate(int $id, string $code = '')
+    {
+
         $activation = false;
         //dd($code);
 
         if ($code) {
             $activation = $this->authModel->activate($id, $code);
+        } else if ($this->auth->isAdmin()) {
+            $activation = $this->authModel->activate($id);
         }
-        else if ($this->auth->isAdmin())
-		{
-			$activation = $this->authModel->activate($id);
-		}
         if ($activation) {
             // redirect them to the auth page
             return redirect()->to(site_url('auth'))->with('success', "Account activation successful");
@@ -110,50 +107,51 @@ class Auth extends BaseController
 
         }
 
-
     }
 
-    public function mail_verify(){
+    public function mail_verify()
+    {
         $adminEmail = $this->config->adminEmail;
+        
         if ($this->request->getPost() || !empty($this->session->getFlashdata('data'))) {
-            if (!empty($this->session->getFlashdata('data'))){
+            if (!empty($this->session->getFlashdata('data'))) {
                 $flashdata = $this->session->getFlashdata('data');
                 //dd($flashdata);
                 $id = $flashdata['user']['id'];
                 $email = $flashdata['user']['email'];
-                $flash_key = $flashdata['security'];
+               
 
+                //$flash_key = $flashdata['security'];
 
-            }else {
-                if ($this->request->getPost()){
+            } else {
+                if ($this->request->getPost()) {
                     $email = $this->request->getPost('email');
                     $id = $this->request->getPost('id');
-                    $flash_key = $this->request->getPost('security');
+                   // $flash_key = $this->request->getPost('security');
                     //dd($flash_key);
                     //$this->secure_key = $this->secure_request_key(32);
 
-
-                }else{
+                } else {
                     return redirect()->to(site_url('auth'))->with('error', "An error occurred");
 
                 }
             }
-            
-           // $state = false;
-            
+
+            // $state = false;
+
             //if (strcmp($flash_key, $this->secure_key) == 0 ){
-              //  $state = true;
-           // }
-        
+            //  $state = true;
+            // }
+
             $activation = false;
             $data['user'] = ['email' => $email, 'id' => $id];
             //dd($id);
 
-            if($id ){
+            if ($id) {
                 $activation = $this->authModel->deactivate($id);
                 if ($activation) {
-                //$data['user'] = ['email' => $email, 'id' => $id];
-                // dd($data);
+                    //$data['user'] = ['email' => $email, 'id' => $id];
+                    // dd($data);
 
                     $activationCode = $this->authModel->activationCode;
                     $identity = $this->config->identity;
@@ -167,30 +165,27 @@ class Auth extends BaseController
                         'name' => $user->first_name,
                         'activation' => $activationCode,
                     ];
-                
-                    if ($this->auth->sendMail($data2,$email)) {  
-                       // $this->secure_key = $this->secure_request_key(32);
-                       // $data['security'] = $this->secure_key;
-                        return redirect()->to(site_url('auth'))->withInput()->with('success', "Seccessfully Sent New Ativation Email");
-
-                                    
+                   
+                    if ($this->auth->sendMail($data2, $email)) {
+                      
+                        return redirect()->to(site_url('auth'))->withInput()->with('success', "Seccessfully Resent Ativation Email");
                     } else {
                         // redirect them to the forgot password page
                         return redirect()->to(site_url('auth'))->with('error', "An error occurred");
 
                     }
+                    
+                   
                 }
 
-            }    
-            return redirect()->to(site_url('auth'))->with('error', "An error occurred due to ID");
-        
-        }
-    return redirect()->to(site_url('auth'))->with('error', "An error occurred passed a get request");
+            }
+            return redirect()->to(site_url('auth'))->with('error', "An error occurred. Try again later");
 
+        }
+        return redirect()->to(site_url('auth'))->with('error', "An error occurred. Try again later");
 
     }
 
-    
     public function forgot_password()
     {
         $this->data['site_title'] = "Forgot password";
@@ -209,16 +204,21 @@ class Auth extends BaseController
         return $this->_renderPage('forgot_password', $this->data);
     }
 
-    public function reset_password($code = FALSE)
+    public function reset_password($code = false)
     {
-        if  (!$code) return redirect()->to(site_url('auth'))->with('error', "Invalid password reset link");
+        if (!$code) {
+            return redirect()->to(site_url('auth'))->with('error', "Invalid password reset link");
+        }
 
         $auth = new \App\Libraries\Auth();
         $user = $auth->forgottenPasswordCheck($code);
 
-        if (!$user) return redirect()->back()->with('error', "Sorry! We couldn't find your account");
+        if (!$user) {
+            return redirect()->back()->with('error', "Sorry! We couldn't find your account");
+        }
 
         if ($this->request->getPost()) {
+            // dd($this->request->getPost());
             $validation = \Config\Services::validation();
             $validation->setRule('password', "New Password", 'required|matches[confirm_password]|min_length[6]');
             $validation->setRule('confirm_password', "Confirm Password", 'required');
@@ -259,7 +259,7 @@ class Auth extends BaseController
             $validation->setRule('email', "Email Address", 'trim|required|valid_email|is_unique[users.email]');
             $validation->setRule('password', "Password", 'trim|required|min_length[6]|matches[confirm_password]');
             $validation->setRule('confirm_password', "Confirm Password", 'trim|required|min_length[6]');
-            if  ($validation->withRequest($this->request)->run() === TRUE) {
+            if ($validation->withRequest($this->request)->run() === true) {
                 $auth = new \App\Libraries\Auth();
 
                 $username = strtolower(trim($this->request->getPost('username')));
@@ -269,7 +269,7 @@ class Auth extends BaseController
                 $email = trim($this->request->getPost('email'));
                 $password = $this->request->getPost('password');
 
-                if  ($auth->identityCheck($email) || $auth->identityCheck($phone) || $auth->identityCheck($username)) {
+                if ($auth->identityCheck($email) || $auth->identityCheck($phone) || $auth->identityCheck($username)) {
                     return redirect()->back()->with('error', "Username, Email or phone number already registered");
                 }
 
@@ -281,28 +281,28 @@ class Auth extends BaseController
                 }
 
                 $additional_data = [
-                    'first_name'    => $first_name,
-                    'last_name'     => $last_name,
-                    'phone'         => $phone,
-                    'referred_by'   => (isset($ref) && is_numeric($ref)) ? $ref : NULL
+                    'first_name' => $first_name,
+                    'last_name' => $last_name,
+                    'phone' => $phone,
+                    'referred_by' => (isset($ref) && is_numeric($ref)) ? $ref : null,
                 ];
                 if ($newID = $auth->register($username, $password, $email, $additional_data, [2])) {
 
                     $referral = new Referrals();
                     $xData = [
-                        'user'  => $newID,
-                        'ref'   => $ref,
-                        'status'    => 'pending'
+                        'user' => $newID,
+                        'ref' => $ref,
+                        'status' => 'pending',
                     ];
                     try {
                         $referral->save($xData);
                     } catch (\ReflectionException $e) {
                         return redirect()->back()->with('error', $e->getMessage());
                     }
-                   $data = ['user' => ['email' => $email, 'id' => $newID]];
+                    $data = ['user' => ['email' => $email, 'id' => $newID], 'register'=>true];
 
+                    return redirect()->to(site_url('auth'))->withInput()->with('success', "Please verify your email.");
 
-                    return redirect()->to(site_url('auth/mail_verify'))->with('data', $data);
                 } else {
                     return redirect()->back()->with('error', $auth->errorsArray());
                 }
@@ -325,7 +325,7 @@ class Auth extends BaseController
         return redirect()->to(site_url('/'));
     }
 
-    function secure_request_key($length)
+    public function secure_request_key($length)
     {
         $random_string = '';
         for ($i = 0; $i < $length; $i++) {
@@ -335,14 +335,13 @@ class Auth extends BaseController
         }
         return strtoupper($random_string);
     }
-    
-    
+
     public function _renderPage($view, $data = []): string
     {
-        $data = array_merge($this->data, $data); 
+        $data = array_merge($this->data, $data);
         //dd($data);
-        $data['_html_content'] = view('Auth/'.$view, $data);
-       
+        $data['_html_content'] = view('Auth/' . $view, $data);
+
         return view('Auth/layout', $data);
     }
 }

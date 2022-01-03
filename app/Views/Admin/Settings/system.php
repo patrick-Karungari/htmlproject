@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 
@@ -15,7 +15,7 @@
                 <h2 class="content-header-title float-left mb-0">System Settings</h2>
                 <div class="breadcrumb-wrapper">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?php echo site_url('admin/dashboard')?>">Home</a>
+                        <li class="breadcrumb-item"><a href="<?php echo site_url('admin/dashboard') ?>">Home</a>
                         </li>
                         <li class="breadcrumb-item"><a href="#">Settings</a>
                         </li>

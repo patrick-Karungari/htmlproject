@@ -20,8 +20,8 @@ $(function () {
         };
 
     var assetPath = '../assets/',
-        userView = 'users/view/',
-        userEdit = 'app-user-edit.html';
+        userView = 'view/',
+        userEdit = '/admin/users/edit/';
     if ($('body').attr('data-framework') === 'laravel') {
         assetPath = $('body').attr('data-asset-path');
         userView = assetPath + 'app/user/view';
@@ -34,7 +34,7 @@ $(function () {
             processing: false,
             serverSide: false,
             autoWidth: true,
-            ajax: 'users/gtsr',
+            ajax: 'admin/users/gtsr',
             headers: {'X-Requested-With': 'XMLHttpRequest'},
             // JSON file to add data
             columns: [
@@ -54,7 +54,7 @@ $(function () {
                     // For Responsive
                     className: 'control',
                     orderable: false,
-                    responsivePriority: 1,
+                    responsivePriority: 0,
                     targets: 0,
                     render: function (date, type, full, meta) {
                         return " ";
@@ -63,7 +63,9 @@ $(function () {
                 {
                     // User full name and username
                     targets: 1,
-                    responsivePriority: 2,
+                     className: 'all',
+                    width: "84px",
+                    responsivePriority: 1,
                     render: function (data, type, full, meta) {
                        
                         var $first_name = full['first_name'],
@@ -88,6 +90,7 @@ $(function () {
                         // Creates full output for row
                         var $row_output =
                             '<div class="d-flex justify-content-left align-items-center">' +
+                            '<div class="control"></div>' +
                             '<div class="avatar-wrapper">' +
                             '<div class="avatar ' +
                             colorClass +
@@ -204,7 +207,8 @@ $(function () {
                     display: $.fn.dataTable.Responsive.display.modal({
                         header: function (row) {
                             var data = row.data();
-                            return 'Details of ' + data['first_name'] + ' ' + data['last_name'];
+                            console.log(data);
+                             return 'Details of ' + data['first_name'] + ' ' + data['last_name'];
                         }
                     }),
                     type: 'column',

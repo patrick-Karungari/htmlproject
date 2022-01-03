@@ -1,5 +1,5 @@
 <?php
-namespace Flutterwave;
+namespace App\Libraries\Flutterwave\Library;
 
 // Prevent direct access to this class
 //defined('BASEPATH') OR exit('No direct script access allowed');
@@ -12,7 +12,7 @@ namespace Flutterwave;
  * @version 1.0
  **/
 
-interface EventHandlerInterface{
+interface raveEventHandlerInterface{
     /**
      * This is called only when a transaction is successful
      * @param object $transactionData This is the transaction data as returned from the Rave payment gateway

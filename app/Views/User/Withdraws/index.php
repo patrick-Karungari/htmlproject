@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 $withdraws = (new \App\Models\Withdraws())->where('user', $current_user->id)->orderBy('id', 'DESC')->findAll();
@@ -25,8 +25,8 @@ $withdraws = (new \App\Models\Withdraws())->where('user', $current_user->id)->or
 <div class="card">
     <div class="card-body">
         <?php
-        if (count($withdraws) > 0) {
-            ?>
+if (count($withdraws) > 0) {
+    ?>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -42,10 +42,10 @@ $withdraws = (new \App\Models\Withdraws())->where('user', $current_user->id)->or
                     </thead>
                     <tbody>
                     <?php
-                    $n = 0;
-                    foreach ($withdraws as $withdraw) {
-                        $n++;
-                        ?>
+$n = 0;
+    foreach ($withdraws as $withdraw) {
+        $n++;
+        ?>
                         <tr>
                             <td class="pl-0"><?php echo $n; ?></td>
                             <td><?php echo $withdraw->phone; ?></td>
@@ -53,35 +53,35 @@ $withdraws = (new \App\Models\Withdraws())->where('user', $current_user->id)->or
                             <td><?php echo $withdraw->trx_id; ?></td>
                             <td>
                                 <?php
-                                $status = $withdraw->status;
-                                if ($status == 'completed') {
-                                    ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
-                                } else if($status == 'pending') {
-                                    ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
-                                } else if($status == 'failed') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
-                                } else if($status == 'cancelled') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
-                                }
-                                ?>
+$status = $withdraw->status;
+        if ($status == 'completed') {
+            ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
+} else if ($status == 'pending') {
+            ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
+} else if ($status == 'failed') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
+} else if ($status == 'cancelled') {
+            ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
+}
+        ?>
                             </td>
                             <td><?php echo $withdraw->description; ?></td>
                             <td><?php echo $withdraw->date->format('d/m/Y h:i a'); ?></td>
                         </tr>
                         <?php
-                    }
-                    ?>
+}
+    ?>
                     </tbody>
                 </table>
             </div>
             <?php
-        } else {
-            ?>
+} else {
+    ?>
             <div class="alert alert-warning">
                 You have not made any withdraws yet
             </div>
             <?php
-        }
-        ?>
+}
+?>
     </div>
 </div>

@@ -46,16 +46,18 @@ $_deposits['data']=$deposits;
                         <div class="col-xl-6 col-lg-12 d-flex flex-column justify-content-between border-container-lg">
                             <div class="user-avatar-section">
                                 <div class="d-flex justify-content-start">
-                                    <img class="img-fluid rounded" src="../../../assets/images/avatars/7.png"
+                                    <img class="img-fluid user-avatar rounded"
+                                        src="<?php echo base_url('assets/uploads/avatars/'.$user->avatar) ?>"
                                         height="104" width="104" alt="User avatar" />
                                     <div class="d-flex flex-column ml-1">
                                         <div class="user-info mb-1">
                                             <h4 class="mb-0"><?php echo ($user->name) ?></h4>
-                                            <span class="card-text"><?php echo ($user->email) ?>
+                                            <span class=" card-text"><?php echo ($user->email) ?>
                                             </span>
                                         </div>
                                         <div class="d-flex flex-wrap">
-                                            <a href="./user-edit.html" class="btn btn-primary">Edit</a>
+                                            <a href="../edit/<?php echo ($user->username) ?>
+" class="btn btn-primary">Edit</a>
                                             <button class="btn btn-outline-danger ml-1">Delete</button>
                                         </div>
                                     </div>
@@ -163,7 +165,7 @@ $_deposits['data']=$deposits;
                 <div class=" card-body d-flex align-items-center">
 
                     <a href="<?php echo base_url('admin/users/pay') ?>"
-                        class=" badge badge-light-success text-center btn-block pt-75 pb-75"
+                        class=" badge badge-light-success  text-wrap text-center btn-block pt-75 pb-75"
                         style="font-size: 32px;">Kshs
                         <?php echo number_format($user->account, 2) ?>
                     </a>
@@ -174,72 +176,7 @@ $_deposits['data']=$deposits;
     </div>
     <!-- User Card & Plan Ends -->
 
-    <!-- User Timeline & Permissions Starts -->
-    <div class=" row ">
-        <!-- information starts -->
-        <div class=" mx-1 w-100">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title mb-2">User Timeline</h4>
-                </div>
-                <div class="card-body">
-                    <ul class="timeline">
-                        <li class="timeline-item">
-                            <span class="timeline-point timeline-point-indicator"></span>
-                            <div class="timeline-event">
-                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                                    <h6>12 Invoices have been paid</h6>
-                                    <span class="timeline-event-time">12 min ago</span>
-                                </div>
-                                <p>Invoices have been paid to the company.</p>
-                                <div class="media align-items-center">
-                                    <img class="mr-1" src="../../../assets/images/icons/file-icons/pdf.png"
-                                        alt="invoice" height="23" />
-                                    <div class="media-body">invoice.pdf</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-item">
-                            <span class="timeline-point timeline-point-warning timeline-point-indicator"></span>
-                            <div class="timeline-event">
-                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                                    <h6>Client Meeting</h6>
-                                    <span class="timeline-event-time">45 min ago</span>
-                                </div>
-                                <p>Project meeting with john @10:15am.</p>
-                                <div class="media align-items-center">
-                                    <div class="avatar">
-                                        <img src="../../../assets/images/avatars/12-small.png" alt="avatar" height="38"
-                                            width="38" />
-                                    </div>
-                                    <div class="media-body ml-50">
-                                        <h6 class="mb-0">John Doe (Client)</h6>
-                                        <span>CEO of Infibeam</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-item">
-                            <span class="timeline-point timeline-point-info timeline-point-indicator"></span>
-                            <div class="timeline-event">
-                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                                    <h6>Create a new project for client</h6>
-                                    <span class="timeline-event-time">2 days ago</span>
-                                </div>
-                                <p class="mb-0">Add files to new design folder</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- information Ends -->
 
-        <!-- User Permissions Starts -->
-
-        <!-- User Permissions Ends -->
-    </div>
-    <!-- User Timeline & Permissions Ends -->
 
     <!-- User Invoice Starts-->
     <div class="row invoice-list-wrapper">
@@ -270,12 +207,41 @@ $_deposits['data']=$deposits;
     <!-- /User Invoice Ends-->
 
 
-
+    <!-- User Invoice Starts-->
+    <div class="row invoice-list-wrapper">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-2">User Investments</h4>
+                </div>
+                <div class="card-datatable table-responsive pb-1">
+                    <table class="investments-list-table table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Plan</th>
+                                <th>Amount</th>
+                                <th>Returns</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Date Created</th>
+                                <th>Settlement Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /User Invoice Ends-->
 
 
     <script>
     deposits = '<?php echo json_encode($_deposits)  ;?>';
     withdraws = '<?php echo json_encode($_withdraws ) ;?>';
+    U_name = '<?php echo $user->name ;?>';
+    avatar = '<?php echo $user->avatar ;?>';
     id = '<?php echo $user->id ;?>';
     </script>
 

@@ -1,159 +1,105 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 use Carbon\Carbon;
 
-$year = !empty(\Config\Services::request()->getGet('year')) ? \Config\Services::request()->getGet('year') : date('Y');
-$month = !empty(\Config\Services::request()->getGet('month')) ? \Config\Services::request()->getGet('month') : date('m');
-$day = !empty(\Config\Services::request()->getGet('date')) ? \Config\Services::request()->getGet('date') : date('d');
+
 
 $model = new \App\Models\Investments();
 
 $date = date('Y-m-d');
 
-if ($year && $month && $day) {
-    $date = $year.'-'.$month.'-'.$day;
-}
-$start_of_day = Carbon::parse($date)->startOfDay()->getTimestamp();
-$end_of_day = Carbon::parse($date)->endOfDay()->getTimestamp();
-//d($start_of_day);
-//d($end_of_day);
-$amountCOB = $model->selectSum('total', 'totalAmount')->where('end_time >=', $start_of_day)->where('end_time <=', $end_of_day)->get()->getFirstRow('object')->totalAmount;
 
-$investments = $model->where('user <', '11')->orderBy('id', 'DESC')->findAll();
+$investments = $model->orderBy('id', 'DESC')->findAll();
+
+//dd($investments);
+
+
 ?>
+<!-- BEGIN: Vendor CSS-->
+
+<link rel="stylesheet" type="text/css" href="../../../assets/vendors/css/pickers/pickadate/pickadate.css">
+<link rel="stylesheet" type="text/css" href="../../../assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
+
+<link rel="stylesheet" type="text/css"
+    href="../../../assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css"
+    href="../../../assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="../../../assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css">
+<!-- END: Vendor CSS-->
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="../../../assets/css/plugins/forms/pickers/form-flat-pickr.css">
+<link rel="stylesheet" type="text/css" href="../../../assets/css/plugins/forms/pickers/form-pickadate.css">
+<!-- END: Page CSS-->
 <div class="card">
     <div class="card-body justify-content-center text-center">
         <div class="d-flex align-items-start justify-content-between">
-            <p class="card-title flex-grow">Day's Payouts</p>
+            <p class="card-title flex-grow">Investment Payouts</p>
         </div>
-        <form class="">
-            <select class="form-control-sm d-inline" name="year">
-                <?php
-                $old_year = date('Y')-2;
-                for($i = $old_year; $i <= $old_year+2; $i++) {
-                    ?>
-                    <option <?php echo ($i == date('Y') || $i == $year) ? 'selected' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
-                    <?php
-                }
-                ?>
-            </select>
-            <select class="form-control-sm d-inline" name="month">
-                <?php
-                for($i = 1; $i <= 12; $i++) {
-                    ?>
-                    <option <?php echo ($i == date('m') || $i == $month) ? 'selected' : '' ?> value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT) ?>"><?php echo Carbon::parse('2021-'.str_pad($i, 2, '0', STR_PAD_LEFT).'-01')->isoFormat('MMM') ?></option>
-                    <?php
-                }
-                ?>
-            </select>
-            <select class="form-control-sm d-inline" name="date">
-                <?php
-                for ($i = 1; $i <= 31; $i++) {
-                    ?>
-                    <option <?php echo ($i == date('d') || $i == $day) ? 'selected' : '' ?> value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT) ?>"><?php echo str_pad($i, 2, '0', STR_PAD_LEFT) ?></option>
-                    <?php
-                }
-                ?>
-            </select>
-            <button type="submit" class="btn btn-sm btn-primary d-inline">View</button>
-        </form>
-
-        <h5 class="text-white mt-3 mb-3">Payouts for <?php echo Carbon::parse($date)->format('M, d Y') ?> </h5>
-        <h1 class="font-weight-medium mb-0 pt-3 mr-2 text-center">Kshs <?php echo number_format($amountCOB,2); ?></h1>
+        <div class="d-inline-flex  justify-content-center">
+            <input type="text" id="fp-range" class="form-control flatpickr-range"
+                placeholder="MM, DD YYYY to MM, DD YYYY" />
+        </div>
+        <h3 id="heading" class="text-white mt-3 mb-3">
+        </h3>
+        <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center"></h1>
     </div>
 </div>
-<div class="card mt-4">
-    <div class="card-header">
-        <h4 class="card-title">User Investments</h4>
-    </div>
-    <div class="card-body">
-        <?php
-        if (count($investments) > 0) {
-            ?>
-            <div class="table-responsive">
-                <table id="table" class="table">
-                    <thead>
-                    <tr>
-                        <th class="pl-0 pt-0">ID</th>
-                        <th>Name</th>
-                        <th class="pl-0 pt-0">Days</th>
-                        <th class="pt-0">Investment</th>
-                        <th class="pt-0">Earnings</th>
-                        <th class="pt-0">Total</th>
-                        <th class="pt-0">Status</th>
-                        <th class="pt-0">Investment Date</th>
-                        <th class="pt-0">Settlement Date</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    $n = 0;
-                    foreach ($investments as $investment) {
-                        $n++;
-                        ?>
-                        <tr>
-                            <td class="pl-0"><?php echo $n; ?></td>
-                            <td>
-                                <?php
 
-                                if ($investment->user->name) {
-                                    ?>
-                                    <a href="<?php echo site_url('admin/users/view/'.$investment->user->id) ?>"><?php echo $investment->user->name; ?></a>
-                                    <?php
-                                } else {
-                                    echo "Deleted User";
-                                }
-                                ?>
-                            </td>
-                            <td><?php echo $investment->plan->title; ?></td>
-                            <td><?php echo 'Kshs '.number_format($investment->amount, 2); ?></td>
-                            <td><?php echo 'Kshs '.number_format($investment->return, 2); ?></td>
-                            <td><?php echo 'Kshs '.number_format($investment->total, 2); ?></td>
-                            <td>
-                                <?php
-                                $status = $investment->status;
-                                if ($status == 'completed') {
-                                    ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label>
-                                    <?php
-                                } else if($status == 'pending') {
-                                    ?> <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label> <?php
-                                } else if($status == 'failed') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label> <?php
-                                } else if($status == 'cancelled') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
-                                }
-                                ?>
-                            </td>
-                            <td><?php echo $investment->created_at->format('d/m/Y h:i a'); ?></td>
-                            <td><?php echo \Carbon\Carbon::createFromTimestamp($investment->end_time)->format('d/m/Y h:i a') ?></td>
+<!-- User Invoice Starts-->
+<div class="row invoice-list-wrapper">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-2">User Investments</h4>
+            </div>
+            <div class="card-datatable table-responsive pb-1">
+                <table class="investments-list-table table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>User</th>
+                            <th>Plan</th>
+                            <th>Amount</th>
+                            <th>Returns</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Date Created</th>
+                            <th>Settlement Date</th>
+                            <th>Actions</th>
                         </tr>
-                        <?php
-                    }
-                    ?>
-                    </tbody>
+                    </thead>
                 </table>
             </div>
-            <?php
-        } else {
-            ?>
-            <div class="alert alert-warning">
-                You have not made any investments yet
-            </div>
-            <?php
-        }
-        ?>
+        </div>
     </div>
 </div>
-<script>
+<!-- /User Invoice Ends-->
 
-    document.getElementById("investments").className += " active";
-    $(document).ready( function () {
-        $('#table').DataTable();
-    } );
+<script>
+document.getElementById("investments").className += " active";
 </script>
+<!-- BEGIN: Page Vendor JS-->
+<script src="../../../assets/vendors/js/pickers/pickadate/picker.js"></script>
+<script src="../../../assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+<script src="../../../assets/vendors/js/pickers/pickadate/picker.time.js"></script>
+<script src="../../../assets/vendors/js/pickers/pickadate/legacy.js"></script>
+<script src="../../../assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<!-- END: Page Vendor JS-->
+<!-- BEGIN: Page Vendor JS-->
+<script src="../../../assets/vendors/js/extensions/moment.min.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+<script src="../../../assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js"></script>
+<!-- END: Page Vendor JS-->
+<!-- BEGIN: Page JS-->
+<script src="../../../assets/js/scripts/forms/pickers/form-pickers-inv.js"></script>
+<!-- END: Page JS-->

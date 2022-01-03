@@ -1,9 +1,9 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 use Carbon\Carbon;
@@ -37,11 +37,11 @@ $transactionsModel = new \App\Models\Transactions();
                     <p class="font-weight-medium mb-0">Total Deposits</p>
                 </div>
                 <div class="d-flex align-items-center mt-3 flex-wrap">
-                    <h3 class="font-weight-medium mb-0 mr-2"><?php echo number_format((($depositsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount)-25000),2); ?></h3>
+                    <h3 class="font-weight-medium mb-0 mr-2"><?php echo number_format((($depositsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount) - 25000), 2); ?></h3>
                     <div class="badge badge-outline-light badge-pill mt-md-2 mt-xl-0">
                         <div class="d-flex align-items-baseline">
                             <span class="mr-2">Today</span>
-                            <span class="mb-0"><?php echo number_format($depositsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->like('date', date('Y-m-d'), 'after')->get()->getFirstRow('object')->totalAmount,2) ?></span>
+                            <span class="mb-0"><?php echo number_format($depositsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->like('date', date('Y-m-d'), 'after')->get()->getFirstRow('object')->totalAmount, 2) ?></span>
                         </div>
                     </div>
                 </div>
@@ -60,14 +60,13 @@ $transactionsModel = new \App\Models\Transactions();
                 </div>
                 <div class="d-flex align-items-center mt-3 flex-wrap">
                      <?php
-                
-                
-                ?>
-                    <h3 class="font-weight-medium mb-0 mr-2"><?php echo number_format((($withdrawsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount) + 25000),2) ?></h3>
+
+?>
+                    <h3 class="font-weight-medium mb-0 mr-2"><?php echo number_format((($withdrawsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount) + 25000), 2) ?></h3>
                     <div class="badge badge-outline-light badge-pill mt-md-2 mt-xl-0">
                         <div class="d-flex align-items-baseline">
                             <span class="mr-2">Today</span>
-                            <span class="mb-0"><?php echo number_format($withdrawsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->like('date', date('Y-m-d'), 'after')->get()->getFirstRow('object')->totalAmount,2)?></span>
+                            <span class="mb-0"><?php echo number_format($withdrawsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->like('date', date('Y-m-d'), 'after')->get()->getFirstRow('object')->totalAmount, 2) ?></span>
                         </div>
                     </div>
                 </div>
@@ -101,11 +100,11 @@ $transactionsModel = new \App\Models\Transactions();
                     <p class="font-weight-medium mb-0">Registration Fee</p>
                 </div>
                 <div class="d-flex align-items-center mt-3 flex-wrap">
-                    <h3 class="font-weight-medium mb-0 mr-2"><?php echo number_format($transactionsModel->selectSum('amount', 'totalAmount')->where('type', 'registration')->get()->getFirstRow('object')->totalAmount,2); ?></h3>
+                    <h3 class="font-weight-medium mb-0 mr-2"><?php echo number_format($transactionsModel->selectSum('amount', 'totalAmount')->where('type', 'registration')->get()->getFirstRow('object')->totalAmount, 2); ?></h3>
                     <div class="badge badge-outline-light badge-pill mt-md-2 mt-xl-0">
                         <div class="d-flex align-items-baseline">
                             <span class="mr-2">Today</span>
-                            <span class="mb-0"><?php echo number_format($transactionsModel->selectSum('amount', 'totalAmount')->where('type', 'registration')->like('date', date('Y-m-d'), 'after')->get()->getFirstRow('object')->totalAmount,2); ?></span>
+                            <span class="mb-0"><?php echo number_format($transactionsModel->selectSum('amount', 'totalAmount')->where('type', 'registration')->like('date', date('Y-m-d'), 'after')->get()->getFirstRow('object')->totalAmount, 2); ?></span>
                         </div>
                     </div>
                 </div>
@@ -124,11 +123,11 @@ $transactionsModel = new \App\Models\Transactions();
                 </div>
                 <div class="d-flex align-items-center mt-3 flex-wrap">
                 <?php
-               ?>    
-                <h3 class="font-weight-medium mb-0 mr-2"> 20,650.00</h3>    
-                            
-                </div>                
-                <small class="d-block mt-2"> Total Expenses</small>                
+?>
+                <h3 class="font-weight-medium mb-0 mr-2"> 20,650.00</h3>
+
+                </div>
+                <small class="d-block mt-2"> Total Expenses</small>
             </div>
         </div>
     </div>
@@ -143,17 +142,17 @@ $transactionsModel = new \App\Models\Transactions();
                 </div>
                 <div class="d-flex align-items-center mt-3 flex-wrap">
                 <?php
-                $total_deposits = $depositsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount - 25000;
-                 $t_w = $withdrawsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount + 25000;
-               ?>    
-                <h3 class="font-weight-medium mb-0 mr-2"> <?php echo number_format(($total_deposits-$t_w - 20650), 2)?></h3>    
-                            
-                </div>                
-                <small class="d-block mt-2">Working Capital</small>                
+$total_deposits = $depositsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount - 25000;
+$t_w = $withdrawsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount + 25000;
+?>
+                <h3 class="font-weight-medium mb-0 mr-2"> <?php echo number_format(($total_deposits - $t_w - 20650), 2) ?></h3>
+
+                </div>
+                <small class="d-block mt-2">Working Capital</small>
             </div>
         </div>
     </div>
-   
+
 </div>
 
 <div class="row">
@@ -164,56 +163,56 @@ $transactionsModel = new \App\Models\Transactions();
                     <p class="card-title flex-grow">Day's Payouts</p>
                 </div>
                 <?php
-                $year = !empty(\Config\Services::request()->getGet('year')) ? \Config\Services::request()->getGet('year') : date('Y');
-                $month = !empty(\Config\Services::request()->getGet('month')) ? \Config\Services::request()->getGet('month') : date('m');
-                $day = !empty(\Config\Services::request()->getGet('date')) ? \Config\Services::request()->getGet('date') : date('d');
-                ?>
+$year = !empty(\Config\Services::request()->getGet('year')) ? \Config\Services::request()->getGet('year') : date('Y');
+$month = !empty(\Config\Services::request()->getGet('month')) ? \Config\Services::request()->getGet('month') : date('m');
+$day = !empty(\Config\Services::request()->getGet('date')) ? \Config\Services::request()->getGet('date') : date('d');
+?>
                 <form class="">
                     <select class="form-control-sm d-inline" name="year">
                         <?php
-                        $old_year = date('Y')-2;
-                        for($i = $old_year; $i <= $old_year+2; $i++) {
-                            ?>
+$old_year = date('Y') - 2;
+for ($i = $old_year; $i <= $old_year + 2; $i++) {
+    ?>
                             <option <?php echo ($i == date('Y') || $i == $year) ? 'selected' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
                             <?php
-                        }
-                        ?>
+}
+?>
                     </select>
                     <select class="form-control-sm d-inline" name="month">
                         <?php
-                        for($i = 1; $i <= 12; $i++) {
-                            ?>
-                            <option <?php echo ($i == date('m') || $i == $month) ? 'selected' : '' ?> value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT) ?>"><?php echo Carbon::parse('2021-'.str_pad($i, 2, '0', STR_PAD_LEFT).'-01')->isoFormat('MMM') ?></option>
+for ($i = 1; $i <= 12; $i++) {
+    ?>
+                            <option <?php echo ($i == date('m') || $i == $month) ? 'selected' : '' ?> value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT) ?>"><?php echo Carbon::parse('2021-' . str_pad($i, 2, '0', STR_PAD_LEFT) . '-01')->isoFormat('MMM') ?></option>
                             <?php
-                        }
-                        ?>
+}
+?>
                     </select>
                     <select class="form-control-sm d-inline" name="date">
                         <?php
-                        for ($i = 1; $i <= 31; $i++) {
-                            ?>
+for ($i = 1; $i <= 31; $i++) {
+    ?>
                             <option <?php echo ($i == date('d') || $i == $day) ? 'selected' : '' ?> value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT) ?>"><?php echo str_pad($i, 2, '0', STR_PAD_LEFT) ?></option>
                             <?php
-                        }
-                        ?>
+}
+?>
                     </select>
                     <button type="submit" class="btn btn-sm btn-primary d-inline">View</button>
                 </form>
                 <?php
-                $date = date('Y-m-d');
+$date = date('Y-m-d');
 
-                if ($year && $month && $day) {
-                    $date = $year.'-'.$month.'-'.$day;
-                }
-                $start_of_day = Carbon::parse($date)->startOfDay()->getTimestamp();
-                $end_of_day = Carbon::parse($date)->endOfDay()->getTimestamp();
-                //d($start_of_day);
-                //d($end_of_day);
-                $amountCOB = (new \App\Models\Investments())->selectSum('total', 'totalAmount')->where('end_time >=', $start_of_day)->where('end_time <=', $end_of_day)->get()->getFirstRow('object')->totalAmount;
-                //d($amountCOB);
-                ?>
+if ($year && $month && $day) {
+    $date = $year . '-' . $month . '-' . $day;
+}
+$start_of_day = Carbon::parse($date)->startOfDay()->getTimestamp();
+$end_of_day = Carbon::parse($date)->endOfDay()->getTimestamp();
+//d($start_of_day);
+//d($end_of_day);
+$amountCOB = (new \App\Models\Investments())->selectSum('total', 'totalAmount')->where('end_time >=', $start_of_day)->where('end_time <=', $end_of_day)->get()->getFirstRow('object')->totalAmount;
+//d($amountCOB);
+?>
                 <h5 class="text-white mt-3 mb-3">Payouts for <?php echo Carbon::parse($date)->format('M, d Y') ?> </h5>
-                <h1 class="font-weight-medium mb-0 pt-3 mr-2 text-center">Kshs <?php echo number_format($amountCOB,2); ?></h1>
+                <h1 class="font-weight-medium mb-0 pt-3 mr-2 text-center">Kshs <?php echo number_format($amountCOB, 2); ?></h1>
             </div>
         </div>
     </div>
@@ -235,8 +234,8 @@ $transactionsModel = new \App\Models\Transactions();
 </div>
 <?php
 $metrics = new \App\Libraries\Metrics();
-$desposits = number_format((($depositsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount)-27000),2);
-$withdrawals = number_format((($withdrawsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount) + 27000),2)
+$desposits = number_format((($depositsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount) - 27000), 2);
+$withdrawals = number_format((($withdrawsModel->selectSum('amount', 'totalAmount')->where('status', 'completed')->get()->getFirstRow('object')->totalAmount) + 27000), 2)
 ?>
 <script>
     $(document).ready(function () {

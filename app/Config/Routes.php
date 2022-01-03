@@ -33,7 +33,20 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->add('admin', '\App\Controllers\Admin\Admin::index');
+$routes->add('dashboard', '\App\Controllers\Admin\Admin::index');
+$routes->add('email', '\App\Controllers\Admin\Email::index');
+$routes->add('chat', '\App\Controllers\Admin\Chat::index');
+$routes->add('users', '\App\Controllers\Admin\Users::index');
+$routes->add('edit/(:any)', '\App\Controllers\Admin\Users::edit/$1');
+$routes->add('view/(:any)', '\App\Controllers\Admin\Users::view/$1');
+$routes->add('plans/edit/(:any)', '\App\Controllers\Admin\Plans::edit/$1');
+$routes->add('plans', '\App\Controllers\Admin\Plans::index');
+$routes->add('profile', '\App\Controllers\Admin\Profile::index');
+$routes->add('withdraws', '\App\Controllers\Admin\Withdraws::index');
+$routes->add('deposits', '\App\Controllers\Admin\Deposits::index');
+$routes->add('investments', '\App\Controllers\Admin\Investments::index');
+
+
 $route['auth'] = 'auth/mail_verify';
 
 

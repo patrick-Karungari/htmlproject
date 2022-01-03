@@ -1,13 +1,12 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Entities;
-
 
 use App\Models\Users;
 
@@ -21,7 +20,7 @@ class User extends \CodeIgniter\Entity
 
     public function getName()
     {
-        return $this->attributes['first_name'].' '.$this->attributes['last_name'];
+        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
     }
 
     public function getRefBy()
@@ -37,7 +36,7 @@ class User extends \CodeIgniter\Entity
     public function getAvatarUrl()
     {
         if (!empty($this->attributes['avatar'])) {
-            return base_url('uploads/avatars/'.$this->attributes['avatar']);
+            return base_url('uploads/avatars/' . $this->attributes['avatar']);
         }
 
         return base_url('assets/images/faces/face1.jpg');
@@ -67,9 +66,11 @@ class User extends \CodeIgniter\Entity
 
     public function update_usermeta($meta_key, $meta_value)
     {
-        if($this->usermeta_exists($meta_key)) {
+        if ($this->usermeta_exists($meta_key)) {
             $result = \Config\Database::connect()->table('usersmeta')->where(['userid' => $this->attributes['id'], 'meta_key' => $meta_key])->update(['meta_value' => $meta_value]);
-            if($result) return true;
+            if ($result) {
+                return true;
+            }
 
             return false;
         } else {
@@ -96,9 +97,12 @@ class User extends \CodeIgniter\Entity
         return false;
     }
 
-    public function delete_usermeta($meta_key) {
+    public function delete_usermeta($meta_key)
+    {
         $result = \Config\Database::connect()->table('usersmeta')->where(['userid' => $this->attributes['id'], 'meta_key' => $meta_key])->delete();
-        if($result) return true;
+        if ($result) {
+            return true;
+        }
 
         return false;
     }
@@ -112,7 +116,8 @@ class User extends \CodeIgniter\Entity
      * @param string $permission Permission to check
      * @return mixed|boolean True for allowed, false for denied
      */
-    public function can(string $permission) {
+    public function can(string $permission)
+    {
         $ionAuth = new \App\Libraries\Auth();
 
         $capabilities = [];
@@ -120,31 +125,32 @@ class User extends \CodeIgniter\Entity
         //Get group capabilities
         $groups = $ionAuth->getUsersGroups($this->attributes['id']);
         foreach ($groups as $group) {
-            if($cap = json_decode($group->capabilities, true)) {
+            if ($cap = json_decode($group->capabilities, true)) {
                 $capabilities = array_merge($capabilities, $cap);
             }
         }
         //Get user specific capabilities
         $caps = $this->usermeta('_user_capabilities', json_encode([]));
-        if($caps = json_decode($caps, true)) {
+        if ($caps = json_decode($caps, true)) {
             $capabilities = array_merge($capabilities, $caps);
         }
 
-        if(isset($capabilities[$permission]) && $capabilities[$permission] == 1) {
+        if (isset($capabilities[$permission]) && $capabilities[$permission] == 1) {
             $return = true;
         } else {
             $return = false;
         }
         //Give admin exclusive permissions
-        if($ionAuth->isAdmin($this->attributes['id'])) {
+        if ($ionAuth->isAdmin($this->attributes['id'])) {
             $return = true;
         }
 
-        return apply_filters('check_permission_'.$permission, $return);
+        return apply_filters('check_permission_' . $permission, $return);
         //return $return;
     }
 
-    public function add_cap($permission, $allowed = 1) {
+    public function add_cap($permission, $allowed = 1)
+    {
         $caps = $this->usermeta('_user_capabilities', json_encode([]));
         $caps = json_decode($caps, true);
         $caps[$permission] = $allowed;
@@ -152,7 +158,8 @@ class User extends \CodeIgniter\Entity
         return $this->update_usermeta('_user_capabilities', json_encode($caps));
     }
 
-    public function remove_cap($permission, $allowed = 1) {
+    public function remove_cap($permission, $allowed = 1)
+    {
         $caps = $this->usermeta('_user_capabilities', json_encode([]));
         $caps = json_decode($caps, true);
         unset($caps[$permission]);
@@ -160,8 +167,9 @@ class User extends \CodeIgniter\Entity
         return $this->update_usermeta('_user_capabilities', json_encode($caps));
     }
 
-    public function set_caps(array $capabilities = array()) {
-        
+    public function set_caps(array $capabilities = array())
+    {
+
         $caps = $this->usermeta('_user_capabilities', json_encode([]));
         $caps = json_decode($caps, true);
         $caps = array_merge($caps, $capabilities);

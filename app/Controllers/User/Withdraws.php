@@ -1,18 +1,16 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Controllers\User;
 
-
 use App\Libraries\Metrics;
 use App\Libraries\MpesaLibrary;
 use App\Models\Users;
-use App\Libraries\Mailer;
 
 class Withdraws extends \App\Controllers\UserController
 {
@@ -31,37 +29,37 @@ class Withdraws extends \App\Controllers\UserController
     public function create()
     {
         if ($this->request->getPost()) {
-            
-           // return redirect()->back()->with('error', "Temporarily disabled. We are fixing the erroneous double deposits incurred from yesterday");
+
+            // return redirect()->back()->with('error', "Temporarily disabled. We are fixing the erroneous double deposits incurred from yesterday");
 
             $minimum_withdraw_amount = get_option('minimum_bonus_withdraw', 0);
 
-          /***   if($minimum_withdraw_amount > (new Metrics())->getUserBonusTotals($this->current_user->id)) {
-                return redirect()->back()->with('error', "You can only withdraw if your investments total to Kshs $minimum_withdraw_amount");
-            }        
-           */
+            /***   if($minimum_withdraw_amount > (new Metrics())->getUserBonusTotals($this->current_user->id)) {
+            return redirect()->back()->with('error', "You can only withdraw if your investments total to Kshs $minimum_withdraw_amount");
+            }
+             */
 
             $amount = $this->request->getPost('amount');
             $running_investments = (new Metrics())->getUserInvestmentTotals($this->current_user->id);
-            $current_withdrawal = (new Metrics())-> getDayTotalWithdrawals($this->current_user->id);
+            $current_withdrawal = (new Metrics())->getDayTotalWithdrawals($this->current_user->id);
             $available_withdrawal = intval(trim($running_investments - $current_withdrawal));
-            if($current_withdrawal + $amount > $running_investments){
-               
-                 if($available_withdrawal<0){
-                     return redirect()->back()->with('error', "Your remaining withdraw limit is KES 0. Your limit is equal to your running investment of KES $running_investments. Please invest more to withdraw more. Today's withdrawal: $current_withdrawal");
-                 }
+            if ($current_withdrawal + $amount > $running_investments) {
+
+                if ($available_withdrawal < 0) {
+                    return redirect()->back()->with('error', "Your remaining withdraw limit is KES 0. Your limit is equal to your running investment of KES $running_investments. Please invest more to withdraw more. Today's withdrawal: $current_withdrawal");
+                }
                 return redirect()->back()->with('error', "Your remaining withdraw limit is KES $available_withdrawal. Your limit is equal to your running investment of KES $running_investments. Please try a lower amount.Today's withdrawal: $current_withdrawal");
 
             }
 
             $deposit_rate = (new Metrics())->getDepositRate($this->current_user->id, $amount);
-             $deposit_rate = number_format($deposit_rate, 1);
-            if($deposit_rate<-20){
-                 return redirect()->back()->with('error', "Your remaining withdraw limit is KES 0. Deposit Rate: You have a negative deposit rate of $deposit_rate %. Please deposit and re-invest.");
+            $deposit_rate = number_format($deposit_rate, 1);
+            if ($deposit_rate < -20) {
+                return redirect()->back()->with('error', "Your remaining withdraw limit is KES 0. Deposit Rate: You have a negative deposit rate of $deposit_rate %. Please deposit and re-invest.");
 
             }
 
-             if($amount > (new Metrics())->getUserInvestmentTotals($this->current_user->id)) {
+            if ($amount > (new Metrics())->getUserInvestmentTotals($this->current_user->id)) {
                 $running_investments = (new Metrics())->getUserInvestmentTotals($this->current_user->id);
                 return redirect()->back()->with('error', "You cannot withdraw more than your running investments. Your running investment is KES $running_investments");
             }
@@ -70,33 +68,31 @@ class Withdraws extends \App\Controllers\UserController
             }
 
             $trx_fee = 0;
-            if($amount <= 100){
+            if ($amount <= 100) {
                 $trx_fee = 0;
-            }elseif($amount > 100 && $amount <= 500 ) {
-               $trx_fee = 6;
-            } elseif($amount > 500 && $amount <= 1000 ) {
-               $trx_fee = 12;
-            }elseif($amount > 1000 && $amount <= 1500 ) {
-               $trx_fee = 22;
-            }elseif($amount > 1500 && $amount <= 2500 ) {
-               $trx_fee = 32;
-            }
-            elseif($amount > 2500 && $amount <= 3500 ) {
-               $trx_fee = 51;
-            }  
-            elseif($amount > 3500 && $amount <= 5000 ) {
-               $trx_fee =55;
-            }  elseif($amount > 5000 && $amount <= 7500 ) {
-               $trx_fee = 75;
-            } elseif($amount > 7500 && $amount <= 10000 ) {
-               $trx_fee = 87;
-            } elseif($amount > 10000 && $amount <= 15000 ) {
-               $trx_fee = 97;
-            } elseif($amount > 15000 && $amount <= 20000 ) {
-               $trx_fee = 102;
-            } else{
+            } elseif ($amount > 100 && $amount <= 500) {
+                $trx_fee = 6;
+            } elseif ($amount > 500 && $amount <= 1000) {
+                $trx_fee = 12;
+            } elseif ($amount > 1000 && $amount <= 1500) {
+                $trx_fee = 22;
+            } elseif ($amount > 1500 && $amount <= 2500) {
+                $trx_fee = 32;
+            } elseif ($amount > 2500 && $amount <= 3500) {
+                $trx_fee = 51;
+            } elseif ($amount > 3500 && $amount <= 5000) {
+                $trx_fee = 55;
+            } elseif ($amount > 5000 && $amount <= 7500) {
+                $trx_fee = 75;
+            } elseif ($amount > 7500 && $amount <= 10000) {
+                $trx_fee = 87;
+            } elseif ($amount > 10000 && $amount <= 15000) {
+                $trx_fee = 97;
+            } elseif ($amount > 15000 && $amount <= 20000) {
+                $trx_fee = 102;
+            } else {
                 $trx_fee = 105;
-            }  
+            }
             $withdraw_plus_transaction_fee = $amount + $trx_fee;
 
             if ($this->current_user->account < $withdraw_plus_transaction_fee) {
@@ -117,15 +113,15 @@ class Withdraws extends \App\Controllers\UserController
                 //$response = $mpesa->sendMoney($phone_number, $amount);
 
                 //if ($res = json_decode($response)) {
-                if (TRUE) {
+                if (true) {
                     //if (isset($res->ResponseCode) && $res->ResponseCode == 0) {
-                    if (TRUE) {
+                    if (true) {
                         $new_balance = $this->current_user->account - $withdraw_plus_transaction_fee;
                         $withdraw = [
                             'user' => $this->current_user->id,
                             'amount' => $amount,
                             'phone' => $phone_number,
-                            'description' => "Withdraw Kshs $amount. Transaction cost $trx_fee. New Balance $new_balance"
+                            'description' => "Withdraw Kshs $amount. Transaction cost $trx_fee. New Balance $new_balance",
                         ];
 
                         (new \App\Models\Withdraws())->save($withdraw);
@@ -134,22 +130,22 @@ class Withdraws extends \App\Controllers\UserController
                         $template = get_option('withdraw_email_template', '');
                         $emails = get_option('withdraw_emails_notifications', '');
                         /*if ($template != '' && $emails != '') {
-                            $template_fields = [
-                                'name'  => $this->current_user->name,
-                                'phone' => $this->current_user->phone,
-                                'withdraw_phone' => $phone_number,
-                                'account_balance'   =>$this->current_user->account,
-                                'withdraw_amount'   => $amount,
-                                'transaction_id'    => "TransactionReceipt",
-                                'datetime'  => date('d/m/Y h:i A'),
-                                'mpesa_name'    => $this->current_user->name
-                            ];
-                            $name =$this->current_user->name;
-                            $parser = $parser = \Config\Services::parser();;
-                            $message = $parser->setData($template_fields)->renderString($template);
-                            $subject = "[REQUEST FOR WITHDRAW] New Withdraw request from $phone_number, $name";
-                            $emails = explode(',', $emails);
-                            @(new Mailer())->sendMessage($emails, $subject, $message);
+                        $template_fields = [
+                        'name'  => $this->current_user->name,
+                        'phone' => $this->current_user->phone,
+                        'withdraw_phone' => $phone_number,
+                        'account_balance'   =>$this->current_user->account,
+                        'withdraw_amount'   => $amount,
+                        'transaction_id'    => "TransactionReceipt",
+                        'datetime'  => date('d/m/Y h:i A'),
+                        'mpesa_name'    => $this->current_user->name
+                        ];
+                        $name =$this->current_user->name;
+                        $parser = $parser = \Config\Services::parser();;
+                        $message = $parser->setData($template_fields)->renderString($template);
+                        $subject = "[REQUEST FOR WITHDRAW] New Withdraw request from $phone_number, $name";
+                        $emails = explode(',', $emails);
+                        @(new Mailer())->sendMessage($emails, $subject, $message);
                         }*/
                         return redirect()->back()->with('success', "Your request has been received and is being processed.");
                     } else {

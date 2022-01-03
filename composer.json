@@ -15,6 +15,7 @@
 		"guzzlehttp/guzzle": "^7.4",
 		"kint-php/kint": "^3.3",
 		"laminas/laminas-escaper": "^2.6",
+		"messagebird/php-rest-api": "^2.1",
 		"nesbot/carbon": "^2.46",
 		"psr/log": "^1.1"
 	},

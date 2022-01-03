@@ -95,9 +95,74 @@
                                                             <tr>
                                                                 <td
                                                                     style="padding-bottom:10px;width:100%;padding-right:0px;padding-left:0px;">
-                                                                    <div align="center" style="line-height:10px"><img
-                                                                            alt="your-logo" src="<?php echo sprintf(base_url('assets/images/logo/logo.png')) ?>
-" style="display: block; height: auto; border: 0; width: 175px; max-width: 100%;" title="your-logo" width="175" />
+                                                                    <div align="center" style="line-height:10px">
+                                                                        <!-- Brand logo--><a class="brand-logo "
+                                                                            href="javascript:void(0);">
+                                                                            <svg viewBox="0 0 139 95" version="1.1"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                height="28">
+                                                                                <defs>
+                                                                                    <lineargradient
+                                                                                        id="linearGradient-1" x1="100%"
+                                                                                        y1="10.5120544%" x2="50%"
+                                                                                        y2="89.4879456%">
+                                                                                        <stop stop-color="#000000"
+                                                                                            offset="0%"></stop>
+                                                                                        <stop stop-color="#FFFFFF"
+                                                                                            offset="100%"></stop>
+                                                                                    </lineargradient>
+                                                                                    <lineargradient
+                                                                                        id="linearGradient-2"
+                                                                                        x1="64.0437835%"
+                                                                                        y1="46.3276743%" x2="37.373316%"
+                                                                                        y2="100%">
+                                                                                        <stop stop-color="#EEEEEE"
+                                                                                            stop-opacity="0"
+                                                                                            offset="0%"></stop>
+                                                                                        <stop stop-color="#FFFFFF"
+                                                                                            offset="100%"></stop>
+                                                                                    </lineargradient>
+                                                                                </defs>
+                                                                                <g id="Page-1" stroke="none"
+                                                                                    stroke-width="1" fill="none"
+                                                                                    fill-rule="evenodd">
+                                                                                    <g id="Artboard"
+                                                                                        transform="translate(-400.000000, -178.000000)">
+                                                                                        <g id="Group"
+                                                                                            transform="translate(400.000000, 178.000000)">
+                                                                                            <path class="text-primary"
+                                                                                                id="Path"
+                                                                                                d="M-5.68434189e-14,2.84217094e-14 L39.1816085,2.84217094e-14 L69.3453773,32.2519224 L101.428699,2.84217094e-14 L138.784583,2.84217094e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L6.71554594,44.4188507 C2.46876683,39.9813776 0.345377275,35.1089553 0.345377275,29.8015838 C0.345377275,24.4942122 0.230251516,14.560351 -5.68434189e-14,2.84217094e-14 Z"
+                                                                                                style="fill: currentColor">
+                                                                                            </path>
+                                                                                            <path id="Path1"
+                                                                                                d="M69.3453773,32.2519224 L101.428699,1.42108547e-14 L138.784583,1.42108547e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L32.8435758,70.5039241 L69.3453773,32.2519224 Z"
+                                                                                                fill="url(#linearGradient-1)"
+                                                                                                opacity="0.2"></path>
+                                                                                            <polygon id="Path-2"
+                                                                                                fill="#000000"
+                                                                                                opacity="0.049999997"
+                                                                                                points="69.3922914 32.4202615 32.8435758 70.5039241 54.0490008 16.1851325">
+                                                                                            </polygon>
+                                                                                            <polygon id="Path-21"
+                                                                                                fill="#000000"
+                                                                                                opacity="0.099999994"
+                                                                                                points="69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338">
+                                                                                            </polygon>
+                                                                                            <polygon id="Path-3"
+                                                                                                fill="url(#linearGradient-2)"
+                                                                                                opacity="0.099999994"
+                                                                                                points="101.428699 0 83.0667527 94.1480575 130.378721 47.0740288">
+                                                                                            </polygon>
+                                                                                        </g>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </svg>
+                                                                            <h2
+                                                                                class="brand-text align-items-left text-primary ml-1">
+                                                                                Ken Coin</h2>
+                                                                        </a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -110,44 +175,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-2"
-                            role="presentation"
-                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f5f5f5;"
-                            width="100%">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0"
-                                            class="row-content stack" role="presentation"
-                                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 500px;"
-                                            width="500">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="column"
-                                                        style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 0px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;"
-                                                        width="100%">
-                                                        <table border="0" cellpadding="0" cellspacing="0"
-                                                            class="image_block" role="presentation"
-                                                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
-                                                            width="100%">
-                                                            <tr>
-                                                                <td
-                                                                    style="width:100%;padding-right:0px;padding-left:0px;">
-                                                                    <div align="center" style="line-height:10px"><img
-                                                                            class="big" src=""
-                                                                            style="display: block; height: auto; border: 0; width: 500px; max-width: 100%;"
-                                                                            width="500" /></div>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
                         <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-3"
                             role="presentation"
                             style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f5f5f5;"
@@ -172,10 +200,9 @@
                                                                 <td
                                                                     style="padding-bottom:5px;padding-left:5px;padding-right:5px;width:100%;">
                                                                     <div align="center" style="line-height:10px"><img
-                                                                            alt="reset-password"
-                                                                            src="images/pass-animate.gif"
-                                                                            style="display: block; height: auto; border: 0; width: 275px; max-width: 100%;"
-                                                                            title="reset-password" width="275" /></div>
+                                                                            alt="reset-password" src="<?php echo sprintf(base_url('assets/images/pass-animate.gif')) ?>
+" style="display: block; height: auto; border: 0; width: 275px; max-width: 100%;" title="reset-password" width="275" />
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -307,9 +334,8 @@
                                                                 <td
                                                                     style="width:100%;padding-right:0px;padding-left:0px;">
                                                                     <div align="center" style="line-height:10px"><img
-                                                                            class="big" src="images/Btm.png"
-                                                                            style="display: block; height: auto; border: 0; width: 500px; max-width: 100%;"
-                                                                            width="500" /></div>
+                                                                            class="big" src="<?php echo sprintf(base_url('assets/images/Btm.png')) ?>
+" style="display: block; height: auto; border: 0; width: 500px; max-width: 100%;" width="500" /></div>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -418,34 +444,28 @@
                                                                                     href="https://www.facebook.com/"
                                                                                     target="_blank"><img alt="Facebook"
                                                                                         height="32"
-                                                                                        src="images/facebook2x.png"
+                                                                                        src="<?php echo sprintf(base_url('assets/images/facebook2x.png')) ?>"
                                                                                         style="display: block; height: auto; border: 0;"
                                                                                         title="Facebook"
                                                                                         width="32" /></a></td>
                                                                             <td style="padding:0 5px 0 5px;"><a
                                                                                     href="https://twitter.com/"
                                                                                     target="_blank"><img alt="Twitter"
-                                                                                        height="32"
-                                                                                        src="images/twitter2x.png"
-                                                                                        style="display: block; height: auto; border: 0;"
-                                                                                        title="Twitter"
-                                                                                        width="32" /></a></td>
+                                                                                        height="32" src="<?php echo sprintf(base_url('assets/images/twitter2x.png')) ?>
+" style="display: block; height: auto; border: 0;" title="Twitter" width="32" /></a></td>
                                                                             <td style="padding:0 5px 0 5px;"><a
                                                                                     href="https://instagram.com/"
                                                                                     target="_blank"><img alt="Instagram"
                                                                                         height="32"
-                                                                                        src="images/instagram2x.png"
+                                                                                        src="<?php echo sprintf(base_url('assets/images/instagram2x.png')) ?>"
                                                                                         style="display: block; height: auto; border: 0;"
                                                                                         title="Instagram"
                                                                                         width="32" /></a></td>
                                                                             <td style="padding:0 5px 0 5px;"><a
                                                                                     href="https://www.linkedin.com/"
                                                                                     target="_blank"><img alt="LinkedIn"
-                                                                                        height="32"
-                                                                                        src="images/linkedin2x.png"
-                                                                                        style="display: block; height: auto; border: 0;"
-                                                                                        title="LinkedIn"
-                                                                                        width="32" /></a></td>
+                                                                                        height="32" src="<?php echo sprintf(base_url('assets/images/linkedin2x.png')) ?>
+" style="display: block; height: auto; border: 0;" title="LinkedIn" width="32" /></a></td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>

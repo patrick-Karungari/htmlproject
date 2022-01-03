@@ -1,12 +1,16 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
-
 namespace App\Controllers\Admin;
+
+
+use App\Libraries\Flutterwave\Library\RaveEventHandlerInterface;
+use App\Libraries\Flutterwave\Library\Rave;
+
 
 
 class Users extends \App\Controllers\AdminController
@@ -15,7 +19,7 @@ class Users extends \App\Controllers\AdminController
     {
         parent::__construct();
         $this->data = [
-            'site_title' => "Users"
+            'site_title' => "Users",
         ];
     }
 
@@ -24,7 +28,7 @@ class Users extends \App\Controllers\AdminController
 
         return $this->_renderPage('Users/index', $this->data);
     }
-     public function redirect()
+    public function redirect()
     {
 
         return redirect()->back();
@@ -34,18 +38,35 @@ class Users extends \App\Controllers\AdminController
 
         return $this->_renderPage('Pay/index', $this->data);
     }
+    public function edit($id)
+    {
+        
+        $user = (new \App\Models\Users())->Where('username', $id)->find();
+        //dd($user);
+        $user = $user[0];
+
+        if (!$user) {
+            return redirect()->back()->with('error', "User does not exist");
+        }
+
+        $this->data['site_title'] = $user->name;
+        $this->data['user'] = $user;
+        //return $this->_renderPage('Users/view2', $this->data);
+
+        return $this->_renderPage('Users/edit', $this->data);
+
+    }
 
     public function view($id)
     {
         $user = (new \App\Models\Users())->Where('username', $id)->find();
         //dd($user);
         $user = $user[0];
-       
+
         if (!$user) {
             return redirect()->back()->with('error', "User does not exist");
         }
-       
-       
+
         $this->data['site_title'] = $user->name;
         $this->data['user'] = $user;
         return $this->_renderPage('Users/view2', $this->data);
@@ -64,8 +85,9 @@ class Users extends \App\Controllers\AdminController
     /**
      * @return false|string|string[]
      */
-    public function gtsr(){ 
-        
+    public function gtsr()
+    {
+
         $users = (new \App\Libraries\Auth())->select('users.id, username, email, phone, account, registration, referred_by, first_name, last_name, avatar')->users(2);
         $i = 0;
         $n_users = array();
@@ -80,25 +102,42 @@ class Users extends \App\Controllers\AdminController
         echo json_encode($data);
 
     }
-        
-    public function gtrx(){   
-       
+
+    public function gtrx()
+    {
+
         $id = $this->request->getPost('id');
         //dd($id);
 
-        if( $this->request->getPost('id')){
-            $users = ( (new \App\Models\Transactions()))->select('id, amount, trx, status, type, description, date')->where('user', $id)->orderBy('id', 'DESC')->findAll();
+        if ($this->request->getPost('id')) {
+            $users = ((new \App\Models\Transactions()))->select('id, amount, trx, status, type, description, date')->where('user', $id)->orderBy('id', 'DESC')->findAll();
             $data['data'] = $users;
             //dd($data);
             echo json_encode($data);
-        }else{
-            echo json_encode($this->request->getPost('')) ;
+        } else {
+            echo json_encode($this->request->getPost(''));
         }
-       
-       
+
     }
-    
-    function secure_random_string($length){
+    public function ginv()
+    {
+
+        $id = $this->request->getPost('id');
+        //dd($id);
+
+        if ($this->request->getPost('id')) {
+            $users = ((new \App\Models\Investments()))->select('id, plan, amount, return, total, status, created_at, end_time')->where('user', $id)->orderBy('id', 'DESC')->findAll();
+            $data['data'] = $users;
+            //dd($data);
+            echo json_encode($data);
+        } else {
+            echo json_encode($this->request->getPost(''));
+        }
+
+    }
+
+    public function secure_random_string($length)
+    {
         $random_string = '';
         for ($i = 0; $i < $length; $i++) {
             $number = random_int(0, 36);
@@ -108,4 +147,5 @@ class Users extends \App\Controllers\AdminController
         return strtoupper($random_string);
     }
 
+    
 }

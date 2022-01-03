@@ -1,10 +1,10 @@
 <?php
 
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
 <h2 class="card-title font-weight-bold mb-1">Welcome to Vuexy! 👋</h2>
@@ -24,8 +24,8 @@
         <div class="input-group input-group-merge form-password-toggle">
             <input class="form-control form-control-merge" id="login-password" type="password" name="password"
                 placeholder="············" aria-describedby="login-password" tabindex="2" required />
-            <div class="input-group-append"><span class="input-group-text cursor-pointer"><i
-                        data-feather="eye"></i></span></div>
+            <div class="input-group-append"><span class="input-group-text text-warning  cursor-pointer"><i
+                        class="text-warning iconify" data-feather="lock"></i></span></div>
         </div>
     </div>
     <div class="form-group">

@@ -1,16 +1,13 @@
 <?php
 /***
- * Created by Bennito254
+ * Created by Patrick Karungari
  *
- * Github: https://github.com/bennito254
- * E-Mail: bennito254@gmail.com
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
 namespace App\Controllers\User;
 
-
-use App\Models\Users;
-use Intervention\Image\ImageManager;
 class Settings extends \App\Controllers\UserController
 {
     public function __construct()
@@ -27,11 +24,11 @@ class Settings extends \App\Controllers\UserController
             $validation->setRule('fname', "First Name", 'trim|required|min_length[3]');
             $validation->setRule('lname', "Last Name", 'trim|required|min_length[3]');
             $validation->setRule('avatar', "Profile Image", 'is_image[avatar]');
-            if  ($validation->withRequest($this->request)->run() === TRUE) {
+            if ($validation->withRequest($this->request)->run() === true) {
                 $auth = new \App\Libraries\Auth();
                 $data = [
-                    'first_name'    => trim($this->request->getPost('fname')),
-                    'last_name'     => trim($this->request->getPost('lname'))
+                    'first_name' => trim($this->request->getPost('fname')),
+                    'last_name' => trim($this->request->getPost('lname')),
                 ];
 
                 $file = $this->request->getFile('avatar');
@@ -39,7 +36,7 @@ class Settings extends \App\Controllers\UserController
                     $newName = $file->getRandomName();
                     if ($file->move(FCPATH . 'uploads/avatars/', $newName)) {
                         $data['avatar'] = $newName;
-                        @unlink(FCPATH.'uploads/avatars/'.$this->current_user->avatar);
+                        @unlink(FCPATH . 'uploads/avatars/' . $this->current_user->avatar);
                     }
                 }
 

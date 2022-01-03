@@ -9,14 +9,14 @@ class ComposerStaticInit7572a91d1b3879ffc312ffe23de0f745
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -41,6 +41,7 @@ class ComposerStaticInit7572a91d1b3879ffc312ffe23de0f745
         'M' => 
         array (
             'Monolog\\' => 8,
+            'MessageBird\\' => 12,
         ),
         'L' => 
         array (
@@ -60,6 +61,7 @@ class ComposerStaticInit7572a91d1b3879ffc312ffe23de0f745
         'F' => 
         array (
             'Flutterwave\\' => 12,
+            'Firebase\\JWT\\' => 13,
         ),
         'D' => 
         array (
@@ -103,8 +105,8 @@ class ComposerStaticInit7572a91d1b3879ffc312ffe23de0f745
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -113,6 +115,10 @@ class ComposerStaticInit7572a91d1b3879ffc312ffe23de0f745
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'MessageBird\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird',
         ),
         'Laminas\\ZendFrameworkBridge\\' => 
         array (
@@ -141,6 +147,10 @@ class ComposerStaticInit7572a91d1b3879ffc312ffe23de0f745
         'Flutterwave\\' => 
         array (
             0 => __DIR__ . '/..' . '/flutterwavedev/flutterwave-v3/library/Rave',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Dotenv\\' => 
         array (
@@ -531,6 +541,12 @@ class ComposerStaticInit7572a91d1b3879ffc312ffe23de0f745
         'Dotenv\\Loader' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Loader.php',
         'Dotenv\\Parser' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Parser.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',
+        'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
+        'Firebase\\JWT\\JWK' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWK.php',
+        'Firebase\\JWT\\JWT' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWT.php',
+        'Firebase\\JWT\\Key' => __DIR__ . '/..' . '/firebase/php-jwt/src/Key.php',
+        'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
         'GuzzleHttp\\BodySummarizer' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/BodySummarizer.php',
         'GuzzleHttp\\BodySummarizerInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/BodySummarizerInterface.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
@@ -704,6 +720,96 @@ class ComposerStaticInit7572a91d1b3879ffc312ffe23de0f745
         'Laminas\\ZendFrameworkBridge\\Module' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/Module.php',
         'Laminas\\ZendFrameworkBridge\\Replacements' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/Replacements.php',
         'Laminas\\ZendFrameworkBridge\\RewriteRules' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/RewriteRules.php',
+        'MessageBird\\Client' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Client.php',
+        'MessageBird\\Common\\Authentication' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Common/Authentication.php',
+        'MessageBird\\Common\\HttpClient' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Common/HttpClient.php',
+        'MessageBird\\Common\\ResponseError' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Common/ResponseError.php',
+        'MessageBird\\Exceptions\\AuthenticateException' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Exceptions/AuthenticateException.php',
+        'MessageBird\\Exceptions\\BalanceException' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Exceptions/BalanceException.php',
+        'MessageBird\\Exceptions\\HttpException' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Exceptions/HttpException.php',
+        'MessageBird\\Exceptions\\MessageBirdException' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Exceptions/MessageBirdException.php',
+        'MessageBird\\Exceptions\\RequestException' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Exceptions/RequestException.php',
+        'MessageBird\\Exceptions\\ServerException' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Exceptions/ServerException.php',
+        'MessageBird\\Exceptions\\ValidationException' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Exceptions/ValidationException.php',
+        'MessageBird\\Objects\\Balance' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Balance.php',
+        'MessageBird\\Objects\\Base' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Base.php',
+        'MessageBird\\Objects\\BaseList' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/BaseList.php',
+        'MessageBird\\Objects\\Chat\\Channel' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Chat/Channel.php',
+        'MessageBird\\Objects\\Chat\\Contact' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Chat/Contact.php',
+        'MessageBird\\Objects\\Chat\\Message' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Chat/Message.php',
+        'MessageBird\\Objects\\Chat\\Platform' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Chat/Platform.php',
+        'MessageBird\\Objects\\Contact' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Contact.php',
+        'MessageBird\\Objects\\Conversation\\Channel' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/Channel.php',
+        'MessageBird\\Objects\\Conversation\\Contact' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/Contact.php',
+        'MessageBird\\Objects\\Conversation\\Content' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/Content.php',
+        'MessageBird\\Objects\\Conversation\\Conversation' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/Conversation.php',
+        'MessageBird\\Objects\\Conversation\\Fallback' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/Fallback.php',
+        'MessageBird\\Objects\\Conversation\\HSM\\Currency' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/HSM/Currency.php',
+        'MessageBird\\Objects\\Conversation\\HSM\\Language' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/HSM/Language.php',
+        'MessageBird\\Objects\\Conversation\\HSM\\Message' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/HSM/Message.php',
+        'MessageBird\\Objects\\Conversation\\HSM\\Params' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/HSM/Params.php',
+        'MessageBird\\Objects\\Conversation\\Message' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/Message.php',
+        'MessageBird\\Objects\\Conversation\\MessageReference' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/MessageReference.php',
+        'MessageBird\\Objects\\Conversation\\SendMessage' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/SendMessage.php',
+        'MessageBird\\Objects\\Conversation\\SendMessageResult' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/SendMessageResult.php',
+        'MessageBird\\Objects\\Conversation\\Webhook' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Conversation/Webhook.php',
+        'MessageBird\\Objects\\EmailMessage' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/EmailMessage.php',
+        'MessageBird\\Objects\\Group' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Group.php',
+        'MessageBird\\Objects\\Hlr' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Hlr.php',
+        'MessageBird\\Objects\\Lookup' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Lookup.php',
+        'MessageBird\\Objects\\Message' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Message.php',
+        'MessageBird\\Objects\\MessageResponse' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/MessageResponse.php',
+        'MessageBird\\Objects\\MmsMessage' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/MmsMessage.php',
+        'MessageBird\\Objects\\Number' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Number.php',
+        'MessageBird\\Objects\\NumberPurchaseRequest' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/NumberPurchaseRequest.php',
+        'MessageBird\\Objects\\PartnerAccount\\AccessKey' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/PartnerAccount/AccessKey.php',
+        'MessageBird\\Objects\\PartnerAccount\\Account' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/PartnerAccount/Account.php',
+        'MessageBird\\Objects\\Recipient' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Recipient.php',
+        'MessageBird\\Objects\\Recipients' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Recipients.php',
+        'MessageBird\\Objects\\SignedRequest' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/SignedRequest.php',
+        'MessageBird\\Objects\\Verify' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Verify.php',
+        'MessageBird\\Objects\\VoiceMessage' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/VoiceMessage.php',
+        'MessageBird\\Objects\\Voice\\BaseList' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Voice/BaseList.php',
+        'MessageBird\\Objects\\Voice\\Call' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Voice/Call.php',
+        'MessageBird\\Objects\\Voice\\CallFlow' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Voice/CallFlow.php',
+        'MessageBird\\Objects\\Voice\\Leg' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Voice/Leg.php',
+        'MessageBird\\Objects\\Voice\\Recording' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Voice/Recording.php',
+        'MessageBird\\Objects\\Voice\\Step' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Voice/Step.php',
+        'MessageBird\\Objects\\Voice\\Transcription' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Voice/Transcription.php',
+        'MessageBird\\Objects\\Voice\\Webhook' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Objects/Voice/Webhook.php',
+        'MessageBird\\RequestValidator' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/RequestValidator.php',
+        'MessageBird\\Resources\\AvailablePhoneNumbers' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/AvailablePhoneNumbers.php',
+        'MessageBird\\Resources\\Balance' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Balance.php',
+        'MessageBird\\Resources\\Base' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Base.php',
+        'MessageBird\\Resources\\Chat\\Channel' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Chat/Channel.php',
+        'MessageBird\\Resources\\Chat\\Contact' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Chat/Contact.php',
+        'MessageBird\\Resources\\Chat\\Message' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Chat/Message.php',
+        'MessageBird\\Resources\\Chat\\Platform' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Chat/Platform.php',
+        'MessageBird\\Resources\\Contacts' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Contacts.php',
+        'MessageBird\\Resources\\Conversation\\Contacts' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Conversation/Contacts.php',
+        'MessageBird\\Resources\\Conversation\\Content' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Conversation/Content.php',
+        'MessageBird\\Resources\\Conversation\\Conversations' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Conversation/Conversations.php',
+        'MessageBird\\Resources\\Conversation\\Messages' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Conversation/Messages.php',
+        'MessageBird\\Resources\\Conversation\\Send' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Conversation/Send.php',
+        'MessageBird\\Resources\\Conversation\\Webhooks' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Conversation/Webhooks.php',
+        'MessageBird\\Resources\\EmailMessage' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/EmailMessage.php',
+        'MessageBird\\Resources\\Groups' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Groups.php',
+        'MessageBird\\Resources\\Hlr' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Hlr.php',
+        'MessageBird\\Resources\\Lookup' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Lookup.php',
+        'MessageBird\\Resources\\LookupHlr' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/LookupHlr.php',
+        'MessageBird\\Resources\\Messages' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Messages.php',
+        'MessageBird\\Resources\\MmsMessages' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/MmsMessages.php',
+        'MessageBird\\Resources\\PartnerAccount\\Accounts' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/PartnerAccount/Accounts.php',
+        'MessageBird\\Resources\\PhoneNumbers' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/PhoneNumbers.php',
+        'MessageBird\\Resources\\Verify' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Verify.php',
+        'MessageBird\\Resources\\VoiceMessage' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/VoiceMessage.php',
+        'MessageBird\\Resources\\Voice\\Base' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Voice/Base.php',
+        'MessageBird\\Resources\\Voice\\CallFlows' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Voice/CallFlows.php',
+        'MessageBird\\Resources\\Voice\\Calls' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Voice/Calls.php',
+        'MessageBird\\Resources\\Voice\\Legs' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Voice/Legs.php',
+        'MessageBird\\Resources\\Voice\\Recordings' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Voice/Recordings.php',
+        'MessageBird\\Resources\\Voice\\Transcriptions' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Voice/Transcriptions.php',
+        'MessageBird\\Resources\\Voice\\Webhooks' => __DIR__ . '/..' . '/messagebird/php-rest-api/src/MessageBird/Resources/Voice/Webhooks.php',
         'Monolog\\DateTimeImmutable' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/DateTimeImmutable.php',
         'Monolog\\ErrorHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ErrorHandler.php',
         'Monolog\\Formatter\\ChromePHPFormatter' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/ChromePHPFormatter.php',

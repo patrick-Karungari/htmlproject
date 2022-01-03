@@ -122,7 +122,7 @@ class Rave
             "amount" => $this->amount,
             "tx_ref" => $this->txref,
             "currency" => $this->currency,
-            "payment_options" => "card,mobilemoney,ussd",
+            "payment_options" => $this->getPaymentOptions(),
             "customer" => [
                 "email" => $this->customerEmail,
                 "phone_number" => $this->customerPhone,
@@ -1629,4 +1629,3 @@ class Rave
 
 // silencio es dorado
 ?>
-
