@@ -21,7 +21,7 @@ $(function () {
 
     var assetPath = '../assets/',
         userView = 'view/',
-        userEdit = '/admin/users/edit/';
+        userEdit = 'edit/';
     if ($('body').attr('data-framework') === 'laravel') {
         assetPath = $('body').attr('data-asset-path');
         userView = assetPath + 'app/user/view';
