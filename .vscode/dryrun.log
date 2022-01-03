@@ -1,6 +1,0 @@
-make.exe --dry-run --always-make --keep-going --print-directory
-make.exe: Entering directory 'c:/wamp64/www/htmlproject'
-make.exe: Leaving directory 'c:/wamp64/www/htmlproject'
- 
-make.exe: *** No targets specified and no makefile found.  Stop.
- 
