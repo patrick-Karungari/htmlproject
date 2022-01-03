@@ -9,8 +9,8 @@ $(function () {
         };
 
     var assetPath = '../assets/',
-        planView = 'plans/edit/',
-        planEdit = 'plans/edit/',
+        planView = 'admin/plans/edit/',
+        planEdit = 'admin/plans/edit/',
         planDelete = 'plans/delete/';
     if ($('body').attr('data-framework') === 'laravel') {
         assetPath = $('body').attr('data-asset-path');
@@ -24,7 +24,7 @@ $(function () {
             processing: false,
             serverSide: false,
             autoWidth: true,
-            ajax: 'plans/getPlans',
+            ajax: 'admin/plans/getPlans',
             headers: {'X-Requested-With': 'XMLHttpRequest'},
             // JSON file to add data
             columns: [
