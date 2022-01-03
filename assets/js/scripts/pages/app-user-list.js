@@ -63,7 +63,7 @@ $(function () {
                 {
                     // User full name and username
                     targets: 1,
-                     
+                     className: 'all',
                     width: "84px",
                     responsivePriority: 1,
                     render: function (data, type, full, meta) {
