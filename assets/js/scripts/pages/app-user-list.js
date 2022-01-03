@@ -54,7 +54,7 @@ $(function () {
                     // For Responsive
                     className: 'control',
                     orderable: false,
-                    responsivePriority: 4,
+                    responsivePriority: 0,
                     targets: 0,
                     render: function (date, type, full, meta) {
                         return " ";
@@ -63,6 +63,8 @@ $(function () {
                 {
                     // User full name and username
                     targets: 1,
+                     
+                    width: "84px",
                     responsivePriority: 1,
                     render: function (data, type, full, meta) {
                        
@@ -88,6 +90,7 @@ $(function () {
                         // Creates full output for row
                         var $row_output =
                             '<div class="d-flex justify-content-left align-items-center">' +
+                            '<div class="control"></div>' +
                             '<div class="avatar-wrapper">' +
                             '<div class="avatar ' +
                             colorClass +
