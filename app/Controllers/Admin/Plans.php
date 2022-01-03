@@ -53,6 +53,10 @@ class Plans extends \App\Controllers\AdminController
     }
     public function edit($id)
     {
+        if(isset($_POST['id']) ){
+            $id = $_POST['id'];
+         } 
+
         if(!$id){
             return redirect()->to(current_url())->with('error', "An error occurred");
 
@@ -72,7 +76,7 @@ class Plans extends \App\Controllers\AdminController
             try {//dd($data);
                 if ($model->save($data)) {
                     //dd(previous_url());
-                    return redirect()->to(base_url('admin/plans'))->with('success', "Plan edited successfully");;
+                    return redirect()->to(base_url('plans'))->with('success', "Plan edited successfully");;
                 } else {
                     return redirect()->to(current_url())->with('error', "An error occurred");
                 }
