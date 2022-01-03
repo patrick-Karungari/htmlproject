@@ -9,8 +9,8 @@ $(function () {
         };
 
     var assetPath = '../assets/',
-        planView = 'admin/plans/edit/',
-        planEdit = 'admin/plans/edit/',
+        planView = 'plans/edit/',
+        planEdit = 'plans/edit/',
         planDelete = 'plans/delete/';
     if ($('body').attr('data-framework') === 'laravel') {
         assetPath = $('body').attr('data-asset-path');
