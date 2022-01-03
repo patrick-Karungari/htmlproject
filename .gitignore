@@ -7,3 +7,4 @@ writable/session/
 .vscode/
 .idea/
 .htaccess
+env.php
