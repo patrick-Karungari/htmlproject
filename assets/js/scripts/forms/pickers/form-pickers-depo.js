@@ -126,7 +126,8 @@ if (dtInvestmentsTable.length) {
         },
         {
             // User full name and username
-            targets: 1,
+          targets: 1,
+          className: 'all',
             width: '48px',
             responsivePriority: 2,
             render: function (data, type, full, meta) {
