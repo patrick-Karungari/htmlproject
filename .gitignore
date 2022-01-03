@@ -8,3 +8,10 @@ writable/session/
 .idea/
 .htaccess
 env.php
+*.pem
+*.crt
+*.csr
+*.key
+*.log
+robots.txt
+spark
