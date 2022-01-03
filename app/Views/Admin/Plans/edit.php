@@ -5,13 +5,16 @@
  * Github: https://github.com/patrick-Karungari
  * E-Mail: PKARUNGARI@GMAIL.COM
  */
+
+ //dd($plan);
+
 ?>
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Edit Investment Plan</h4>
 
-        <form class="forms-sample" method="post" action="">
-            <input type="hidden" name="id" value="<?php echo $plan->id; ?>">
+        <form class="forms-sample" method="post" action="plans">
+            <input type="hidden" name="id" value="<?php  echo $plan->id; ?>">
             <div class="form-group">
                 <label for="exampleInputUsername1">Title</label>
                 <input type="text" class="form-control" name="title" value="<?php echo old('title', $plan->title) ?>"
