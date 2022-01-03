@@ -125,7 +125,7 @@ if (dtInvestmentsTable.length) {
          {
                     // User full name and username
                     targets: 1,
-           responsivePriority: 2,
+                    responsivePriority: 2,
                     className: 'all',
                     render: function (data, type, full, meta) {
                        
@@ -192,6 +192,7 @@ if (dtInvestmentsTable.length) {
           // Total Investment Amount
           targets: 3,
           responsivePriority: 4,
+          className: 'all',
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['amount'];
