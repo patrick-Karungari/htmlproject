@@ -183,6 +183,7 @@ if (dtInvestmentsTable.length) {
           // Total Amount
           targets: 2,
           responsivePriority: 3,
+          className: 'all',
           width: '24px',
           render: function (data, type, full, meta) { var $total = full['amount'];   return '<span class="d-none">Ksh ' + Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' +  Intl.NumberFormat('en-US').format ($total);}
         },
