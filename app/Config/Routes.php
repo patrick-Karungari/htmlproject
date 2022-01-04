@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->add('dashboard', '\App\Controllers\Admin\Admin::index');
+$routes->add('logout', '\App\Controllers\Auth::logout');
 $routes->add('email', '\App\Controllers\Admin\Email::index');
 $routes->add('chat', '\App\Controllers\Admin\Chat::index');
 $routes->add('users', '\App\Controllers\Admin\Users::index');
@@ -45,6 +46,8 @@ $routes->add('profile', '\App\Controllers\Admin\Profile::index');
 $routes->add('withdraws', '\App\Controllers\Admin\Withdraws::index');
 $routes->add('deposits', '\App\Controllers\Admin\Deposits::index');
 $routes->add('investments', '\App\Controllers\Admin\Investments::index');
+$routes->add('user/investments', '\App\Controllers\User\Invest::Investments');
+
 
 
 $route['auth'] = 'auth/mail_verify';
