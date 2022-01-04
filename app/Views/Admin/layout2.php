@@ -236,16 +236,16 @@
                                     class="avatar-status-online"></span></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-                            <a class="dropdown-item" href="<?php echo site_url('admin/profile') ?>"><i class="mr-50"
+                            <a class="dropdown-item" href="<?php echo site_url('profile') ?>"><i class="mr-50"
                                     data-feather="user"></i> Profile</a>
-                            <a class="dropdown-item" href="<?php echo site_url('admin/email') ?>"><i class="mr-50"
+                            <a class="dropdown-item" href="<?php echo site_url('email') ?>"><i class="mr-50"
                                     data-feather="mail"></i> Inbox</a>
-                            <a class="dropdown-item" href="<?php echo site_url('admin/chat') ?>"><i class="mr-50"
+                            <a class="dropdown-item" href="<?php echo site_url('chat') ?>"><i class="mr-50"
                                     data-feather="message-square"></i> Chats</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?php echo site_url('admin/settings/profile') ?>"><i
-                                    class="mr-50" data-feather="settings"></i> Settings</a>
-                            <a class="dropdown-item" href="<?php echo site_url('auth/logout') ?>"><i class="mr-50"
+                            <a class="dropdown-item" href="<?php echo site_url('profile') ?>"><i class="mr-50"
+                                    data-feather="settings"></i> Settings</a>
+                            <a class="dropdown-item" href="<?php echo site_url('logout') ?>"><i class="mr-50"
                                     data-feather="power"></i> Logout</a>
                         </div>
                     </li>
@@ -260,8 +260,8 @@
         <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
             <div class="navbar-header">
                 <ul class="nav navbar-nav flex-row">
-                    <li class="nav-item mr-auto"><a class="navbar-brand" href="<?php echo site_url('admin') ?>"><span
-                                class="brand-logo">
+                    <li class="nav-item mr-auto"><a class="navbar-brand"
+                            href="<?php echo site_url('dashboard') ?>"><span class="brand-logo">
                                 <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                     <defs>
@@ -426,9 +426,7 @@
                 </div>
                 <div class="content-body">
                     <!-- Dashboard Analytics Start -->
-                    <div class="scrollbar" id="style-7">
-                        <div class="force-overflow"></div>
-                    </div>
+
                     <?php
                                 bootstrap_alerts();
                                 
