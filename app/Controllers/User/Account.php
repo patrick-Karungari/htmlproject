@@ -17,6 +17,6 @@ class Account extends \App\Controllers\UserController
 
     public function index()
     {
-        return $this->_renderPage('Account/index', $this->data);
+        return $this->_renderPage('Account/index2', $this->data);
     }
 }
