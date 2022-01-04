@@ -13,6 +13,6 @@ class Email extends \App\Controllers\AdminController
 
     public function index(): string
     {
-        return $this->_renderPage('email/index', $this->data);
+        return $this->_renderPage('Email/index', $this->data);
     }
 }
