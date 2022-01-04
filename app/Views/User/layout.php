@@ -20,13 +20,11 @@
 
         <!-- BEGIN: Vendor CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/vendors/css/vendors.min.css')?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/vendors/css/charts/apexcharts.css')?>">
+
         <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/vendors/css/extensions/toastr.min.css')?>">
-        <link rel="stylesheet" type="text/css"
-            href="<?php echo base_url('assets/vendors/css/tables/datatable/datatables.min.css')?>">
-        <link rel="stylesheet" type="text/css"
-            href="<?php echo base_url('assets/vendors/css/tables/datatable/responsive.bootstrap.min.css')?>">
+
+
         <!-- END: Vendor CSS-->
 
         <!-- BEGIN: Theme CSS-->
@@ -41,15 +39,17 @@
         <!-- BEGIN: Page CSS-->
         <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/css/core/menu/menu-types/vertical-menu.css')?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/plugins/charts/chart-apex.css')?>">
+
         <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/css/plugins/extensions/ext-component-toastr.css')?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/pages/app-invoice-list.css')?>">
+
         <!-- END: Page CSS-->
 
-        <!-- BEGIN: Custom CSS-->
-        <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css')?>">
-        <!-- END: Custom CSS-->
+
+        <!-- BEGIN: Vendor JS-->
+        <script src="<?php echo base_url('assets/vendors/js/vendors.min.js')?>">
+        </script>
+        <!-- BEGIN Vendor JS-->
 
     </head>
     <!-- END: Head-->
@@ -476,40 +476,14 @@
         <!-- END: Footer-->
 
 
-        <!-- BEGIN: Vendor JS-->
-        <script src="<?php echo base_url('assets/vendors/js/vendors.min.js')?>">
-        </script>
-        <!-- BEGIN Vendor JS-->
 
-        <!-- BEGIN: Page Vendor JS-->
-        <script src="<?php echo base_url('assets/vendors/js/charts/apexcharts.min.js')?>">
-        </script>
-        <script src="<?php echo base_url('assets/vendors/js/extensions/toastr.min.js')?>">
-        </script>
-        <script src="<?php echo base_url('assets/vendors/js/extensions/moment.min.js')?>">
-        </script>
-        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.min.js')?>">
-        </script>
-        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.buttons.min.js')?>">
-        </script>
-        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')?>">
-        </script>
-        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/dataTables.responsive.min.js')?>">
-        </script>
-        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/responsive.bootstrap.min.js')?>">
-        </script>
-        <!-- END: Page Vendor JS-->
+
 
         <!-- BEGIN: Theme JS-->
         <script src="<?php echo base_url('assets/js/core/app-menu.js')?>"></script>
         <script src="<?php echo base_url('assets/js/core/app.js')?>"></script>
         <!-- END: Theme JS-->
 
-        <!-- BEGIN: Page JS-->
-        <script src="<?php echo base_url('assets/js/scripts/pages/dashboard-analytics.js')?>">
-        </script>
-
-        <!-- END: Page JS-->
 
         <script>
         $(window).on('load', function() {

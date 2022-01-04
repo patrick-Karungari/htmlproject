@@ -1,3 +1,12 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/vendors/css/charts/apexcharts.css')?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/plugins/charts/chart-apex.css')?>">
+<link rel="stylesheet" type="text/css"
+    href="<?php echo base_url('assets/vendors/css/tables/datatable/datatables.min.css')?>">
+<link rel="stylesheet" type="text/css"
+    href="<?php echo base_url('assets/vendors/css/tables/datatable/responsive.bootstrap.min.css')?>">
+<!-- BEGIN: Custom CSS-->
+<link rel="stylesheet" type="text/css" href="../../../assets/css/style.css')?>">
+<!-- END: Custom CSS-->
 <section id="dashboard-analytics">
     <div class="row match-height">
         <!-- Greetings Card starts -->
@@ -15,7 +24,7 @@
                     </div>
                     <div class="text-center">
                         <h1 class="mb-1 text-white">Congratulation
-                            <?php echo $current_user->name ?>,</h1>
+                            <?php echo $current_user->name?>,</h1>
                         <p class="card-text m-auto w-75">
                             You have done <strong>57.6%</strong> more sales today. Check your new
                             badge in your profile.
@@ -392,3 +401,27 @@
 <script>
 document.getElementById("dashboard").className += " active";
 </script>
+
+<!-- BEGIN: Page Vendor JS-->
+<script src="<?php echo base_url('assets/vendors/js/charts/apexcharts.min.js')?>">
+</script>
+<script src="<?php echo base_url('assets/vendors/js/extensions/toastr.min.js')?>">
+</script>
+<script src="<?php echo base_url('assets/vendors/js/extensions/moment.min.js')?>">
+</script>
+<script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.min.js')?>">
+</script>
+<script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.buttons.min.js')?>">
+</script>
+<script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')?>">
+</script>
+<script src="<?php echo base_url('assets/vendors/js/tables/datatable/dataTables.responsive.min.js')?>">
+</script>
+<script src="<?php echo base_url('assets/vendors/js/tables/datatable/responsive.bootstrap.min.js')?>">
+</script>
+<!-- END: Page Vendor JS-->
+<!-- BEGIN: Page JS-->
+<script src="<?php echo base_url('assets/js/scripts/pages/dashboard-analytics.js')?>">
+</script>
+
+<!-- END: Page JS-->

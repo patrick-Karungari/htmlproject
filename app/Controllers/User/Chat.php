@@ -1,10 +1,10 @@
 <?php
 
 
-namespace app\Controllers\Admin;
+namespace app\Controllers\User;
 
 
-class Chat extends \App\Controllers\AdminController
+class Chat extends \App\Controllers\UserController
 {
     public function __construct()
     {

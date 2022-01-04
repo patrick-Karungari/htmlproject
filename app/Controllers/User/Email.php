@@ -1,10 +1,10 @@
 <?php
 
 
-namespace app\Controllers\Admin;
+namespace app\Controllers\User;
 
 
-class Email extends \App\Controllers\AdminController
+class Email extends \App\Controllers\UserController
 {
     public function __construct()
     {
