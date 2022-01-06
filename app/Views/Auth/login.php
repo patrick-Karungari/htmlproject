@@ -7,7 +7,7 @@
  * E-Mail: PKARUNGARI@GMAIL.COM
  */
 ?>
-<h2 class="card-title font-weight-bold mb-1">Welcome to Vuexy! 👋</h2>
+<h2 class="card-title font-weight-bold mb-1">Welcome to KenCoin ! 👋</h2>
 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
 <form class="auth-login-form mt-2" action="" method="POST">
     <div class="form-group">
