@@ -12,7 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
 <h2 class="card-title font-weight-bold mb-1">Adventure starts here 🚀</h2>
-<p class="card-text mb-2">Make your investing journey management easy and fun!</p>
+<p class="card-text mb-2">Make your investment journey management easy and fun!</p>
 <form class="auth-register-form mt-2" action="<?php echo site_url('auth/register') ?>" method="POST">
     <div class="form-group">
         <label class="form-label" for="register-username">First name</label>
