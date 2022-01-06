@@ -6,7 +6,7 @@
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
-
+import { CountUp } from '/assets/vendors/countup/dist/countUp.js';
 $(window).on('load', function () {
   'use strict';
 

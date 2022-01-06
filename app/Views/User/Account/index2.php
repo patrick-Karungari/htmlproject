@@ -3,7 +3,7 @@
     href="<?php echo base_url('assets/vendors/css/tables/datatable/datatables.min.css')?>">
 <link rel="stylesheet" type="text/css"
     href="<?php echo base_url('assets/vendors/css/tables/datatable/responsive.bootstrap.min.css')?>">
-<script src="countUp.js"></script>
+
 <section id="dashboard-analytics">
     <div class="row d-flex ">
         <!-- Greetings Card starts -->
@@ -165,6 +165,8 @@ function removeclass(x) {
 }
 </script>
 <!-- BEGIN: Page Vendor JS-->
+<script nomodule src="<?php echo base_url('assets/vendors/countup/dist/countUp.umd.js') ?>
+"></script>
 <script src="<?php echo base_url('assets/vendors/js/charts/apexcharts.min.js')?>"></script>
 <script src="<?php echo base_url('assets/vendors/js/extensions/toastr.min.js')?>"></script>
 <script src="<?php echo base_url('assets/vendors/js/extensions/moment.min.js')?>"></script>
@@ -175,5 +177,5 @@ function removeclass(x) {
 <script src="<?php echo base_url('assets/vendors/js/tables/datatable/responsive.bootstrap.min.js')?>"></script>
 <!-- END: Page Vendor JS-->
 <!-- BEGIN: Page JS-->
-<script src="<?php echo base_url('assets/js/scripts/pages/dashboard-analytics.js')?>"></script>
+<script type="module" src="<?php echo base_url('assets/js/scripts/pages/dashboard-analytics.js')?>"></script>
 <!-- END: Page JS-->
