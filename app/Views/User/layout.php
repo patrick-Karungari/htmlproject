@@ -449,8 +449,7 @@
             <div class="content-overlay"></div>
             <div class="header-navbar-shadow"></div>
             <div class="content-wrapper">
-                <div class="content-header row">
-                </div>
+
                 <div class="content-body">
                     <!-- Dashboard Analytics Start -->
                     <?php  bootstrap_alerts(); echo $_html_content;?>
