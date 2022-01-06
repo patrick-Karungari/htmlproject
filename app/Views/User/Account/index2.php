@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class=" ml-2 d-flex align-self-center align-items-center">
-                                <h2 class="font-weight-bolder">KSH 36,
+                                <h2 class="font-weight-bolder">KES 36,
                                     000</h2>
                             </div>
                         </div>
@@ -51,6 +51,32 @@
             </div>
         </div>
         <!-- Statistics Card -->
+        <div class="flex-fill ml-1 mr-1">
+            <div onmouseover="textprimary(this)" onmouseout="removeclass(this)" class="card h-card text-center">
+                <div class="card-body">
+                    <div class="avatar bg-light-success p-50 mb-1">
+                        <div class="avatar-content"><i data-feather="trending-up" class="font-medium-5"></i>
+                        </div>
+                    </div>
+                    <h2 class="font-weight-bolder">KES 12,000</h2>
+                    <p class="card-text">Deposits</p>
+                </div>
+            </div>
+        </div>
+        <div class=" flex-fill ml-1 mr-1">
+            <div onmouseover="textdanger(this)" onmouseout="removeclass(this)" class="card h-card text-center">
+                <div class="card-body">
+                    <div class="avatar bg-light-danger p-50 mb-1">
+                        <div class="avatar-content"><i data-feather="trending-down" class="font-medium-5"></i></div>
+                    </div>
+                    <h2 class="font-weight-bolder">KES 97,800</h2>
+                    <p class="card-text">Withdrawals</p>
+                </div>
+            </div>
+        </div>
+        <!--/ Statistics Card -->
+    </div>
+    <div class="row d-flex ">
         <div class="flex-fill mr-1 ml-1 h-100">
             <div class="card card-statistics">
                 <div class="card-header">
@@ -114,32 +140,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!--/ Statistics Card -->
-    </div>
-    <div class="row d-flex ">
-        <div class="flex-fill ml-1 mr-1">
-            <div onmouseover="textprimary(this)" onmouseout="removeclass(this)" class="card h-card text-center">
-                <div class="card-body">
-                    <div class="avatar bg-light-success p-50 mb-1">
-                        <div class="avatar-content"><i data-feather="trending-up" class="font-medium-5"></i>
-                        </div>
-                    </div>
-                    <h2 class="font-weight-bolder">12k</h2>
-                    <p class="card-text">Deposits</p>
-                </div>
-            </div>
-        </div>
-        <div class=" flex-fill ml-1 mr-1">
-            <div onmouseover="textdanger(this)" onmouseout="removeclass(this)" class="card h-card text-center">
-                <div class="card-body">
-                    <div class="avatar bg-light-danger p-50 mb-1">
-                        <div class="avatar-content"><i data-feather="trending-down" class="font-medium-5"></i></div>
-                    </div>
-                    <h2 class="font-weight-bolder">97.8k</h2>
-                    <p class="card-text">Withdrawals</p>
                 </div>
             </div>
         </div>
