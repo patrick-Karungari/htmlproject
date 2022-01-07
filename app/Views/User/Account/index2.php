@@ -58,7 +58,9 @@
                         <div class="avatar-content"><i data-feather="trending-up" class="font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="font-weight-bolder">KES 12,000</h2>
+                    <h2 class="font-weight-bolder">KES
+                        <?php echo number_format((new \App\Models\Deposits())->where('user', $current_user->id)->where('status', 'completed')->selectSum('amount', 'totalWithdraws')->get()->getLastRow()->totalWithdraws, 2) ?>
+                    </h2>
                     <p class="card-text">Deposits</p>
                 </div>
             </div>
@@ -69,7 +71,9 @@
                     <div class="avatar bg-light-danger p-50 mb-1">
                         <div class="avatar-content"><i data-feather="trending-down" class="font-medium-5"></i></div>
                     </div>
-                    <h2 class="font-weight-bolder">KES 97,800</h2>
+                    <h2 class="font-weight-bolder">KES
+                        <?php echo number_format((new \App\Models\Withdraws())->where('user', $current_user->id)->where('status', 'completed')->selectSum('amount', 'totalWithdraws')->get()->getLastRow()->totalWithdraws, 2) ?>
+                    </h2>
                     <p class="card-text">Withdrawals</p>
                 </div>
             </div>

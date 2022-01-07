@@ -48,6 +48,8 @@ $routes->add('deposits', '\App\Controllers\Admin\Deposits::index');
 $routes->add('investments', '\App\Controllers\Admin\Investments::index');
 $routes->add('user/investments', '\App\Controllers\User\Invest::Investments');
 $routes->add('coming-soon', '\App\Controllers\Auth::comingsoon');
+$routes->add('terms', '\App\Controllers\Auth::terms');
+
 
 
 

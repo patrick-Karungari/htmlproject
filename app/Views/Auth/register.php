@@ -68,7 +68,7 @@
                     <input class="custom-control-input" id="register-privacy-policy" type="checkbox" tabindex="4"
                         required />
                     <label class="custom-control-label" for="register-privacy-policy">I agree to<a
-                            href="<?php echo site_url('auth/terms'); ?>">&nbsp;privacy policy & terms</a></label>
+                            href="<?php echo site_url('terms'); ?>">&nbsp;privacy policy & terms</a></label>
                 </div>
             </div>
             <button class=" btn btn-primary btn-block" tabindex="5">Sign up</button>
