@@ -11,6 +11,8 @@ namespace App\Controllers;
 use App\Models\Referrals;
 use App\Models\Users;
 use Config\Services;
+use CodeIgniter\HTTP\ResponseInterface;
+
 
 class Auth extends BaseController
 {
@@ -22,6 +24,7 @@ class Auth extends BaseController
     private $email;
     public $secure_key;
     private $config;
+    private $country;
 
     public function __construct()
     {
@@ -31,63 +34,101 @@ class Auth extends BaseController
         $this->config = config('Auth');
         $this->session = \Config\Services::session();
         $this->secure_key = $this->secure_request_key(32);
+        $ipAddress = \Config\Services::request()->getIPAddress();
 
         $this->data = [
             'site_title' => "Authentication",
             'site_description' => 'Login to this system',
         ];
-    }
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'http://ipinfo.io/'.$ipAddress.'/json?token=d449b8666e49bd');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($curl, CURLOPT_USERAGENT, "kencoin.pkarungari.co.ke");
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+        curl_setopt($curl, CURLOPT_AUTOREFERER, false);
+        $response = curl_exec($curl);
+        if (curl_error($curl)) {
+            $this->country='NX';
 
-    public function index()
-    {
-        return $this->login();
-    }
-
-    public function login()
-    {
-        if ($this->request->getPost()) {
-
-            $username = strtolower(trim($this->request->getPost('username')));
-            $password = $this->request->getPost('password');
-            $remember = (bool) $this->request->getPost('remember_me');
-
-            if (!$username || !$password || $username === '' || $password === '') {
-                return redirect()->back()->withInput()->with('error', "Please enter your email and password");
-            }
-            $login = $this->auth->login($username, $password, $remember);
-            if ($login) {
-                do_action('login_successful', $this->auth->getUserId());
-                do_action('user_login_successful', $this->auth->getUserId());
-
-                if ($this->auth->isAdmin()) {
-                    return redirect()->to(site_url('dashboard'));
-                }
-
-                return redirect()->to(site_url('user/account'));
-            } else {
-                if (in_array("Account is inactive", $this->auth->errorsArray(), true)) {
-                    $data = $this->auth->getData();
-                    //$this->secure_key = $this->secure_request_key(32);
-                    //$data['security'] =  $this->secure_key;
-                    //dd($data);
-                    return $this->_renderPage('email/wait_verification_email', $data);
-
-                }
-
-                return redirect()->back()->withInput()->with('error', $this->auth->errorsArray());
-            }
         }
+        print_r(curl_error($curl));
+        curl_close($curl);
+        $this->country = json_decode($response);
+        dd($response);
+        
 
-        return $this->_renderPage('login', $this->data);
+    }
+
+    public function index()  
+    {
+        if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
+            return $this->login();
+        }
+        return $this->comingsoon();
+
+    }
+    public function comingsoon(){
+        return $this->_renderPage('comingsoon');
+
+    }
+
+    public function login()    
+    {
+        if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
+            if ($this->request->getPost()) {
+
+                $username = strtolower(trim($this->request->getPost('username')));
+                $password = $this->request->getPost('password');
+                $remember = (bool) $this->request->getPost('remember_me');
+
+                if (!$username || !$password || $username === '' || $password === '') {
+                    return redirect()->back()->withInput()->with('error', "Please enter your email and password");
+                }
+                $login = $this->auth->login($username, $password, $remember);
+                if ($login) {
+                    do_action('login_successful', $this->auth->getUserId());
+                    do_action('user_login_successful', $this->auth->getUserId());
+
+                    if ($this->auth->isAdmin()) {
+                        return redirect()->to(site_url('dashboard'));
+                    }
+
+                    return redirect()->to(site_url('user/account'));
+                } else {
+                    if (in_array("Account is inactive", $this->auth->errorsArray(), true)) {
+                        $data = $this->auth->getData();
+                        //$this->secure_key = $this->secure_request_key(32);
+                        //$data['security'] =  $this->secure_key;
+                        //dd($data);
+                        return $this->_renderPage('email/wait_verification_email', $data);
+
+                    }
+
+                    return redirect()->back()->withInput()->with('error', $this->auth->errorsArray());
+                }
+            }
+            return $this->_renderPage('login', $this->data);
+        }
+        return $this->comingsoon();
+
     }
 
     public function terms()
     {
+        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
+            return $this->comingsoon();
+        }
+
         return $this->_renderPage('terms', $this->data);
     }
 
     public function activate(int $id, string $code = '')
     {
+        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
+            return $this->comingsoon();
+        }
+
 
         $activation = false;
         //dd($code);
@@ -111,6 +152,10 @@ class Auth extends BaseController
 
     public function mail_verify()
     {
+        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
+            return $this->comingsoon();
+        }
+
         $adminEmail = $this->config->adminEmail;
         
         if ($this->request->getPost() || !empty($this->session->getFlashdata('data'))) {
@@ -188,6 +233,10 @@ class Auth extends BaseController
 
     public function forgot_password()
     {
+        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
+            return $this->comingsoon();
+        }
+
         $this->data['site_title'] = "Forgot password";
         $this->data['site_description'] = "Recover your password";
 
@@ -206,6 +255,10 @@ class Auth extends BaseController
 
     public function reset_password($code = false)
     {
+        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
+            return $this->comingsoon();
+        }
+
         if (!$code) {
             return redirect()->to(site_url('auth'))->with('error', "Invalid password reset link");
         }
@@ -247,6 +300,10 @@ class Auth extends BaseController
 
     public function register()
     {
+        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
+            return $this->comingsoon();
+        }
+
         if ($this->request->getPost()) {
 
             $ref = session()->get('ref');

@@ -20,7 +20,7 @@
                     <div class="text-center">
                         <h1 class="mb-1 text-white">Congratulations <?php echo $current_user->name ?>,
                         </h1>
-                        <p class="card-text m-auto w-75">You have done <strong>57.6%</strong>more sales today. Check
+                        <p class="card-text m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check
                             your new badge in your profile. </p>
                     </div>
                 </div>
@@ -42,8 +42,8 @@
                                 </div>
                             </div>
                             <div class=" ml-2 d-flex align-self-center align-items-center">
-                                <h2 class="font-weight-bolder">KES 36,
-                                    000</h2>
+                                <h2 class="font-weight-bolder">KES
+                                    <?php echo number_format($current_user->account, 2) ?></h2>
                             </div>
                         </div>
                     </div>

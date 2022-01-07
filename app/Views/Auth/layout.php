@@ -115,13 +115,11 @@
                             </div>
                             <!-- /Left Text-->
                             <!-- Login-->
-                            <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
-                                <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-                                    <?php
-bootstrap_alerts();
-echo $_html_content;
-?> </div>
-                            </div>
+                            <?php
+                                bootstrap_alerts();
+                                echo $_html_content;
+                            ?>
+
                             <!-- /Login-->
                         </div>
                     </div>
@@ -144,10 +142,10 @@ echo $_html_content;
         <script src="<?php echo base_url('assets/js/core/app-menu.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/core/app.js') ?>"></script>
         <!-- END: Theme JS-->
-
         <!-- BEGIN: Page JS-->
         <script src="<?php echo base_url('assets/js/scripts/pages/page-auth-login.js') ?>"></script>
         <!-- END: Page JS-->
+
 
 
     </body>
