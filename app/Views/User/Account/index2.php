@@ -1,3 +1,13 @@
+<?php
+/***
+ * Created by Patrick Karungari
+ *
+ * Github: https://github.com/patrick-Karungari
+ * E-Mail: PKARUNGARI@GMAIL.COM
+ */
+
+$referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->where('status', 'completed')->orderBy('id', 'DESC')->findAll();
+?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/plugins/charts/chart-apex.css')?>">
 <link rel="stylesheet" type="text/css"
     href="<?php echo base_url('assets/vendors/css/tables/datatable/datatables.min.css')?>">
@@ -101,7 +111,9 @@
                                     </div>
                                 </div>
                                 <div class="media-body my-auto">
-                                    <h4 id="ri" class="font-weight-bolder mb-0">23000</h4>
+                                    <h4 id="ri" class="font-weight-bolder mb-0">
+                                        <?php echo number_format((new \App\Models\Investments())->where('user', $current_user->id)->where('status', 'pending')->selectSum('total', 'totalInvestments')->get()->getLastRow()->totalInvestments, 2) ?>
+                                    </h4>
                                     <p class="card-text font-small-3 mb-0">Running Investments</p>
                                 </div>
                             </div>
@@ -113,7 +125,9 @@
                                     </div>
                                 </div>
                                 <div class="media-body my-auto">
-                                    <h4 id="tp" class="font-weight-bolder mb-0">8549</h4>
+                                    <h4 id="tp" class="font-weight-bolder mb-0">
+                                        <?php echo number_format((new \App\Models\Investments())->where('user', $current_user->id)->where('status', 'completed')->selectSum('return', 'totalInvestments')->get()->getLastRow()->totalInvestments, 2) ?>
+                                    </h4>
                                     <p class="card-text font-small-3 mb-0">Total Profits</p>
                                 </div>
                             </div>
@@ -126,7 +140,9 @@
                                     </div>
                                 </div>
                                 <div class="media-body my-auto">
-                                    <h4 id="ar" class="font-weight-bolder mb-0">142</h4>
+                                    <h4 id="ar" class="font-weight-bolder mb-0">
+                                        <?php  echo count($referrals) ?>
+                                    </h4>
                                     <p class="card-text font-small-3 mb-0">Active Referrals</p>
                                 </div>
                             </div>
@@ -138,7 +154,9 @@
                                     </div>
                                 </div>
                                 <div class="media-body my-auto">
-                                    <h4 id="tb" class="font-weight-bolder mb-0">88674</h4>
+                                    <h4 id="tb" class="font-weight-bolder mb-0">
+                                        <?php echo number_format((new \App\Libraries\Metrics())->getUserReferralBonusTotals($current_user->id), 2) ?>
+                                    </h4>
                                     <p class="card-text font-small-3 mb-0">Total Bonus</p>
                                 </div>
                             </div>
