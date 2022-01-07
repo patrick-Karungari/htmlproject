@@ -59,7 +59,7 @@ class Auth extends BaseController
         //dd($ipAddress);
         print_r(curl_error($curl));
         curl_close($curl);
-        dd();
+        //dd();
         
         
         
