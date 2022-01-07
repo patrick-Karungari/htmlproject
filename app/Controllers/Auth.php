@@ -48,14 +48,19 @@ class Auth extends BaseController
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
         curl_setopt($curl, CURLOPT_AUTOREFERER, false);
         $response = curl_exec($curl);
+        $this->country = json_decode($response);
         if (curl_error($curl)) {
             $this->country='NX';
 
         }
+        if ($ipAddress == '::1') {
+            $this->country = 'KE';
+        }
+        //dd($ipAddress);
         print_r(curl_error($curl));
         curl_close($curl);
-        $this->country = json_decode($response);
-        dd($response);
+        
+        
         
 
     }
@@ -116,141 +121,142 @@ class Auth extends BaseController
 
     public function terms()
     {
-        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
-            return $this->comingsoon();
+        if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
+            return $this->_renderPage('terms', $this->data);
+
         }
 
-        return $this->_renderPage('terms', $this->data);
+
+        return $this->comingsoon();
+
     }
 
     public function activate(int $id, string $code = '')
     {
-        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
-            return $this->comingsoon();
+       if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
+            $activation = false;
+            //dd($code);
+
+            if ($code) {
+                $activation = $this->authModel->activate($id, $code);
+            } else if ($this->auth->isAdmin()) {
+                $activation = $this->authModel->activate($id);
+            }
+            if ($activation) {
+                // redirect them to the auth page
+                return redirect()->to(site_url('auth'))->with('success', "Account activation successful");
+
+            } else {
+                // redirect them to the forgot password page
+                return redirect()->to(site_url('auth'))->with('error', "An error occurred");
+
+            }
         }
-
-
-        $activation = false;
-        //dd($code);
-
-        if ($code) {
-            $activation = $this->authModel->activate($id, $code);
-        } else if ($this->auth->isAdmin()) {
-            $activation = $this->authModel->activate($id);
-        }
-        if ($activation) {
-            // redirect them to the auth page
-            return redirect()->to(site_url('auth'))->with('success', "Account activation successful");
-
-        } else {
-            // redirect them to the forgot password page
-            return redirect()->to(site_url('auth'))->with('error', "An error occurred");
-
-        }
+        return $this->comingsoon();
 
     }
 
     public function mail_verify()
     {
-        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
-            return $this->comingsoon();
-        }
+        if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
+            $adminEmail = $this->config->adminEmail;
+            
+            if ($this->request->getPost() || !empty($this->session->getFlashdata('data'))) {
+                if (!empty($this->session->getFlashdata('data'))) {
+                    $flashdata = $this->session->getFlashdata('data');
+                    //dd($flashdata);
+                    $id = $flashdata['user']['id'];
+                    $email = $flashdata['user']['email'];
+                
 
-        $adminEmail = $this->config->adminEmail;
-        
-        if ($this->request->getPost() || !empty($this->session->getFlashdata('data'))) {
-            if (!empty($this->session->getFlashdata('data'))) {
-                $flashdata = $this->session->getFlashdata('data');
-                //dd($flashdata);
-                $id = $flashdata['user']['id'];
-                $email = $flashdata['user']['email'];
-               
-
-                //$flash_key = $flashdata['security'];
-
-            } else {
-                if ($this->request->getPost()) {
-                    $email = $this->request->getPost('email');
-                    $id = $this->request->getPost('id');
-                   // $flash_key = $this->request->getPost('security');
-                    //dd($flash_key);
-                    //$this->secure_key = $this->secure_request_key(32);
+                    //$flash_key = $flashdata['security'];
 
                 } else {
-                    return redirect()->to(site_url('auth'))->with('error', "An error occurred");
+                    if ($this->request->getPost()) {
+                        $email = $this->request->getPost('email');
+                        $id = $this->request->getPost('id');
+                    // $flash_key = $this->request->getPost('security');
+                        //dd($flash_key);
+                        //$this->secure_key = $this->secure_request_key(32);
 
-                }
-            }
-
-            // $state = false;
-
-            //if (strcmp($flash_key, $this->secure_key) == 0 ){
-            //  $state = true;
-            // }
-
-            $activation = false;
-            $data['user'] = ['email' => $email, 'id' => $id];
-            //dd($id);
-
-            if ($id) {
-                $activation = $this->authModel->deactivate($id);
-                if ($activation) {
-                    //$data['user'] = ['email' => $email, 'id' => $id];
-                    // dd($data);
-
-                    $activationCode = $this->authModel->activationCode;
-                    $identity = $this->config->identity;
-                    $user = $this->authModel->user($id);
-
-                    $data2 = [
-                        'identity' => $user->{$identity},
-                        'id' => $user->id,
-                        'email' => $email,
-                        'supportEmail' => $adminEmail,
-                        'name' => $user->first_name,
-                        'activation' => $activationCode,
-                    ];
-                   
-                    if ($this->auth->sendMail($data2, $email)) {
-                      
-                        return redirect()->to(site_url('auth'))->withInput()->with('success', "Seccessfully Resent Ativation Email");
                     } else {
-                        // redirect them to the forgot password page
                         return redirect()->to(site_url('auth'))->with('error', "An error occurred");
 
                     }
-                    
-                   
                 }
+
+                // $state = false;
+
+                //if (strcmp($flash_key, $this->secure_key) == 0 ){
+                //  $state = true;
+                // }
+
+                $activation = false;
+                $data['user'] = ['email' => $email, 'id' => $id];
+                //dd($id);
+
+                if ($id) {
+                    $activation = $this->authModel->deactivate($id);
+                    if ($activation) {
+                        //$data['user'] = ['email' => $email, 'id' => $id];
+                        // dd($data);
+
+                        $activationCode = $this->authModel->activationCode;
+                        $identity = $this->config->identity;
+                        $user = $this->authModel->user($id);
+
+                        $data2 = [
+                            'identity' => $user->{$identity},
+                            'id' => $user->id,
+                            'email' => $email,
+                            'supportEmail' => $adminEmail,
+                            'name' => $user->first_name,
+                            'activation' => $activationCode,
+                        ];
+                    
+                        if ($this->auth->sendMail($data2, $email)) {
+                        
+                            return redirect()->to(site_url('auth'))->withInput()->with('success', "Seccessfully Resent Ativation Email");
+                        } else {
+                            // redirect them to the forgot password page
+                            return redirect()->to(site_url('auth'))->with('error', "An error occurred");
+
+                        }
+                        
+                    
+                    }
+
+                }
+                return redirect()->to(site_url('auth'))->with('error', "An error occurred. Try again later");
 
             }
             return redirect()->to(site_url('auth'))->with('error', "An error occurred. Try again later");
-
         }
-        return redirect()->to(site_url('auth'))->with('error', "An error occurred. Try again later");
+        return $this->comingsoon();
 
     }
 
     public function forgot_password()
     {
-        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
-            return $this->comingsoon();
-        }
+        if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
+            $adminEmail = $this->config->adminEmail;
 
-        $this->data['site_title'] = "Forgot password";
-        $this->data['site_description'] = "Recover your password";
+            $this->data['site_title'] = "Forgot password";
+            $this->data['site_description'] = "Recover your password";
 
-        if ($this->request->getPost()) {
-            $username = strtolower(trim($this->request->getPost('username')));
+            if ($this->request->getPost()) {
+                $username = strtolower(trim($this->request->getPost('username')));
 
-            if ($this->auth->forgottenPassword($username) === true) {
-                return redirect()->back()->with('success', "A link to reset your password has been sent to your E-Mail address");
+                if ($this->auth->forgottenPassword($username) === true) {
+                    return redirect()->back()->with('success', "A link to reset your password has been sent to your E-Mail address");
+                }
+
+                return redirect()->back()->withInput()->with('error', $this->auth->errorsArray());
             }
 
-            return redirect()->back()->withInput()->with('error', $this->auth->errorsArray());
+            return $this->_renderPage('forgot_password', $this->data);
         }
-
-        return $this->_renderPage('forgot_password', $this->data);
+        return $this->comingsoon();
     }
 
     public function reset_password($code = false)
@@ -300,79 +306,80 @@ class Auth extends BaseController
 
     public function register()
     {
-        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
-            return $this->comingsoon();
-        }
+        if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
+            $adminEmail = $this->config->adminEmail;
 
-        if ($this->request->getPost()) {
+            if ($this->request->getPost()) {
 
-            $ref = session()->get('ref');
+                $ref = session()->get('ref');
 
-            $validation = \Config\Services::validation();
-            $validation->setRule('username', "Username", 'trim|required|min_length[3]|is_unique[users.username]');
-            $validation->setRule('fname', "First Name", 'trim|required|min_length[3]');
-            $validation->setRule('lname', "Last Name", 'trim|required|min_length[3]');
-            $validation->setRule('phone', "Phone Number", 'trim|required|min_length[10]|max_length[10]|is_unique[users.phone]');
-            $validation->setRule('email', "Email Address", 'trim|required|valid_email|is_unique[users.email]');
-            $validation->setRule('password', "Password", 'trim|required|min_length[6]|matches[confirm_password]');
-            $validation->setRule('confirm_password', "Confirm Password", 'trim|required|min_length[6]');
-            if ($validation->withRequest($this->request)->run() === true) {
-                $auth = new \App\Libraries\Auth();
+                $validation = \Config\Services::validation();
+                $validation->setRule('username', "Username", 'trim|required|min_length[3]|is_unique[users.username]');
+                $validation->setRule('fname', "First Name", 'trim|required|min_length[3]');
+                $validation->setRule('lname', "Last Name", 'trim|required|min_length[3]');
+                $validation->setRule('phone', "Phone Number", 'trim|required|min_length[10]|max_length[10]|is_unique[users.phone]');
+                $validation->setRule('email', "Email Address", 'trim|required|valid_email|is_unique[users.email]');
+                $validation->setRule('password', "Password", 'trim|required|min_length[6]|matches[confirm_password]');
+                $validation->setRule('confirm_password', "Confirm Password", 'trim|required|min_length[6]');
+                if ($validation->withRequest($this->request)->run() === true) {
+                    $auth = new \App\Libraries\Auth();
 
-                $username = strtolower(trim($this->request->getPost('username')));
-                $first_name = trim($this->request->getPost('fname'));
-                $last_name = trim($this->request->getPost('lname'));
-                $phone = trim($this->request->getPost('phone'));
-                $email = trim($this->request->getPost('email'));
-                $password = $this->request->getPost('password');
+                    $username = strtolower(trim($this->request->getPost('username')));
+                    $first_name = trim($this->request->getPost('fname'));
+                    $last_name = trim($this->request->getPost('lname'));
+                    $phone = trim($this->request->getPost('phone'));
+                    $email = trim($this->request->getPost('email'));
+                    $password = $this->request->getPost('password');
 
-                if ($auth->identityCheck($email) || $auth->identityCheck($phone) || $auth->identityCheck($username)) {
-                    return redirect()->back()->with('error', "Username, Email or phone number already registered");
-                }
-
-                if ($ref) {
-                    if (!is_numeric($ref)) {
-                        $referer = (new Users())->where('username', $ref)->get()->getFirstRow();
-                        $ref = $referer->id;
+                    if ($auth->identityCheck($email) || $auth->identityCheck($phone) || $auth->identityCheck($username)) {
+                        return redirect()->back()->with('error', "Username, Email or phone number already registered");
                     }
-                }
 
-                $additional_data = [
-                    'first_name' => $first_name,
-                    'last_name' => $last_name,
-                    'phone' => $phone,
-                    'referred_by' => (isset($ref) && is_numeric($ref)) ? $ref : null,
-                ];
-                if ($newID = $auth->register($username, $password, $email, $additional_data, [2])) {
+                    if ($ref) {
+                        if (!is_numeric($ref)) {
+                            $referer = (new Users())->where('username', $ref)->get()->getFirstRow();
+                            $ref = $referer->id;
+                        }
+                    }
 
-                    $referral = new Referrals();
-                    $xData = [
-                        'user' => $newID,
-                        'ref' => $ref,
-                        'status' => 'pending',
+                    $additional_data = [
+                        'first_name' => $first_name,
+                        'last_name' => $last_name,
+                        'phone' => $phone,
+                        'referred_by' => (isset($ref) && is_numeric($ref)) ? $ref : null,
                     ];
-                    try {
-                        $referral->save($xData);
-                    } catch (\ReflectionException $e) {
-                        return redirect()->back()->with('error', $e->getMessage());
+                    if ($newID = $auth->register($username, $password, $email, $additional_data, [2])) {
+
+                        $referral = new Referrals();
+                        $xData = [
+                            'user' => $newID,
+                            'ref' => $ref,
+                            'status' => 'pending',
+                        ];
+                        try {
+                            $referral->save($xData);
+                        } catch (\ReflectionException $e) {
+                            return redirect()->back()->with('error', $e->getMessage());
+                        }
+                        $data = ['user' => ['email' => $email, 'id' => $newID], 'register'=>true];
+
+                        return redirect()->to(site_url('auth'))->withInput()->with('success', "Please verify your email.");
+
+                    } else {
+                        return redirect()->back()->with('error', $auth->errorsArray());
                     }
-                    $data = ['user' => ['email' => $email, 'id' => $newID], 'register'=>true];
-
-                    return redirect()->to(site_url('auth'))->withInput()->with('success', "Please verify your email.");
-
                 } else {
-                    return redirect()->back()->with('error', $auth->errorsArray());
+                    return redirect()->back()->with('error', $validation->getErrors());
                 }
-            } else {
-                return redirect()->back()->with('error', $validation->getErrors());
             }
-        }
 
-        $ref = $this->request->getGet('ref');
-        if (isset($ref)) {
-            session()->set('ref', $ref);
+            $ref = $this->request->getGet('ref');
+            if (isset($ref)) {
+                session()->set('ref', $ref);
+            }
+            return $this->_renderPage('register', $this->data);
         }
-        return $this->_renderPage('register', $this->data);
+        return $this->comingsoon();
     }
 
     public function logout()
