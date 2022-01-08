@@ -405,7 +405,7 @@
                                 class="menu-title text-truncate" data-i18n="Chat">Chat</span></a>
                     </li>
 
-                    <li class=" nav-item"><a class="d-flex align-items-center" href=""><i
+                    <li class=" nav-item"><a class="d-flex align-items-center"><i
                                 data-feather='trending-up'></i></i><span class="menu-title text-truncate"
                                 data-i18n="Pages">Investments</span></a>
                         <ul class="menu-content">
