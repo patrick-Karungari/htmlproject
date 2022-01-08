@@ -47,8 +47,8 @@ class Auth extends BaseController
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
         curl_setopt($curl, CURLOPT_AUTOREFERER, false);
-        $response = curl_exec($curl);
-        if($ipAddress != '::1'){
+        
+        if($ipAddress != '::1' && ($response = curl_exec($curl))){
             $this->country = json_decode($response)->country;
         } 
         if (curl_error($curl)) {
@@ -59,7 +59,7 @@ class Auth extends BaseController
             $this->country = 'KE';
         }
         //dd($ipAddress);
-        print_r(curl_error($curl));
+        //print_r(curl_error($curl));
         curl_close($curl);
         //dd();
         
