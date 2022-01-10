@@ -27,7 +27,7 @@ class LoggedInFilter implements FilterInterface
         $this->ionAuth = new Auth();
         if (!$this->ionAuth->loggedIn()) {
             $this->session->setFlashdata('message', "Please login to continue");
-            return redirect()->to(site_url('auth'));
+            return redirect()->to(site_url('auth/login'));
         }
         return true;
     }
