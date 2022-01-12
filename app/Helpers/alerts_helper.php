@@ -13,9 +13,9 @@ function system_alerts($dismissible = true)
     }
 
 //    TODO: Fix this when messages are an array
-    //    if (get_option('toastr_alerts_enabled', '1') == '1') {
-    //        toastr_alerts();
-    //    }
+   if (get_option('toastr_alerts_enabled', '1') == '1') { 
+        toastr_alerts($_SESSION);
+  }
 }
 
 function bootstrap_alerts($dismissible = true)
@@ -98,9 +98,8 @@ function bootstrap_alerts($dismissible = true)
     }
 }
 
-function toastr_alerts()
+function toastr_alerts($session)
 {
-    $session = session();
     if ($msg = $session->getFlashData('error')) {
         if (is_array($msg)) {
 
@@ -112,12 +111,25 @@ toast('Error', '<?php echo $msg; ?>', 'error');
 <?php
 }
     } else if ($msg = $session->getFlashData('success')) {
+        
+
+
         if (is_array($msg)) {
 
         } else {
+
             ?>
 <script>
-toast('Success', '<?php echo $msg; ?>', 'success');
+var isRtl = $('html').attr('data-textdirection') === 'rtl';
+var $name = document.querySelector('#user_name_d').innerHTML;
+toastr['success'](
+    'You have successfully logged in to Ken Coin. Now you can start to explore!',
+    '👋 Welcome ' + $name + '!', {
+        closeButton: true,
+        tapToDismiss: true,
+        rtl: isRtl
+    }
+);
 </script>
 <?php
 }

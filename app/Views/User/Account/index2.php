@@ -6,6 +6,7 @@
  * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
+
 $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->where('status', 'completed')->orderBy('id', 'DESC')->findAll();
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/plugins/charts/chart-apex.css')?>">
@@ -62,7 +63,8 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
         </div>
         <!-- Statistics Card -->
         <div class="flex-fill ml-1 mr-1">
-            <div onmouseover="textprimary(this)" onmouseout="removeclass(this)" class="card h-card text-center">
+            <div style="cursor:pointer" onclick="document.location='deposits'" onmouseover="textprimary(this)"
+                onmouseout="removeclass(this)" class="card h-card text-center">
                 <div class="card-body">
                     <div class="avatar bg-light-success p-50 mb-1">
                         <div class="avatar-content"><i data-feather="trending-up" class="font-medium-5"></i>
@@ -76,7 +78,8 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
             </div>
         </div>
         <div class=" flex-fill ml-1 mr-1">
-            <div onmouseover="textdanger(this)" onmouseout="removeclass(this)" class="card h-card text-center">
+            <div style="cursor:pointer" onclick="document.location='withdraws'" onmouseover="textdanger(this)"
+                onmouseout="removeclass(this)" class="card h-card text-center">
                 <div class="card-body">
                     <div class="avatar bg-light-danger p-50 mb-1">
                         <div class="avatar-content"><i data-feather="trending-down" class="font-medium-5"></i></div>
@@ -96,7 +99,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                 <div class="card-header">
                     <h4 class="card-title">Statistics</h4>
                     <div class="d-flex align-items-center">
-                        <p class="card-text font-small-2 mr-25 mb-0">Updated 1 month ago</p>
+                        <p id="timer" class="card-text font-small-2 mr-25 mb-0">Updated a few seconds ago</p>
                         <ul class="list-inline ml-2 mb-0">
                             <li><a data-action="reload"><i data-feather="rotate-cw"></i></a></li>
                         </ul>
@@ -105,7 +108,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                 <div class="card-body statistics-body">
                     <div class="row">
                         <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                            <div class="media">
+                            <div style="cursor:pointer" onclick="document.location='investments'" class="media">
                                 <div class="avatar bg-light-primary mr-2">
                                     <div class="avatar-content"><i data-feather="trending-up" class="avatar-icon"></i>
                                     </div>
@@ -119,7 +122,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                             </div>
                         </div>
                         <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                            <div class="media">
+                            <div style="cursor:pointer" onclick="document.location='investments'" class="media">
                                 <div class="avatar bg-light-info mr-2">
                                     <div class="avatar-content"><i data-feather="user" class="avatar-icon"></i>
                                     </div>
@@ -134,7 +137,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                         </div>
 
                         <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
-                            <div class="media">
+                            <div style="cursor:pointer" onclick="document.location='referrals'" class="media">
                                 <div class="avatar bg-light-danger mr-2">
                                     <div class="avatar-content"><i data-feather="box" class="avatar-icon"></i>
                                     </div>
@@ -148,7 +151,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                             </div>
                         </div>
                         <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                            <div class="media">
+                            <div style="cursor:pointer" onclick="document.location='referrals'" class="media">
                                 <div class="avatar bg-light-info mr-2">
                                     <div class="avatar-content"><i data-feather="user" class="avatar-icon"></i>
                                     </div>
@@ -167,8 +170,10 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
         </div>
     </div>
 </section>
+
 <script>
 document.getElementById("dashboard").className += " active";
+id = '<?php echo $current_user->id ;?>';
 
 function textprimary(x) {
     x.className += " bg-success";

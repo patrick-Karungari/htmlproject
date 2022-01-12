@@ -349,9 +349,9 @@ if ($deposit_rate < -20) {
     </div>
 </div>
 <?php
-$plans = (new \App\Models\Plans())->where('active', '1')->orderBy('days', 'ASC')->findAll();
-if (count($plans) > 0) {
-    ?>
+    $plans = (new \App\Models\Plans())->where('active', '1')->orderBy('days', 'ASC')->findAll();
+    if (count($plans) > 0) {
+?>
 <div class="card">
     <div class="card-body">
         <div class="container text-center">

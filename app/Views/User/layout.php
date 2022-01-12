@@ -452,7 +452,24 @@
 
                 <div class="content-body">
                     <!-- Dashboard Analytics Start -->
-                    <?php  bootstrap_alerts(); echo $_html_content;?>
+                    <?php  
+                   // dd($_SERVER);
+                    $session = \Config\Services::session();
+
+                    if (( str_contains($_SERVER['REQUEST_URI'], "/user/account") && (isset($_SERVER['HTTP_REFERER'])) && str_contains($_SERVER['HTTP_REFERER'], "/auth")) ) {
+                        //dd($_SERVER);
+
+                        echo $_html_content;                  
+                        //dd($session->getFlashData());
+
+                       toastr_alerts($session);                        
+                    }else{
+                        bootstrap_alerts();
+                        echo $_html_content;
+
+                    }                   
+                    
+                   ?>
                     <!-- Dashboard Analytics end -->
 
                 </div>

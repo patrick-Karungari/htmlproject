@@ -99,8 +99,13 @@ class Auth extends BaseController
                     do_action('user_login_successful', $this->auth->getUserId());
 
                     if ($this->auth->isAdmin()) {
+                        Services::session()->setFlashdata('success','Successfuly logged in');
+
                         return redirect()->to(site_url('dashboard'));
                     }
+                    Services::session()->setFlashdata('success', 'Successfuly logged in');
+                    //Services::session()->setFlashdata('success', 'Successfuly logged in');
+
 
                     return redirect()->to(site_url('user/account'));
                 } else {

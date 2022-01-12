@@ -408,5 +408,22 @@ class Api extends BaseController
         }
         return strtoupper($random_string);
     }
+    public function getStat(){
+        $id = $this->request->getGet('id');
+        //dd($this->request->getGet('id'));
+        if($this->request->getGet('id')){
+            $inv =  number_format((new \App\Models\Investments())->where('user', $id)->where('status', 'pending')->selectSum('total', 'totalInvestments')->get()->getLastRow()->totalInvestments, 2);
+            $profit = number_format((new \App\Models\Investments())->where('user', $id)->where('status', 'completed')->selectSum('return', 'totalInvestments')->get()->getLastRow()->totalInvestments, 2);
+            $referrals = count((new \App\Models\Referrals())->where('user', $id)->where('status', 'completed')->orderBy('id', 'DESC')->findAll()); 
+            $bonus = number_format((new \App\Libraries\Metrics())->getUserReferralBonusTotals($id), 2);
+            $data = array('investment' => $inv,
+                        'profit' => $profit,
+                        'referrals' => $referrals,
+                        'date'=> date('Y-m-d H:i:s'),
+                        'bonus' =>$bonus );
+            return json_encode($data);
 
+        }
+
+    }
 }

@@ -76,13 +76,13 @@
     <div class="divider-text">or</div>
 </div>
 <div class="auth-footer-btn d-flex justify-content-center"><a class="btn btn-facebook" href="javascript:void(0)"><i
-            data-feather="facebook"></i></a><a class="btn btn-twitter white" href="javascript:void(0)"><i
-            data-feather="twitter"></i></a><a class="btn btn-google" href="javascript:void(0)"><i
-            data-feather="mail"></i></a><a class="btn btn-github" href="javascript:void(0)"><i
-            data-feather="github"></i></a></div>
+            data-feather='facebook'></i></a><a class="btn btn-twitter white" href="javascript:void(0)"><i
+            data-feather='twitter'></i></a><a class="btn btn-google" href="javascript:void(0)"><i
+            data-feather='mail'></i></a><a class="btn btn-github" href="javascript:void(0)"><i
+            data-feather='github'></i></a></div>
 
 <script>
-document.getElementById('myImage').src = '<?php echo site_url('assets/images/pages/register-v2-dark.svg') ?>';
+document.getElementById(' myImage').src = '<?php echo site_url('assets/images/pages/register-v2-dark.svg') ?>';
 </script>
 <script>
 const phoneInputField = document.getElementById('i-register-phone');

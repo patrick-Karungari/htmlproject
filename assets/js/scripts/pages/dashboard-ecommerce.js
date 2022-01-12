@@ -55,22 +55,8 @@ $(window).on('load', function () {
   var browserStateSecondaryChart;
   var browserStateWarningChart;
   var goalOverviewChart;
-  var isRtl = $('html').attr('data-textdirection') === 'rtl';
 
-  document.getElementById("dashboard").className += " active";
-  // On load Toast
-  setTimeout(function () {
-    var $name = document.querySelector('#user_name_d').innerHTML;
-    toastr['success'](
-        'You have successfully logged in to Vuexy. Now you can start to explore!',
-        '👋 Welcome ' + $name+'!',
-        {
-          closeButton: true,
-          tapToDismiss: false,
-          rtl: isRtl
-        }
-    );
-  }, 2000);
+ 
 
   //------------ Statistics Bar Chart ------------
   //----------------------------------------------

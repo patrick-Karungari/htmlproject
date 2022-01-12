@@ -64,7 +64,9 @@
         <!-- BEGIN: Vendor JS-->
         <script src="<?php echo base_url('assets/vendors/js/vendors.min.js') ?>"></script>
         <!-- END: Vendor JS-->
-
+        <!-- BEGIN: Blog Vendor JS-->
+        <script src="<?php echo base_url('assets/vendors/js/extensions/toastr.min.js') ?>"></script>
+        <!-- END: Blog Vendor JS-->
 
     </head>
     <!-- END: Head-->
@@ -428,9 +430,25 @@
                     <!-- Dashboard Analytics Start -->
 
                     <?php
-                                bootstrap_alerts();
+                                //bootstrap_alerts();
                                 
-                                echo $_html_content;
+                                //echo $_html_content;
+                               // dd($_SERVER);
+                                $session = \Config\Services::session();
+
+                                if ( (str_contains($_SERVER['REQUEST_URI'], "/dashboard") && (isset($_SERVER['HTTP_REFERER'])) && str_contains($_SERVER['HTTP_REFERER'], "/auth"))) {
+                                    //dd($_SERVER);
+
+                                    echo $_html_content;
+                                    //dd($session->getFlashData());
+
+                                    toastr_alerts($session);
+                                } else {
+                                    bootstrap_alerts();
+                                    echo $_html_content;
+
+                                }
+
                                 if ($_SERVER['REQUEST_URI'] === "/admin/blog/create") {
                                     //dd($_SERVER['REQUEST_URI']);
                                     echo "<script src='" . base_url('assets/js/scripts/pages/page-blog-edit.js') . "'></script>\n";
@@ -470,9 +488,7 @@
         <!-- END: Footer-->
 
 
-        <!-- BEGIN: Blog Vendor JS-->
-        <script src="<?php echo base_url('assets/vendors/js/extensions/toastr.min.js') ?>"></script>
-        <!-- END: Blog Vendor JS-->
+
 
         <!-- BEGIN: Theme JS-->
         <script src="<?php echo base_url('assets/js/core/app-menu.js') ?>"></script>
