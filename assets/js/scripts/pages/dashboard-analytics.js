@@ -39,26 +39,33 @@ $(window).on('load', function () {
   ar.start();
   tb.start();
   $.ajax({
-            url: "account/getStat",
-            data: {"id":id, "timezone":Intl.DateTimeFormat().resolvedOptions().timeZone},
-            type: 'GET',
-            success: function (resp) {
-             
-              if (resp != null) {
-                var resp = JSON.parse(resp);
-                time = resp.date;
-                console.log(moment(resp.date,moment.defaultFormat).fromNow());
-                //block_ele.unblock();
-              } else {
-                //block_ele.unblock();
-                console.log('api response null');
-              }            
-            },
-            error: function(e) {
-              //block_ele.unblock();
-              console.log('api error');
-            }  
-        });
+      url: "account/getStat",
+      data: {"id":id, "timezone":Intl.DateTimeFormat().resolvedOptions().timeZone},
+      type: 'GET',
+      success: function (resp) {
+        
+        if (resp != null) {
+          try {
+            var resp = JSON.parse(resp);
+            time = resp.date;
+            console.log(moment(resp.date, moment.defaultFormat).fromNow());
+            //block_ele.unblock();
+          } catch {
+            //block_ele.unblock();
+            console.log('api error');
+          }
+          
+          //block_ele.unblock();
+        } else {
+          //block_ele.unblock();
+          console.log('api response null');
+        }            
+      },
+      error: function(e) {
+        //block_ele.unblock();
+        console.log('api error');
+      }  
+  });
   if (window.location.pathname === '/user/account') {
     setInterval(function () {
       document.getElementById("timer").innerHTML = "Updated " + moment(time, moment.defaultFormat).fromNow();
@@ -96,12 +103,18 @@ $(window).on('load', function () {
             success: function (resp) {
              
               if (resp != null) {
-                var resp = JSON.parse(resp);
-                time = resp.date;
-                console.log(moment(resp.date,moment.defaultFormat).fromNow());
-                block_ele.unblock();
-                document.getElementById("timer").innerHTML = "Updated " + moment(time, moment.defaultFormat).fromNow();
+                try {
+                  var resp = JSON.parse(resp);
+                  time = resp.date;
+                  console.log(moment(resp.date,moment.defaultFormat).fromNow());
+                  block_ele.unblock();
+                  document.getElementById("timer").innerHTML = "Updated " + moment(time, moment.defaultFormat).fromNow();
 
+                } catch {
+                  block_ele.unblock();
+                  console.log('api response null');
+                }
+                
               } else {
                 block_ele.unblock();
                 console.log('api response null');
