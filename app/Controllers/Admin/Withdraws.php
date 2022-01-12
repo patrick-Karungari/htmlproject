@@ -153,28 +153,6 @@ class Withdraws extends \App\Controllers\AdminController
         return "null";
 
     }
-    public function getTotalWithdrawals2(){
-        
-        $postData = $this->request->getPost();
-        $dtpostData = $postData['data'];
-        $response = array();
-
-        ## Read value
-        $draw = $dtpostData['draw'];
-        $start = $dtpostData['start'];
-        $rowperpage = $dtpostData['length']; // Rows display per page
-        $columnIndex = $dtpostData['order'][0]['column']; // Column index
-        $columnName = $dtpostData['columns'][$columnIndex]['data']; // Column name
-        $columnSortOrder = $dtpostData['order'][0]['dir']; // asc or desc
-        $searchValue = $dtpostData['search']['value']; // Search value
-
-        
-        ## Total number of records without filtering
-        $totalRecords = (new \App\Models\Withdraws())->countAllResults();
-
-
-    }
-
-
+    
 
 }

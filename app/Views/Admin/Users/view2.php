@@ -186,7 +186,7 @@ $_deposits['data']=$deposits;
                     <h4 class="card-title mb-2">User Transactions</h4>
                 </div>
                 <div class="card-datatable table-responsive pb-1">
-                    <table class="deposit-list-table table">
+                    <table class="pl-1 pr-1 deposit-list-table table">
                         <thead>
                             <tr>
                                 <th></th>
@@ -215,7 +215,7 @@ $_deposits['data']=$deposits;
                     <h4 class="card-title mb-2">User Investments</h4>
                 </div>
                 <div class="card-datatable table-responsive pb-1">
-                    <table class="investments-list-table table">
+                    <table class="pl-1 pr-1 investments-list-table table">
                         <thead>
                             <tr>
                                 <th></th>

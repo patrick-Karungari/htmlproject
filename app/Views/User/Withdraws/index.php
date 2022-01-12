@@ -7,6 +7,7 @@
  */
 
 $withdraws = (new \App\Models\Withdraws())->where('user', $current_user->id)->orderBy('id', 'DESC')->findAll();
+dd($withdraws);
 ?>
 <div class="row">
     <div class="col-md-12 grid-margin">
@@ -27,9 +28,9 @@ $withdraws = (new \App\Models\Withdraws())->where('user', $current_user->id)->or
         <?php
 if (count($withdraws) > 0) {
     ?>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
                         <th class="pl-0 pt-0">ID</th>
                         <th class="pl-0 pt-0">Phone</th>
@@ -39,20 +40,20 @@ if (count($withdraws) > 0) {
                         <th class="pt-0">Description</th>
                         <th class="pt-0">Date</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
+                <tbody>
                     <?php
 $n = 0;
     foreach ($withdraws as $withdraw) {
         $n++;
         ?>
-                        <tr>
-                            <td class="pl-0"><?php echo $n; ?></td>
-                            <td><?php echo $withdraw->phone; ?></td>
-                            <td><?php echo $withdraw->amount; ?></td>
-                            <td><?php echo $withdraw->trx_id; ?></td>
-                            <td>
-                                <?php
+                    <tr>
+                        <td class="pl-0"><?php echo $n; ?></td>
+                        <td><?php echo $withdraw->phone; ?></td>
+                        <td><?php echo $withdraw->amount; ?></td>
+                        <td><?php echo $withdraw->trx_id; ?></td>
+                        <td>
+                            <?php
 $status = $withdraw->status;
         if ($status == 'completed') {
             ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
@@ -64,23 +65,23 @@ $status = $withdraw->status;
             ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
 }
         ?>
-                            </td>
-                            <td><?php echo $withdraw->description; ?></td>
-                            <td><?php echo $withdraw->date->format('d/m/Y h:i a'); ?></td>
-                        </tr>
-                        <?php
+                        </td>
+                        <td><?php echo $withdraw->description; ?></td>
+                        <td><?php echo $withdraw->date->format('d/m/Y h:i a'); ?></td>
+                    </tr>
+                    <?php
 }
     ?>
-                    </tbody>
-                </table>
-            </div>
-            <?php
+                </tbody>
+            </table>
+        </div>
+        <?php
 } else {
     ?>
-            <div class="alert alert-warning">
-                You have not made any withdraws yet
-            </div>
-            <?php
+        <div class="alert alert-warning">
+            You have not made any withdraws yet
+        </div>
+        <?php
 }
 ?>
     </div>
