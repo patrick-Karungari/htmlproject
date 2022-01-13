@@ -35,7 +35,7 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
 <div class="card">
     <div class="card-body justify-content-center text-center">
         <div class="d-flex align-items-start justify-content-between">
-            <p class="card-title flex-grow">Day's Deposits</p>
+            <p class="card-title flex-grow">Day's Investments</p>
         </div>
         <div class="d-flex  justify-content-center">
             <input type="text" id="fp-range" class="form-control flatpickr-range"
