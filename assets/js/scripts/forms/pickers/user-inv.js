@@ -274,7 +274,7 @@ if (dtInvestmentsTable.length) {
             header: function (row) {
               var data = row.data();
              // console.log(data);
-              return 'Details of ' + data['user'].first_name + ' ' + data['user'].last_name;
+              return 'Details of ' + data['plan'].title;
             }
           }),
           type: 'column',
