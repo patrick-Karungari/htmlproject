@@ -32,7 +32,7 @@
         var dateEnd = instance.formatDate(selectedDates[1], "Y-m-d");
 
         $.ajax({
-            url: "deposits/getTotalDeposits",
+            url: "deposits/getTotalDeposits/" + id,
             data: {"start": dateStart, "end": dateEnd},
             type: 'GET',
             success: function (resp) {
@@ -61,7 +61,7 @@
 
   // Default 
   $.ajax({
-            url: "deposits/getTotalDeposits",
+            url: "deposits/getTotalDeposits/" + id,
             data: {"start": todayDate, "end": todayDate},
             type: 'GET',
             success: function (resp) {
@@ -116,14 +116,16 @@ if (dtInvestmentsTable.length) {
       ],
       columnDefs: [
         {
-          // For Responsive
-          className: 'control',
-          orderable: false,
-          responsivePriority: 1,
-              targets: 0,
-              render: {
+        // For Responsive
+        className: 'control',
+        orderable: false,
+        responsivePriority: 1,
+        targets: 0,
+        render: function (date, type, full, meta) {
+                return " ";
+            }
               
-          }
+          
         },        
        
        {

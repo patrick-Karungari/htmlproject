@@ -123,7 +123,10 @@ if (dtInvestmentsTable.length) {
           orderable: false,
           width: '8px',
           responsivePriority: 2,
-          targets: 0
+          targets: 0,
+          render: function (date, type, full, meta) {
+                        return " ";
+                    }
         },
         {
             // User full name and username

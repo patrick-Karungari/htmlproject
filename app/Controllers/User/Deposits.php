@@ -96,14 +96,14 @@ class Deposits extends \App\Controllers\UserController
        return json_encode($data);
 
     }
-    public function getTotalDeposits(){
+    public function getTotalDeposits($id){
         
         $model = new \App\Models\Deposits();
         $dateStart = $this->request->getGet('start');
         $dateEnd = $this->request->getGet('end');
         if ($dateStart && $dateEnd) {           
             
-            $amountCOB = $model->selectSum('amount', 'totalAmount')->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;
+            $amountCOB = $model->selectSum('amount', 'totalAmount')->where('user', $id)->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;
             return $amountCOB;
         }
         return "null";

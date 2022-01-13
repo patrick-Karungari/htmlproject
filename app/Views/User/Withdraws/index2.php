@@ -6,7 +6,6 @@
  * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
-
 ?>
 <!-- BEGIN: Vendor CSS-->
 
@@ -26,7 +25,7 @@
 <div class="card">
     <div class="card-body justify-content-center text-center">
         <div class="d-flex align-items-start justify-content-between">
-            <p class="card-title flex-grow">Day's Deposits</p>
+            <p class="card-title flex-grow">Day's Withdrawals</p>
         </div>
         <div class="d-flex  justify-content-center">
             <input type="text" id="fp-range" class="form-control flatpickr-range"
@@ -49,7 +48,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title mb-2">My Deposits</h4>
+                <h4 class="card-title mb-2">My Withdrawals</h4>
             </div>
             <div class="card-datatable table-responsive pb-1">
                 <table class="investments-list-table table p-1">
@@ -74,7 +73,7 @@
 
 <script>
 id = '<?php echo $current_user->id ?>';
-document.getElementById("deposits").className += " active";
+document.getElementById("withdrawals").className += " active";
 </script>
 <!-- BEGIN: Page Vendor JS-->
 <script src="../../../assets/vendors/js/pickers/pickadate/picker.js"></script>
@@ -93,5 +92,5 @@ document.getElementById("deposits").className += " active";
 <script src="../../../assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js"></script>
 <!-- END: Page Vendor JS-->
 <!-- BEGIN: Page JS-->
-<script src="../../../assets/js/scripts/forms/pickers/user-depo.js"></script>
+<script src="../../../assets/js/scripts/forms/pickers/user-with.js"></script>
 <!-- END: Page JS-->

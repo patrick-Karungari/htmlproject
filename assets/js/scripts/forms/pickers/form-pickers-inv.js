@@ -118,9 +118,11 @@ if (dtInvestmentsTable.length) {
       columnDefs: [
         {
           // For Responsive
-          className: 'control',
-         
-          targets: 0
+          className: 'control',         
+          targets: 0,
+          render: function (date, type, full, meta) {
+                        return " ";
+                    }
         },
          {
                     // User full name and username

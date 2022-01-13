@@ -23,7 +23,7 @@ class Withdraws extends \App\Controllers\UserController
     public function index(): string
     {
 
-        return $this->_renderPage('Withdraws/index', $this->data);
+        return $this->_renderPage('Withdraws/index2', $this->data);
     }
 
     public function create()
@@ -161,5 +161,45 @@ class Withdraws extends \App\Controllers\UserController
 
         $this->data['site_title'] = "Withdraw Money";
         return $this->_renderPage('Withdraws/create', $this->data);
+    }
+       public function getWith($id)
+    {
+
+
+       $Withdraws = (new \App\Models\Withdraws())->where('user', $id)->orderBy('date', 'DESC')->findAll();
+       $Withdraws = json_encode($Withdraws);
+       $Withdraws = json_decode($Withdraws, TRUE);
+      
+
+       $i = 0;
+
+       foreach($Withdraws as $withdraw) {
+           $user =  ['id' => $withdraw['user']['id'], 
+                     'first_name' =>  $withdraw['user']['first_name'],
+                     'last_name' => $withdraw['user']['last_name'],
+                     'avatar' => $withdraw['user']['avatar'],
+                    'username' => $withdraw['user']['username'] ];
+                     
+            $Withdraws[$i++]['user'] = $user;
+            
+          
+       }
+       //dd($deposits);
+       $data ['data'] = $Withdraws;
+       return json_encode($data);
+
+    }
+    public function getTotalWithdraws($id){
+        
+        $model = new \App\Models\Withdraws();
+        $dateStart = $this->request->getGet('start');
+        $dateEnd = $this->request->getGet('end');
+        if ($dateStart && $dateEnd) {           
+            
+            $amountCOB = $model->selectSum('amount', 'totalAmount')->where('user', $id)->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;
+            return $amountCOB;
+        }
+        return "null";
+
     }
 }

@@ -32,7 +32,7 @@
         var dateEnd = instance.formatDate(selectedDates[1], "Y-m-d");
 
         $.ajax({
-            url: "admin/deposits/getTotalDeposits",
+            url: "withdraws/getTotalWithdraws/" + id,
             data: {"start": dateStart, "end": dateEnd},
             type: 'GET',
             success: function (resp) {
@@ -40,9 +40,9 @@
               var End = instance.formatDate(selectedDates[1], "M, d Y");
               if (resp != null) {
                 if (dateEnd == dateStart) {
-                  document.getElementById("heading").innerHTML = "Deposits for  " + Start;
+                  document.getElementById("heading").innerHTML = "Withdraws for  " + Start;
                 } else {
-                  document.getElementById("heading").innerHTML = "Deposits for  " + Start + " to "+ End;
+                  document.getElementById("heading").innerHTML = "Withdraws for  " + Start + " to "+ End;
                 }
               // document.getElementById("heading").innerHTML = "Payouts for  " + Intl.NumberFormat('en-US').format(resp);
                 document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
@@ -61,13 +61,13 @@
 
   // Default 
   $.ajax({
-            url: "admin/deposits/getTotalDeposits",
+            url: "withdraws/getTotalWithdraws/" + id,
             data: {"start": todayDate, "end": todayDate},
             type: 'GET',
             success: function (resp) {
            
               if (resp != null) {
-                document.getElementById("heading").innerHTML = "Deposits for  " + mmm
+                document.getElementById("heading").innerHTML = "Withdraws for  " + mmm
                   + ", " + dd + " " + yyyy;
                 document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
                
@@ -95,7 +95,7 @@
 if (dtInvestmentsTable.length) {
     var dtInvestments = dtInvestmentsTable.DataTable({
       "ajax": {
-        "url": "admin/deposits/getDepo",
+        "url": "withdraws/getWith/" + id,
         "type": "GET",     
       },
       "language": {
@@ -107,80 +107,38 @@ if (dtInvestmentsTable.length) {
       columns: [
         // columns according to JSON
         { data: 'id' },
-        { data: 'user' },
-        { data: 'amount' },
-        { data: 'phone' },
         { data: 'trx_id' },
+        { data: 'amount' },
+        { data: 'phone' },        
         { data: 'status' },        
         { data: 'description' },
-        { data: 'date' },
-        { data: '' }
+        { data: 'date' }
       ],
       columnDefs: [
         {
-          // For Responsive
-          className: 'control',
-          orderable: false,
-          responsivePriority: 1,
-          targets: 0,
-          render: function (date, type, full, meta) {
-                        return " ";
-                    }
-        },
-        {
-            // User full name and username
-          targets: 1,
-          className: 'all',
-            width: '48px',
-            responsivePriority: 2,
-            render: function (data, type, full, meta) {
-                
-                var $first_name = full['user'].first_name,
-                    $last_name = full['user'].last_name,
-                    $uname = full['user'].username,
-                    $image = full['user'].avatar,
-                    $name = $first_name + ' ' +  $last_name;
-                if (full['user'].avatar) {
-                    // For Avatar image
-                    var $output =
-                        '<img src="' + assetPath + 'uploads/avatars/' + $image + '" alt="Avatar" height="32" width="32">';
-                } else {
-                    // For Avatar badge
-                    var stateNum = Math.floor(Math.random() * 6) + 1;
-                    var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
-                    var $state = states[stateNum],
-                        $initials = $name.match(/\b\w/g) || [];
-                    $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
-                    $output = '<span class="avatar-content">' + $initials + '</span>';
-                }
-                var colorClass = $image === null ? ' bg-light-' + $state + ' ' : '';
-                // Creates full output for row
-                var $row_output =
-                    '<div class="d-flex justify-content-left align-items-center">' +
-                    '<div class="avatar-wrapper">' +
-                    '<div class="avatar ' +
-                    colorClass +
-                    ' mr-1">' +
-                    $output +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="d-flex flex-column">' +
-                    '<a href="' +
-                    userView + full['user']['username'] +
-                    '" class="user_name text-truncate"><span class="font-weight-bold">' +
-                    $name +
-                    '</span></a>' +
-                    '<small class="emp_post text-muted">@' +
-                    $uname +
-                    '</small>' +
-                    '</div>' +
-                    '</div>';
-                return $row_output;
-            }
-        },
-        
+        // For Responsive
+        className: 'control',
+        orderable: false,
+        responsivePriority: 1,
+        targets: 0,
+        render: function (date, type, full, meta) {
+                  return " ";
+              }
+        },        
        
-       
+       {
+          //Invoice ID
+           targets: 1,
+           width: '24px',
+           className: 'all',
+          render: function (data, type, full, meta) {
+             //console.log(data);
+            var $invoiceId = full['trx_id'];
+            // Creates full output for row
+            var $rowOutput = '<a class="font-weight-bold" href="' + invoicePreview + '"> #' + $invoiceId + '</a>';
+            return $rowOutput;
+          }
+        },
         {
           // Total Amount
           targets: 2,
@@ -191,21 +149,12 @@ if (dtInvestmentsTable.length) {
         },
         
         
-        {
-          //Invoice ID
-          targets: 4,
-          render: function (data, type, full, meta) {
-             //console.log(data);
-            var $invoiceId = full['trx_id'];
-            // Creates full output for row
-            var $rowOutput = '<a class="font-weight-bold" href="' + invoicePreview + '"> #' + $invoiceId + '</a>';
-            return $rowOutput;
-          }
-        },
+        
        
          {
           // Status
-          targets: 5, 
+             targets: 4, 
+             className: 'all',
           width: '160px',
           responsivePriority: 5,
           render: function (data, type, full, meta) {
@@ -233,7 +182,7 @@ if (dtInvestmentsTable.length) {
           },
          {
           // Invoice Description
-          targets: 6,
+          targets: 5,
           responsivePriority: 4,
           width: '380px',
           render: function (data, type, full, meta) {
@@ -243,8 +192,8 @@ if (dtInvestmentsTable.length) {
         },
         {
           // Creation Date
-          targets: 7,
-          
+          targets: 6,
+           width: '380px',
           render: function (data, type, full, meta) {
            
             var $dueDate = new Date(full['date'].date);
@@ -258,55 +207,12 @@ if (dtInvestmentsTable.length) {
             
             return $rowOutput;
           }
-        },
-       
-        {
-          // Actions
-          targets: 8,
-          title: 'Actions',
-          width: '76px',
-          orderable: false,
-          render: function (data, type, full, meta) {
-            return (
-              '<div class="d-flex align-items-center col-actions">' +
-              '<a class="mr-1" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Send Mail">' +
-              feather.icons['send'].toSvg({ class: 'font-medium-1' }) +
-              '</a>' +
-              '<a class="mr-1" href="' +
-              invoicePreview +
-              '" data-toggle="tooltip" data-placement="top" title="Preview Invoice">' +
-              feather.icons['eye'].toSvg({ class: 'font-medium-1' }) +
-              '</a>' +
-              '<div class="dropdown">' +
-              '<a class="btn btn-sm btn-icon px-0" data-toggle="dropdown">' +
-              feather.icons['more-vertical'].toSvg({ class: 'font-medium-1' }) +
-              '</a>' +
-              '<div class="dropdown-menu dropdown-menu-right">' +
-              '<a href="javascript:void(0);" class="dropdown-item">' +
-              feather.icons['download'].toSvg({ class: 'font-small-4 mr-50' }) +
-              'Download</a>' +
-              '<a href="' +
-              invoiceEdit +
-              '" class="dropdown-item">' +
-              feather.icons['edit'].toSvg({ class: 'font-small-4 mr-50' }) +
-              'Edit</a>' +
-              '<a href="javascript:void(0);" class="dropdown-item">' +
-              feather.icons['trash'].toSvg({ class: 'font-small-4 mr-50' }) +
-              'Delete</a>' +
-              '<a href="javascript:void(0);" class="dropdown-item">' +
-              feather.icons['copy'].toSvg({ class: 'font-small-4 mr-50' }) +
-              'Duplicate</a>' +
-              '</div>' +
-              '</div>' +
-              '</div>'
-            );
-          }
         }
       ],
       order: [[1, 'desc']],
       dom:
-         '<"d-flex justify-content-between align-items-center header-actions mx-1 row mt-75"' +
-                '<"col-lg-12 col-xl-6" l>' +
+         '<"d-flex justify-content-start align-items-center header-actions mx-1 row mt-75"' +
+                '<"d-flex justify-content-between" l>' +
                 '<"col-lg-12 col-xl-6 pl-xl-75 pl-0"<"dt-action-buttons text-xl-right text-lg-left text-md-right text-left d-flex align-items-center justify-content-lg-end align-items-center flex-sm-nowrap flex-wrap mr-1"<"mr-1"f>B>>' +
                 '>t' +
                 '<"d-flex justify-content-between mx-2 row mb-1"' +
@@ -325,19 +231,20 @@ if (dtInvestmentsTable.length) {
       },
       // Buttons with Dropdown
       buttons: [
-        {
-          text: 'Add Record',
-          className: 'btn btn-primary btn-add-record ml-2',
-          attr: {
-            'disabled': true
-            },
-          action: function (e, dt, button, config) {
-            window.location = invoiceAdd;
-          },
-          init: function (api, node, config) {
-            $(node).removeClass('btn-secondary');
-          }
-        }
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
       ],
       // For responsive popup
       responsive: {
@@ -374,7 +281,7 @@ if (dtInvestmentsTable.length) {
         let n = 0;
         // Adding role filter once table initialized
         this.api()
-          .columns(5)
+          .columns(4)
           
           .every(function () {
             var column = this;
