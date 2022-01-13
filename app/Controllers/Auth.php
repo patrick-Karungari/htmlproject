@@ -70,6 +70,16 @@ class Auth extends BaseController
 
     public function index()  
     {
+        if ($this->auth->loggedIn()) {
+
+            if ($this->auth->isAdmin()) {
+                return redirect()->to(site_url('dashboard'));
+            } else {
+                return redirect()->to(site_url('user/account'));
+            }
+
+        }
+
         if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
             return $this->login();
         }
@@ -83,6 +93,20 @@ class Auth extends BaseController
 
     public function login()    
     {
+        if($this->auth->loggedIn()){               
+            
+            if ($this->auth->isAdmin()) {
+                
+
+                return redirect()->to(site_url('dashboard'));
+            }else{
+               
+
+                return redirect()->to(site_url('user/account'));
+            }
+        
+        }
+        
         if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
             if ($this->request->getPost()) {
 
@@ -314,8 +338,19 @@ class Auth extends BaseController
 
     public function register()
     {
+        
         if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
             $adminEmail = $this->config->adminEmail;
+            if ($this->auth->loggedIn()) {
+
+                if ($this->auth->isAdmin()) {
+
+                    return redirect()->to(site_url('dashboard'));
+                } else {
+                    return redirect()->to(site_url('user/account'));
+                }
+
+            }
 
             if ($this->request->getPost()) {
 

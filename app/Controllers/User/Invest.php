@@ -199,6 +199,27 @@ class Invest extends \App\Controllers\UserController
     public function investments()
     {
         $this->data['site_title'] = "My Investments";
-        return $this->_renderPage('Invest/investments', $this->data);
+        return $this->_renderPage('Invest/investments2', $this->data);
     }
+     public function getInv($id)
+    {
+        $users = ((new \App\Models\Investments()))->select('id, plan, amount, return, total, status, created_at, end_time')->where('user', $id)->orderBy('id', 'DESC')->findAll();
+        $data['data'] = $users;
+        //dd($data);
+        echo json_encode($data);
+    }
+    public function getTotalInvestments($id){
+        $model = new \App\Models\Investments();
+        $dateStart = $this->request->getGet('start');
+        $dateEnd = $this->request->getGet('end');
+        if ($dateStart && $dateEnd) {
+            $start_of_day = Carbon::parse($dateStart)->startOfDay()->getTimestamp();
+            $end_of_day = Carbon::parse($dateEnd)->endOfDay()->getTimestamp();
+            $amountCOB = $model->selectSum('total', 'totalAmount')->where('end_time >=', $start_of_day)->where('end_time <=', $end_of_day)->get()->getFirstRow('object')->totalAmount;
+            return $amountCOB;
+        }
+        return "null";
+
+    }
+
 }
