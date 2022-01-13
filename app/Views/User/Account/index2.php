@@ -169,6 +169,8 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
             </div>
         </div>
     </div>
+    <!-- Greetings Card ends -->
+
 </section>
 
 <script>

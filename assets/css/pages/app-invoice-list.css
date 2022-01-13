@@ -24,10 +24,10 @@
   align-items: center; }
 
 @media (max-width: 470px) {
-  .invoice-list-wrapper .invoice_status {
+  .invoice-list-wrapper .invoice_status .invoice_type {
     margin-top: 1rem;
     width: 100%; }
-  .invoice-list-wrapper .invoice_status select {
+  .invoice-list-wrapper .invoice_status select .invoice_type {
     margin-left: 0 !important; } }
 
 .dtr-bs-modal .modal-header {

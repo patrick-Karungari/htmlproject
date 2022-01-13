@@ -17,12 +17,15 @@ class Deposits extends \App\Controllers\UserController
     {
         parent::__construct();
         $this->data['site_title'] = "My Deposits";
+        $this->data['deposit'] = $this;
+
+        
     }
 
     public function index(): string
     {
 
-        return $this->_renderPage('Deposits/index', $this->data);
+        return $this->_renderPage('Deposits/index2', $this->data);
     }
 
     public function create()
@@ -65,5 +68,45 @@ class Deposits extends \App\Controllers\UserController
 
         $this->data['site_title'] = "Deposit Funds";
         return $this->_renderPage('Deposits/create', $this->data);
+    }
+    public function getDepo($id)
+    {
+
+//dd($id);
+       $deposits = (new \App\Models\Deposits())->where('user', $id)->orderBy('date', 'DESC')->findAll();
+       $deposits = json_encode($deposits);
+       $deposits = json_decode($deposits, TRUE);
+      
+
+       $i = 0;
+
+       foreach($deposits as $deposit) {
+           $user =  ['id' => $deposit['user']['id'], 
+                     'first_name' =>  $deposit['user']['first_name'],
+                     'last_name' => $deposit['user']['last_name'],
+                     'avatar' => $deposit['user']['avatar'],
+                    'username' => $deposit['user']['username'] ];
+                     
+            $deposits[$i++]['user'] = $user;
+            
+          
+       }
+       //dd($deposits);
+       $data ['data'] = $deposits;
+       return json_encode($data);
+
+    }
+    public function getTotalDeposits(){
+        
+        $model = new \App\Models\Deposits();
+        $dateStart = $this->request->getGet('start');
+        $dateEnd = $this->request->getGet('end');
+        if ($dateStart && $dateEnd) {           
+            
+            $amountCOB = $model->selectSum('amount', 'totalAmount')->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;
+            return $amountCOB;
+        }
+        return "null";
+
     }
 }

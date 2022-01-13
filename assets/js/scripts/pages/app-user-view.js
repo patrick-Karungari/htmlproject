@@ -210,9 +210,9 @@ $(function () {
       ],
       order: [[1, 'desc']],
       dom:
-        '<"row d-flex justify-content-between align-items-center m-1"' +        
-        '<"d-flex justify-content-between flex-fill align-items-center mx-50 row pt-0 pb-2"f<"invoice_status ml-2"><"invoice_type mt-1 ml-2"><"invoice_type_status mt-1 ml-2">>' +
-        '<"col-lg-6 d-flex justify-content-between align-items-center"l<"dt-action-buttons text-xl-right text-lg-left text-md-right text-left "B>>' +
+        '<"row d-flex flex-column justify-content-between m-1"' +        
+        '<"d-flex justify-content-between flex-fill align-items-center mx-50 row pt-0 pb-2"f<"invoice_status mt-1 ml-2"><"invoice_type mt-1 ml-2">>' +
+        '<"d-flex flex-fill justify-content-between align-items-center"l<"dt-action-buttons text-xl-right text-lg-right text-md-right text-left "B>>' +
         '>t' +
         '<"d-flex justify-content-between mx-2 row"' +
         '<"col-sm-12 col-md-6"i>' +
@@ -280,7 +280,7 @@ $(function () {
           .every(function () {
             var column = this;
             var select = $(
-              '<select id="InvoiceStatus" class="form-control ml-50 text-capitalize"><option value=""> Select Invoice Status </option></select>'
+              '<select id="InvoiceStatus" class="form-control ml-50 text-capitalize"><option value=""> Status </option></select>'
             )
               .appendTo('.invoice_status')
               .on('change', function () {
@@ -298,36 +298,14 @@ $(function () {
               });
           });
         // Adding role filter once table initialized
-        this.api()
-          .columns(5)
-          
-          .every(function () {
-            var column = this;
-            var select = $(
-              '<select id="InvoiceStatus" class="form-control ml-50 text-capitalize"><option value=""> Select Invoice Status </option></select>'
-            )
-              .appendTo('.invoice_type_status')
-              .on('change', function () {
-                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                column.search(val, true, false).draw();
-              });
-
-            column
-              .data()
-              .unique()
-              .sort()
-              .each(function (d, j) {
-                //console.log( d );
-                select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
-              });
-          });
+        
         this.api()
           .columns(4)
           
           .every(function () {
             var column = this;
             var select = $(
-              '<select id="InvoiceType" class="form-control ml-50 text-capitalize"><option value=""> Select Invoice Type </option></select>'
+              '<select id="InvoiceType" class="form-control ml-50 text-capitalize"><option value=""> Type </option></select>'
             )
               .appendTo('.invoice_type')
               .on('change', function () {
