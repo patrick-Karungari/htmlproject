@@ -120,7 +120,10 @@ if (dtInvestmentsTable.length) {
           className: 'control',
           orderable: false,
           responsivePriority: 1,
-          targets: 0
+              targets: 0,
+              render: {
+              
+          }
         },        
        
        {
