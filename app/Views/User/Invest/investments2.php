@@ -41,8 +41,8 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
             <input type="text" id="fp-range" class="form-control flatpickr-range"
                 placeholder="DD, MM YYYY to DD, MM YYYY" />
         </div>
-        <h3 id="heading" class="text-white mt-3 mb-3">
-        </h3>
+        <h4 id="heading" class="text-white mt-3 mb-3">
+        </h4>
         <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center"></h1>
     </div>
 </div>
@@ -78,7 +78,7 @@ $investments = $model->orderBy('id', 'DESC')->findAll();
 
 <script>
 id = '<?php echo $current_user->id ?>';
-document.getElementById("investments").className += " active";
+document.getElementById("my-investments").className += " active";
 </script>
 <!-- BEGIN: Page Vendor JS-->
 <script src="../../../assets/vendors/js/pickers/pickadate/picker.js"></script>

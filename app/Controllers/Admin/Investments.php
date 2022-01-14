@@ -21,7 +21,7 @@ class Investments extends \App\Controllers\AdminController
     {
         return $this->_renderPage('Investments/index', $this->data);
     }
-      public function getTotalInvestment()
+      public function getTotalInvestment($id)
     {
         $model = new \App\Models\Investments();
         $dateStart = $this->request->getGet('start');

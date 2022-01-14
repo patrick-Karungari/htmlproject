@@ -215,7 +215,7 @@ class Invest extends \App\Controllers\UserController
         if ($dateStart && $dateEnd) {
             $start_of_day = Carbon::parse($dateStart)->startOfDay()->getTimestamp();
             $end_of_day = Carbon::parse($dateEnd)->endOfDay()->getTimestamp();
-            $amountCOB = $model->selectSum('total', 'totalAmount')->where('end_time >=', $start_of_day)->where('end_time <=', $end_of_day)->get()->getFirstRow('object')->totalAmount;
+            $amountCOB = $model->selectSum('total', 'totalAmount')->where('user', $id)->where('end_time >=', $start_of_day)->where('end_time <=', $end_of_day)->get()->getFirstRow('object')->totalAmount;
             return $amountCOB;
         }
         return "null";

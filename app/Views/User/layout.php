@@ -11,7 +11,7 @@
         <meta name="keywords"
             content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="PIXINVENT">
-        <title>Dashboard analytics - Vuexy - Bootstrap HTML admin template</title>
+        <title> Dashboard - Ken Coin</title>
         <link rel="apple-touch-icon" href="<?php echo base_url('assets/images/ico/apple-icon-120.png')?>')?>">
         <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/ico/favicon.ico')?>">
         <link

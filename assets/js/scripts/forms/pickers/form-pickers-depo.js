@@ -303,7 +303,7 @@ if (dtInvestmentsTable.length) {
           }
         }
       ],
-      order: [[1, 'desc']],
+      order: [[0, 'desc']],
       dom:
          '<"d-flex justify-content-between align-items-center header-actions mx-1 row mt-75"' +
                 '<"col-lg-12 col-xl-6" l>' +

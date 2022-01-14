@@ -32,8 +32,8 @@
             <input type="text" id="fp-range" class="form-control flatpickr-range"
                 placeholder="DD, MM YYYY to DD, MM YYYY" />
         </div>
-        <h3 id="heading" class="text-white mt-3 mb-3">
-        </h3>
+        <h4 id="heading" class="text-white mt-3 mb-3">
+        </h4>
         <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center"></h1>
     </div>
 </div>

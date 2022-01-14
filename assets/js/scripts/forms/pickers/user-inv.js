@@ -84,9 +84,9 @@
     1: { title: 'Pending', class: 'badge-light-info' },
     2: { title: 'Failed', class: 'badge-light-danger' }
     },
-    invoicePreview = 'app-invoice-preview.html',    
-    invoiceAdd = 'app-invoice-add.html',
-    invoiceEdit = 'app-invoice-edit.html',
+    invoicePreview = '',    
+    invoiceAdd = '',
+    invoiceEdit = '',
     dtInvestmentsTable = $('.investments-list-table');
    var assetPath = '../assets/',
         userView = '/../view/',
@@ -115,18 +115,18 @@ if (dtInvestmentsTable.length) {
         { data: 'created_at' },
         { data: 'end_time' },
         
-      ],
+        ],
+      
       columnDefs: [
         {
         // For Responsive
         className: 'control',
-        orderable: false,
+        //orderable: true,
         responsivePriority: 1,
         targets: 0,
         render: function (date, type, full, meta) {
-                return " ";
-            }
-              
+                  return " ";
+        }              
           
         }, {
         // Plan
@@ -244,7 +244,7 @@ if (dtInvestmentsTable.length) {
         }
        
       ],
-      order: [[1, 'desc']],
+      order: [[0, 'desc']],
       dom:
         '<"row d-flex justify-content-between align-items-center m-1"' +        
         '<"d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2"f<"investment_status mt-1 ml-2"><"investment_type mt-1 ml-2">>' +

@@ -113,6 +113,14 @@ $(function () {
                     }
                 },
                 {
+                    // Total Amount
+                    targets: 4,
+                    responsivePriority: 3,
+                    className: 'all',
+                   
+                    render: function (data, type, full, meta) { var $total = full['account'];   return '<span class="d-none">Ksh ' + Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' +  Intl.NumberFormat('en-US').format ($total);}
+                },
+                {
                     // email
                     targets: 5,
                     width: '70px',
@@ -171,7 +179,7 @@ $(function () {
                     }
                 }
             ],
-            order: [[2, 'desc']],
+            order: [[1, 'asc']],
             dom:
                 '<"d-flex justify-content-between align-items-center header-actions mx-1 row mt-75"' +
                 '<"col-lg-12 col-xl-6" l>' +

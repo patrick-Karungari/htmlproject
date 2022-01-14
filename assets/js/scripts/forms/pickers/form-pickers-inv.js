@@ -327,7 +327,7 @@ if (dtInvestmentsTable.length) {
           }
         }
       ],
-      order: [[1, 'desc']],
+      order: [[0, 'desc']],
       dom:
         '<"row d-flex justify-content-between align-items-center m-1"' +        
         '<"d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2"f<"investment_status ml-2"><"investment_type ml-2">>' +
