@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/plugins/forms/form-validation.css') ?>">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <!-- account setting page -->
 <section id="page-account-settings">
     <div class="d-flex flex-column justify-content-between">
@@ -81,17 +83,21 @@
                                     </div>
                                     <div class="col-12 col-sm-6">
 
-                                        <label for="account-phone">Phone</label>
-                                        <div class="form-group row d-flex pr-1 justify-content-start">
-                                            <input type="text" class="form-control mr-1 ml-1 mb-1 w-75"
-                                                id="account-phone" placeholder="Phone number" value="(+656) 254 2568"
-                                                name="phone" />
-                                            <button
-                                                class="btn btn-sm btn-primary  d-flex mb-1 align-items-center">Verify</button>
+                                        <div class="form-group">
+                                            <label class="form-label" for="register-phone">Phone Number</label>
+                                            <div class="form-group d-flex ">
+                                                <input class="form-control" id="i-register-phone" type="tel"
+                                                    name="phone" aria-describedby="register-email" tabindex="2"
+                                                    required />
+                                                <buton type="submit" class="btn w-50 btn-primary ml-2 pr-1">Verify
+                                                </buton>
+                                            </div>
 
                                         </div>
 
                                     </div>
+
+
                                     <div class="col-12 mt-75">
                                         <div class="alert alert-warning mb-50" role="alert">
 
@@ -184,3 +190,29 @@
 <!-- BEGIN: Page JS-->
 <script src="<?php echo base_url('assets/js/scripts/pages/page-account-settings.js') ?>"></script>
 <!-- END: Page JS-->
+
+<script>
+const phoneInputField = document.getElementById('i-register-phone');
+const phoneInput = window.intlTelInput(phoneInputField, {
+    preferredCountries: ["KE", "UG", "NG", "GH", "RW", "ZM", "US"],
+    allowDropdown: false,
+    initialCountry: "auto",
+    geoIpLookup: getIp,
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+});
+
+function getIp(callback) {
+    fetch('https://ipinfo.io/json?token=d449b8666e49bd', {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then((resp) => resp.json())
+        .catch(() => {
+            return {
+                country: 'KE',
+            };
+        })
+        .then((resp) => callback(resp.country));
+}
+</script>
