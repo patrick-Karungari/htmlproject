@@ -395,16 +395,6 @@
                             href="<?php echo base_url('user/account') ?>"><i data-feather="home"></i><span
                                 class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span></a>
                     </li>
-
-                    <li id="email" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('user/email') ?>"><i data-feather="mail"></i><span
-                                class="menu-title text-truncate" data-i18n="Email">Email</span></a>
-                    </li>
-                    <li id="chat" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('user/chat') ?>"><i data-feather="message-square"></i><span
-                                class="menu-title text-truncate" data-i18n="Chat">Chat</span></a>
-                    </li>
-
                     <li class=" nav-item"><a class="d-flex align-items-center"><i
                                 data-feather='trending-up'></i></i><span class="menu-title text-truncate"
                                 data-i18n="Pages">Investments</span></a>
@@ -436,7 +426,7 @@
 
 
                     <li id="acc-set"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('user/settings/profile') ?>"><i data-feather="sliders"></i><span
+                            href="<?php echo base_url('user/settings') ?>"><i data-feather="sliders"></i><span
                                 class="menu-item text-truncate" data-i18n="Account Settings">Account Settings</span></a>
                     </li>
                 </ul>

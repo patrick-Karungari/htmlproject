@@ -50,7 +50,7 @@ class Settings extends \App\Controllers\UserController
             }
         }
 
-        return $this->_renderPage('Settings/index', $this->data);
+        return $this->_renderPage('Settings/index2', $this->data);
     }
 
     public function password()
