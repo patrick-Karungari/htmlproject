@@ -50,7 +50,7 @@
         <script src="<?php echo base_url('assets/vendors/js/vendors.min.js')?>">
         </script>
         <!-- BEGIN Vendor JS-->
-        <script src="//code-eu1.jivosite.com/widget/h4VkQcq4El" async></script>
+        <script src="//code-eu1.jivosite.com/widget/oH1apziDaU" async></script>
     </head>
     <!-- END: Head-->
 
