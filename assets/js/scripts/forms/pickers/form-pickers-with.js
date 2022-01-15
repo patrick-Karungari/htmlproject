@@ -220,7 +220,7 @@ if (dtInvestmentsTable.length) {
            
             return (
 
-              '<div> <div class="avatar avatar-status ' +
+              '<div> <div class="avatar d-none d-lg-inline-flex avatar-status ' +
               roleObj[$invoiceStatus].class +
               '">' +
               '<span class="avatar-content">' +

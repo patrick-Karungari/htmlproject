@@ -6,15 +6,9 @@
  * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
-use Carbon\Carbon;
+$session = \Config\Services::session();
+//dd($session->getFlashdata());
 
-$model = new \App\Models\Investments();
-
-$date = date('Y-m-d');
-
-$investments = $model->orderBy('id', 'DESC')->findAll();
-
-//dd($investments);
 
 ?>
 <!-- BEGIN: Vendor CSS-->

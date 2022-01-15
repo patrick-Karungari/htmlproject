@@ -73,8 +73,12 @@ class Auth extends BaseController
         if ($this->auth->loggedIn()) {
 
             if ($this->auth->isAdmin()) {
+                Services::session()->setFlashdata('success', 'You are already signed in.');
+
                 return redirect()->to(site_url('dashboard'));
             } else {
+                Services::session()->setFlashdata('success', 'You are already signed in.');
+
                 return redirect()->to(site_url('user/account'));
             }
 
@@ -96,11 +100,13 @@ class Auth extends BaseController
         if($this->auth->loggedIn()){               
             
             if ($this->auth->isAdmin()) {
-                
+                Services::session()->setFlashdata('success', 'You are already signed in.');
+
 
                 return redirect()->to(site_url('dashboard'));
             }else{
                
+                Services::session()->setFlashdata('success', 'You are already signed in.');
 
                 return redirect()->to(site_url('user/account'));
             }
@@ -344,9 +350,12 @@ class Auth extends BaseController
             if ($this->auth->loggedIn()) {
 
                 if ($this->auth->isAdmin()) {
+                    Services::session()->setFlashdata('success', 'You are already signed in.');
 
                     return redirect()->to(site_url('dashboard'));
                 } else {
+                    Services::session()->setFlashdata('success', 'You are already signed in.');
+
                     return redirect()->to(site_url('user/account'));
                 }
 

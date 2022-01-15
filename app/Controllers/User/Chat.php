@@ -11,8 +11,9 @@ class Chat extends \App\Controllers\UserController
         parent::__construct();
     }
 
-    public function index(): string
+    public function index()
     {
-        return $this->_renderPage('Chat/index', $this->data);
+       return redirect()->to('https://jivo.chat/it3o55TeZp',null, 'refresh');
+
     }
 }

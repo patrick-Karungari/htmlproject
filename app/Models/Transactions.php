@@ -12,7 +12,7 @@ class Transactions extends \CodeIgniter\Model
 {
     protected $table = 'transactions';
     protected $allowedFields = [
-        'user', 'amount', 'type', 'description', 'status',
+        'user', 'amount', 'type', 'description', 'status', 'trx'
     ];
     protected $returnType = 'object';
 }

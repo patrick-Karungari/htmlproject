@@ -50,7 +50,7 @@
         <script src="<?php echo base_url('assets/vendors/js/vendors.min.js')?>">
         </script>
         <!-- BEGIN Vendor JS-->
-
+        <script src="//code-eu1.jivosite.com/widget/h4VkQcq4El" async></script>
     </head>
     <!-- END: Head-->
 
@@ -80,8 +80,8 @@
                 </div>
                 <ul class="nav navbar-nav align-items-center ml-auto">
 
-                    <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon"
-                                data-feather="sun"></i></a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-style"><i class="ficon" data-feather="sun"></i></a>
+                    </li>
                     <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon"
                                 data-feather="search"></i></a>
                         <div class="search-input">
@@ -454,11 +454,17 @@
                     <!-- Dashboard Analytics Start -->
                     <?php  
                    // dd($_SERVER);
-                    $session = \Config\Services::session();
+                    
 
                     if (( str_contains($_SERVER['REQUEST_URI'], "/user/account") && (isset($_SERVER['HTTP_REFERER'])) && str_contains($_SERVER['HTTP_REFERER'], "/auth")) ) {
                         //dd($_SERVER);
-
+                        $session = \Config\Services::session();
+                        if(!empty($session->getFlashData('success'))){
+                            if(str_contains($session->getFlashData('success'),'You are already signed in.')){
+                                bootstrap_alerts();
+                                dd(true);
+                            }
+                        }
                         echo $_html_content;                  
                         //dd($session->getFlashData());
 
@@ -466,6 +472,7 @@
                     }else{
                         bootstrap_alerts();
                         echo $_html_content;
+                        
 
                     }                   
                     

@@ -21,7 +21,7 @@ function system_alerts($dismissible = true)
 function bootstrap_alerts($dismissible = true)
 {
     $session = \Config\Services::session();
-
+    //dd($session->getFlashdata());
     $errors = $session->getFlashdata('error');
     if ($errors) {
         if (is_array($errors)) {
@@ -59,6 +59,7 @@ function bootstrap_alerts($dismissible = true)
 <?php
 }
     }
+    
     $infos = $session->getFlashdata('message');
     if ($infos) {
         if (is_array($infos)) {
@@ -79,7 +80,10 @@ function bootstrap_alerts($dismissible = true)
     }
 
     $infos = $session->getFlashdata('success');
+   // echo json_encode($session->getFlashdata());
+
     if ($infos) {
+        
         if (is_array($infos)) {
             foreach ($infos as $info) {
                 ?>
@@ -89,10 +93,24 @@ function bootstrap_alerts($dismissible = true)
 <?php
 }
         } else {
+            //echo json_encode($session->getFlashdata());
+
             ?>
-<div class="<?php echo $dismissible ? 'dismissible' : ''; ?> alert alert-success py-1 pl-1">
-    <?php echo $infos; ?>
+
+<div class="alert alert-success mb-1 alert-dismissible fade show" role="alert">
+    <div class="alert-body">
+        <?php echo $infos;?>
+
+    </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
+<script>
+$(".alert").first().hide().slideDown(500).delay(4000).slideUp(500, function() {
+    $(this).remove();
+});
+</script>
 <?php
 }
     }

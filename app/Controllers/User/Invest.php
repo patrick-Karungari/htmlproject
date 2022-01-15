@@ -93,6 +93,7 @@ class Invest extends \App\Controllers\UserController
                     $model->save($to_db);
                     $transactions = new Transactions();
                     $trx = 'INV' . $this->secure_random_string(7);
+                   // dd($trx);
                     $transaction = [
                         'user' => $this->current_user->id,
                         'type' => 'investment',
@@ -122,7 +123,7 @@ class Invest extends \App\Controllers\UserController
 
                                     $users->set(['account' => $newbal])->where('id', $referrer->id)->update();
                                     $trx = 'IB' . $this->secure_random_string(8);
-
+                                    dd($trx);
                                     $transaction = [
                                         'user' => $referrer->id,
                                         'type' => 'referral',

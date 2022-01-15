@@ -7,6 +7,9 @@
  */
 
 $investments = (new \App\Models\Investments())->where('user', $current_user->id)->orderBy('id', 'DESC')->findAll();
+$session = \Config\Services::session();
+//echo json_encode($session->getFlashdata());
+
 ?>
 
 <?php
@@ -102,6 +105,7 @@ echo $plan->description;
 
 <script>
 id = '<?php echo $current_user->id ?>';
+
 document.getElementById("investments").className += " active";
 </script>
 <style>
