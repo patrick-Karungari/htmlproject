@@ -393,20 +393,21 @@
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item" id="dashboard"><a class="d-flex align-items-center"
                             href="<?php echo base_url('user/account') ?>"><i data-feather="home"></i><span
-                                class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span></a>
+                                class="menu-title text-truncate" data-i18n="Dashboard">Dashboard</span></a>
                     </li>
                     <li class=" nav-item"><a class="d-flex align-items-center"><i
                                 data-feather='trending-up'></i></i><span class="menu-title text-truncate"
-                                data-i18n="Pages">Investments</span></a>
+                                data-i18n="Investments">Investments</span></a>
                         <ul class="menu-content">
                             <li id="investments"><a class="d-flex align-items-center"
                                     href="<?php echo base_url('user/invest') ?>"><i data-feather="circle"></i><span
-                                        class="menu-item text-truncate" data-i18n="Authentication">Investment
+                                        class="menu-item text-truncate" data-i18n="Investment
+                                        Plans">Investment
                                         Plans</span></a>
                             </li>
                             <li id="my-investments"><a class="d-flex align-items-center"
                                     href="<?php echo base_url('user/investments') ?>"><i data-feather="circle"></i><span
-                                        class="menu-item text-truncate" data-i18n="Account Settings">My
+                                        class="menu-item text-truncate" data-i18n="My Investments">My
                                         Investments</span></a>
                             </li>
 
@@ -416,11 +417,11 @@
 
                     <li id="deposits" class=" nav-item"><a class="d-flex align-items-center"
                             href="<?php echo base_url('user/deposits') ?>"><i data-feather='chevrons-up'></i><span
-                                class="menu-title text-truncate" data-i18n="Profile">Deposits</span></a>
+                                class="menu-title text-truncate" data-i18n="Deposits">Deposits</span></a>
                     </li>
                     <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
                             href="<?php echo base_url('user/withdraws') ?>"><i data-feather='chevrons-down'></i><span
-                                class="menu-title text-truncate" data-i18n="Profile">Withdrawals</span></a>
+                                class="menu-title text-truncate" data-i18n="Withdrawals">Withdrawals</span></a>
                     </li>
 
 

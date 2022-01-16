@@ -33,7 +33,7 @@ $(window).on('load', function () {
   let tp = new CountUp($tp, $tp.innerHTML, options);
   let ar = new CountUp($ar, $ar.innerHTML);
   let tb = new CountUp($tb, $tb.innerHTML, options);
-  
+  //console.log(ri);
   ri.start();
   tp.start();
   ar.start();
@@ -109,6 +109,23 @@ $(window).on('load', function () {
                   console.log(moment(resp.date,moment.defaultFormat).fromNow());
                   block_ele.unblock();
                   document.getElementById("timer").innerHTML = "Updated " + moment(time, moment.defaultFormat).fromNow();
+                  
+                  const options = {
+                    decimalPlaces: 2,
+                    prefix: 'KES ',
+                  };
+                  $('#ri').html(resp.investment);
+                 // console.log($ri);
+                  let ri = new CountUp( $ri, resp.investment, options);
+                  let tp = new CountUp($tp, resp.profit, options);
+                  let ar = new CountUp($ar, resp.refferrals);
+                  let tb = new CountUp($tb,  resp.bonus, options);
+                  //console.log(ri);
+                  ri.start();
+                  tp.start();
+                  ar.start();
+                  tb.start();
+                  //console.log(ri);
 
                 } catch {
                   block_ele.unblock();

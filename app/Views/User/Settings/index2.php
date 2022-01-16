@@ -301,6 +301,7 @@
 <!-- END: Page JS-->
 
 <script>
+document.getElementById("acc-set").className += " active";
 const phoneInputField = document.getElementById('phone');
 const phoneInput = window.intlTelInput(phoneInputField, {
     preferredCountries: ["KE", "UG", "NG", "GH", "RW", "ZM", "US"],

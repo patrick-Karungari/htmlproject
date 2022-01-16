@@ -115,7 +115,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                                 </div>
                                 <div class="media-body my-auto">
                                     <h4 id="ri" class="font-weight-bolder mb-0">
-                                        <?php echo number_format((new \App\Models\Investments())->where('user', $current_user->id)->where('status', 'pending')->selectSum('total', 'totalInvestments')->get()->getLastRow()->totalInvestments, 2) ?>
+                                        <?php echo (new \App\Models\Investments())->where('user', $current_user->id)->where('status', 'pending')->selectSum('total', 'totalInvestments')->get()->getLastRow()->totalInvestments ?>
                                     </h4>
                                     <p class="card-text font-small-3 mb-0">Running Investments</p>
                                 </div>
@@ -129,7 +129,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                                 </div>
                                 <div class="media-body my-auto">
                                     <h4 id="tp" class="font-weight-bolder mb-0">
-                                        <?php echo number_format((new \App\Models\Investments())->where('user', $current_user->id)->where('status', 'completed')->selectSum('return', 'totalInvestments')->get()->getLastRow()->totalInvestments, 2) ?>
+                                        <?php echo (new \App\Models\Investments())->where('user', $current_user->id)->where('status', 'completed')->selectSum('return', 'totalInvestments')->get()->getLastRow()->totalInvestments ?>
                                     </h4>
                                     <p class="card-text font-small-3 mb-0">Total Profits</p>
                                 </div>
@@ -158,7 +158,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                                 </div>
                                 <div class="media-body my-auto">
                                     <h4 id="tb" class="font-weight-bolder mb-0">
-                                        <?php echo number_format((new \App\Libraries\Metrics())->getUserReferralBonusTotals($current_user->id), 2) ?>
+                                        <?php echo (new \App\Libraries\Metrics())->getUserReferralBonusTotals($current_user->id) ?>
                                     </h4>
                                     <p class="card-text font-small-3 mb-0">Total Bonus</p>
                                 </div>
