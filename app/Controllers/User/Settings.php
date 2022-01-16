@@ -92,7 +92,7 @@ class Settings extends \App\Controllers\UserController
 
         $verification = $twilio->verify->v2->services("VAfd7fed898589cda55145fd0070aa27ad")
             ->verifications
-            ->create($number, "sms");
+            ->create('+'.$number, "sms");
 
         echo $verification->status;
 
