@@ -126,7 +126,8 @@ else if (this.value.length == this.maxLength) {
         success: function (resp) {
             console.log(resp);
            
-            if (resp.includes('pending')) {
+          if (resp.includes('pending')) {
+               console.log("it is true");
                 return true;
             }
         
