@@ -126,12 +126,12 @@ else if (this.value.length == this.maxLength) {
         success: function (resp) {
             console.log(resp);
            
-            if (resp === "pending") {
-                //e.preventDefault();
-                return true;
-          }
-          e.preventDefault();
-          return false;
+            if (resp != "pending") {
+                e.preventDefault();
+              return false;
+            }
+         //e.preventDefault();
+          return true;
         },
         error: function(e) {
            e.preventDefault();
