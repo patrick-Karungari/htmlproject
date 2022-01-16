@@ -7,6 +7,8 @@
  */
 
 namespace App\Controllers\User;
+
+use Exception;
 use Twilio\Rest\Client;
 
 class Settings extends \App\Controllers\UserController
@@ -86,28 +88,54 @@ class Settings extends \App\Controllers\UserController
         return redirect()->back()->with('error', "Invalid request");
     }
      public function sendcode($number){
-        $sid = "AC2dbbc0162feeaf74875f51cd73e63d83";
-        $token = "cfb446060025a096e7bc7f3d3866e34e";
-        $twilio = new Client($sid, $token);
+         try{
+             $sid = "AC2dbbc0162feeaf74875f51cd73e63d83";
+            $token = "cfb446060025a096e7bc7f3d3866e34e";
+            $twilio = new Client($sid, $token);
+            $verification = $twilio->verify->v2->services("VAfd7fed898589cda55145fd0070aa27ad")
+                ->verifications
+                ->create('+'.$number, "sms");
+            $data = [
+                'first_name' => trim($this->request->getPost('fname')),
+                'last_name' => trim($this->request->getPost('lname')),
+            ];
+            
 
-        $verification = $twilio->verify->v2->services("VAfd7fed898589cda55145fd0070aa27ad")
-            ->verifications
-            ->create('+'.$number, "sms");
-
-        return $verification->status;
+           
+         }catch(Exception){
+             return 'error';
+         }
+        
 
     }
     public function verifycode($number,$code){
-        $sid = "AC2dbbc0162feeaf74875f51cd73e63d83";
-        $token = "cfb446060025a096e7bc7f3d3866e34e";
-        $twilio = new Client($sid, $token);
-        $verification_check = $twilio->verify->v2->services("VAfd7fed898589cda55145fd0070aa27ad")
-            ->verificationChecks
-            ->create($code, // code
-            ["to" => '+'.$number]
-        );
+        try{
+            $sid = "AC2dbbc0162feeaf74875f51cd73e63d83";
+            $token = "cfb446060025a096e7bc7f3d3866e34e";
+            $twilio = new Client($sid, $token);
+            $verification_check = $twilio->verify->v2->services("VAfd7fed898589cda55145fd0070aa27ad")
+                ->verificationChecks
+                ->create($code, // code
+                ["to" => '+'.$number]
+            );
+            $auth = new \App\Libraries\Auth();
+            $data = [
+                'phone' => $number,
+                'phone_verified' => ($verification_check->status === 'approved') ? 1 : 0,
+            ];
 
-        return $verification_check->status;
+            if ($auth->update($this->current_user->id, $data)){
+                return $verification_check->status;
+            }
+            return 'error';
+            
+
+        }catch(Exception){
+            return 'error';
+        }
+       
+
+        
 
     }
 }

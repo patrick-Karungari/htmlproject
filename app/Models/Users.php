@@ -15,5 +15,5 @@ class Users extends \CodeIgniter\Model
 
     protected $returnType = '\App\Entities\User';
 
-    protected $allowedFields = ['username', 'email', 'phone', 'account', 'registration', 'referred_by', 'first_name', 'last_name', 'avatar'];
+    protected $allowedFields = ['username', 'phone_verified', 'email', 'phone', 'account', 'registration', 'referred_by', 'first_name', 'last_name', 'avatar'];
 }
