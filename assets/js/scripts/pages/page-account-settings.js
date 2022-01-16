@@ -109,15 +109,16 @@ else if (this.value.length == this.maxLength) {
           if (resp.includes('approved')) {
                 console.log("it is true");
             
-            phoneInputButton.className -= " btn-primary";
-            phoneInputButton.className += " btn-outline-success";
-            phoneInputButton.innerHTML = "Verified";
+            
            
             $("#otp-modal").modal('hide').on("hidden.bs.modal", function(){
                 $("#otp-screen input").each(function(){
                   var input = $(this);
                   console.log(input);
                   input.val(''); // This is the jquery object of the input, do what you will
+                  phoneInputButton.className -= " btn-primary";
+                  phoneInputButton.className += " btn-outline-success";
+                  phoneInputButton.innerHTML = "Verified";
                 });
             });
             }
