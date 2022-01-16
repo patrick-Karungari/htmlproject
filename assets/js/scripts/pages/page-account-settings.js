@@ -139,8 +139,8 @@ else if (this.value.length == this.maxLength) {
         }
       });
       //return true;
-    }
-      e.preventDefault();
-      return false;
+    }else{ e.preventDefault();
+      return false;}
+     
   });
 });
