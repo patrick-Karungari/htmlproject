@@ -86,8 +86,9 @@
                                         <div class="form-group">
                                             <label class="form-label" for="register-phone">Phone Number</label>
                                             <div class="form-group d-flex ">
-                                                <input class="form-control" id="phone" type="tel" name="phone" value="<?php echo $current_user->phone ?>
-" aria-describedby="register-email" tabindex="2" required autocomplete="off" />
+                                                <input class="form-control" id="phone" type="tel" name="phone"
+                                                    aria-describedby="register-email" tabindex="2" required
+                                                    autocomplete="off" />
                                                 <buton type="button" id="verify"
                                                     class="btn w-50 d-flex btn-lg justify-content-center <?php echo ($current_user->phone_verified == 0) ? 'btn-primary' : 'btn-outline-success'?> text-center ml-2 ">
                                                     <?php echo ($current_user->phone_verified == 1) ? 'Verified' : 'Verify' ?>
