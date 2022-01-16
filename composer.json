@@ -17,7 +17,8 @@
 		"laminas/laminas-escaper": "^2.6",
 		"messagebird/php-rest-api": "^2.1",
 		"nesbot/carbon": "^2.46",
-		"psr/log": "^1.1"
+		"psr/log": "^1.1",
+		"twilio/sdk": "^6.33"
 	},
 	"suggest": {
 		"ext-fileinfo": "Improves mime type detection for files"

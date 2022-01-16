@@ -15,7 +15,7 @@ $(function () {
     flat_picker = $('.flatpickr'),
     accountUploadImg = $('#account-upload-img'),
     accountUploadBtn = $('#account-upload');
-
+var phoneInputButton = $('#verify');
   // Update user photo on click of button
   if (accountUploadBtn) {
     accountUploadBtn.on('change', function (e) {
@@ -30,6 +30,19 @@ $(function () {
     });
   }
 
+  // OTP Form (Focusing on next input)
+$("#otp-screen .form-control").keyup(function() {  
+if (this.value.length == 0) {
+   $(this).blur().parent().prev().children('.form-control').focus();
+   $(this).blur().prev('.form-control').focus();
+}
+else if (this.value.length == this.maxLength) {
+   $(this).blur().parent().next().children('.form-control').focus();
+   $(this).blur().next('.form-control').focus();
+}
+});
+
+  
   // flatpickr init
   if (flat_picker.length) {
     flat_picker.flatpickr({
@@ -93,4 +106,41 @@ $(function () {
       });
     });
   }
+ // console.log(phoneInputButton);
+  var validator = $( "#details" ).validate();
+
+  phoneInputButton.validate({
+      rules: {
+          phone: {
+              required: true
+          }
+      }
+  });
+  phoneInputButton.click( function(e) {
+    console.log('ive been clicked');
+    if (validator.element("#phone")) {      
+      
+      $.ajax({
+        url: "settings/sendcode/" + phoneInput.getNumber(intlTelInputUtils.numberFormat.E164),
+        type: 'GET',
+        success: function (resp) {
+            console.log(resp);
+           
+            if (resp == 'pending') {
+                //e.preventDefault();
+                return true;
+          }
+          e.preventDefault();
+          return false;
+        },
+        error: function(e) {
+           e.preventDefault();
+            return false;
+        }
+      });
+      //return true;
+    }
+      e.preventDefault();
+      return false;
+  });
 });

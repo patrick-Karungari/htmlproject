@@ -1393,7 +1393,10 @@ pre code {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch; }
   .table-responsive-lg > .table-bordered {
-    border: 0; } }
+    border: 0; } .rounded-lg-left{
+      border-top-left-radius: 0.357rem !important;
+  border-bottom-left-radius: 0.357rem !important;
+    }}
 
 @media (max-width: 1199.98px) {
   .table-responsive-xl {

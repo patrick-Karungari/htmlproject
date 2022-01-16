@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'daf9f4166bdd76ac1074790529538bca885d04c7',
+    'reference' => 'a539bd8afc1ee142e4cecd750f4d3114eeb17a86',
     'name' => 'codeigniter4/codeigniter4',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'daf9f4166bdd76ac1074790529538bca885d04c7',
+      'reference' => 'a539bd8afc1ee142e4cecd750f4d3114eeb17a86',
     ),
     'firebase/php-jwt' => 
     array (
@@ -261,6 +261,15 @@
       array (
         0 => '2.3',
       ),
+    ),
+    'twilio/sdk' => 
+    array (
+      'pretty_version' => '6.33.0',
+      'version' => '6.33.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'cbe146990fe4fc2bbccf5fa45b61f8218aa99bc1',
     ),
     'vlucas/phpdotenv' => 
     array (

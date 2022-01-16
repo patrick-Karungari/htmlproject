@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/plugins/forms/form-validation.css') ?>">
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/stylesheet.css')?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <!-- account setting page -->
@@ -58,7 +58,7 @@
                             <!--/ header media -->
 
                             <!-- form -->
-                            <form class="validate-form mt-2">
+                            <form id="details" class="validate-form mt-2">
                                 <div class="row">
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
@@ -86,10 +86,12 @@
                                         <div class="form-group">
                                             <label class="form-label" for="register-phone">Phone Number</label>
                                             <div class="form-group d-flex ">
-                                                <input class="form-control" id="i-register-phone" type="tel"
-                                                    name="phone" aria-describedby="register-email" tabindex="2"
-                                                    required />
-                                                <buton type="submit" class="btn w-50 btn-primary ml-2 pr-1">Verify
+                                                <input class="form-control" id="phone" type="tel" name="phone"
+                                                    aria-describedby="register-email" tabindex="2" required />
+                                                <buton type="button" id="verify" data-toggle="modal"
+                                                    data-target="#otp-modal"
+                                                    class="btn w-50 d-flex btn-lg justify-content-center text-center btn-primary ml-2 ">
+                                                    Verify
                                                 </buton>
                                             </div>
 
@@ -184,15 +186,112 @@
             </div>
         </div>
         <!--/ right content section -->
+        <!-- OTP Modal
+    =========================== -->
+        <div id="otp-modal" class="modal  fade oxyy-login-register" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content  border-0">
+                    <div class="modal-body  p-0">
+
+                        <div class="row  g-0">
+                            <!-- Welcome Text
+                            ====================== -->
+                            <div class="col-lg-5 bg-primary d-none d-lg-inline-flex  rounded-left">
+                                <div class="row g-0 h-100">
+                                    <div class="col-10 col-lg-9 d-flex flex-column mx-auto">
+                                        <h3 class="text-white mt-5 mb-4">Verification</h3>
+                                        <p class="text-4 text-light lh-base mb-4">To keep connected with us please
+                                            verify your phone number.</p>
+                                        <div class="mt-auto mb-4"><img class="img-fluid"
+                                                src="<?php echo base_url('assets/img/login-vector.png') ?>" alt="Oxyy">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Welcome Text End -->
+
+                            <!-- OTP Form
+                            ====================== -->
+                            <div class="col-lg-7 d-flex align-items-center bg-white rounded-lg-left rounded-right">
+                                <div class="container my-auto py-5">
+                                    <div class="row">
+                                        <div class="col-11 col-lg-10 mx-auto">
+                                            <h3 class="text-center text-6 mb-4">Two-Step Verification</h3>
+                                            <p class="text-center"><img class="img-fluid"
+                                                    src="<?php echo base_url('assets/img/otp-icon.png') ?>"
+                                                    alt="verification">
+                                            </p>
+                                            <p class="text-muted text-4 text-center">Please enter the OTP (one time
+                                                password)
+                                                to verify your phone number. A Code has been sent to your phone by SMS
+                                            </p>
+
+                                            <form id="otp-screen" class="form-border" onsubmit="return false"
+                                                method="post">
+                                                <div class="row g-3">
+                                                    <div class="col">
+                                                        <input type="text" id="code1"
+                                                            class="form-control border-2 text-center text-6 px-0 py-2"
+                                                            maxlength="1" required autocomplete="off">
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="text" id="code2"
+                                                            class="form-control border-2 text-center text-6 px-0 py-2"
+                                                            maxlength="1" required autocomplete="off">
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="text" id="code3"
+                                                            class="form-control border-2 text-center text-6 px-0 py-2"
+                                                            maxlength="1" required autocomplete="off">
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="text" id="code4"
+                                                            class="form-control border-2 text-center text-6 px-0 py-2"
+                                                            maxlength="1" required autocomplete="off">
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="text" id="code5"
+                                                            class="form-control border-2 text-center text-6 px-0 py-2"
+                                                            maxlength="1" required autocomplete="off">
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="text" id="code6"
+                                                            class="form-control border-2 text-center text-6 px-0 py-2"
+                                                            maxlength="1" required autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="row my-4">
+                                                    <button class="btn btn-primary btn-lg w-100 shadow-none"
+                                                        onclick="verify()">Verify</button>
+                                                </div>
+                                            </form>
+                                            <p class="text-4 text-center">Not received your code? <a href="#">Resend
+                                                    code</a></p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- OTP Form End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- OTP Modal End -->
     </div>
 </section>
 <!-- / account setting page -->
 <!-- BEGIN: Page JS-->
-<script src="<?php echo base_url('assets/js/scripts/pages/page-account-settings.js') ?>"></script>
+<script src="<?php echo base_url('assets/vendors/js/forms/validation/jquery.validate.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/scripts/pages/page-account-settings.js') ?>">
+</script>
+<script src="<?php echo base_url('assets/vendors/bootstrap/js/bootstrap.min.js') ?>">
+</script>
 <!-- END: Page JS-->
 
 <script>
-const phoneInputField = document.getElementById('i-register-phone');
+const phoneInputField = document.getElementById('phone');
 const phoneInput = window.intlTelInput(phoneInputField, {
     preferredCountries: ["KE", "UG", "NG", "GH", "RW", "ZM", "US"],
     allowDropdown: false,
@@ -200,6 +299,23 @@ const phoneInput = window.intlTelInput(phoneInputField, {
     geoIpLookup: getIp,
     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
 });
+
+
+
+function verify() {
+    var code1 = document.getElementById('code1').value;
+    var code2 = document.getElementById('code2').value;
+    var code3 = document.getElementById('code3').value;
+    var code4 = document.getElementById('code4').value;
+    var code5 = document.getElementById('code5').value;
+    var code6 = document.getElementById('code6').value;
+
+    var code = code1.concat(code2, code3, code4, code5, code6);
+    //console.log(code);
+
+
+
+}
 
 function getIp(callback) {
     fetch('https://ipinfo.io/json?token=d449b8666e49bd', {
