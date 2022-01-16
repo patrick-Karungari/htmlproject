@@ -101,7 +101,8 @@ class Settings extends \App\Controllers\UserController
             ];
             
 
-           
+            return $verification->status;
+
          }catch(\Exception $exception){
              return 'error';
          }
