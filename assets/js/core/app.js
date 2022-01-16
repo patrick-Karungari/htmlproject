@@ -1080,6 +1080,8 @@ if (typeof jQuery.validator === 'function') {
     }
   });
 }
+$('<div style="height:100%; padding:0px; margin:0px; width: 100%;"><iframe class="d-flex flex-column align-atimes-center" src="https://widget.coinlib.io/widget?type=horizontal_v2&theme=dark&pref_coin_id=1505&invert_hover=no" width="100%" height="100%" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;"> </iframe></div>').appendTo('#coinlib');
+$('#coinlib').removeClass('d-none');
 
 // Add validation class to input-group (input group validation fix, currently disabled but will be useful in future)
 /* function inputGroupValidation(el) {

@@ -440,7 +440,11 @@
             <div class="content-overlay"></div>
             <div class="header-navbar-shadow"></div>
             <div class="content-wrapper">
+                <div id="coinlib" class="mb-1 d-none"
+                    style="height:62px; background-color: #1D2330; overflow:hidden; box-sizing: border-box; border: 1px solid #282E3B; border-radius: 4px; text-align: right; line-height:14px; block-size:62px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #262B38;padding:1px;padding: 0px; margin: 0px; width: 100%;">
 
+
+                </div>
                 <div class="content-body">
                     <!-- Dashboard Analytics Start -->
                     <?php  
