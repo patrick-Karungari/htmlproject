@@ -122,7 +122,7 @@ else if (this.value.length == this.maxLength) {
                   if (!phoneInputButton.hasClass('btn-outline-success')) {
                     phoneInputButton.addClass('btn-outline-success');
                   }
-                
+                  $('#alert-box').remove();
                   phoneInputButton.html('Verified');
                 });
             });

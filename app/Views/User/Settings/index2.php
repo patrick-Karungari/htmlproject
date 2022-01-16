@@ -101,7 +101,7 @@
                                     </div>
 
 
-                                    <div class="col-12 mt-75">
+                                    <div id="alert-box" class="col-12 mt-75">
                                         <div class="alert alert-warning mb-50" role="alert">
                                             <?php if($current_user->phone_verified == 0){
                                                 ?>
