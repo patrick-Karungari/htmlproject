@@ -115,9 +115,14 @@ else if (this.value.length == this.maxLength) {
                 $("#otp-screen input").each(function(){
                   var input = $(this);
                   console.log(input);
-                  input.val(''); // This is the jquery object of the input, do what you will
-                  //phoneInputButton.toggleClass('btn-primary');
-                  phoneInputButton.toggleClass('btn-outline-success');
+                  input.val(''); 
+                  if (phoneInputButton.hasClass('btn-primary')) {
+                    phoneInputButton.removeClass('btn-primary');
+                  }
+                  if (!phoneInputButton.hasClass('btn-outline-success')) {
+                    phoneInputButton.addClass('btn-primary');
+                  }
+                
                   phoneInputButton.html('Verified');
                 });
             });
