@@ -104,7 +104,7 @@ class Settings extends \App\Controllers\UserController
         $verification_check = $twilio->verify->v2->services("VAfd7fed898589cda55145fd0070aa27ad")
             ->verificationChecks
             ->create($code, // code
-            ["to" => $number]
+            ["to" => '+'.$number]
         );
 
         return $verification_check->status;
