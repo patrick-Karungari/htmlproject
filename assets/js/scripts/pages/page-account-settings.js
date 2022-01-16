@@ -118,8 +118,8 @@ else if (this.value.length == this.maxLength) {
   });
   phoneInputButton.click( function(e) {
     console.log('ive been clicked');
-    if (validator.element("#phone")) {      
-      
+    //e.preventDefault();
+    if (validator.element("#phone")) {    
       $.ajax({
         url: "settings/sendcode/" + phoneInput.getNumber(intlTelInputUtils.numberFormat.E164),
         type: 'GET',
@@ -134,14 +134,17 @@ else if (this.value.length == this.maxLength) {
             e.preventDefault();
             return false;
         },
-        error: function(e) {
+        error: function (x) {
+          //return false;
            e.preventDefault();
             return false;
         }
       });
-      //return true;
-    }else{ e.preventDefault();
-      return false;}
+      return false;
+    } else {
+      //e.preventDefault();
+       return false;
+    }
      
   });
 });
