@@ -309,22 +309,9 @@ const phoneInput = window.intlTelInput(phoneInputField, {
     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
 });
 
+$('#phone').val('<?php echo $current_user->phone ?>');
 
 
-function verify() {
-    var code1 = document.getElementById('code1').value;
-    var code2 = document.getElementById('code2').value;
-    var code3 = document.getElementById('code3').value;
-    var code4 = document.getElementById('code4').value;
-    var code5 = document.getElementById('code5').value;
-    var code6 = document.getElementById('code6').value;
-
-    var code = code1.concat(code2, code3, code4, code5, code6);
-    //console.log(code);
-    return code;
-
-
-}
 
 function getIp(callback) {
     fetch('https://ipinfo.io/json?token=d449b8666e49bd', {
