@@ -90,7 +90,7 @@
 " aria-describedby="register-email" tabindex="2" required autocomplete="off" />
                                                 <buton type="button" id="verify"
                                                     class="btn w-50 d-flex btn-lg justify-content-center <?php echo ($current_user->phone_verified == 0) ? 'btn-primary' : 'btn-outline-success'?> text-center ml-2 ">
-                                                    <?php echo ($current_user->phone_verified == 0) ? 'Verified' : 'Verify' ?>
+                                                    <?php echo ($current_user->phone_verified == 1) ? 'Verified' : 'Verify' ?>
 
                                                 </buton>
                                             </div>
