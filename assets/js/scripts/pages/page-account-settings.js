@@ -15,7 +15,8 @@ $(function () {
     flat_picker = $('.flatpickr'),
     accountUploadImg = $('#account-upload-img'),
     accountUploadBtn = $('#account-upload');
-var phoneInputButton = $('#verify');
+  var phoneInputButton = $('#verify');
+  var verifyInputButton = $('#otp-verify');
   // Update user photo on click of button
   if (accountUploadBtn) {
     accountUploadBtn.on('change', function (e) {
@@ -31,6 +32,7 @@ var phoneInputButton = $('#verify');
   }
 
   // OTP Form (Focusing on next input)
+
 $("#otp-screen .form-control").keyup(function() {  
 if (this.value.length == 0) {
    $(this).blur().parent().prev().children('.form-control').focus();
@@ -54,6 +56,80 @@ else if (this.value.length == this.maxLength) {
     });
   }
 
+  var verify = $("#otp-screen");
+  if (verify.length) {
+    verify.each(function () {
+      
+     
+      
+      var $this = $(this);
+      $this.validate({
+        rules: {
+          code1: {
+            required: true
+          },
+          code2: {
+            required: true
+          },
+          code3: {
+            required: true,
+            email: true
+          },
+          code4: {
+            required: true
+          },
+          code5: {
+            required: true
+          },
+          code6: {
+            required: true
+          }
+          
+        }
+      });
+      $this.on('submit', function (e) {
+        var code1 = document.getElementById('code1').value;
+        var code2 = document.getElementById('code2').value;
+        var code3 = document.getElementById('code3').value;
+        var code4 = document.getElementById('code4').value;
+        var code5 = document.getElementById('code5').value;
+        var code6 = document.getElementById('code6').value;
+
+        var code = code1.concat(code2, code3, code4, code5, code6);
+        console.log(code);
+        $("#verify-btn").className += " d-none";
+         $("#verify-spinner").className -= " d-none";
+        e.preventDefault();
+        $.ajax({
+        url: "settings/verifycode/" + phoneInput.getNumber(intlTelInputUtils.numberFormat.E164)+"/"+code,
+        type: 'GET',
+        success: function (resp) {
+            console.log(resp);
+            
+          if (resp.includes('approved')) {
+                console.log("it is true");
+            
+            phoneInputButton.className -= " btn-primary";
+            phoneInputButton.className += " btn-outline-success";
+            phoneInputButton.innerHTML = "Verified";
+           
+            $("#otp-modal").modal('hide').on("hidden.bs.modal", function(){
+                $("#otp-screen input").each(function(){
+                  var input = $(this);
+                  console.log(input);
+                  input.val(''); // This is the jquery object of the input, do what you will
+                });
+            });
+            }
+            
+        },
+        error: function (x) {
+          
+        }
+        });
+      });
+    });
+  }
   // jQuery Validation
   // --------------------------------------------------------------------
   if (form.length) {
@@ -109,6 +185,7 @@ else if (this.value.length == this.maxLength) {
  // console.log(phoneInputButton);
   var validator = $( "#details" ).validate();
 
+
   phoneInputButton.validate({
       rules: {
           phone: {
@@ -120,7 +197,7 @@ else if (this.value.length == this.maxLength) {
     
     //e.preventDefault();
     if (validator.element("#phone")) {  
-      $("otp-modal").modal();
+       
       $.ajax({
         url: "settings/sendcode/" + phoneInput.getNumber(intlTelInputUtils.numberFormat.E164),
         type: 'GET',
@@ -128,9 +205,12 @@ else if (this.value.length == this.maxLength) {
             console.log(resp);
            
           if (resp.includes('pending')) {
-               console.log("it is true");
-                 $("#otp-modal").modal();
-            }
+            console.log("it is true");
+            $("#otp-modal").modal('show').on('shown.bs.modal', function (e) {
+              $("#code1").focus(); 
+            });
+          }
+
            
         },
         error: function (x) {
@@ -141,4 +221,6 @@ else if (this.value.length == this.maxLength) {
     } 
      
   });
+
+  
 });

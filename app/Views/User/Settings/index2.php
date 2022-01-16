@@ -87,7 +87,8 @@
                                             <label class="form-label" for="register-phone">Phone Number</label>
                                             <div class="form-group d-flex ">
                                                 <input class="form-control" id="phone" type="tel" name="phone"
-                                                    aria-describedby="register-email" tabindex="2" required />
+                                                    aria-describedby="register-email" tabindex="2" required
+                                                    autocomplete="off" />
                                                 <buton type="button" id="verify"
                                                     class="btn w-50 d-flex btn-lg justify-content-center text-center btn-primary ml-2 ">
                                                     Verify
@@ -260,8 +261,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="row my-4">
-                                                    <button class="btn btn-primary btn-lg w-100 shadow-none"
-                                                        onclick="verify()">Verify</button>
+                                                    <button id="otp-verify"
+                                                        class="btn btn-primary  btn-lg w-100 shadow-none"><span
+                                                            id="verify-spinner"
+                                                            class="spinner-grow d-none text-success spinner-grow-lg"
+                                                            style="width: 4rem; height: 3rem" role="status"
+                                                            aria-hidden="true"></span>
+                                                        <span id="verify-btn"
+                                                            class="ml-25 my-1 align-center">Verify</span></button>
                                                 </div>
                                             </form>
                                             <p class="text-4 text-center">Not received your code? <a href="#">Resend
@@ -311,7 +318,7 @@ function verify() {
 
     var code = code1.concat(code2, code3, code4, code5, code6);
     //console.log(code);
-
+    return code;
 
 
 }
