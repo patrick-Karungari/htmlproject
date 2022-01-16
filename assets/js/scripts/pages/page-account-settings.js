@@ -116,7 +116,7 @@ else if (this.value.length == this.maxLength) {
                   var input = $(this);
                   console.log(input);
                   input.val(''); // This is the jquery object of the input, do what you will
-                  phoneInputButton.toggleClass('btn-primary');
+                  //phoneInputButton.toggleClass('btn-primary');
                   phoneInputButton.toggleClass('btn-outline-success');
                   phoneInputButton.html('Verified');
                 });
