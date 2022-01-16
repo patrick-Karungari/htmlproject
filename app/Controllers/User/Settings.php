@@ -102,7 +102,7 @@ class Settings extends \App\Controllers\UserController
             
 
            
-         }catch(Exception){
+         }catch(\Exception $exception){
              return 'error';
          }
         
@@ -130,7 +130,7 @@ class Settings extends \App\Controllers\UserController
             return 'error';
             
 
-        }catch(Exception){
+        }catch(\Exception $exception){
             return 'error';
         }
        

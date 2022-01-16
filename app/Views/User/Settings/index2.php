@@ -86,12 +86,12 @@
                                         <div class="form-group">
                                             <label class="form-label" for="register-phone">Phone Number</label>
                                             <div class="form-group d-flex ">
-                                                <input class="form-control" id="phone" type="tel" name="phone"
-                                                    aria-describedby="register-email" tabindex="2" required
-                                                    autocomplete="off" />
+                                                <input class="form-control" id="phone" type="tel" name="phone" value="<?php echo $current_user->phone ?>
+" aria-describedby="register-email" tabindex="2" required autocomplete="off" />
                                                 <buton type="button" id="verify"
-                                                    class="btn w-50 d-flex btn-lg justify-content-center text-center btn-primary ml-2 ">
-                                                    Verify
+                                                    class="btn w-50 d-flex btn-lg justify-content-center <?php echo ($current_user->phone_verified == 0) ? 'btn-outline-success' : 'btn-primary'?> text-center ml-2 ">
+                                                    <?php echo ($current_user->phone_verified == 0) ? 'Verified' : 'Verify' ?>
+
                                                 </buton>
                                             </div>
 
@@ -102,11 +102,14 @@
 
                                     <div class="col-12 mt-75">
                                         <div class="alert alert-warning mb-50" role="alert">
-
+                                            <?php if($current_user->phone_verified == 0){
+                                                ?>
                                             <div class="alert-body">
                                                 <a>Your phone number is not verified. Please verify
                                                     to enable payments.</a>
                                             </div>
+                                            <?php }?>
+
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -230,32 +233,32 @@
                                                 method="post">
                                                 <div class="row g-3">
                                                     <div class="col">
-                                                        <input type="text" id="code1"
+                                                        <input type="number" id="code1"
                                                             class="form-control border-2 text-center text-6 px-0 py-2"
                                                             maxlength="1" required autocomplete="off">
                                                     </div>
                                                     <div class="col">
-                                                        <input type="text" id="code2"
+                                                        <input type="number" id="code2"
                                                             class="form-control border-2 text-center text-6 px-0 py-2"
                                                             maxlength="1" required autocomplete="off">
                                                     </div>
                                                     <div class="col">
-                                                        <input type="text" id="code3"
+                                                        <input type="number" id="code3"
                                                             class="form-control border-2 text-center text-6 px-0 py-2"
                                                             maxlength="1" required autocomplete="off">
                                                     </div>
                                                     <div class="col">
-                                                        <input type="text" id="code4"
+                                                        <input type="number" id="code4"
                                                             class="form-control border-2 text-center text-6 px-0 py-2"
                                                             maxlength="1" required autocomplete="off">
                                                     </div>
                                                     <div class="col">
-                                                        <input type="text" id="code5"
+                                                        <input type="number" id="code5"
                                                             class="form-control border-2 text-center text-6 px-0 py-2"
                                                             maxlength="1" required autocomplete="off">
                                                     </div>
                                                     <div class="col">
-                                                        <input type="text" id="code6"
+                                                        <input type="number" id="code6"
                                                             class="form-control border-2 text-center text-6 px-0 py-2"
                                                             maxlength="1" required autocomplete="off">
                                                     </div>
