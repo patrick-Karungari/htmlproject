@@ -120,7 +120,7 @@ else if (this.value.length == this.maxLength) {
                     phoneInputButton.removeClass('btn-primary');
                   }
                   if (!phoneInputButton.hasClass('btn-outline-success')) {
-                    phoneInputButton.addClass('btn-primary');
+                    phoneInputButton.addClass('btn-outline-success');
                   }
                 
                   phoneInputButton.html('Verified');
