@@ -88,8 +88,7 @@
                                             <div class="form-group d-flex ">
                                                 <input class="form-control" id="phone" type="tel" name="phone"
                                                     aria-describedby="register-email" tabindex="2" required />
-                                                <buton type="button" id="verify" data-toggle="modal"
-                                                    data-target="#otp-modal"
+                                                <buton type="button" id="verify"
                                                     class="btn w-50 d-flex btn-lg justify-content-center text-center btn-primary ml-2 ">
                                                     Verify
                                                 </buton>

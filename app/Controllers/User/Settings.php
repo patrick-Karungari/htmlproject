@@ -94,7 +94,7 @@ class Settings extends \App\Controllers\UserController
             ->verifications
             ->create('+'.$number, "sms");
 
-        echo $verification->status;
+        return $verification->status;
 
     }
     public function verifycode($number,$code){
@@ -107,7 +107,7 @@ class Settings extends \App\Controllers\UserController
             ["to" => $number]
         );
 
-        echo $verification_check->status;
+        return $verification_check->status;
 
     }
 }

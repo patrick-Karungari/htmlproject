@@ -117,7 +117,7 @@ else if (this.value.length == this.maxLength) {
       }
   });
   phoneInputButton.click( function(e) {
-    console.log('ive been clicked');
+    
     //e.preventDefault();
     if (validator.element("#phone")) {    
       $.ajax({
@@ -128,23 +128,16 @@ else if (this.value.length == this.maxLength) {
            
           if (resp.includes('pending')) {
                console.log("it is true");
-                return true;
+                 $("otp-modal").modal();
             }
-        
-            e.preventDefault();
-            return false;
+           
         },
         error: function (x) {
-          //return false;
-           e.preventDefault();
-            return false;
+         
         }
       });
-      return false;
-    } else {
-      //e.preventDefault();
-       return false;
-    }
+     
+    } 
      
   });
 });
