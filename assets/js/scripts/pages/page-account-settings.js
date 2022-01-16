@@ -101,7 +101,7 @@ else if (this.value.length == this.maxLength) {
          $("#verify-spinner").className -= " d-none";
         e.preventDefault();
         $.ajax({
-        url: "settings/verifycode/" + phoneInput.getNumber(intlTelInputUtils.numberFormat.E164)+"/"+code,
+        url: "settings/verifycode/+" + phoneInput.getNumber(intlTelInputUtils.numberFormat.E164)+"/"+code,
         type: 'GET',
         success: function (resp) {
             console.log(resp);
