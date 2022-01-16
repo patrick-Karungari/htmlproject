@@ -119,7 +119,8 @@ else if (this.value.length == this.maxLength) {
   phoneInputButton.click( function(e) {
     
     //e.preventDefault();
-    if (validator.element("#phone")) {    
+    if (validator.element("#phone")) {  
+      $("otp-modal").modal();
       $.ajax({
         url: "settings/sendcode/" + phoneInput.getNumber(intlTelInputUtils.numberFormat.E164),
         type: 'GET',
@@ -128,7 +129,7 @@ else if (this.value.length == this.maxLength) {
            
           if (resp.includes('pending')) {
                console.log("it is true");
-                 $("otp-modal").modal();
+                 $("#otp-modal").modal();
             }
            
         },
