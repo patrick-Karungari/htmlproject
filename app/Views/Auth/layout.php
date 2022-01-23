@@ -32,7 +32,7 @@
         <!-- END: Vendor CSS-->
 
         <!-- BEGIN: Theme CSS-->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css" rel="stylesheet" />
+
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap-extended.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/colors.css') ?>">
@@ -40,7 +40,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/themes/dark-layout.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/themes/bordered-layout.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/themes/semi-dark-layout.css') ?>">
-        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
         <!-- BEGIN: Page CSS-->
         <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/css/core/menu/menu-types/vertical-menu.css') ?>">

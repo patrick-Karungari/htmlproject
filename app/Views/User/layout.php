@@ -26,7 +26,9 @@
 
 
         <!-- END: Vendor CSS-->
-
+        <!-- END: Page CSS-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-scrollbar@latest/simple-scrollbar.css">
+        <script src="https://cdn.jsdelivr.net/npm/simple-scrollbar@latest/simple-scrollbar.min.js"></script>
         <!-- BEGIN: Theme CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css')?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap-extended.css')?>">
@@ -43,20 +45,43 @@
         <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/css/plugins/extensions/ext-component-toastr.css')?>">
 
-        <!-- END: Page CSS-->
 
 
         <!-- BEGIN: Vendor JS-->
         <script src="<?php echo base_url('assets/vendors/js/vendors.min.js')?>">
         </script>
         <!-- BEGIN Vendor JS-->
-        <script src="//code-eu1.jivosite.com/widget/oH1apziDaU" async></script>
+
+        <style>
+        .scrollbar {
+
+
+            overflow-y: scroll;
+            /* Add the ability to scroll */
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        </style>
     </head>
     <!-- END: Head-->
 
     <!-- BEGIN: Body-->
 
-    <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
+
+
+    <body class="vertical-layout vertical-menu-modern  scrollbar navbar-floating footer-static  " data-open="click"
         data-menu="vertical-menu-modern" data-col="">
 
         <!-- BEGIN: Header-->
@@ -94,8 +119,8 @@
                     </li>
 
                     <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link"
-                            href="javascript:void(0);" data-toggle="dropdown"><i class="ficon"
-                                data-feather="bell"></i><span
+                            style="overflow: unset!important;" href="javascript:void(0);" data-toggle="dropdown"><i
+                                class="ficon" data-feather="bell"></i><span
                                 class="badge badge-pill badge-danger badge-up">5</span></a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
@@ -416,19 +441,26 @@
 
 
                     <li id="deposits" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('user/deposits') ?>"><i data-feather='chevrons-up'></i><span
-                                class="menu-title text-truncate" data-i18n="Deposits">Deposits</span></a>
+                            href="<?php echo base_url('user/deposits') ?>"><i data-feather="upload-cloud"></i><span
+                                class=" menu-title text-truncate" data-i18n="Deposits">Wallet Deposit</span></a>
                     </li>
                     <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('user/withdraws') ?>"><i data-feather='chevrons-down'></i><span
-                                class="menu-title text-truncate" data-i18n="Withdrawals">Withdrawals</span></a>
+                            href="<?php echo base_url('user/withdraws') ?>"><i data-feather="send"></i><span
+                                class=" menu-title text-truncate" data-i18n="Withdrawals">Transfer Fund</span></a>
                     </li>
-
+                    <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
+                            href="<?php echo base_url('user/withdraws') ?>"><i data-feather="download-cloud"></i><span
+                                class=" menu-title text-truncate" data-i18n="Withdrawals">Withdrawals</span></a>
+                    </li>
+                    <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
+                            href="<?php echo base_url('user/withdraws') ?>"><i data-feather="users"></i><span
+                                class=" menu-title text-truncate" data-i18n="Withdrawals">Referrals</span></a>
+                    </li>
 
 
                     <li id="acc-set"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('user/settings') ?>"><i data-feather="sliders"></i><span
-                                class="menu-item text-truncate" data-i18n="Account Settings">Account Settings</span></a>
+                            href="<?php echo base_url('user/settings') ?>"><i data-feather="user"></i><span
+                                class="menu-item text-truncate" data-i18n="Account Settings">My Profile</span></a>
                     </li>
                 </ul>
             </div>
@@ -436,7 +468,7 @@
         <!-- END: Main Menu-->
 
         <!-- BEGIN: Content-->
-        <div class="app-content content ">
+        <div class="app-content content">
             <div class="content-overlay"></div>
             <div class="header-navbar-shadow"></div>
             <div class="content-wrapper">
@@ -445,8 +477,9 @@
 
 
                 </div>
-                <div class="content-body">
+                <div class="content-body ">
                     <!-- Dashboard Analytics Start -->
+
                     <?php  
                    // dd($_SERVER);
                     
@@ -501,7 +534,14 @@
         <script src="<?php echo base_url('assets/js/core/app-menu.js')?>"></script>
         <script src="<?php echo base_url('assets/js/core/app.js')?>"></script>
         <!-- END: Theme JS-->
-
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+        </script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+        </script>
 
         <script>
         $(window).on('load', function() {
@@ -513,6 +553,7 @@
             }
         })
         </script>
+
     </body>
     <!-- END: Body-->
 
