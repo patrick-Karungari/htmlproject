@@ -491,8 +491,8 @@ class Api extends BaseController
                
                 if($entry){
                     //$entry->currency = $currency->currency;
-                    $entry->buying = 0.98 * ($response->result->$to);
-                    $entry->selling = 1.06 * ($response->result->$to);
+                    $entry->buying = 0.98 * ($response['result'][$to]);
+                    $entry->selling = 1.06 * ($response['result'][$to]);
                     $currenciesModel->save($entry);
 
                     //dd($currencies);
