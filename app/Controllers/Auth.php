@@ -493,7 +493,7 @@ class Auth extends BaseController
             $response = $client->request('GET', 'https://api.fastforex.io/fetch-one?from=usd&to='.$currency->currency.'&api_key=4fa0babdb5-48795521c0-r69mgb', ['headers' => ['Accept' => 'application/json']]);
             $response = json_decode($response->getBody());
             $to = $currency->currency;
-            if ($response->result->$to != 'USD'){
+            if ($response->result != 'USD'){
                  if($entry){
                     $entry->buying = 0.98*($response->result->$to);
                     $entry->selling = 1.08*($response->result->$to);
