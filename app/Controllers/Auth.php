@@ -157,7 +157,7 @@ class Auth extends BaseController
 
                     if ($this->auth->isAdmin()) {
                         Services::session()->setFlashdata('success','Successfuly logged in');
-$this->updateExchangeRates();
+                        $this->updateExchangeRates();
 
                         return redirect()->to(site_url('dashboard'));
                     }
@@ -482,15 +482,25 @@ $this->updateExchangeRates();
     }
 
     public function updateExchangeRates(){
-        $currencies = (new \App\Models\Currencies())->findAll();
+        $currenciesModel = (new \App\Models\Currencies());
+        $currencies = $currenciesModel->findAll();
         foreach($currencies as $currency){
+            $entry = $currenciesModel->where('id', $currency->id)->find();
+           
            // dd($currency->currency);
             $client = \Config\Services::curlrequest();
 
             $response = $client->request('GET', 'https://api.fastforex.io/fetch-one?from=usd&to='.$currency->currency.'&api_key=4fa0babdb5-48795521c0-r69mgb', ['headers' => ['Accept' => 'application/json']]);
             $response = json_decode($response->getBody());
-            $currency = $currency->currency;
-        dd($response->result->$currency);
+            $to = $currency->currency;
+            if ($response->result->$to != 'USD'){
+                 if($entry){
+                    $entry->buying = 0.98*($response->result->$to);
+                    $entry->selling = 1.08*($response->result->$to);
+                    $currenciesModel->save($entry);
+                }
+            }
+            //dd($response->result->$currency);
 
         }
 
