@@ -45,7 +45,7 @@
                   document.getElementById("heading").innerHTML = "Investments for  " + Start + " to "+ End;
                 }
               // document.getElementById("heading").innerHTML = "Payouts for  " + Intl.NumberFormat('en-US').format(resp);
-                document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
+                document.getElementById("subheading").innerHTML = currency + " " + Intl.NumberFormat('en-US').format(resp);
                 //alert('Success');
               // rangePickr.flatpickr.close();
               }            
@@ -69,7 +69,7 @@
               if (resp != null) {
                 document.getElementById("heading").innerHTML = "Investments for  " + mmm
                   + ", " + dd + " " + yyyy;
-                document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
+                document.getElementById("subheading").innerHTML = currency + " " + Intl.NumberFormat('en-US').format(resp);
                
               }            
             },
@@ -153,7 +153,7 @@ if (dtInvestmentsTable.length) {
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['amount'];
-            return '<span class="d-none">Ksh ' + Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' +  Intl.NumberFormat('en-US').format ($total);
+            return '<span class="d-none">' + currency + ' ' + Intl.NumberFormat('en-US').format ($total) + '</span>' + currency + ' ' +  Intl.NumberFormat('en-US').format ($total);
           }
         },
         
@@ -164,7 +164,7 @@ if (dtInvestmentsTable.length) {
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['return'];
-            return '<span class="d-none">Ksh ' +  Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' + Intl.NumberFormat('en-US').format ($total);
+            return '<span class="d-none">' + currency + ' ' +  Intl.NumberFormat('en-US').format ($total) + '</span>' + currency + ' ' + Intl.NumberFormat('en-US').format ($total);
           }
         },
         {
@@ -175,7 +175,7 @@ if (dtInvestmentsTable.length) {
           width: '24px',
           render: function (data, type, full, meta) {
             var $total = full['total'];
-            return '<span class="d-none">Ksh ' +  Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' +  Intl.NumberFormat('en-US').format ($total);
+            return '<span class="d-none">' + currency + ' ' +  Intl.NumberFormat('en-US').format ($total) + '</span>' + currency + ' ' +  Intl.NumberFormat('en-US').format ($total);
           }
         },
        
@@ -198,7 +198,7 @@ if (dtInvestmentsTable.length) {
               '<div> <div class="avatar d-none d-lg-inline-flex  avatar-status ' +
               roleObj[$invoiceStatus].class +
               '">' +
-              '<span class=" avatar-content">' +
+              '<span class=" d-sm-none d-md-inline-flex avatar-content">' +
               feather.icons[roleObj[$invoiceStatus].icon].toSvg({ class: 'avatar-icon' }) +
               '</span> </div>' +
               '<span data-search =' + roleObj[$invoiceStatus].title + ' class="badge badge-pill ml-1 ' + roleObj[$invoiceStatus].class + '" text-uppercase>' + roleObj[$invoiceStatus].title + '</span>' +
@@ -247,8 +247,8 @@ if (dtInvestmentsTable.length) {
       order: [[0, 'desc']],
       dom:
         '<"row d-flex justify-content-between align-items-center m-1"' +        
-        '<"d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2"f<"investment_status mt-1 ml-2"><"investment_type mt-1 ml-2">>' +
-        '<"col-lg-6 d-flex align-items-center"l<"dt-action-buttons text-xl-right text-lg-left text-md-right text-left "B>>' +
+        '<"d-flex  justify-content-between align-items-center mx-50 row pt-0 pb-2"f<"investment_status mt-1 ml-2"><"investment_type mt-1 ml-2">>' +
+        '<" d-flex w-25 justify-content-end"l<"dt-action-buttons text-xl-right text-lg-left text-md-right text-left "B>>' +
         '>t' +
         '<"d-flex justify-content-between mx-2 row"' +
         '<"col-sm-12 col-md-6"i>' +

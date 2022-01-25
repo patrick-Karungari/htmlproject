@@ -6,7 +6,6 @@
  * E-Mail: PKARUNGARI@GMAIL.COM
  */
 
-
 ?>
 <!-- BEGIN: Vendor CSS-->
 
@@ -63,20 +62,7 @@
     </div>
     <!--/ Statistics Card -->
 </div>
-<div class="card">
-    <div class="card-body justify-content-center text-center">
-        <div class="d-flex align-items-start justify-content-between">
-            <p class="card-title flex-grow">Day's Deposits</p>
-        </div>
-        <div class="d-flex  justify-content-center">
-            <input type="text" id="fp-range" class="form-control flatpickr-range"
-                placeholder="DD, MM YYYY to DD, MM YYYY" />
-        </div>
-        <h4 id="heading" class="text-white mt-2 mb-1">
-        </h4>
-        <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center"></h1>
-    </div>
-</div>
+
 
 <div class="card">
     <h5 class="card-header">Search Filter</h5>
@@ -93,15 +79,15 @@
                 <h4 class="card-title mb-2">My Deposits</h4>
             </div>
             <div class="card-datatable table-responsive pb-1">
-                <table class="investments-list-table table p-1">
+                <table class="referrals-list-table table p-1">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Transaction ID</th>
-                            <th>Amount</th>
-                            <th>Phone</th>
+                            <th>Name</th>
+                            <th>First Deposit</th>
+                            <th>My Commission</th>
+                            <th>My Bonus</th>
                             <th>Status</th>
-                            <th class="text-nowrap text-truncate">Description</th>
                             <th>Date</th>
 
                         </tr>
@@ -115,7 +101,7 @@
 
 <script>
 id = '<?php echo $current_user->id ?>';
-$('#deposits').addClass('active');
+$('#referrals').addClass('active');
 </script>
 <!-- BEGIN: Page Vendor JS-->
 <script src="../../../assets/vendors/js/pickers/pickadate/picker.js"></script>
@@ -140,5 +126,5 @@ $('#deposits').addClass('active');
 </script>
 <!-- END: Page Vendor JS-->
 <!-- BEGIN: Page JS-->
-<script src="../../../assets/js/scripts/forms/pickers/user-depo.js"></script>
+<script src="../../../assets/js/scripts/forms/pickers/user-referrals.js"></script>
 <!-- END: Page JS-->

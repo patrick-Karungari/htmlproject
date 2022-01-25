@@ -45,7 +45,7 @@
                   document.getElementById("heading").innerHTML = "Deposits for  " + Start + " to "+ End;
                 }
               // document.getElementById("heading").innerHTML = "Payouts for  " + Intl.NumberFormat('en-US').format(resp);
-                document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
+                document.getElementById("subheading").innerHTML = currency + " " + Intl.NumberFormat('en-US').format(resp);
                 //alert('Success');
               // rangePickr.flatpickr.close();
               }            
@@ -69,7 +69,7 @@
               if (resp != null) {
                 document.getElementById("heading").innerHTML = "Deposits for  " + mmm
                   + ", " + dd + " " + yyyy;
-                document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
+                document.getElementById("subheading").innerHTML = currency + " " + Intl.NumberFormat('en-US').format(resp);
                
               }            
             },
@@ -147,7 +147,7 @@ if (dtInvestmentsTable.length) {
           responsivePriority: 3,
           className: 'all',
           width: '24px',
-          render: function (data, type, full, meta) { var $total = full['amount'];   return '<span class="d-none">Ksh ' + Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' +  Intl.NumberFormat('en-US').format ($total);}
+          render: function (data, type, full, meta) { var $total = full['amount'];   return '<span class="d-none">' + currency + ' ' + Intl.NumberFormat('en-US').format ($total) + '</span>' + currency + ' ' +  Intl.NumberFormat('en-US').format ($total);}
         },
         
         
@@ -173,7 +173,7 @@ if (dtInvestmentsTable.length) {
               '<div> <div class="avatar d-none d-lg-inline-flex avatar-status ' +
               roleObj[$invoiceStatus].class +
               '">' +
-              '<span class="avatar-content">' +
+              '<span class=" d-sm-none d-md-inline-flex avatar-content">' +
               feather.icons[roleObj[$invoiceStatus].icon].toSvg({ class: 'avatar-icon' }) +
               '</span> </div>' +
               '<span data-search =' + roleObj[$invoiceStatus].title + ' class="badge badge-pill ml-1 ' + roleObj[$invoiceStatus].class + '" text-uppercase>' + roleObj[$invoiceStatus].title + '</span>' +

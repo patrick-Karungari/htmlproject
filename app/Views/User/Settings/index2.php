@@ -4,9 +4,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <!-- account setting page -->
 <section id="page-account-settings">
-    <div class="d-flex flex-column justify-content-between">
+    <div class="d-flex flex-column px-1 justify-content-between">
         <!-- left menu section -->
-        <div class="d-flex row  mr-1 ml-1 flex-row justify-content-between mb-2 mb-md-0">
+        <div class="d-flex row flex-row justify-content-between mb-2 mb-md-0">
             <ul class="nav nav-pills flex-row nav-left">
                 <!-- general -->
                 <li class="nav-item">
@@ -31,7 +31,7 @@
         <!--/ left menu section -->
 
         <!-- right content section -->
-        <div class="row mr-1 ml-1">
+        <div class="row ">
             <div class="card">
                 <div class="card-body">
                     <div class="tab-content">

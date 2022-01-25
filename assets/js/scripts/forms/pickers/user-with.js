@@ -45,7 +45,7 @@
                   document.getElementById("heading").innerHTML = "Withdraws for  " + Start + " to "+ End;
                 }
               // document.getElementById("heading").innerHTML = "Payouts for  " + Intl.NumberFormat('en-US').format(resp);
-                document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
+                document.getElementById("subheading").innerHTML = currency + " " + Intl.NumberFormat('en-US').format(resp);
                 //alert('Success');
               // rangePickr.flatpickr.close();
               }            
@@ -69,7 +69,7 @@
               if (resp != null) {
                 document.getElementById("heading").innerHTML = "Withdraws for  " + mmm
                   + ", " + dd + " " + yyyy;
-                document.getElementById("subheading").innerHTML = "Ksh " + Intl.NumberFormat('en-US').format(resp);
+                document.getElementById("subheading").innerHTML = currency + " " + Intl.NumberFormat('en-US').format(resp);
                
               }            
             },
@@ -145,7 +145,7 @@ if (dtInvestmentsTable.length) {
           responsivePriority: 3,
           className: 'all',
           width: '24px',
-          render: function (data, type, full, meta) { var $total = full['amount'];   return '<span class="d-none">Ksh ' + Intl.NumberFormat('en-US').format ($total) + '</span>Ksh ' +  Intl.NumberFormat('en-US').format ($total);}
+          render: function (data, type, full, meta) { var $total = full['amount'];   return '<span class="d-none">Ksh ' + Intl.NumberFormat('en-US').format ($total) + '</span>' + currency + ' ' +  Intl.NumberFormat('en-US').format ($total);}
         },
         
         
@@ -171,7 +171,7 @@ if (dtInvestmentsTable.length) {
               '<div> <div class="avatar d-none d-lg-inline-flex avatar-status ' +
               roleObj[$invoiceStatus].class +
               '">' +
-              '<span class="d-sm-none avatar-content">' +
+              '<span class="d-sm-none d-md-inline-flex avatar-content">' +
               feather.icons[roleObj[$invoiceStatus].icon].toSvg({ class: 'avatar-icon' }) +
               '</span> </div>' +
               '<span data-search =' + roleObj[$invoiceStatus].title + ' class="badge badge-pill ml-1 ' + roleObj[$invoiceStatus].class + '" text-uppercase>' + roleObj[$invoiceStatus].title + '</span>' +
@@ -211,7 +211,7 @@ if (dtInvestmentsTable.length) {
       ],
       order: [[0, 'desc']],
       dom:
-         '<"d-flex justify-content-start align-items-center header-actions mx-1 row mt-75"' +
+         '<"d-flex justify-content-between align-items-center header-actions mx-1 row mt-75"' +
                 '<"d-flex justify-content-between" l>' +
                 '<"col-lg-12 col-xl-6 pl-xl-75 pl-0"<"dt-action-buttons text-xl-right text-lg-left text-md-right text-left d-flex align-items-center justify-content-lg-end align-items-center flex-sm-nowrap flex-wrap mr-1"<"mr-1"f>B>>' +
                 '>t' +

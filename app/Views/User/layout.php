@@ -74,6 +74,9 @@
         }
 
         </style>
+        <script>
+        currency = '<?php echo $currency ?>';
+        </script>
     </head>
     <!-- END: Head-->
 
@@ -118,10 +121,10 @@
                         </div>
                     </li>
 
-                    <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link"
-                            style="overflow: unset!important;" href="javascript:void(0);" data-toggle="dropdown"><i
-                                class="ficon" data-feather="bell"></i><span
-                                class="badge badge-pill badge-danger badge-up">5</span></a>
+                    <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link overflow-unset"
+                            href="javascript:void(0);" data-toggle="dropdown"><i class="ficon"
+                                data-feather="bell"></i><span
+                                class="badge badge-pill badge-danger overflow-unset badge-up">5</span></a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
                                 <div class="dropdown-header d-flex">
@@ -444,7 +447,7 @@
                             href="<?php echo base_url('user/deposits') ?>"><i data-feather="upload-cloud"></i><span
                                 class=" menu-title text-truncate" data-i18n="Deposits">Wallet Deposit</span></a>
                     </li>
-                    <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
+                    <li id="transfers" class=" nav-item"><a class="d-flex align-items-center"
                             href="<?php echo base_url('user/withdraws') ?>"><i data-feather="send"></i><span
                                 class=" menu-title text-truncate" data-i18n="Withdrawals">Transfer Fund</span></a>
                     </li>
@@ -452,8 +455,8 @@
                             href="<?php echo base_url('user/withdraws') ?>"><i data-feather="download-cloud"></i><span
                                 class=" menu-title text-truncate" data-i18n="Withdrawals">Withdrawals</span></a>
                     </li>
-                    <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('user/withdraws') ?>"><i data-feather="users"></i><span
+                    <li id="referrals" class=" nav-item"><a class="d-flex align-items-center"
+                            href="<?php echo base_url('user/referrals') ?>"><i data-feather="users"></i><span
                                 class=" menu-title text-truncate" data-i18n="Withdrawals">Referrals</span></a>
                     </li>
 
@@ -477,6 +480,26 @@
 
 
                 </div>
+                <?php
+                    if ($current_user->registration != 1) {
+                        ?>
+                <div class="alert alert-warning text-center">
+                    Please subscribe by paying a one-time fee of <b>Kshs
+                        <?php echo get_option('registration_fee') ?></b> to enjoy our investment packages and earn
+                    referrals.<br /><br />
+                    <a class="btn btn-primary" href="<?php echo site_url('user/deposits/create') ?>">Deposit Now</a>
+                </div>
+                <?php
+                    } else {
+                        ?>
+                <div class="alert py-1 px-1 alert-info">
+                    My referral link:
+                    <code><?php echo site_url('auth/register') . '?ref=' . $current_user->username; ?></code>
+                </div>
+                <?php
+                    }
+                ?>
+
                 <div class="content-body ">
                     <!-- Dashboard Analytics Start -->
 
@@ -490,7 +513,7 @@
                         if(!empty($session->getFlashData('success'))){
                             if(str_contains($session->getFlashData('success'),'You are already signed in.')){
                                 bootstrap_alerts();
-                                dd(true);
+                               // dd(true);
                             }
                         }
                         echo $_html_content;                  

@@ -12,6 +12,7 @@ use App\Models\Referrals;
 use App\Models\Users;
 use Config\Services;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\Currencies;
 
 
 
@@ -75,6 +76,7 @@ class Auth extends BaseController
 
             if ($this->auth->isAdmin()) {
                 Services::session()->setFlashdata('success', 'You are already signed in.');
+               
 
                 return redirect()->to(site_url('dashboard'));
             } else {
@@ -126,7 +128,7 @@ class Auth extends BaseController
             
             if ($this->auth->isAdmin()) {
                 Services::session()->setFlashdata('success', 'You are already signed in.');
-
+               
 
                 return redirect()->to(site_url('dashboard'));
             }else{
@@ -155,6 +157,7 @@ class Auth extends BaseController
 
                     if ($this->auth->isAdmin()) {
                         Services::session()->setFlashdata('success','Successfuly logged in');
+$this->updateExchangeRates();
 
                         return redirect()->to(site_url('dashboard'));
                     }
@@ -478,6 +481,21 @@ class Auth extends BaseController
         return strtoupper($random_string);
     }
 
+    public function updateExchangeRates(){
+        $currencies = (new \App\Models\Currencies())->findAll();
+        foreach($currencies as $currency){
+           // dd($currency->currency);
+            $client = \Config\Services::curlrequest();
+
+            $response = $client->request('GET', 'https://api.fastforex.io/fetch-one?from=usd&to='.$currency->currency.'&api_key=4fa0babdb5-48795521c0-r69mgb', ['headers' => ['Accept' => 'application/json']]);
+
+        dd($response);
+
+        }
+
+    }
+
+    
     public function _renderPage($view, $data = []): string
     {
         $data = array_merge($this->data, $data);
