@@ -495,8 +495,8 @@ class Auth extends BaseController
             $to = $currency->currency;
             if ($response->result != 'USD'){
                  if($entry){
-                    $entry->buying = 0.98*($response->result->$to);
-                    $entry->selling = 1.08*($response->result->$to);
+                    $entry['buying'] = 0.98*($response->result->$to);
+                    $entry['selling'] = 1.08*($response->result->$to);
                     $currenciesModel->save($entry);
                 }
             }
