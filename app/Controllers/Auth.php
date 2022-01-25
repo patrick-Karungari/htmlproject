@@ -488,8 +488,8 @@ $this->updateExchangeRates();
             $client = \Config\Services::curlrequest();
 
             $response = $client->request('GET', 'https://api.fastforex.io/fetch-one?from=usd&to='.$currency->currency.'&api_key=4fa0babdb5-48795521c0-r69mgb', ['headers' => ['Accept' => 'application/json']]);
-
-        dd($response->getBody());
+            $response = $response->getBody();
+        dd($response['result'][$currency->currency]);
 
         }
 
