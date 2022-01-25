@@ -16,6 +16,7 @@ use App\Models\Users;
 use App\Models\Withdraws;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\View\Parser;
+use Twilio\TwiML\Voice\Echo_;
 
 class Api extends BaseController
 {
@@ -494,6 +495,7 @@ class Api extends BaseController
                     $entry->buying = number_format(0.98 * ($response['result'][$to]), 4) ;
                     $entry->selling = number_format( 1.06 * ($response['result'][$to]), 4);
                     $currenciesModel->save($entry);
+                    echo number_format(0.98 * ($response['result'][$to]), 4);
 
                     //dd($currencies);
                 }
