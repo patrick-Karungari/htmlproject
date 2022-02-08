@@ -485,23 +485,29 @@ class Auth extends BaseController
         $currenciesModel = (new \App\Models\Currencies());
         $currencies = $currenciesModel->findAll();
         foreach($currencies as $currency){
-           
-            $to = $currency->currency;
-            $response = ['result'=> ['KES'=> 113.23]];
             
-            $response=json_decode(json_encode($response) , true);
-            if ($response->result != 'USD'){
+           // dd()
+            $to = $currency->currency;
+            //$response = ['result'=> [$to=> 130.23]];
+            $client = \Config\Services::curlrequest();
+
+            $response = $client->request('GET', 'https://api.fastforex.io/fetch-one?from=usd&to='.$currency->currency.'&api_key=4fa0babdb5-48795521c0-r69mgb', ['headers' => ['Accept' => 'application/json']]);
+            $response = json_decode($response->getBody());
+            $response = json_decode(json_encode($response) , true);
+            //dd($response);
+            if ($currency->currency != 'USD'){
                 $entry = $currenciesModel->find($currency->id);
            
-                dd($entry);
-                $client = \Config\Services::curlrequest();
-
-                //$response = $client->request('GET', 'https://api.fastforex.io/fetch-one?from=usd&to='.$currency->currency.'&api_key=4fa0babdb5-48795521c0-r69mgb', ['headers' => ['Accept' => 'application/json']]);
-                // $response = json_decode($response->getBody());
+                //dd($entry);
+               
                 if($entry){
-                    $entry->buying = 0.98*($response->result->$to);
-                    $entry->selling = 1.08*($response->result->$to);
+                    //$entry->currency = $currency->currency;
+                    $entry->buying = 0.98 * ($response['result'][$to]);
+                    $entry->selling =  1.06 * ($response['result'][$to]);
                     $currenciesModel->save($entry);
+                    echo number_format(0.98 * ($response['result'][$to]), 4).'\n';
+
+                    //dd($currencies);
                 }
             }
             //dd($response->result->$currency);

@@ -97,7 +97,7 @@ function bootstrap_alerts($dismissible = true)
 
             ?>
 
-<div class="alert alert-success mb-1 alert-dismissible fade show" role="alert">
+<div id="page-alert" class=" alert alert-success mb-1 alert-dismissible fade show" role="alert">
     <div class="alert-body">
         <?php echo $infos;?>
 
@@ -107,7 +107,7 @@ function bootstrap_alerts($dismissible = true)
     </button>
 </div>
 <script>
-$(".alert").first().hide().slideDown(500).delay(4000).slideUp(500, function() {
+$("#page-alert").first().hide().slideDown(500).delay(4000).slideUp(500, function() {
     $(this).remove();
 });
 </script>

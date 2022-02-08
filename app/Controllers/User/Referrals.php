@@ -23,6 +23,7 @@ class Referrals extends \App\Controllers\UserController
     public function getRef($id)
     {
         $Referrals = (new \App\Models\Referrals())->where('user', $id)->orderBy('date', 'DESC')->findAll();
+        $converter = (new \App\Libraries\Converter());
         $Referrals = json_encode($Referrals);
         
         $Referrals = json_decode($Referrals, true);
@@ -54,7 +55,10 @@ class Referrals extends \App\Controllers\UserController
                 'avatar' => $referral['user']['avatar'],
                 'username' => $referral['user']['username']];
 
-            $Referrals[$i]['user'] = $user; 
+            $Referrals[$i]['user'] = $user;
+            $Referrals[$i]['first_amount'] = $converter->convertoLocal($Referrals[$i]['first_amount'], $this->currency);
+            $Referrals[$i]['commission'] = $converter->convertoLocal($Referrals[$i]['commission'], $this->currency);
+            $Referrals[$i]['bonus'] = $converter->convertoLocal($Referrals[$i]['bonus'], $this->currency);
             $i++;
         
         } 

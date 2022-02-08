@@ -13,13 +13,20 @@ use App\Models\Plans;
 use App\Models\Transactions;
 use App\Models\Users;
 use Carbon\Carbon;
+use App\Libraries\Converter;
+
+
 
 class Invest extends \App\Controllers\UserController
+
 {
+    public $converter;
     public function __construct()
     {
         parent::__construct();
         $this->data['site_title'] = "Investments";
+        $this->converter = (new \App\Libraries\Converter());
+
     }
 
     public function index()
@@ -30,16 +37,19 @@ class Invest extends \App\Controllers\UserController
 
     public function create()
     {
+        
+
         if ($this->request->getPost()) {
             $plan = $this->request->getPost('plan');
             $amount = $this->request->getPost('amount');
+            $usd = $this->converter->convertoUSD($amount, $this->currency);
 
             $plan = (new Plans())->find($plan);
             if (!$plan) {
                 return redirect()->back()->with('error', "Investment plan not found");
             }
 
-            if (!is_numeric($amount) || $amount < get_option('minimum_investment', 0)) {
+            if (!is_numeric($amount) || $usd < get_option('minimum_investment', 0)) {
                 return redirect()->back()->with('error', "Investment amount is below the minimum");
             }
 
@@ -60,8 +70,8 @@ class Invest extends \App\Controllers\UserController
                 }
             }
 
-            $return = ($plan->returns / 100) * $amount;
-            $total = $amount + $return;
+            $return = ($plan->returns / 100) * $usd;
+            $total = ($this->converter->convertoUSD($amount, $this->currency)) + $return;
             $start_time = time();
             $end_time = Carbon::now()->add($plan->days, 'day');
 
@@ -69,14 +79,15 @@ class Invest extends \App\Controllers\UserController
                 return redirect()->back()->with('error', "Please pay the subscription fee before you purchase an investment plan");
             }
 
-            if ($amount > $this->current_user->account) {
+           //dd($this->current_user->account);
+            if ($amount > $this->converter->convertoLocal($this->current_user->account, $this->currency)) {
                 return redirect()->back()->with('error', "Your account balance is below Kshs $amount");
             }
 
             $to_db = [
                 'user' => $this->current_user->id,
                 'plan' => $plan->id,
-                'amount' => $amount,
+                'amount' => $this->converter->convertoUSD($amount, $this->currency),
                 'return' => $return,
                 'total' => $total,
                 'start_time' => $start_time,
@@ -88,7 +99,7 @@ class Invest extends \App\Controllers\UserController
 
             try {
                 $users = new Users();
-                $new_account = $this->current_user->account - $amount;
+                $new_account = $this->current_user->account - ($this->converter->convertoUSD($amount, $this->currency));
                 if ($users->set(['account' => $new_account])->where('id', $this->current_user->id)->update()) {
                     $model->save($to_db);
                     $transactions = new Transactions();
@@ -99,8 +110,8 @@ class Invest extends \App\Controllers\UserController
                         'type' => 'investment',
                         'status' => 'completed',
                         'trx' => $trx,
-                        'amount' => $amount,
-                        'description' => "Investment of Kshs $amount. New balance Kshs $new_account",
+                        'amount' => $this->converter->convertoUSD($amount, $this->currency),
+                        'description' => "Investment of {$this->currency} $amount. New balance {$this->currency} {$this->converter->convertoLocal($new_account, $this->currency)}",
                     ];
                     $transactions->save($transaction);
 
@@ -121,23 +132,24 @@ class Invest extends \App\Controllers\UserController
                                     $bonus = number_format($bonus, 2);
                                     $newbal = $referrer->account + $bonus;
 
-                                    $users->set(['account' => $newbal])->where('id', $referrer->id)->update();
+                                    $users->set(['account' => $this->converter->convertoUSD($newbal, $this->currency)])->where('id', $referrer->id)->update();
                                     $trx = 'IB' . $this->secure_random_string(8);
-                                    dd($trx);
+                                    //dd($trx);
                                     $transaction = [
                                         'user' => $referrer->id,
                                         'type' => 'referral',
                                         'status' => 'completed',
                                         'trx' => $trx,
-                                        'amount' => $bonus,
-                                        'description' => "Investment bonus of Kshs $amount for referring {$this->current_user->name}. New balance is Kshs $newbal ",
+                                        'amount' => $this->converter->convertoUSD($bonus, $this->currency),
+                                        'description' => "Investment bonus of {$referrer->usermeta('currency')} {$this->converter->convertoLocal($bonus, $referrer->usermeta('currency'))} for referring {$this->current_user->name}. New balance is {$referrer->usermeta('currency')} {$this->converter->convertoLocal($newbal, $referrer->usermeta('currency'))}",
                                     ];
                                     $transactions->save($transaction);
 
                                     $ref = (new \App\Models\Referrals())->where('user', $referrer->id)->where('ref', $this->current_user->id)->get()->getFirstRow();
                                     if ($ref) {
-                                        $ref->first_amount = $amount;
-                                        $ref->commission = $bonus;
+                                        $ref->first_amount = $this->converter->convertoUSD($amount, $this->currency);
+                                        $ref->commission = $this->converter->convertoUSD($bonus, $this->currency);
+
                                         $ref->status = 'completed';
 
                                         (new \App\Models\Referrals())->save($ref);
@@ -158,15 +170,17 @@ class Invest extends \App\Controllers\UserController
                                         'type' => 'bonus',
                                         'status' => 'completed',
                                         'trx' => $trx,
-                                        'amount' => $bonus,
-                                        'description' => "Referral bonus of Kshs $amount for referring {$this->current_user->name}. New balance is Kshs $newbal ",
+                                        'amount' => $this->converter->convertoLocal($bonus, $referrer->usermeta('currency')),
+                                        'description' => "Referral bonus of {$referrer->usermeta('currency')} {$this->converter->convertoLocal($bonus, $referrer->usermeta('currency'))} for referring {$this->current_user->name}. New balance is {$referrer->usermeta('currency')} {$this->converter->convertoLocal($newbal, $referrer->usermeta('currency'))}",
                                     ];
                                     $transactions->save($transaction);
 
                                     $ref = (new \App\Models\Referrals())->where('user', $referrer->id)->where('ref', $this->current_user->id)->get()->getFirstRow();
                                     if ($ref) {
-                                        $ref->first_amount = $amount;
+                                        $ref->first_amount = $this->converter->convertoUSD($amount, $this->currency);
+
                                         $ref->bonus = $bonus;
+
                                         $ref->status = 'completed';
 
                                         (new \App\Models\Referrals())->save($ref);
@@ -175,8 +189,8 @@ class Invest extends \App\Controllers\UserController
                             }
                         }
                     }
-
-                    return redirect()->back()->with('success', "Investment placed successfully. You will earn Kshs $return in $plan->days day(s)");
+                    $_return = number_format($this->converter->convertoLocal($return, $this->currency),2);
+                    return redirect()->back()->with('success', "Investment placed successfully. You will earn {$this->currency} $_return in $plan->days day(s)");
                 }
                 return redirect()->back()->with('success', "A technical error occurred");
             } catch (\ReflectionException $e) {
@@ -205,8 +219,19 @@ class Invest extends \App\Controllers\UserController
      public function getInv($id)
     {
         $users = ((new \App\Models\Investments()))->select('id, plan, amount, return, total, status, created_at, end_time')->where('user', $id)->orderBy('id', 'DESC')->findAll();
+        $i = 0;
+        $users = json_decode(json_encode($users), true);
+
+        foreach ($users as $user){
+            $users[$i]['amount'] = $this->converter->convertoLocal($user['amount'], $this->currency);
+             $users[$i]['return'] = $this->converter->convertoLocal($user['return'], $this->currency);
+             $users[$i]['total'] = $this->converter->convertoLocal($user['total'], $this->currency);
+             $i++;
+
+
+        }
         $data['data'] = $users;
-        //dd($data);
+
         echo json_encode($data);
     }
     public function getTotalInvestments($id){
@@ -217,7 +242,9 @@ class Invest extends \App\Controllers\UserController
             $start_of_day = Carbon::parse($dateStart)->startOfDay()->getTimestamp();
             $end_of_day = Carbon::parse($dateEnd)->endOfDay()->getTimestamp();
             $amountCOB = $model->selectSum('total', 'totalAmount')->where('user', $id)->where('end_time >=', $start_of_day)->where('end_time <=', $end_of_day)->get()->getFirstRow('object')->totalAmount;
-            return $amountCOB;
+            echo $this->converter->convertoLocal($amountCOB, $this->currency);
+            return;
+
         }
         return "null";
 

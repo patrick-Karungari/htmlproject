@@ -5,8 +5,13 @@
  * Github: https://github.com/patrick-Karungari
  * E-Mail: PKARUNGARI@GMAIL.COM
  */
-
-
+$converter = (new \App\Libraries\Converter());
+$bal = $converter->convertoLocal($current_user->account, $currency);
+$ri = $converter->convertoLocal((new \App\Models\Investments())->where('user', $current_user->id)->where('status', 'pending')->selectSum('total', 'totalInvestments')->get()->getLastRow()->totalInvestments , $currency);
+$tp = $converter->convertoLocal((new \App\Models\Investments())->where('user', $current_user->id)->where('status', 'completed')->selectSum('return', 'totalInvestments')->get()->getLastRow()->totalInvestments, $currency);
+$bonus = $converter->convertoLocal( (new \App\Libraries\Metrics())->getUserReferralBonusTotals($current_user->id), $currency);
+$depo = $converter->convertoLocal((new \App\Models\Deposits())->where('user', $current_user->id)->where('status', 'completed')->selectSum('amount', 'totalWithdraws')->get()->getLastRow()->totalWithdraws, $currency);
+$with = $converter->convertoLocal((new \App\Models\Withdraws())->where('user', $current_user->id)->where('status', 'completed')->selectSum('amount', 'totalWithdraws')->get()->getLastRow()->totalWithdraws, $currency);
 $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->where('status', 'completed')->orderBy('id', 'DESC')->findAll();
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/plugins/charts/chart-apex.css')?>">
@@ -48,13 +53,14 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                 <div class="d-flex flex-column w-100 h-100">
                     <div class="card-body w-100 d-flex align-items-center  ">
                         <div class="d-flex align-self-end">
-                            <div class="avatar bg-light-success pl-1 p-50 mb-1">
+                            <div class="avatar bg-light-success pl-1 p-50 ">
                                 <div class="avatar-content"><i data-feather="dollar-sign" class="font-medium-5"></i>
                                 </div>
                             </div>
                             <div class=" ml-2 d-flex align-self-center align-items-center">
-                                <h2 class="font-weight-bolder">KES
-                                    <?php echo number_format($current_user->account, 2) ?></h2>
+                                <h2 class="font-weight-bolder">
+                                    <?php echo $currency.' '.number_format($bal, 2); ?>
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -70,8 +76,10 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                         <div class="avatar-content"><i data-feather="trending-up" class="font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="font-weight-bolder">KES
-                        <?php echo number_format((new \App\Models\Deposits())->where('user', $current_user->id)->where('status', 'completed')->selectSum('amount', 'totalWithdraws')->get()->getLastRow()->totalWithdraws, 2) ?>
+                    <h2 class="font-weight-bolder">
+                        <?php echo $currency . ' ' . number_format($depo, 2);?>
+
+
                     </h2>
                     <p class="card-text">Deposits</p>
                 </div>
@@ -84,8 +92,8 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                     <div class="avatar bg-light-danger p-50 mb-1">
                         <div class="avatar-content"><i data-feather="trending-down" class="font-medium-5"></i></div>
                     </div>
-                    <h2 class="font-weight-bolder">KES
-                        <?php echo number_format((new \App\Models\Withdraws())->where('user', $current_user->id)->where('status', 'completed')->selectSum('amount', 'totalWithdraws')->get()->getLastRow()->totalWithdraws, 2) ?>
+                    <h2 class="font-weight-bolder"><?php echo $currency . ' ' . number_format($with, 2);?>
+
                     </h2>
                     <p class="card-text">Withdrawals</p>
                 </div>
@@ -115,7 +123,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                                 </div>
                                 <div class="media-body my-auto">
                                     <h4 id="ri" class="font-weight-bolder mb-0">
-                                        <?php echo (new \App\Models\Investments())->where('user', $current_user->id)->where('status', 'pending')->selectSum('total', 'totalInvestments')->get()->getLastRow()->totalInvestments ?>
+                                        <?php echo $ri ?>
                                     </h4>
                                     <p class="card-text font-small-3 mb-0">Running Investments</p>
                                 </div>
@@ -129,7 +137,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                                 </div>
                                 <div class="media-body my-auto">
                                     <h4 id="tp" class="font-weight-bolder mb-0">
-                                        <?php echo (new \App\Models\Investments())->where('user', $current_user->id)->where('status', 'completed')->selectSum('return', 'totalInvestments')->get()->getLastRow()->totalInvestments ?>
+                                        <?php echo $tp ?>
                                     </h4>
                                     <p class="card-text font-small-3 mb-0">Total Profits</p>
                                 </div>
@@ -158,7 +166,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
                                 </div>
                                 <div class="media-body my-auto">
                                     <h4 id="tb" class="font-weight-bolder mb-0">
-                                        <?php echo (new \App\Libraries\Metrics())->getUserReferralBonusTotals($current_user->id) ?>
+                                        <?php echo $bonus ?>
                                     </h4>
                                     <p class="card-text font-small-3 mb-0">Total Bonus</p>
                                 </div>
@@ -176,6 +184,7 @@ $referrals = (new \App\Models\Referrals())->where('user', $current_user->id)->wh
 <script>
 document.getElementById("dashboard").className += " active";
 id = '<?php echo $current_user->id ;?>';
+currency = '<?php echo $currency ;?>';
 
 function textprimary(x) {
     x.className += " bg-success";

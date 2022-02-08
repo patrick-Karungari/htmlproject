@@ -9,6 +9,7 @@
 $investments = (new \App\Models\Investments())->where('user', $current_user->id)->orderBy('id', 'DESC')->findAll();
 $session = \Config\Services::session();
 //echo json_encode($session->getFlashdata());
+$converter = (new \App\Libraries\Converter());
 
 ?>
 
@@ -73,7 +74,7 @@ echo $plan->description;
         } elseif ($plan->returns > 200) {
             $minimum_investment = 100000;
         } else {
-            $minimum_investment = get_option('minimum_investment', 0);
+            $minimum_investment = $converter->convertoLocal(get_option('minimum_investment', 0), $currency);
         }
         ?>
                                     <input type="number" class="form-control" name="amount"

@@ -7,6 +7,7 @@
  */
 
 namespace App\Controllers\User;
+use App\Libraries\Converter;
 
 class Account extends \App\Controllers\UserController
 {
@@ -20,6 +21,7 @@ class Account extends \App\Controllers\UserController
         return $this->_renderPage('Account/index2', $this->data);
     }
     public function getStat(){
+        $converter = new Converter(); 
         $id = $this->request->getGet('id');
         if($this->request->getGet('id')){
           $inv =  (new \App\Models\Investments())->where('user', $id)->where('status', 'pending')->selectSum('total', 'totalInvestments')->get()->getLastRow()->totalInvestments;
@@ -28,11 +30,11 @@ class Account extends \App\Controllers\UserController
           $bonus = (new \App\Libraries\Metrics())->getUserReferralBonusTotals($id);
          $timezone = $this->request->getGet('timezone');
          date_default_timezone_set($timezone);         
-          $data = ['investment' => $inv,
-                    'profit' => $profit,
+          $data = ['investment' => $converter->convertoLocal($inv, $this->currency),
+                    'profit' => $converter->convertoLocal($profit, $this->currency),
                     'referrals' => $referrals,
                     'date'=> date('Y.m.d H:i:s'),
-                    'bonus' =>$bonus ];
+                    'bonus' =>$converter->convertoLocal($bonus, $this->currency) ];
           return json_encode($data);
 
         }

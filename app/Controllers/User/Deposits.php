@@ -10,6 +10,7 @@ namespace App\Controllers\User;
 
 use App\Libraries\MpesaLibrary;
 use Exception;
+use App\Libraries\Converter;
 
 class Deposits extends \App\Controllers\UserController
 {
@@ -76,7 +77,8 @@ class Deposits extends \App\Controllers\UserController
        $deposits = (new \App\Models\Deposits())->where('user', $id)->orderBy('date', 'DESC')->findAll();
        $deposits = json_encode($deposits);
        $deposits = json_decode($deposits, TRUE);
-      
+        $converter = new Converter();
+
 
        $i = 0;
 
@@ -87,7 +89,10 @@ class Deposits extends \App\Controllers\UserController
                      'avatar' => $deposit['user']['avatar'],
                     'username' => $deposit['user']['username'] ];
                      
-            $deposits[$i++]['user'] = $user;
+            $deposits[$i]['user'] = $user;
+            $deposits[$i]['amount'] = $converter->convertoLocal($deposit['amount'], $this->currency);
+            $i++;
+
             
           
        }
@@ -97,14 +102,15 @@ class Deposits extends \App\Controllers\UserController
 
     }
     public function getTotalDeposits($id){
-        
+        $converter = new Converter();
         $model = new \App\Models\Deposits();
         $dateStart = $this->request->getGet('start');
         $dateEnd = $this->request->getGet('end');
-        if ($dateStart && $dateEnd) {           
-            
-            $amountCOB = $model->selectSum('amount', 'totalAmount')->where('user', $id)->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;
-            return $amountCOB;
+        if ($dateStart && $dateEnd) { 
+            $amountCOB = $model->selectSum('amount', 'totalAmount')->where('user', $id)->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;           
+           // echo $converter->convertoLocal($amountCOB, $this->currency);
+            echo $amountCOB;
+            return;
         }
         return "null";
 

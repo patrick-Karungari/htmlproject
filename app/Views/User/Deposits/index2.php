@@ -63,28 +63,7 @@
     </div>
     <!--/ Statistics Card -->
 </div>
-<div class="card">
-    <div class="card-body justify-content-center text-center">
-        <div class="d-flex align-items-start justify-content-between">
-            <p class="card-title flex-grow">Day's Deposits</p>
-        </div>
-        <div class="d-flex  justify-content-center">
-            <input type="text" id="fp-range" class="form-control flatpickr-range"
-                placeholder="DD, MM YYYY to DD, MM YYYY" />
-        </div>
-        <h4 id="heading" class="text-white mt-2 mb-1">
-        </h4>
-        <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center"></h1>
-    </div>
-</div>
 
-<div class="card">
-    <h5 class="card-header">Search Filter</h5>
-    <div class="d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2">
-        <div class="col-md-4 investment_status"></div>
-
-    </div>
-</div>
 <!-- User Invoice Starts-->
 <div class="row invoice-list-wrapper">
     <div class="col-12">

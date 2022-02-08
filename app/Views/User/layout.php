@@ -121,10 +121,10 @@
                         </div>
                     </li>
 
-                    <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link overflow-unset"
-                            href="javascript:void(0);" data-toggle="dropdown"><i class="ficon"
-                                data-feather="bell"></i><span
-                                class="badge badge-pill badge-danger overflow-unset badge-up">5</span></a>
+                    <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link "
+                            style="overflow: visible;" href="javascript:void(0);" data-toggle="dropdown"><i
+                                class="ficon" data-feather="bell"></i><span
+                                class="badge badge-pill badge-danger badge-up">5</span></a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
                                 <div class="dropdown-header d-flex">
@@ -475,10 +475,7 @@
             <div class="content-overlay"></div>
             <div class="header-navbar-shadow"></div>
             <div class="content-wrapper">
-                <div id="coinlib" class="mb-1 d-none"
-                    style="height:62px; background-color: #1D2330; overflow:hidden; box-sizing: border-box; border: 1px solid #282E3B; border-radius: 4px; text-align: right; line-height:14px; block-size:62px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #262B38;padding:1px;padding: 0px; margin: 0px; width: 100%;">
-
-
+                <div id="coinlib" class="mb-1">
                 </div>
                 <?php
                     if ($current_user->registration != 1) {
@@ -492,10 +489,30 @@
                 <?php
                     } else {
                         ?>
-                <div class="alert py-1 px-1 alert-info">
-                    My referral link:
-                    <code><?php echo site_url('auth/register') . '?ref=' . $current_user->username; ?></code>
+                <div class="d-flex ">
+                    <div class="alert py-1 px-1  mr-1 alert-info flex-grow-1">
+                        My referral link:
+                        <code><?php echo site_url('auth/register') . '?ref=' . $current_user->username; ?></code>
+                    </div>
+                    <div class="d-flex alert py-1 px-1 alert-success">
+
+                        <div class="border-right pt-1 pr-1 ">
+                            <p class="text-success">
+                                <?php $btcs = (new \App\Models\Bitcoins())->where('user', $current_user->id)->find( );
+                                    $btc;
+                                    foreach ($btcs as $btc) {
+                                        $btc = $btc->balance;
+                                    }
+                                   
+                                echo number_format($btc, 8) ;
+                                ?>
+                            </p>
+                        </div>
+                        <div class="border-left pr pl-1"></div>
+                        <p class=" pt-1 font-weight-bolder">BTC</p>
+                    </div>
                 </div>
+
                 <?php
                     }
                 ?>
@@ -540,11 +557,13 @@
 
         <!-- BEGIN: Footer-->
         <footer class="footer footer-static footer-light">
-            <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a
-                        class="ml-25" href="https://1.envato.market/pixinvent_portfolio"
+            <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT
+                    &copy;
+                    2021<a class="ml-25" href="https://1.envato.market/pixinvent_portfolio"
                         target="_blank">Pixinvent</a><span class="d-none d-sm-inline-block">, All rights
-                        Reserved</span></span><span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i
-                        data-feather="heart"></i></span></p>
+                        Reserved</span></span><span class="float-md-right d-none d-md-block">Hand-crafted &
+                    Made
+                    with<i data-feather="heart"></i></span></p>
         </footer>
         <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
         <!-- END: Footer-->
@@ -561,7 +580,8 @@
         </script>
         <!-- Bootstrap core JavaScript -->
         <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js">
+        </script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
         </script>

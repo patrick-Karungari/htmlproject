@@ -10,10 +10,14 @@ class Currency extends \CodeIgniter\Entity
 {
     public function getBuying()
     {
-        return (new Currencies())->find($this->attributes['buying']);
+        $buy = (new Currencies())->find($this->attributes['id']);
+        $buying = $buy->buy;
+        return $buying;
     }
     public function getSelling()
     {
-        return (new Currencies())->find($this->attributes['selling']);
+        $sell = (new Currencies())->find($this->attributes['id']);
+        $selling = $sell->sell;
+        return $selling;
     }
 }

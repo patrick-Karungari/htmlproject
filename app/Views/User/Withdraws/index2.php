@@ -22,20 +22,7 @@
 <link rel="stylesheet" type="text/css" href="../../../assets/css/plugins/forms/pickers/form-flat-pickr.css">
 <link rel="stylesheet" type="text/css" href="../../../assets/css/plugins/forms/pickers/form-pickadate.css">
 <!-- END: Page CSS-->
-<div class="card">
-    <div class="card-body justify-content-center text-center">
-        <div class="d-flex align-items-start justify-content-between">
-            <p class="card-title flex-grow">Day's Withdrawals</p>
-        </div>
-        <div class="d-flex  justify-content-center">
-            <input type="text" id="fp-range" class="form-control flatpickr-range"
-                placeholder="DD, MM YYYY to DD, MM YYYY" />
-        </div>
-        <h4 id="heading" class="text-white mt-3 mb-3">
-        </h4>
-        <h1 id="subheading" class="font-weight-medium mb-0 pt-3 mr-2 text-center"></h1>
-    </div>
-</div>
+
 <div class="card">
     <h5 class="card-header">Search Filter</h5>
     <div class="d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2">

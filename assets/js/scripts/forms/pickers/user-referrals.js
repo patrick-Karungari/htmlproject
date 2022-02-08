@@ -112,7 +112,7 @@ if (dtInvestmentsTable.length) {
           targets: 2,
           responsivePriority: 3,
           className: 'all',
-          width: '48px',
+         // width: '48px',
           render: function (data, type, full, meta) { var $total = full['first_amount'];   return '<span class="d-none">' + currency + ' ' + Intl.NumberFormat('en-US').format ($total) + '</span>' + currency + ' ' +  Intl.NumberFormat('en-US').format ($total);}
         },
         
@@ -121,7 +121,7 @@ if (dtInvestmentsTable.length) {
           targets: 3,
           responsivePriority: 3,
           className: 'all',
-          width: '48px',
+         // width: '92px',
           render: function (data, type, full, meta) { var $total = full['commission'];   return '<span class="d-none">' + currency + ' ' + Intl.NumberFormat('en-US').format ($total) + '</span>' + currency + ' '+  Intl.NumberFormat('en-US').format ($total);}
         },
         {
@@ -129,7 +129,7 @@ if (dtInvestmentsTable.length) {
           targets: 4,
           responsivePriority: 3,
           className: 'all',
-          width: '48px',
+         // width: '92px',
           render: function (data, type, full, meta) { var $total = full['bonus'];   return '<span class="d-none">' + currency + ' ' + Intl.NumberFormat('en-US').format ($total) + '</span>' + currency + ' ' +  Intl.NumberFormat('en-US').format ($total);}
         },
        

@@ -21,63 +21,7 @@
   var rangePickr = $('.flatpickr-range');
 
 
-// Range
-  if (rangePickr.length) {
-    rangePickr.flatpickr({
-      mode: 'range',
-      dateFormat: 'M, d Y',
-      altFormat: 'M, d Y',
-      onClose: function (selectedDates, dateStr, instance) {
-        var dateStart = instance.formatDate(selectedDates[0], "Y-m-d");
-        var dateEnd = instance.formatDate(selectedDates[1], "Y-m-d");
 
-        $.ajax({
-            url: "withdraws/getTotalWithdraws/" + id,
-            data: {"start": dateStart, "end": dateEnd},
-            type: 'GET',
-            success: function (resp) {
-              var Start = instance.formatDate(selectedDates[0], "M, d Y");
-              var End = instance.formatDate(selectedDates[1], "M, d Y");
-              if (resp != null) {
-                if (dateEnd == dateStart) {
-                  document.getElementById("heading").innerHTML = "Withdraws for  " + Start;
-                } else {
-                  document.getElementById("heading").innerHTML = "Withdraws for  " + Start + " to "+ End;
-                }
-              // document.getElementById("heading").innerHTML = "Payouts for  " + Intl.NumberFormat('en-US').format(resp);
-                document.getElementById("subheading").innerHTML = currency + " " + Intl.NumberFormat('en-US').format(resp);
-                //alert('Success');
-              // rangePickr.flatpickr.close();
-              }            
-            },
-            error: function(e) {
-              alert('Error: '+e);
-            }  
-        });
-      }
-    });
-   
-  }
-
-  // Default 
-  $.ajax({
-            url: "withdraws/getTotalWithdraws/" + id,
-            data: {"start": todayDate, "end": todayDate},
-            type: 'GET',
-            success: function (resp) {
-           
-              if (resp != null) {
-                document.getElementById("heading").innerHTML = "Withdraws for  " + mmm
-                  + ", " + dd + " " + yyyy;
-                document.getElementById("subheading").innerHTML = currency + " " + Intl.NumberFormat('en-US').format(resp);
-               
-              }            
-            },
-      error: function (e) {
-          console.log(e);
-             // alert('Error: '+e);
-            }  
-  });
 
   var statusObj = {
     0: { title: 'Completed', class: 'badge-light-success' },
@@ -144,7 +88,7 @@ if (dtInvestmentsTable.length) {
           targets: 2,
           responsivePriority: 3,
           className: 'all',
-          width: '24px',
+          //width: '48px',
           render: function (data, type, full, meta) { var $total = full['amount'];   return '<span class="d-none">Ksh ' + Intl.NumberFormat('en-US').format ($total) + '</span>' + currency + ' ' +  Intl.NumberFormat('en-US').format ($total);}
         },
         
@@ -286,7 +230,7 @@ if (dtInvestmentsTable.length) {
           .every(function () {
             var column = this;
             var select = $(
-              '<select id="IvestmentStatus" class="form-control ml-50 text-capitalize"><option value=""> Select Deposit Status </option></select>'
+              '<select id="IvestmentStatus" class="form-control ml-50 text-capitalize"><option value=""> Select Withdraw Status </option></select>'
             )
               .appendTo('.investment_status')
               .on('change', function () {

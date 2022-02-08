@@ -11,6 +11,7 @@ namespace App\Controllers\User;
 use App\Libraries\Metrics;
 use App\Libraries\MpesaLibrary;
 use App\Models\Users;
+use  App\Libraries\Converter;
 
 class Withdraws extends \App\Controllers\UserController
 {
@@ -169,7 +170,8 @@ class Withdraws extends \App\Controllers\UserController
        $Withdraws = (new \App\Models\Withdraws())->where('user', $id)->orderBy('date', 'DESC')->findAll();
        $Withdraws = json_encode($Withdraws);
        $Withdraws = json_decode($Withdraws, TRUE);
-      
+        $converter = new Converter();
+
 
        $i = 0;
 
@@ -180,7 +182,11 @@ class Withdraws extends \App\Controllers\UserController
                      'avatar' => $withdraw['user']['avatar'],
                     'username' => $withdraw['user']['username'] ];
                      
-            $Withdraws[$i++]['user'] = $user;
+            $Withdraws[$i]['user'] = $user;
+            $Withdraws[$i]['amount'] = $converter->convertoLocal($withdraw['amount'], $this->currency);
+            $i++;
+
+
             
           
        }
@@ -192,12 +198,14 @@ class Withdraws extends \App\Controllers\UserController
     public function getTotalWithdraws($id){
         
         $model = new \App\Models\Withdraws();
+        $converter = new Converter(); 
         $dateStart = $this->request->getGet('start');
         $dateEnd = $this->request->getGet('end');
         if ($dateStart && $dateEnd) {           
-            
             $amountCOB = $model->selectSum('amount', 'totalAmount')->where('user', $id)->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;
-            return $amountCOB;
+            //return($amountCOB); 
+            echo $converter->convertoLocal($amountCOB, $this->currency);
+            return;
         }
         return "null";
 

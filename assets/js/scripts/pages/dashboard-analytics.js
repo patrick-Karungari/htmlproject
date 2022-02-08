@@ -26,7 +26,7 @@ $(window).on('load', function () {
 
   const options = {
     decimalPlaces: 2,
-    prefix: 'KES ',
+    prefix: (currency + ' '),
   };
  
   let ri = new CountUp($ri, $ri.innerHTML, options);

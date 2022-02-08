@@ -15,6 +15,9 @@ use App\Models\Transactions;
 use App\Models\Users;
 use App\Models\Withdraws;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Libraries\Converter;
+use Carbon\Carbon;
+
 use CodeIgniter\View\Parser;
 use Twilio\TwiML\Voice\Echo_;
 
@@ -493,7 +496,7 @@ class Api extends BaseController
                 if($entry){
                     //$entry->currency = $currency->currency;
                     $entry->buying = 0.98 * ($response['result'][$to]);
-                    $entry->selling =  1.06 * ($response['result'][$to]);
+                    $entry->selling = ($response['result'][$to]);
                     $currenciesModel->save($entry);
                     echo number_format(0.98 * ($response['result'][$to]), 4).'\n';
 
@@ -503,6 +506,39 @@ class Api extends BaseController
             //dd($response->result->$currency);
 
         }
+
+    }
+    public function convertoUSD($amount, $_currency)
+    {  
+    
+        $currenciesModel = (new \App\Models\Currencies());
+        $currencies = $currenciesModel->where('currency', $_currency)->find();
+        $local = null;  
+        foreach ($currencies as $currency) {
+           $local= $currency->getSelling();
+        }
+        echo ($amount / $local );
+        return ($amount / $local );
+
+    }
+    public function getTotalWithdraws($id){
+        
+        $model = new \App\Models\Withdraws();
+        $converter = new Converter(); 
+        $dateStart = '2022-01-25';
+        $dateEnd = '2021-01-26';
+        if ($dateStart && $dateEnd) {   
+            $dateStart = Carbon::parse($dateStart)->startOfDay()->getTimestamp();
+            $dateEnd = Carbon::parse($dateEnd)->endOfDay()->getTimestamp();
+        
+            $amountCOB = $model->selectSum('amount', 'totalAmount')->where('user', $id)->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;
+            dd($amountCOB); 
+            echo $converter->convertoUSD($amountCOB, 'kes');
+            return;
+        }
+        
+
+        return "null";
 
     }
 

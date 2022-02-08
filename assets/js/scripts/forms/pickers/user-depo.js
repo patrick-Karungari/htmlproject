@@ -21,63 +21,6 @@
   var rangePickr = $('.flatpickr-range');
 
 
-// Range
-  if (rangePickr.length) {
-    rangePickr.flatpickr({
-      mode: 'range',
-      dateFormat: 'M, d Y',
-      altFormat: 'M, d Y',
-      onClose: function (selectedDates, dateStr, instance) {
-        var dateStart = instance.formatDate(selectedDates[0], "Y-m-d");
-        var dateEnd = instance.formatDate(selectedDates[1], "Y-m-d");
-
-        $.ajax({
-            url: "deposits/getTotalDeposits/" + id,
-            data: {"start": dateStart, "end": dateEnd},
-            type: 'GET',
-            success: function (resp) {
-              var Start = instance.formatDate(selectedDates[0], "M, d Y");
-              var End = instance.formatDate(selectedDates[1], "M, d Y");
-              if (resp != null) {
-                if (dateEnd == dateStart) {
-                  document.getElementById("heading").innerHTML = "Deposits for  " + Start;
-                } else {
-                  document.getElementById("heading").innerHTML = "Deposits for  " + Start + " to "+ End;
-                }
-              // document.getElementById("heading").innerHTML = "Payouts for  " + Intl.NumberFormat('en-US').format(resp);
-                document.getElementById("subheading").innerHTML = currency + " " + Intl.NumberFormat('en-US').format(resp);
-                //alert('Success');
-              // rangePickr.flatpickr.close();
-              }            
-            },
-            error: function(e) {
-              alert('Error: '+e);
-            }  
-        });
-      }
-    });
-   
-  }
-
-  // Default 
-  $.ajax({
-            url: "deposits/getTotalDeposits/" + id,
-            data: {"start": todayDate, "end": todayDate},
-            type: 'GET',
-            success: function (resp) {
-           
-              if (resp != null) {
-                document.getElementById("heading").innerHTML = "Deposits for  " + mmm
-                  + ", " + dd + " " + yyyy;
-                document.getElementById("subheading").innerHTML = currency + " " + Intl.NumberFormat('en-US').format(resp);
-               
-              }            
-            },
-      error: function (e) {
-          console.log(e);
-             // alert('Error: '+e);
-            }  
-  });
 
   var statusObj = {
     0: { title: 'Completed', class: 'badge-light-success' },
