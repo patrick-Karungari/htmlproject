@@ -17,7 +17,7 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
             rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- BEGIN: Vendor CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/vendors/css/vendors.min.css')?>">
 
@@ -71,6 +71,136 @@
             /* IE and Edge */
             scrollbar-width: none;
             /* Firefox */
+        }
+
+        /* Steps Progress bar */
+        .widget-steps>.step {
+            padding: 0;
+            position: relative;
+        }
+
+        .widget-steps>.step .step-name {
+            font-size: 16px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .widget-steps>.step>.step-dot {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            display: block;
+            background: #fff;
+            border: 1px solid #28a745;
+            top: 45px;
+            left: 50%;
+            margin-top: -15px;
+            margin-left: -15px;
+            border-radius: 50%;
+        }
+
+        .widget-steps>.step>.step-dot:after {
+            width: 10px;
+            height: 10px;
+            border-radius: 50px;
+            position: absolute;
+            top: 9px;
+            left: 9px;
+        }
+
+        .widget-steps>.step.complete>.step-dot {
+            background: #28a745;
+        }
+
+        .widget-steps>.step.complete>.step-dot:after {
+            content: '\e876';
+            font-weight: 900;
+            color: #fff;
+            font-family: "Material Icons";
+            top: 3px;
+            left: 7px;
+        }
+
+        .widget-steps>.step.active>.step-dot:after {
+            background: #28a745;
+            content: '';
+        }
+
+        .widget-steps>.step>.progress {
+            position: relative;
+            background: #bbb;
+            border-radius: 0px;
+            height: 1px;
+            box-shadow: none;
+            margin: 22px 0;
+        }
+
+        .widget-steps>.step>.progress>.progress-bar {
+            width: 0px;
+            box-shadow: none;
+            background: #28a745;
+        }
+
+        .widget-steps>.step.complete>.progress>.progress-bar {
+            width: 100%;
+        }
+
+        .widget-steps>.step.active>.progress>.progress-bar {
+            width: 50%;
+        }
+
+        .widget-steps>.step:first-child.active>.progress>.progress-bar {
+            width: 0%;
+        }
+
+        .widget-steps>.step:last-child.active>.progress>.progress-bar {
+            width: 100%;
+        }
+
+        .widget-steps>.step.disabled>.step-dot {
+            border-color: #bbb;
+        }
+
+        .widget-steps>.step:first-child>.progress {
+            left: 50%;
+            width: 50%;
+        }
+
+        .widget-steps>.step:last-child>.progress {
+            width: 50%;
+        }
+
+        .widget-steps>.step.disabled a.step-dot {
+            pointer-events: none;
+        }
+
+        @media (max-width: 575.98px) {
+            .widget-steps>.step .step-name {
+                font-size: 14px;
+            }
+        }
+
+        .rtl .widget-steps>.step>.step-dot {
+            top: 45px;
+            right: 50%;
+            left: auto;
+            margin-left: 0;
+            margin-right: -15px;
+        }
+
+        .rtl .widget-steps>.step>.step-dot:after {
+            left: 0px;
+            right: 9px;
+        }
+
+        .rtl .widget-steps>.step.complete>.step-dot:after {
+            left: 0px;
+            right: 7px;
+        }
+
+        .rtl .widget-steps>.step:first-child>.progress {
+            left: auto;
+            right: 50%;
         }
 
         </style>
@@ -448,7 +578,7 @@
                                 class=" menu-title text-truncate" data-i18n="Deposits">Wallet Deposit</span></a>
                     </li>
                     <li id="transfers" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('user/withdraws') ?>"><i data-feather="send"></i><span
+                            href="<?php echo base_url('user/transfers') ?>"><i data-feather="send"></i><span
                                 class=" menu-title text-truncate" data-i18n="Withdrawals">Transfer Fund</span></a>
                     </li>
                     <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
@@ -489,16 +619,19 @@
                 <?php
                     } else {
                         ?>
-                <div class="d-flex ">
-                    <div class="alert py-1 px-1  mr-1 alert-info flex-grow-1">
-                        My referral link:
-                        <code><?php echo site_url('auth/register') . '?ref=' . $current_user->username; ?></code>
-                    </div>
-                    <div class="d-flex alert py-1 px-1 alert-success">
+                <div class="align-items-stretch flex-nowrap row ">
+                    <div class="alert flex-fill flex-wrap py-1 px-1 ml-1 alert-info">
+                        <div> My referral link:</div>
+                        <div><code>
+                            <?php echo site_url('auth/register') . '?ref=' . $current_user->username; ?></code> </div>
 
-                        <div class="border-right pt-1 pr-1 ">
-                            <p class="text-success">
-                                <?php $btcs = (new \App\Models\Bitcoins())->where('user', $current_user->id)->find( );
+                    </div>
+                    <div
+                        class="d-flex flex-wrap justify-content-center align-self-end align-self-stretch alert py-1 px-1 mr-1 ml-1 alert-success">
+
+
+                        <p class="text-success">
+                            <?php $btcs = (new \App\Models\Bitcoins())->where('user', $current_user->id)->find( );
                                     $btc;
                                     foreach ($btcs as $btc) {
                                         $btc = $btc->balance;
@@ -506,10 +639,10 @@
                                    
                                 echo number_format($btc, 8) ;
                                 ?>
-                            </p>
-                        </div>
-                        <div class="border-left pr pl-1"></div>
-                        <p class=" pt-1 font-weight-bolder">BTC</p>
+                        </p>
+                        <div class="border-right pr-1 d-none d-sm-none d-xl-block d-md-block d-lg-block"></div>
+                        <div class="border-left pl-1 d-none d-sm-none d-xl-block d-md-block d-lg-block"></div>
+                        <p class=" text-info font-weight-bolder">BTC</p>
                     </div>
                 </div>
 
