@@ -304,8 +304,7 @@ class Auth extends BaseController
 
     public function forgot_password()
     {
-        if ($this->country == 'KE' || $this->country == 'UG' || $this->country == 'NG' || $this->country == 'US' || $this->country == 'GH' || $this->country == 'RW' || $this->country == 'ZM') {
-            $adminEmail = $this->config->adminEmail;
+        
 
             $this->data['site_title'] = "Forgot password";
             $this->data['site_description'] = "Recover your password";
@@ -321,8 +320,7 @@ class Auth extends BaseController
             }
 
             return $this->_renderPage('forgot_password', $this->data);
-        }
-        return $this->comingsoon();
+        
     }
 
     public function reset_password($code = false)
