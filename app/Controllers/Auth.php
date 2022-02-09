@@ -325,9 +325,7 @@ class Auth extends BaseController
 
     public function reset_password($code = false)
     {
-        if ($this->country != 'KE' || $this->country != 'UG' || $this->country != 'NG' || $this->country != 'US' || $this->country != 'GH' || $this->country != 'RW' || $this->country != 'ZM') {
-            return $this->comingsoon();
-        }
+        
 
         if (!$code) {
             return redirect()->to(site_url('auth'))->with('error', "Invalid password reset link");
