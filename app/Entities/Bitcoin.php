@@ -15,7 +15,7 @@ class Bitcoin extends \CodeIgniter\Entity
     public function getBal()
     {
         $bal = (new Bitcoins())->find($this->attributes['user']);
-        dd($bal);
+        //dd($bal);
         $balance = $bal->balance;
         return $balance;
     }

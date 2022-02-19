@@ -42,28 +42,30 @@ class Auth extends BaseController
             'site_title' => "Authentication",
             'site_description' => 'Login to this system',
         ];
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, 'http://ipinfo.io/'.$ipAddress.'/json?token=d449b8666e49bd');
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        curl_setopt($curl, CURLOPT_USERAGENT, "kencoin.pkarungari.co.ke");
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
-        curl_setopt($curl, CURLOPT_AUTOREFERER, false);
-        
-        if($ipAddress != '::1' && ($response = curl_exec($curl))){
-            $this->country = json_decode($response)->country;
-        } 
-        if (curl_error($curl)) {
-            $this->country='NX';
 
-        }
-        if ($ipAddress == '::1') {
+        //TODO: Enable geofence
+//        $curl = curl_init();
+//        curl_setopt($curl, CURLOPT_URL, 'http://ipinfo.io/'.$ipAddress.'/json?token=d449b8666e49bd');
+//        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+//        curl_setopt($curl, CURLOPT_USERAGENT, "kencoin.pkarungari.co.ke");
+//        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+//        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+//        curl_setopt($curl, CURLOPT_AUTOREFERER, false);
+//
+//        if($ipAddress != '::1' && ($response = curl_exec($curl))){
+//            $this->country = json_decode($response)->country;
+//        }
+//        if (curl_error($curl)) {
+//            $this->country='NX';
+//
+//        }
+//        if ($ipAddress == '::1') {
             $this->country = 'KE';
-        }
-        //dd($ipAddress);
-        //print_r(curl_error($curl));
-        curl_close($curl);
-        //dd();
+//        }
+//        //dd($ipAddress);
+//        //print_r(curl_error($curl));
+//        curl_close($curl);
+//        //dd();
         
         
         
@@ -157,7 +159,7 @@ class Auth extends BaseController
 
                     if ($this->auth->isAdmin()) {
                         Services::session()->setFlashdata('success','Successfuly logged in');
-                        $this->updateExchangeRates();
+                        //$this->updateExchangeRates(); //TODO: Enable exchange rates
 
                         return redirect()->to(site_url('dashboard'));
                     }

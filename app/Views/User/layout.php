@@ -631,8 +631,8 @@
 
 
                         <p class="text-success">
-                            <?php $btcs = (new \App\Models\Bitcoins())->where('user', $current_user->id)->find( );
-                                    $btc;
+                            <?php $btcs = (new \App\Models\Bitcoins())->where('user', $current_user->id)->find();
+                                    $btc = 0;
                                     foreach ($btcs as $btc) {
                                         $btc = $btc->balance;
                                     }

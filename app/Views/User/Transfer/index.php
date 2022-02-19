@@ -1,340 +1,165 @@
-  <!-- Content
-  ============================================= -->
+<!-- Content
+============================================= -->
 
-  <head>
-      <!-- Web Fonts=============================================-->
-      <link rel="stylesheet"
+<head>
+    <!-- Web Fonts=============================================-->
+    <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
 
-      <!-- Stylesheet
+    <!-- Stylesheet
 ============================================= -->
-      <link rel="stylesheet" type="text/css') ?>"
-          href="<?php echo base_url('assets/assets-select/vendor/bootstrap/css/bootstrap.min.css') ?>" />
-      <link rel="stylesheet" type="text/css') ?>"
-          href="<?php echo base_url('assets/assets-select/vendor/font-awesome/css/all.min.css') ?>" />
-      <link rel="stylesheet" type="text/css') ?>"
-          href="<?php echo base_url('assets/assets-select/vendor/bootstrap-select/css/bootstrap-select.min.css') ?>" />
-      <link rel="stylesheet" type="text/css') ?>"
-          href="<?php echo base_url('assets/assets-select/vendor/currency-flags/css/currency-flags.min.css') ?>" />
-      <link rel="stylesheet" type="text/css') ?>"
-          href="<?php echo base_url('assets/assets-selectcss/stylesheet.css') ?>" />
-      <!-- Colors Css -->
+    <link rel="stylesheet" type="text/css') ?>"
+          href="<?php echo base_url('assets/assets-select/vendor/bootstrap/css/bootstrap.min.css') ?>"/>
+    <link rel="stylesheet" type="text/css') ?>"
+          href="<?php echo base_url('assets/assets-select/vendor/font-awesome/css/all.min.css') ?>"/>
+    <link rel="stylesheet" type="text/css') ?>"
+          href="<?php echo base_url('assets/assets-select/vendor/bootstrap-select/css/bootstrap-select.min.css') ?>"/>
+    <link rel="stylesheet" type="text/css') ?>"
+          href="<?php echo base_url('assets/assets-select/vendor/currency-flags/css/currency-flags.min.css') ?>"/>
+    <link rel="stylesheet" type="text/css') ?>"
+          href="<?php echo base_url('assets/assets-selectcss/stylesheet.css') ?>"/>
+    <!-- Colors Css -->
 
-  </head>
-  <section>
-      <div class="card">
-          <div class="row mt-2 mb-1">
-              <div class="col-lg-11 mx-auto">
-                  <div class="row widget-steps">
-                      <div class="col-4 step complete">
-                          <div class="step-name">Details</div>
-                          <div class="progress">
-                              <div class="progress-bar"></div>
-                          </div>
-                          <a href="#" class="step-dot"></a>
-                      </div>
-                      <div class="col-4 step active">
-                          <div class="step-name">Confirm</div>
-                          <div class="progress">
-                              <div class="progress-bar"></div>
-                          </div>
-                          <a href="#" class="step-dot"></a>
-                      </div>
-                      <div class="col-4 step disabled">
-                          <div class="step-name">Success</div>
-                          <div class="progress">
-                              <div class="progress-bar"></div>
-                          </div>
-                          <a href="#" class="step-dot"></a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <h2 class="fw-400 text-center mt-3">Send Money</h2>
-      <p class="lead text-center mb-4">Send your money on anytime, anywhere in the world.</p>
-      <div class="card">
-          <div class="row">
-              <div class="col-md-9 col-lg-7 col-xl-6 mx-auto">
-                  <div class=" btn-outline-info shadow-sm rounded p-3 pt-sm-4 pb-sm-5 px-sm-5 mb-4">
-                      <h3 class="text-5 fw-400 mb-3 mb-sm-4">Personal Details</h3>
-                      <hr class="mx-n3 mx-sm-n5 mb-4">
-                      <!-- Send Money Form
-                            ============================ -->
-                      <form id="form-send-money" method="post">
-                          <div class="mb-3">
-                              <label for="emailID" class="form-label">Recipient</label>
-                              <input type="text" value="" class="form-control" data-bv-field="emailid" id="emailID"
-                                  required placeholder="Enter Email Address">
-                          </div>
-                          <div class="mb-3">
-                              <label for="youSend" class="form-label">You Send</label>
-                              <div class="input-group">
-                                  <span class="input-group-text">$</span>
-                                  <input type="text" class="form-control" data-bv-field="youSend" id="youSend"
-                                      value="1,000" placeholder="">
-                                  <span class="input-group-text p-0">
+</head>
+<section>
+    <div class="card">
+        <div class="row mt-2 mb-1">
+            <div class="col-lg-11 mx-auto">
+                <div class="row widget-steps">
+                    <?php
+                    $step = @session()->get('_transfers')['step'] ?? 1;
+                    ?>
+                    <div class="col-4 step <?php echo $step == 1 ? 'active' : ($step > 1 ? 'complete' : 'disabled') ?>">
+                        <div class="step-name">Details</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#" class="step-dot"></a>
+                    </div>
+                    <div class="col-4 step <?php echo $step == 2 ? 'active' : ($step > 2 ? 'complete' : 'disabled') ?>">
+                        <div class="step-name">Confirm</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#" class="step-dot"></a>
+                    </div>
+                    <div class="col-4 step <?php echo $step == 3 ? 'active' : ($step > 3 ? 'complete' : 'disabled') ?>">
+                        <div class="step-name">Success</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#" class="step-dot"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="fw-400 text-center mt-3">Send Money</h2>
+    <p class="lead text-center mb-4">Send your money on anytime, anywhere in the world.</p>
+    <div class="card">
+        <div class="row">
+            <div class="col-md-9 col-lg-7 col-xl-6 mx-auto">
+                <?php
+                if (@session()->get('_transfers')['step'] == '2') {
+                    ?>
+                    <div class=" btn-outline-info shadow-sm rounded p-3 pt-sm-4 pb-sm-5 px-sm-5 mb-4 mt-2">
+                        <h3 class="text-5 fw-400 mb-3 mb-sm-4">Confirm</h3>
+                        <hr class="mx-n3 mx-sm-n5 mb-4">
+                        <!-- Send Money Form
+                              ============================ -->
+                        <form id="form-send-money" method="post">
+                            <h4>Confirm that you want to send <b><?php echo session()->get('_transfers')['currency'].' '.session()->get('_transfers')['amount'] ?></b> to <b><?php echo session()->get('_transfers')['user']->username.' ('.session()->get('_transfers')['user']->email.') ?'; ?></b></h4>
+                            <div class="d-grid">
+                                <button class="btn btn-primary" type="submit" name="step" value="<?php echo @session()->get('_transfers')['step']; ?>">
+                                    Continue
+                                </button>
+                            </div>
+                        </form>
+                        <!-- Send Money Form end -->
+                    </div>
+                    <?php
+                } else if (@session()->get('_transfers')['step'] == '3') {
+                    ?>
+                    <div class=" btn-outline-info shadow-sm rounded p-3 pt-sm-4 pb-sm-5 px-sm-5 mb-4 mt-2">
+                        <h3 class="text-5 fw-400 mb-3 mb-sm-4">Success</h3>
+                        <hr class="mx-n3 mx-sm-n5 mb-4">
+                        <!-- Send Money Form
+                              ============================ -->
+                        <div class="alert alert-success">
+                            <h1>SUCCESS</h1>
+                        </div>
+                        <a class="btn btn-success" href="<?php echo site_url('user/transfers'); ?>">Finish</a>
+                        <!-- Send Money Form end -->
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <div class=" btn-outline-info shadow-sm rounded p-3 pt-sm-4 pb-sm-5 px-sm-5 mb-4 mt-2">
+                        <h3 class="text-5 fw-400 mb-3 mb-sm-4">Personal Details</h3>
+                        <hr class="mx-n3 mx-sm-n5 mb-4">
+                        <!-- Send Money Form
+                              ============================ -->
+                        <form id="form-send-money" method="post">
+                            <div class="mb-1">
+                                <label for="emailID" class="form-label">Recipient</label>
+                                <input type="text" value="<?php echo old('username') ?>" class="form-control"
+                                       data-bv-field="emailid" id="emailID"
+                                       required name="username" placeholder="Enter Username or Email Address">
+                            </div>
+                            <div class="mb-1">
+                                <label for="youSend" class="form-label">You Send</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" data-bv-field="youSend" id="youSend"
+                                           name="amount" value="<?php echo old('amount') ?>" placeholder="">
+                                    <span class="p-0">
                                       <select id="youSendCurrency" data-style="form-select bg-transparent border-0"
-                                          data-container="body" data-live-search="true"
-                                          class="selectpicker form-control bg-transparent" required="">
-                                          <optgroup label="Popular Currency">
-                                              <option data-icon="currency-flag currency-flag-usd me-1"
-                                                  data-subtext="United States dollar" selected="selected" value="">USD
+                                              data-container="body" data-live-search="true"
+                                              class="form-control bg-transparent" name="currency" required="">
+                                          <option data-icon="currency-flag currency-flag-usd me-1"
+                                                  data-subtext="United States dollar" <?php echo old('currency') == 'USD' ? 'selected' : ''; ?> value="USD">USD
                                               </option>
                                               <option data-icon="currency-flag currency-flag-aud me-1"
-                                                  data-subtext="Australian dollar" value="">AUD</option>
+                                                      data-subtext="Australian dollar" <?php echo old('currency') == 'AUD' ? 'selected' : ''; ?> value="AUD">AUD</option>
                                               <option data-icon="currency-flag currency-flag-inr me-1"
-                                                  data-subtext="Indian rupee" value="">INR</option>
-                                          </optgroup>
-                                          <option value="" data-divider="true">divider</option>
-                                          <optgroup label="Other Currency">
-                                              <option data-icon="currency-flag currency-flag-aed me-1"
-                                                  data-subtext="United Arab Emirates dirham" value="">AED</option>
-                                              <option data-icon="currency-flag currency-flag-ars me-1"
-                                                  data-subtext="Argentine peso" value="">ARS</option>
-                                              <option data-icon="currency-flag currency-flag-aud me-1"
-                                                  data-subtext="Australian dollar" value="">AUD</option>
-                                              <option data-icon="currency-flag currency-flag-bdt me-1"
-                                                  data-subtext="Bangladeshi taka" value="">BDT</option>
-                                              <option data-icon="currency-flag currency-flag-bgn me-1"
-                                                  data-subtext="Bulgarian lev" value="">BGN</option>
-                                              <option data-icon="currency-flag currency-flag-brl me-1"
-                                                  data-subtext="Brazilian real" value="">BRL</option>
-                                              <option data-icon="currency-flag currency-flag-cad me-1"
-                                                  data-subtext="Canadian dollar" value="">CAD</option>
-                                              <option data-icon="currency-flag currency-flag-chf me-1"
-                                                  data-subtext="Swiss franc" value="">CHF</option>
-                                              <option data-icon="currency-flag currency-flag-clp me-1"
-                                                  data-subtext="Chilean peso" value="">CLP</option>
-                                              <option data-icon="currency-flag currency-flag-cny me-1"
-                                                  data-subtext="Chinese yuan" value="">CNY</option>
-                                              <option data-icon="currency-flag currency-flag-czk me-1"
-                                                  data-subtext="Czech koruna" value="">CZK</option>
-                                              <option data-icon="currency-flag currency-flag-dkk me-1"
-                                                  data-subtext="Danish krone" value="">DKK</option>
-                                              <option data-icon="currency-flag currency-flag-egp me-1"
-                                                  data-subtext="Egyptian pound" value="">EGP</option>
-                                              <option data-icon="currency-flag currency-flag-eur me-1"
-                                                  data-subtext="Euro" value="">EUR</option>
-                                              <option data-icon="currency-flag currency-flag-gbp me-1"
-                                                  data-subtext="British pound" value="">GBP</option>
-                                              <option data-icon="currency-flag currency-flag-gel me-1"
-                                                  data-subtext="Georgian lari" value="">GEL</option>
-                                              <option data-icon="currency-flag currency-flag-ghs me-1"
-                                                  data-subtext="Ghanaian cedi" value="">GHS</option>
-                                              <option data-icon="currency-flag currency-flag-hkd me-1"
-                                                  data-subtext="Hong Kong dollar" value="">HKD</option>
-                                              <option data-icon="currency-flag currency-flag-hrk me-1"
-                                                  data-subtext="Croatian kuna" value="">HRK</option>
-                                              <option data-icon="currency-flag currency-flag-huf me-1"
-                                                  data-subtext="Hungarian forint" value="">HUF</option>
-                                              <option data-icon="currency-flag currency-flag-idr me-1"
-                                                  data-subtext="Indonesian rupiah" value="">IDR</option>
-                                              <option data-icon="currency-flag currency-flag-ils me-1"
-                                                  data-subtext="Israeli shekel" value="">ILS</option>
-                                              <option data-icon="currency-flag currency-flag-inr me-1"
-                                                  data-subtext="Indian rupee" value="">INR</option>
-                                              <option data-icon="currency-flag currency-flag-jpy me-1"
-                                                  data-subtext="Japanese yen" value="">JPY</option>
-                                              <option data-icon="currency-flag currency-flag-kes me-1"
-                                                  data-subtext="Kenyan shilling" value="">KES</option>
-                                              <option data-icon="currency-flag currency-flag-krw me-1"
-                                                  data-subtext="South Korean won" value="">KRW</option>
-                                              <option data-icon="currency-flag currency-flag-lkr me-1"
-                                                  data-subtext="Sri Lankan rupee" value="">LKR</option>
-                                              <option data-icon="currency-flag currency-flag-mad me-1"
-                                                  data-subtext="Moroccan dirham" value="">MAD</option>
-                                              <option data-icon="currency-flag currency-flag-mxn me-1"
-                                                  data-subtext="Mexican peso" value="">MXN</option>
-                                              <option data-icon="currency-flag currency-flag-myr me-1"
-                                                  data-subtext="Malaysian ringgit" value="">MYR</option>
-                                              <option data-icon="currency-flag currency-flag-ngn me-1"
-                                                  data-subtext="Nigerian naira" value="">NGN</option>
-                                              <option data-icon="currency-flag currency-flag-nok me-1"
-                                                  data-subtext="Norwegian krone" value="">NOK</option>
-                                              <option data-icon="currency-flag currency-flag-npr me-1"
-                                                  data-subtext="Nepalese rupee" value="">NPR</option>
-                                              <option data-icon="currency-flag currency-flag-nzd me-1"
-                                                  data-subtext="New Zealand dollar" value="">NZD</option>
-                                              <option data-icon="currency-flag currency-flag-pen me-1"
-                                                  data-subtext="Peruvian nuevo sol" value="">PEN</option>
-                                              <option data-icon="currency-flag currency-flag-php me-1"
-                                                  data-subtext="Philippine peso" value="">PHP</option>
-                                              <option data-icon="currency-flag currency-flag-pkr me-1"
-                                                  data-subtext="Pakistani rupee" value="">PKR</option>
-                                              <option data-icon="currency-flag currency-flag-pln me-1"
-                                                  data-subtext="Polish złoty" value="">PLN</option>
-                                              <option data-icon="currency-flag currency-flag-ron me-1"
-                                                  data-subtext="Romanian leu" value="">RON</option>
-                                              <option data-icon="currency-flag currency-flag-rub me-1"
-                                                  data-subtext="Russian rouble" value="">RUB</option>
-                                              <option data-icon="currency-flag currency-flag-sek me-1"
-                                                  data-subtext="Swedish krona" value="">SEK</option>
-                                              <option data-icon="currency-flag currency-flag-sgd me-1"
-                                                  data-subtext="Singapore dollar" value="">SGD</option>
-                                              <option data-icon="currency-flag currency-flag-thb me-1"
-                                                  data-subtext="Thai baht" value="">THB</option>
-                                              <option data-icon="currency-flag currency-flag-try me-1"
-                                                  data-subtext="Turkish lira" value="">TRY</option>
-                                              <option data-icon="currency-flag currency-flag-uah me-1"
-                                                  data-subtext="Ukrainian hryvnia" value="">UAH</option>
-                                              <option data-icon="currency-flag currency-flag-ugx me-1"
-                                                  data-subtext="Ugandan shilling" value="">UGX</option>
-                                              <option data-icon="currency-flag currency-flag-vnd me-1"
-                                                  data-subtext="Vietnamese dong" value="">VND</option>
-                                              <option data-icon="currency-flag currency-flag-zar me-1"
-                                                  data-subtext="South African rand" value="">ZAR</option>
-                                          </optgroup>
+                                                      data-subtext="Indian rupee" <?php echo old('currency') == 'INR' ? 'selected' : ''; ?> value="INR">INR</option>
                                       </select>
                                   </span>
-                              </div>
-                          </div>
-                          <div class="mb-3">
-                              <label for="recipientGets" class="form-label">Recipient Gets</label>
-                              <div class="input-group">
-                                  <span class="input-group-text">$</span>
-                                  <input type="text" class="form-control" data-bv-field="recipientGets"
-                                      id="recipientGets" value="1,410.06" placeholder="">
-                                  <span class="input-group-text p-0">
-                                      <select id="recipientCurrency" data-style="form-select bg-transparent border-0"
-                                          data-container="body" data-live-search="true"
-                                          class="selectpicker form-control bg-transparent" required="">
-                                          <optgroup label="Popular Currency">
-                                              <option data-icon="currency-flag currency-flag-usd me-1"
-                                                  data-subtext="United States dollar" value="">USD</option>
-                                              <option data-icon="currency-flag currency-flag-aud me-1"
-                                                  data-subtext="Australian dollar" selected="selected" value="">AUD
-                                              </option>
-                                              <option data-icon="currency-flag currency-flag-inr me-1"
-                                                  data-subtext="Indian rupee" value="">INR</option>
-                                          </optgroup>
-                                          <option value="" data-divider="true">divider</option>
-                                          <optgroup label="Other Currency">
-                                              <option data-icon="currency-flag currency-flag-aed me-1"
-                                                  data-subtext="United Arab Emirates dirham" value="">AED</option>
-                                              <option data-icon="currency-flag currency-flag-ars me-1"
-                                                  data-subtext="Argentine peso" value="">ARS</option>
-                                              <option data-icon="currency-flag currency-flag-aud me-1"
-                                                  data-subtext="Australian dollar" value="">AUD</option>
-                                              <option data-icon="currency-flag currency-flag-bdt me-1"
-                                                  data-subtext="Bangladeshi taka" value="">BDT</option>
-                                              <option data-icon="currency-flag currency-flag-bgn me-1"
-                                                  data-subtext="Bulgarian lev" value="">BGN</option>
-                                              <option data-icon="currency-flag currency-flag-brl me-1"
-                                                  data-subtext="Brazilian real" value="">BRL</option>
-                                              <option data-icon="currency-flag currency-flag-cad me-1"
-                                                  data-subtext="Canadian dollar" value="">CAD</option>
-                                              <option data-icon="currency-flag currency-flag-chf me-1"
-                                                  data-subtext="Swiss franc" value="">CHF</option>
-                                              <option data-icon="currency-flag currency-flag-clp me-1"
-                                                  data-subtext="Chilean peso" value="">CLP</option>
-                                              <option data-icon="currency-flag currency-flag-cny me-1"
-                                                  data-subtext="Chinese yuan" value="">CNY</option>
-                                              <option data-icon="currency-flag currency-flag-czk me-1"
-                                                  data-subtext="Czech koruna" value="">CZK</option>
-                                              <option data-icon="currency-flag currency-flag-dkk me-1"
-                                                  data-subtext="Danish krone" value="">DKK</option>
-                                              <option data-icon="currency-flag currency-flag-egp me-1"
-                                                  data-subtext="Egyptian pound" value="">EGP</option>
-                                              <option data-icon="currency-flag currency-flag-eur me-1"
-                                                  data-subtext="Euro" value="">EUR</option>
-                                              <option data-icon="currency-flag currency-flag-gbp me-1"
-                                                  data-subtext="British pound" value="">GBP</option>
-                                              <option data-icon="currency-flag currency-flag-gel me-1"
-                                                  data-subtext="Georgian lari" value="">GEL</option>
-                                              <option data-icon="currency-flag currency-flag-ghs me-1"
-                                                  data-subtext="Ghanaian cedi" value="">GHS</option>
-                                              <option data-icon="currency-flag currency-flag-hkd me-1"
-                                                  data-subtext="Hong Kong dollar" value="">HKD</option>
-                                              <option data-icon="currency-flag currency-flag-hrk me-1"
-                                                  data-subtext="Croatian kuna" value="">HRK</option>
-                                              <option data-icon="currency-flag currency-flag-huf me-1"
-                                                  data-subtext="Hungarian forint" value="">HUF</option>
-                                              <option data-icon="currency-flag currency-flag-idr me-1"
-                                                  data-subtext="Indonesian rupiah" value="">IDR</option>
-                                              <option data-icon="currency-flag currency-flag-ils me-1"
-                                                  data-subtext="Israeli shekel" value="">ILS</option>
-                                              <option data-icon="currency-flag currency-flag-inr me-1"
-                                                  data-subtext="Indian rupee" value="">INR</option>
-                                              <option data-icon="currency-flag currency-flag-jpy me-1"
-                                                  data-subtext="Japanese yen" value="">JPY</option>
-                                              <option data-icon="currency-flag currency-flag-kes me-1"
-                                                  data-subtext="Kenyan shilling" value="">KES</option>
-                                              <option data-icon="currency-flag currency-flag-krw me-1"
-                                                  data-subtext="South Korean won" value="">KRW</option>
-                                              <option data-icon="currency-flag currency-flag-lkr me-1"
-                                                  data-subtext="Sri Lankan rupee" value="">LKR</option>
-                                              <option data-icon="currency-flag currency-flag-mad me-1"
-                                                  data-subtext="Moroccan dirham" value="">MAD</option>
-                                              <option data-icon="currency-flag currency-flag-mxn me-1"
-                                                  data-subtext="Mexican peso" value="">MXN</option>
-                                              <option data-icon="currency-flag currency-flag-myr me-1"
-                                                  data-subtext="Malaysian ringgit" value="">MYR</option>
-                                              <option data-icon="currency-flag currency-flag-ngn me-1"
-                                                  data-subtext="Nigerian naira" value="">NGN</option>
-                                              <option data-icon="currency-flag currency-flag-nok me-1"
-                                                  data-subtext="Norwegian krone" value="">NOK</option>
-                                              <option data-icon="currency-flag currency-flag-npr me-1"
-                                                  data-subtext="Nepalese rupee" value="">NPR</option>
-                                              <option data-icon="currency-flag currency-flag-nzd me-1"
-                                                  data-subtext="New Zealand dollar" value="">NZD</option>
-                                              <option data-icon="currency-flag currency-flag-pen me-1"
-                                                  data-subtext="Peruvian nuevo sol" value="">PEN</option>
-                                              <option data-icon="currency-flag currency-flag-php me-1"
-                                                  data-subtext="Philippine peso" value="">PHP</option>
-                                              <option data-icon="currency-flag currency-flag-pkr me-1"
-                                                  data-subtext="Pakistani rupee" value="">PKR</option>
-                                              <option data-icon="currency-flag currency-flag-pln me-1"
-                                                  data-subtext="Polish złoty" value="">PLN</option>
-                                              <option data-icon="currency-flag currency-flag-ron me-1"
-                                                  data-subtext="Romanian leu" value="">RON</option>
-                                              <option data-icon="currency-flag currency-flag-rub me-1"
-                                                  data-subtext="Russian rouble" value="">RUB</option>
-                                              <option data-icon="currency-flag currency-flag-sek me-1"
-                                                  data-subtext="Swedish krona" value="">SEK</option>
-                                              <option data-icon="currency-flag currency-flag-sgd me-1"
-                                                  data-subtext="Singapore dollar" value="">SGD</option>
-                                              <option data-icon="currency-flag currency-flag-thb me-1"
-                                                  data-subtext="Thai baht" value="">THB</option>
-                                              <option data-icon="currency-flag currency-flag-try me-1"
-                                                  data-subtext="Turkish lira" value="">TRY</option>
-                                              <option data-icon="currency-flag currency-flag-uah me-1"
-                                                  data-subtext="Ukrainian hryvnia" value="">UAH</option>
-                                              <option data-icon="currency-flag currency-flag-ugx me-1"
-                                                  data-subtext="Ugandan shilling" value="">UGX</option>
-                                              <option data-icon="currency-flag currency-flag-vnd me-1"
-                                                  data-subtext="Vietnamese dong" value="">VND</option>
-                                              <option data-icon="currency-flag currency-flag-zar me-1"
-                                                  data-subtext="South African rand" value="">ZAR</option>
-                                          </optgroup>
-                                      </select>
-                                  </span>
-                              </div>
-                          </div>
-                          <p class="text-muted text-center">The current exchange rate is <span class="fw-500">1 USD =
-                                  1.42030 AUD</span></p>
-                          <hr>
-                          <p>Total Fees<span class="float-end">7.21 USD</span></p>
-                          <hr>
-                          <p class="text-4 fw-500">Total To Pay<span class="float-end">1,000.00 USD</span></p>
-                          <div class="d-grid"><button class="btn btn-primary">Continue</button></div>
-                      </form>
-                      <!-- Send Money Form end -->
-                  </div>
-              </div>
-          </div>
-      </div>
+                                </div>
+                            </div>
+                            <!--
+                                                    <p class="text-muted text-center">The current exchange rate is <span class="fw-500">1 USD =
+                                                              1.42030 AUD</span></p>
+                                                    <hr>
+                                                    <p>Total Fees: <span class="float-end">7.21 USD</span></p>
+                                                    <hr>
+                                                    <p class="text-4 fw-500">Total To Pay: <span class="float-end">1,000.00 USD</span></p>
+                                                    -->
+                            <div class="d-grid">
+                                <button class="btn btn-primary" type="submit" name="step" value="<?php echo @session()->get('_transfers')['step'] ?? '1'; ?>">
+                                    Continue
+                                </button>
+                            </div>
+                        </form>
+                        <!-- Send Money Form end -->
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+        </div>
+    </div>
 
-  </section>
-  <!-- Steps Progress bar -->
+</section>
+<!-- Steps Progress bar -->
 
 
-  <!-- Content end -->
+<!-- Content end -->
 
 
-  <!-- Script -->
+<!-- Script -->
 
-  <script src="<?php echo base_url('assets/assets-select/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>">
-  </script>
-  <script src="<?php echo base_url('assets/assets-select/vendor/bootstrap-select/js/bootstrap-select.min.js') ?>">
-  </script>
+<script src="<?php echo base_url('assets/assets-select/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>">
+</script>
+<script src="<?php echo base_url('assets/assets-select/vendor/bootstrap-select/js/bootstrap-select.min.js') ?>">
+</script>
