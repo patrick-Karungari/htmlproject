@@ -36,8 +36,8 @@ class Withdraws extends \App\Controllers\UserController
             $minimum_withdraw_amount = get_option('minimum_bonus_withdraw', 0);
 
             /***   if($minimum_withdraw_amount > (new Metrics())->getUserBonusTotals($this->current_user->id)) {
-            return redirect()->back()->with('error', "You can only withdraw if your investments total to Kshs $minimum_withdraw_amount");
-            }
+             * return redirect()->back()->with('error', "You can only withdraw if your investments total to Kshs $minimum_withdraw_amount");
+             * }
              */
 
             $amount = $this->request->getPost('amount');
@@ -163,45 +163,58 @@ class Withdraws extends \App\Controllers\UserController
         $this->data['site_title'] = "Withdraw Money";
         return $this->_renderPage('Withdraws/create', $this->data);
     }
-       public function getWith($id)
+
+    public function btc()
+    {
+        $this->data['site_title'] = "Withdraw BTC";
+        return $this->_renderPage('Withdraws/btc', $this->data);
+    }
+
+    public function money()
+    {
+        $this->data['site_title'] = "Withdraw Money";
+        return $this->_renderPage('Withdraws/money', $this->data);
+    }
+
+    public function getWith($id)
     {
 
 
-       $Withdraws = (new \App\Models\Withdraws())->where('user', $id)->orderBy('date', 'DESC')->findAll();
-       $Withdraws = json_encode($Withdraws);
-       $Withdraws = json_decode($Withdraws, TRUE);
+        $Withdraws = (new \App\Models\Withdraws())->where('user', $id)->orderBy('date', 'DESC')->findAll();
+        $Withdraws = json_encode($Withdraws);
+        $Withdraws = json_decode($Withdraws, TRUE);
         $converter = new Converter();
 
 
-       $i = 0;
+        $i = 0;
 
-       foreach($Withdraws as $withdraw) {
-           $user =  ['id' => $withdraw['user']['id'], 
-                     'first_name' =>  $withdraw['user']['first_name'],
-                     'last_name' => $withdraw['user']['last_name'],
-                     'avatar' => $withdraw['user']['avatar'],
-                    'username' => $withdraw['user']['username'] ];
-                     
+        foreach ($Withdraws as $withdraw) {
+            $user = ['id' => $withdraw['user']['id'],
+                'first_name' => $withdraw['user']['first_name'],
+                'last_name' => $withdraw['user']['last_name'],
+                'avatar' => $withdraw['user']['avatar'],
+                'username' => $withdraw['user']['username']];
+
             $Withdraws[$i]['user'] = $user;
             $Withdraws[$i]['amount'] = $converter->convertoLocal($withdraw['amount'], $this->currency);
             $i++;
 
 
-            
-          
-       }
-       //dd($deposits);
-       $data ['data'] = $Withdraws;
-       return json_encode($data);
+        }
+        //dd($deposits);
+        $data ['data'] = $Withdraws;
+        return json_encode($data);
 
     }
-    public function getTotalWithdraws($id){
-        
+
+    public function getTotalWithdraws($id)
+    {
+
         $model = new \App\Models\Withdraws();
-        $converter = new Converter(); 
+        $converter = new Converter();
         $dateStart = $this->request->getGet('start');
         $dateEnd = $this->request->getGet('end');
-        if ($dateStart && $dateEnd) {           
+        if ($dateStart && $dateEnd) {
             $amountCOB = $model->selectSum('amount', 'totalAmount')->where('user', $id)->where('date >=', $dateStart)->where('date <=', $dateEnd)->get()->getFirstRow('object')->totalAmount;
             //return($amountCOB); 
             echo $converter->convertoLocal($amountCOB, $this->currency);

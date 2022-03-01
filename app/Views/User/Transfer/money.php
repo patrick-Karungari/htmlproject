@@ -9,9 +9,7 @@
     <!-- Stylesheet
 ============================================= -->
     <link rel="stylesheet" type="text/css') ?>"
-          href="<?php use App\Models\Bitcoins;
-
-          echo base_url('assets/assets-select/vendor/bootstrap/css/bootstrap.min.css') ?>"/>
+          href="<?php echo base_url('assets/assets-select/vendor/bootstrap/css/bootstrap.min.css') ?>"/>
     <link rel="stylesheet" type="text/css') ?>"
           href="<?php echo base_url('assets/assets-select/vendor/font-awesome/css/all.min.css') ?>"/>
     <link rel="stylesheet" type="text/css') ?>"
@@ -56,8 +54,8 @@
             </div>
         </div>
     </div>
-    <h2 class="fw-400 text-center mt-3">Send BTC</h2>
-    <p class="lead text-center mb-4">Send your BTC on anytime, anywhere in the world.</p>
+    <h2 class="fw-400 text-center mt-3">Send Money</h2>
+    <p class="lead text-center mb-4">Send your money on anytime, anywhere in the world.</p>
     <div class="card">
         <div class="row">
             <div class="col-md-9 col-lg-7 col-xl-6 mx-auto">
@@ -65,7 +63,7 @@
                 if (@session()->get('_transfers')['step'] == '2') {
                     ?>
                     <div class="border-info shadow-sm rounded pt-2 pb-sm-5 px-sm-5 mb-4 mt-2">
-                        <h3 class="text-5 fw-400 ">Confirm</h3>
+                        <h3 class="text-5 fw-400">Confirm</h3>
                         <hr class="mx-n3 mx-sm-n5 mb-1">
                         <!-- Send Money Form
                               ============================ -->
@@ -101,9 +99,9 @@
                         <hr class="mx-n3 mx-sm-n5 mb-1">
                         <div class="alert alert-warning p-2">
                             <?php
-                            $myBitcoins = (new Bitcoins())->where('user', $current_user->id)->first();
+                            //$myBitcoins = (new Bitcoins())->where('user', $current_user->id)->first();
                             ?>
-                            <h6>BTC Balance: <b><?php echo $myBitcoins->balance; ?></b></h6>
+                            <h6>BTC Balance: <b>USD <?php echo $current_user->account; ?></b></h6>
                         </div>
                         <form id="form-send-money" method="post">
                             <div class="mb-1">
@@ -115,10 +113,22 @@
                             <div class="mb-1">
                                 <label for="youSend" class="form-label">You Send</label>
                                 <div class="input-group">
-                                    <span class="input-group-text">BTC</span>
-                                    <input type="number" class="form-control" data-bv-field="youSend" id="youSend"
-                                           name="amount" min="0" step="0.001" value="<?php echo old('amount') ?>" placeholder="">
-
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" data-bv-field="youSend" id="youSend"
+                                           name="amount" value="<?php echo old('amount') ?>" placeholder="">
+                                    <span class="p-0">
+                                      <select id="youSendCurrency" data-style="form-select bg-transparent border-0"
+                                              data-container="body" data-live-search="true"
+                                              class="form-control bg-transparent" name="currency" required="">
+                                          <option data-icon="currency-flag currency-flag-usd me-1"
+                                                  data-subtext="United States dollar" <?php echo old('currency') == 'USD' ? 'selected' : ''; ?> value="USD">USD
+                                              </option>
+                                              <option data-icon="currency-flag currency-flag-aud me-1"
+                                                      data-subtext="Australian dollar" <?php echo old('currency') == 'AUD' ? 'selected' : ''; ?> value="AUD">AUD</option>
+                                              <option data-icon="currency-flag currency-flag-inr me-1"
+                                                      data-subtext="Indian rupee" <?php echo old('currency') == 'INR' ? 'selected' : ''; ?> value="INR">INR</option>
+                                      </select>
+                                  </span>
                                 </div>
                             </div>
                             <!--
