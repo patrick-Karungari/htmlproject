@@ -93,4 +93,75 @@ class Transfers extends \App\Controllers\UserController
         $this->data['step'] = $step ?? 1;
         return $this->_renderPage('Transfer/index', $this->data);
     }
+
+    public function money()
+    {
+
+        if ($this->request->getPost()) {
+            $step = $this->request->getPost('step') ?? '1';
+            $session = session();
+            if ($step == '1') {
+                $username = $this->request->getPost('username');
+                $amount = $this->request->getPost('amount');
+                $currency = $this->request->getPost('currency');
+                $this->data['username'] = $username;
+                $this->data['amount'] = $amount;
+                $this->data['currency'] = $currency;
+
+                $balance = $this->current_user->account;
+                if ($$balance && $balance < $amount) {
+                    $session->remove('_transfers');
+                    return redirect()->back()->with('error', "You do not have enough money to transfer");
+                }
+
+                //User
+                $user = (new Users())->where('username', $username)->orWhere('email', $username)->first();
+                if (!$user) {
+                    return redirect()->back()->with('error', "Recipient not found");
+                }
+                $step++;
+                $this->data['step'] = $step;
+                $this->data['user'] = $user;
+
+                $session->set('_transfers', $this->data);
+
+                return redirect()->to(site_url('user/transfers/money/2'));
+            } else if ($step == '2') {
+                if (!$session->has('_transfers')) {
+                    return redirect()->back();
+                }
+                //Confirmed. Complete transaction
+                $balance = $this->current_user->account;
+                $temp = $session->get('_transfers');
+                $amount = $temp['amount'];
+                $recipient = $temp['user'];
+                $theirAccount = $recipient->account;
+
+                (new Users())->update($this->current_user->id, ['account' => $balance-$amount]);
+
+                    $theirNewBalance = $theirAccount + $amount;
+                    (new Users())->update($recipient->id, ['account' => $$theirNewBalance]);
+
+
+                //TODO: Create transaction
+                $trxModel = new BitcoinTrx();
+                $trxModel->save([
+                    'sender'    => $this->current_user->id,
+                    'recipient' => $recipient->id,
+                    'amount'    => $amount,
+                    'status'    => '1'
+                ]);
+
+                $step++;
+
+                $this->data['step'] = $step;
+                $session->set('_transfers', $this->data);
+                $session->markAsFlashdata('_transfers');
+                return redirect()->to(site_url('user/transfers/money/3'));
+            }
+        }
+
+        $this->data['step'] = $step ?? 1;
+        return $this->_renderPage('Transfer/money', $this->data);
+    }
 }
