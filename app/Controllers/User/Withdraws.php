@@ -183,6 +183,11 @@ class Withdraws extends \App\Controllers\UserController
                 $this->data['address'] = $address;
                 $this->data['amount'] = $amount;
 
+                $myBitcoins = (new Bitcoins())->where('user', $this->current_user->id)->first();
+                if (!$myBitcoins || $myBitcoins->balance < $amount) {
+                    return redirect()->back()->with('error', "You do not have enough balance to withdraw");
+                }
+
                 $session->set('_btc_withdraw', $this->data);
                 return redirect()->to(current_url());
             } elseif ($step == '2') {

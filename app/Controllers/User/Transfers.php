@@ -36,7 +36,7 @@ class Transfers extends \App\Controllers\UserController
                 $this->data['currency'] = $currency;
 
                 $bitcoins = (new Bitcoins())->where('user', $this->current_user->id)->first();
-                if ($bitcoins && $bitcoins->balance < $amount) {
+                if (!$bitcoins || $bitcoins->balance < $amount) {
                     $session->remove('_transfers');
                     return redirect()->back()->with('error', "You do not have enough crypto to transfer");
                 }
@@ -109,7 +109,7 @@ class Transfers extends \App\Controllers\UserController
                 $this->data['currency'] = $currency;
 
                 $balance = $this->current_user->account;
-                if ($$balance && $balance < $amount) {
+                if (!$balance || $balance < $amount) {
                     $session->remove('_transfers');
                     return redirect()->back()->with('error', "You do not have enough money to transfer");
                 }
