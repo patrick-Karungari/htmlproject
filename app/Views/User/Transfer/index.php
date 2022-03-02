@@ -8,13 +8,9 @@
 
     <!-- Stylesheet
 ============================================= -->
-    <link rel="stylesheet" type="text/css') ?>"
+    <link rel="stylesheet" type="text/css') ?>" href="<?php use App\Models\Bitcoins;
 
-          href="<?php use App\Models\Bitcoins;
-
-          echo base_url('assets/assets-select/vendor/bootstrap/css/bootstrap.min.css') ?>"/>
-        href="<?php echo base_url('assets/assets-select/vendor/bootstrap/css/bootstrap.min.css') ?>" />
-
+          echo base_url('assets/assets-select/vendor/bootstrap/css/bootstrap.min.css') ?>" />
     <link rel="stylesheet" type="text/css') ?>"
         href="<?php echo base_url('assets/assets-select/vendor/font-awesome/css/all.min.css') ?>" />
     <link rel="stylesheet" type="text/css') ?>"
@@ -67,52 +63,19 @@
                 <?php
                 if (@session()->get('_transfers')['step'] == '2') {
                     ?>
-
-                    <div class="border-info shadow-sm rounded pt-2 pb-sm-5 px-sm-5 mb-4 mt-2">
-                        <h3 class="text-5 fw-400 ">Confirm</h3>
-                        <hr class="mx-n3 mx-sm-n5 mb-1">
-                        <!-- Send Money Form
-                              ============================ -->
-                        <form id="form-send-money" method="post">
-                            <h4>Confirm that you want to send <b><?php echo session()->get('_transfers')['currency'].' '.session()->get('_transfers')['amount'] ?></b> to <b><?php echo session()->get('_transfers')['user']->username.' ('.session()->get('_transfers')['user']->email.') ?'; ?></b></h4>
-                            <div class="d-grid">
-                                <button class="btn btn-primary btn-block" type="submit" name="step" value="<?php echo @session()->get('_transfers')['step']; ?>">
-                                    Continue
-                                </button>
-                            </div>
-                        </form>
-                        <!-- Send Money Form end -->
-                    </div>
-                    <?php
-                } else if (@session()->get('_transfers')['step'] == '3') {
-                    ?>
-                    <div class="border-info shadow-sm rounded pt-2 pb-sm-5 px-sm-5 mb-4 mt-2">
-                        <h3 class="text-5 fw-400">Success</h3>
-                        <hr class="mx-n3 mx-sm-n5 mb-1">
-                        <!-- Send Money Form
-                              ============================ -->
-                        <div class="alert alert-success">
-                            <h1>SUCCESS</h1>
-                        </div>
-                        <a class="btn btn-success btn-block" href="<?php echo site_url('user/transfers'); ?>">Finish</a>
-                        <!-- Send Money Form end -->
-
-                <div class=" border-info shadow-sm rounded p-3 pt-sm-4 pb-sm-5 px-sm-5 mb-4 mt-2">
-                    <h3 class="text-5 fw-400 mb-3 mb-sm-4">Confirm</h3>
-                    <hr class="mx-n3 mx-sm-n5 mb-4">
+                <div class="border-info shadow-sm rounded pt-2 pb-sm-5 px-sm-5 mb-4 mt-2">
+                    <h3 class="text-5 fw-400 ">Confirm</h3>
+                    <hr class="mx-n3 mx-sm-n5 mb-1">
                     <!-- Send Money Form
                               ============================ -->
                     <form id="form-send-money" method="post">
                         <h4>Confirm that you want to send
                             <b><?php echo session()->get('_transfers')['currency'].' '.session()->get('_transfers')['amount'] ?></b>
                             to
-                            <code><?php echo session()->get('_transfers')['user']->name; ?></code>
-                            <p></p>
-                            <code><?php echo session()->get('_transfers')['user']->email; ?></code>
+                            <b><?php echo session()->get('_transfers')['user']->username.' ('.session()->get('_transfers')['user']->email.') ?'; ?></b>
                         </h4>
-                        </h4>
-                        <div class="d-grid mt-1">
-                            <button class="btn btn-primary" type="submit" name="step"
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-block" type="submit" name="step"
                                 value="<?php echo @session()->get('_transfers')['step']; ?>">
                                 Continue
                             </button>
@@ -123,52 +86,29 @@
                 <?php
                 } else if (@session()->get('_transfers')['step'] == '3') {
                     ?>
-                <div class=" border-info shadow-sm rounded p-3 pt-sm-4 pb-sm-5 px-sm-5 mb-4 mt-2">
-                    <h3 class="text-5 fw-400 mb-3 mb-sm-4">Success</h3>
-                    <hr class="mx-n3 mx-sm-n5 mb-4">
+                <div class="border-info shadow-sm rounded pt-2 pb-sm-5 px-sm-5 mb-4 mt-2">
+                    <h3 class="text-5 fw-400">Success</h3>
+                    <hr class="mx-n3 mx-sm-n5 mb-1">
                     <!-- Send Money Form
                               ============================ -->
                     <div class="alert alert-success">
                         <h1>SUCCESS</h1>
-
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url('user/transfers'); ?>">Finish</a>
+                    <a class="btn btn-success btn-block" href="<?php echo site_url('user/transfers'); ?>">Finish</a>
                     <!-- Send Money Form end -->
                 </div>
                 <?php
                 } else {
                     ?>
-
-                    <div class="border-info shadow-sm rounded pt-2 pb-sm-5 px-sm-5 mb-4 mt-2">
-                        <h3 class="text-5 fw-400">Personal Details</h3>
-                        <hr class="mx-n3 mx-sm-n5 mb-1">
-                        <div class="alert alert-warning p-2">
-                            <?php
+                <div class="border-info shadow-sm rounded pt-2 pb-sm-5 px-sm-5 mb-4 mt-2">
+                    <h3 class="text-5 fw-400">Personal Details</h3>
+                    <hr class="mx-n3 mx-sm-n5 mb-1">
+                    <div class="alert alert-warning p-2">
+                        <?php
                             $myBitcoins = (new Bitcoins())->where('user', $current_user->id)->first();
                             ?>
-                            <h6>BTC Balance: <b><?php echo $myBitcoins->balance; ?></b></h6>
-                        </div>
-                        <form id="form-send-money" method="post">
-                            <div class="mb-1">
-                                <label for="emailID" class="form-label">Recipient</label>
-                                <input type="text" value="<?php echo old('username') ?>" class="form-control"
-                                       data-bv-field="emailid" id="emailID"
-                                       required name="username" placeholder="Enter Username or Email Address">
-                            </div>
-                            <div class="mb-1">
-                                <label for="youSend" class="form-label">You Send</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">BTC</span>
-                                    <input type="number" class="form-control" data-bv-field="youSend" id="youSend"
-                                           name="amount" min="0" step="0.001" value="<?php echo old('amount') ?>" placeholder="">
-
-                                </div>
-
-                <div class=" border-info shadow-sm rounded p-3 pt-sm-4 pb-sm-5 px-sm-5 mb-4 mt-2">
-                    <h3 class="text-5 fw-400 mb-3 mb-sm-4">Send Money</h3>
-                    <hr class="mx-n3 mx-sm-n5 mb-4">
-                    <!-- Send Money Form
-                              ============================ -->
+                        <h6>BTC Balance: <b><?php echo $myBitcoins->balance; ?></b></h6>
+                    </div>
                     <form id="form-send-money" method="post">
                         <div class="mb-1">
                             <label for="emailID" class="form-label">Recipient</label>
@@ -179,27 +119,10 @@
                         <div class="mb-1">
                             <label for="youSend" class="form-label">You Send</label>
                             <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <input type="text" class="form-control" data-bv-field="youSend" id="youSend"
-                                    name="amount" value="<?php echo old('amount') ?>" placeholder="">
-                                <span class="p-0">
-                                    <select id="youSendCurrency" data-style="form-select bg-transparent border-0"
-                                        data-container="body" data-live-search="true"
-                                        class="form-control bg-transparent" name="currency" required="">
-                                        <option data-icon="currency-flag currency-flag-usd me-1"
-                                            data-subtext="United States dollar"
-                                            <?php echo old('currency') == 'USD' ? 'selected' : ''; ?> value="USD">USD
-                                        </option>
-                                        <option data-icon="currency-flag currency-flag-aud me-1"
-                                            data-subtext="Australian dollar"
-                                            <?php echo old('currency') == 'AUD' ? 'selected' : ''; ?> value="AUD">AUD
-                                        </option>
-                                        <option data-icon="currency-flag currency-flag-inr me-1"
-                                            data-subtext="Indian rupee"
-                                            <?php echo old('currency') == 'INR' ? 'selected' : ''; ?> value="INR">INR
-                                        </option>
-                                    </select>
-                                </span>
+                                <span class="input-group-text">BTC</span>
+                                <input type="number" class="form-control" data-bv-field="youSend" id="youSend"
+                                    name="amount" min="0" step="0.001" value="<?php echo old('amount') ?>"
+                                    placeholder="">
 
                             </div>
                         </div>
@@ -211,19 +134,8 @@
                                                     <hr>
                                                     <p class="text-4 fw-500">Total To Pay: <span class="float-end">1,000.00 USD</span></p>
                                                     -->
-
-                            <div class="d-grid">
-                                <button class="btn btn-primary btn-block" type="submit" name="step" value="<?php echo @session()->get('_transfers')['step'] ?? '1'; ?>">
-                                    Continue
-                                </button>
-                            </div>
-                        </form>
-                        <!-- Send Money Form end -->
-                    </div>
-                    <?php
-
                         <div class="d-grid">
-                            <button class="btn btn-primary" type="submit" name="step"
+                            <button class="btn btn-primary btn-block" type="submit" name="step"
                                 value="<?php echo @session()->get('_transfers')['step'] ?? '1'; ?>">
                                 Continue
                             </button>
@@ -232,7 +144,6 @@
                     <!-- Send Money Form end -->
                 </div>
                 <?php
-
                 }
                 ?>
             </div>
@@ -244,7 +155,10 @@
 
 
 <!-- Content end -->
-
+<script>
+id = '<?php echo $current_user->id ?>';
+document.getElementById("transfer-btc").className += " active";
+</script>
 
 <!-- Script -->
 
