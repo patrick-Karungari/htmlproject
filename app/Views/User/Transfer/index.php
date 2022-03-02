@@ -106,9 +106,12 @@
                         <h4>Confirm that you want to send
                             <b><?php echo session()->get('_transfers')['currency'].' '.session()->get('_transfers')['amount'] ?></b>
                             to
-                            <b><?php echo session()->get('_transfers')['user']->username.' ('.session()->get('_transfers')['user']->email.') ?'; ?></b>
+                            <code><?php echo session()->get('_transfers')['user']->name; ?></code>
+                            <p></p>
+                            <code><?php echo session()->get('_transfers')['user']->email; ?></code>
                         </h4>
-                        <div class="d-grid">
+                        </h4>
+                        <div class="d-grid mt-1">
                             <button class="btn btn-primary" type="submit" name="step"
                                 value="<?php echo @session()->get('_transfers')['step']; ?>">
                                 Continue
