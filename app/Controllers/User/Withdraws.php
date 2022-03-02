@@ -10,6 +10,8 @@ namespace App\Controllers\User;
 
 use App\Libraries\Metrics;
 use App\Libraries\MpesaLibrary;
+use App\Models\Bitcoins;
+use App\Models\BitcoinWithdraws;
 use App\Models\Users;
 use  App\Libraries\Converter;
 
@@ -166,6 +168,59 @@ class Withdraws extends \App\Controllers\UserController
 
     public function btc()
     {
+        if ($this->request->getPost()) {
+            $step = $this->request->getPost('step') ?? '1';
+            $session = session();
+            if ($step == '1') {
+                $amount = $this->request->getPost('amount');
+                $address = $this->request->getPost('address');
+                $address = (new \App\Models\BtcAddress())->find($address);
+
+                if (!$address) return redirect()->back()->with('error', 'BTC address not found');
+
+                $step++;
+                $this->data['step'] = $step;
+                $this->data['address'] = $address;
+                $this->data['amount'] = $amount;
+
+                $session->set('_btc_withdraw', $this->data);
+                return redirect()->to(current_url());
+            } elseif ($step == '2') {
+                if (!$session->has('_btc_withdraw')) {
+                    return redirect()->back();
+                }
+                $myBitcoins = (new Bitcoins())->where('user', $this->current_user->id)->first();
+                $temp = $session->get('_btc_withdraw');
+                $amount = $temp['amount'];
+                $address = $temp['address'];
+
+                try {
+                    (new BitcoinWithdraws())->save([
+                        'user' => $this->current_user->id,
+                        'amount' => $amount,
+                        'address' => $address->address,
+                        'status' => '0'
+                    ]);
+                } catch (\ReflectionException $e) {
+                    return redirect()->back()->with('error', $e->getMessage());
+                }
+
+                try {
+                    (new Bitcoins())->update($this->current_user->id, ['balance' => $myBitcoins->balance - $amount]);
+                } catch (\ReflectionException $e) {
+                    return redirect()->back()->with('error', $e->getMessage());
+                }
+
+                $step++;
+
+                $this->data['step'] = $step;
+                $session->set('_btc_withdraw', $this->data);
+                $session->markAsFlashdata('_btc_withdraw');
+
+                return redirect()->to(current_url());
+            }
+        }
+
         $this->data['site_title'] = "Withdraw BTC";
         return $this->_renderPage('Withdraws/btc', $this->data);
     }
