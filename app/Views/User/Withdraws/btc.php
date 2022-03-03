@@ -151,7 +151,15 @@
                                 <td><?php echo $n; ?></td>
                                 <td><?php echo $log->created_at; ?></td>
                                 <td><?php echo $log->amount; ?> BTC</td>
-                                <td><?php echo $log->status; ?></td>
+                                <td><?php
+                                    if ($log->status == '0') {
+                                        echo 'pending';
+                                    }elseif($log->status == '1') {
+                                        echo 'complete';
+                                    }else{
+                                        echo 'failed';
+                                    }
+                                    ?></td>
                                 <td><?php echo $log->address; ?></td>
                             </tr>
                                 <?php

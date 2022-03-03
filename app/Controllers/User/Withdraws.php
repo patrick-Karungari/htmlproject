@@ -14,6 +14,7 @@ use App\Models\Bitcoins;
 use App\Models\BitcoinWithdraws;
 use App\Models\Users;
 use  App\Libraries\Converter;
+use App\Models\WithdrawAccounts;
 
 class Withdraws extends \App\Controllers\UserController
 {
@@ -232,6 +233,71 @@ class Withdraws extends \App\Controllers\UserController
 
     public function money()
     {
+        $session = session();
+        if ($this->request->getPost()) {
+            $step = $this->request->getPost('step') ?? '1';
+
+            if ($step == '1') {
+                $amount = $this->request->getPost('amount');
+                $method = $this->request->getPost('method');
+
+                $step++;
+                $this->data['step'] = $step;
+                $this->data['method'] = trim($method);
+                $this->data['amount'] = $amount;
+
+                if ($this->current_user->account < $amount) {
+                    return redirect()->back()->with('error', "You do not have enough balance to withdraw");
+                }
+
+                $session->set('_money_withdraw', $this->data);
+                return redirect()->to(current_url());
+            }elseif($step == '2') {
+                $account = $this->request->getPost('account');
+                $account = (new WithdrawAccounts())->where('method', $session->get('_money_withdraw')['method'])
+                    ->where('user', $this->current_user->id)
+                    ->where('id', $account)->first();
+
+                if (!$account) {
+                    return redirect()->back()->with('error', "Selected account is not available");
+                }
+                $data = $session->get('_money_withdraw');
+                $data['account'] = $account;
+                $data['step']++;
+                $session->set('_money_withdraw', $data);
+
+                return redirect()->to(current_url());
+            }elseif($step == '3') {
+                //Confirmed
+                $data = $session->get('_money_withdraw');
+                $new_account = $this->current_user->id - $data['amount'];
+                //Save new user balance
+                try {
+                    (new Users())->update($this->current_user->id, ['account' => $new_account]);
+                } catch (\ReflectionException $e) {
+                    return redirect()->back()->with('error', $e->getMessage());
+                }
+                //Create withdraw
+                try {
+                    (new \App\Models\Withdraws())->save([
+                        'user' => $this->current_user->id,
+                        'amount' => $data['amount'],
+                        'method' => $data['account']->method,
+                        'account' => $data['account']->account,
+                        'trx_id' => date('dmYHis'),
+                    ]);
+                    $data['step']++;
+                    $session->set('_money_withdraw', $data);
+                    $session->markAsFlashdata('_money_withdraw');
+                    return redirect()->back()->with('success', "Withdraw request received successfully");
+                } catch (\ReflectionException $e) {
+                    return redirect()->back()->with('error', $e->getMessage());
+                }
+            }
+
+            return redirect()->to(current_url());
+        }
+
         $this->data['site_title'] = "Withdraw Money";
         return $this->_renderPage('Withdraws/money', $this->data);
     }

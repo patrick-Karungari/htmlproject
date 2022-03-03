@@ -14,6 +14,6 @@ class Withdraws extends \CodeIgniter\Model
     protected $returnType = '\App\Entities\Withdraw';
 
     protected $allowedFields = [
-        'user', 'amount', 'phone', 'trx_id', 'status', 'description',
+        'user', 'amount', 'phone', 'trx_id', 'status', 'description', 'method', 'account'
     ];
 }

@@ -8,6 +8,7 @@
 
 namespace App\Controllers\User;
 use App\Libraries\Converter;
+use App\Models\WithdrawAccounts;
 
 class Account extends \App\Controllers\UserController
 {
@@ -39,5 +40,28 @@ class Account extends \App\Controllers\UserController
 
         }
 
+    }
+
+    public function withdraw_accounts()
+    {
+        if ($this->request->getPost()) {
+            $method = trim($this->request->getPost('method'));
+            $name   = trim($this->request->getPost('name'));
+            $account    = trim($this->request->getPost('account'));
+
+            try {
+                (new WithdrawAccounts())->save([
+                    'user' => $this->current_user->id,
+                    'method' => $method,
+                    'name' => $name,
+                    'account' => $account
+                ]);
+                return redirect()->back()->with('success', "Withdraw account added successfully");
+            } catch (\ReflectionException $e) {
+                return redirect()->back()->with('error', $e->getMessage());
+            }
+        }
+
+        //List and manage withdraw accounts
     }
 }

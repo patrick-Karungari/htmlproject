@@ -362,10 +362,27 @@
                             href="<?php echo base_url('deposits') ?>"><i data-feather='chevrons-up'></i><span
                                 class="menu-title text-truncate" data-i18n="Profile">Deposits</span></a>
                     </li>
-                    <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('withdraws') ?>"><i data-feather='chevrons-down'></i><span
-                                class="menu-title text-truncate" data-i18n="Profile">Withdrawals</span></a>
+                    <li class=" nav-item"><a class="d-flex align-items-center"><i
+                                    data-feather='download-cloud'></i><span class="menu-title text-truncate"
+                                                                            data-i18n="Investments">Withdraws</span></a>
+                        <ul class="menu-content">
+                            <li id="transfer-btc"><a class="d-flex align-items-center"
+                                                     href="<?php echo base_url('admin/withdraws/btc') ?>"><i
+                                            data-feather="circle"></i><span class="menu-item text-truncate"
+                                                                            data-i18n="Transfer BTC">Withdraw BTC</span></a>
+                            </li>
+                            <li id="transfer-money"><a class="d-flex align-items-center"
+                                                       href="<?php echo base_url('admin/withdraws/money') ?>"><i
+                                            data-feather="circle"></i><span class="menu-item text-truncate"
+                                                                            data-i18n="Transfer Money">Withdraw Money</span></a>
+                            </li>
+
+                        </ul>
                     </li>
+<!--                    <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"-->
+<!--                            href="--><?php //echo base_url('withdraws') ?><!--"><i data-feather='chevrons-down'></i><span-->
+<!--                                class="menu-title text-truncate" data-i18n="Profile">Withdrawals</span></a>-->
+<!--                    </li>-->
 
                     <li id="profile" class=" nav-item"><a class="d-flex align-items-center"
                             href="<?php echo base_url('profile') ?>"><i data-feather='user'></i></i><span

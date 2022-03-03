@@ -617,10 +617,10 @@
 
                         </ul>
                     </li>
-                    <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"
-                            href="<?php echo base_url('user/withdraws') ?>"><i data-feather="download-cloud"></i><span
-                                class=" menu-title text-truncate" data-i18n="Withdrawals">Withdrawals</span></a>
-                    </li>
+<!--                    <li id="withdrawals" class=" nav-item"><a class="d-flex align-items-center"-->
+<!--                            href="--><?php //echo base_url('user/withdraws') ?><!--"><i data-feather="download-cloud"></i><span-->
+<!--                                class=" menu-title text-truncate" data-i18n="Withdrawals">Withdrawals</span></a>-->
+<!--                    </li>-->
                     <li id="referrals" class=" nav-item"><a class="d-flex align-items-center"
                             href="<?php echo base_url('user/referrals') ?>"><i data-feather="users"></i><span
                                 class=" menu-title text-truncate" data-i18n="Withdrawals">Referrals</span></a>
