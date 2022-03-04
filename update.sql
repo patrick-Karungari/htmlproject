@@ -42,3 +42,22 @@ CREATE TABLE `btc_addresses` (
      KEY `user` (`user`),
      CONSTRAINT `btc_addresses_ibfk_1` FOREIGN KEY (`user`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- MARCH 03 2022 --
+
+CREATE TABLE `withdraw_accounts` (
+     `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+     `user` int(11) unsigned NOT NULL,
+     `method` varchar(255) NOT NULL,
+     `name` varchar(255) NOT NULL,
+     `account` varchar(255) NOT NULL,
+     `verified` int(1) NOT NULL DEFAULT '0',
+     `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+);
+ALTER TABLE `withdraw_accounts` ADD FOREIGN KEY (`user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `withdraws`
+    CHANGE `phone` `method` varchar(15) COLLATE 'utf8mb4_general_ci' NOT NULL AFTER `amount`,
+    ADD `account` varchar(15) COLLATE 'utf8mb4_general_ci' NOT NULL AFTER `method`,
+    CHANGE `date` `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE CURRENT_TIMESTAMP AFTER `description`;
+ALTER TABLE `bitcoin_withdraws`
+    ADD `trx_id` varchar(255) COLLATE 'utf8mb4_general_ci' NULL AFTER `address`;

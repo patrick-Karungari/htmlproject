@@ -153,6 +153,14 @@ class Withdraws extends \App\Controllers\AdminController
         return "null";
 
     }
-    
 
+    public function btc()
+    {
+        return $this->_renderPage('Withdraws/btc', $this->data);
+    }
+
+    public function money()
+    {
+        return $this->_renderPage('Withdraws/money', $this->data);
+    }
 }
