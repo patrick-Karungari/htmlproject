@@ -10,6 +10,7 @@
     <div class="card-body">
         <h3>E-Mail Settings</h3>
         <form method="post" action="">
+            <?php echo csrf_field(); ?>
             <div class="form-group">
                 <label>Sender Email address</label>
                 <input type="email" class="form-control" name="mailer_email_from" required

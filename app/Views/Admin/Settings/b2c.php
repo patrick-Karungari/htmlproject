@@ -22,6 +22,7 @@
                 <h4 class="card-title mb-4">B2C API Settings (Withdraws)</h4>
 
                 <form method="post" action="<?php echo current_url() ?>">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label for="formrow-firstname-input">PayBill Number</label>
                         <input type="text" name="mpesa_b2c_paybill" value="<?php echo get_option('mpesa_b2c_paybill', false) ?>" class="form-control" id="formrow-firstname-input">

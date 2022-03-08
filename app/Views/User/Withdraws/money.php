@@ -56,6 +56,7 @@
                         <!-- Send Money Form
                                   ============================ -->
                         <form id="form-send-money" method="post">
+                            <?php echo csrf_field(); ?>
                             <h4>Select account to withdraw <b>USD <?php echo $session['amount'] ?></b></h4>
                                 <div class="form-group">
                                     <label>Select Account</label>
@@ -89,6 +90,7 @@
                     ?>
                     <div class="border-info shadow-sm rounded pt-2 pb-sm-5 px-sm-5 mb-4 mt-2">
                         <form method="post" action="<?php echo current_url(); ?>">
+                            <?php echo csrf_field(); ?>
                             <h3 class="text-5 fw-400">Confirm</h3>
                             <hr class="mx-n3 mx-sm-n5 mb-1">
                             <!-- Send Money Form
@@ -121,6 +123,7 @@
                     ?>
                     <div class="border-info shadow-sm rounded pt-2 pb-sm-5 px-sm-5 mb-4 mt-2">
                         <form method="post" action="">
+                            <?php echo csrf_field(); ?>
                             <div class="mb-1">
                                 <label for="youSend" class="form-label">Withdraw</label>
                                 <div class="input-group">

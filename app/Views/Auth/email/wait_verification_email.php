@@ -50,6 +50,7 @@ License: You must have a valid license purchased only from themeforest(the above
     </p>
 
     <form class=" auth-forgot-password-form mt-2" action="<?php echo base_url('auth/mail_verify') ?>" method="post">
+        <?php echo csrf_field(); ?>
         <div class="form-group">
             <input class="form-control" id="email" value="<?php echo sprintf($user['email'])  ?>" name="email" hidden />
 

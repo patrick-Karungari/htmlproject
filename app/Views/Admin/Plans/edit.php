@@ -14,6 +14,7 @@
         <h4 class="card-title">Edit Investment Plan</h4>
 
         <form class="forms-sample" method="post" action="plans">
+            <?php echo csrf_field(); ?>
             <input type="hidden" name="id" value="<?php  echo $plan->id; ?>">
             <div class="form-group">
                 <label for="exampleInputUsername1">Title</label>

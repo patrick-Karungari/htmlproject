@@ -25,7 +25,7 @@ class Users extends \App\Controllers\AdminController
 
     public function index(): string
     {
-
+        //dd("TEST");
         return $this->_renderPage('Users/index', $this->data);
     }
     public function redirect()

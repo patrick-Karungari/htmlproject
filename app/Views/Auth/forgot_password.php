@@ -15,6 +15,7 @@ document.getElementById('myImage').src = '<?php echo site_url('assets/images/pag
 <h2 class="card-title font-weight-bold mb-1">Forgot Password? 🔒</h2>
 <p class="card-text mb-2">If your email exists in our database we'll send you instructions to reset your password</p>
 <form class="auth-forgot-password-form mt-2" action="forgot_password" method="POST">
+    <?php echo csrf_field(); ?>
     <div class="form-group">
         <label class="form-label" for="forgot-password-email">Email</label>
         <input class="form-control" type="text" id="email" name="username" placeholder="john@example.com"

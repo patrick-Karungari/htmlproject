@@ -20,6 +20,9 @@
         <meta name="keywords"
             content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="PIXINVENT">
+        <?php
+        echo csrf_meta();
+        ?>
         <title>AxE Capital - Admin Dashboard</title>
         <link rel="apple-touch-icon" href="<?php echo base_url('assets/images/ico/apple-icon-120.png') ?>">
         <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/ico/favicon.ico') ?>">
@@ -49,6 +52,18 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/themes/dark-layout.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/themes/bordered-layout.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/themes/semi-dark-layout.css') ?>">
+        <!-- BEGIN: Vendor CSS-->
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo base_url('assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css') ?>">
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo base_url('assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css') ?>">
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo base_url('assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css') ?>">
+        <!-- END: Vendor CSS-->
+
+        <!-- BEGIN: Page CSS-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/plugins/forms/form-validation.css') ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/pages/app-user.css') ?>">
 
         <!-- BEGIN: Page CSS-->
         <link rel="stylesheet" type="text/css"
@@ -502,12 +517,14 @@
                         data-feather="heart"></i></span></p>
         </footer>
         <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
-        <!-- END: Footer-->
-
-
-
-
-        <!-- BEGIN: Theme JS-->
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/jquery.dataTables.min.js') ?>">
+        </script>
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/dataTables.responsive.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/responsive.bootstrap4.js') ?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.buttons.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/forms/validation/jquery.validate.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/core/app-menu.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/core/app.js') ?>"></script>
         <!-- END: Theme JS-->
@@ -522,6 +539,13 @@
                 });
             }
         })
+        $('table').DataTable();
+        // if($('table').length > 0) {
+        //     $('table').each(function (item) {
+        //         $(item).DataTable();
+        //     })
+        // }
         </script>
     </body>
     <!-- END: Body-->
+</html>

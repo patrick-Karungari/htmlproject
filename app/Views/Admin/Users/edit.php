@@ -51,6 +51,7 @@
                     <!-- users edit media object ends -->
                     <!-- users edit account form start -->
                     <form class="form-validate">
+                        <?php echo csrf_field(); ?>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -295,6 +296,7 @@
                 <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
                     <!-- users edit Info form start -->
                     <form class="form-validate">
+                        <?php echo csrf_field(); ?>
                         <div class="row mt-1">
                             <div class="col-12">
                                 <h4 class="mb-1">
@@ -430,6 +432,7 @@
                 <div class="tab-pane" id="social" aria-labelledby="social-tab" role="tabpanel">
                     <!-- users edit social form start -->
                     <form class="form-validate">
+                        <?php echo csrf_field(); ?>
                         <div class="row">
                             <div class="col-lg-4 col-md-6 form-group">
                                 <label for="twitter-input">Twitter</label>

@@ -13,6 +13,7 @@
 <h2 class="card-title font-weight-bold mb-1">Adventure starts here 🚀</h2>
 <p class="card-text mb-2">Make your investment journey management easy and fun!</p>
 <form class="auth-register-form mt-2" action="<?php echo site_url('auth/register') ?>" method="POST">
+    <?php echo csrf_field(); ?>
     <div class="form-group">
         <label class="form-label" for="register-username">First name</label>
         <input class="form-control" id="fname" type="text" name="fname" placeholder="John"

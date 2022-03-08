@@ -26,6 +26,7 @@
                     <div class="modal-dialog modal-dialog">
                         <div class="modal-content">
                             <form method="post" action="<?php echo site_url('admin/settings/test'); ?>">
+                                <?php echo csrf_field(); ?>
                                 <div class="modal-header">
                                     <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">TEST STK PUSH</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -55,6 +56,7 @@
                     </div><!-- /.modal-dialog -->
                 </div>
                 <form method="post" action="<?php echo current_url() ?>">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label for="formrow-firstname-input">Shortcode (Paybill/Store Number)</label>
                         <input type="text" name="mpesa_paybill" value="<?php echo get_option('mpesa_paybill', false) ?>" class="form-control" required id="formrow-firstname-input">

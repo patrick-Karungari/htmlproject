@@ -95,7 +95,7 @@
                     </div>
                     <!-- Form -->
                     <form id="blog-create-form" class="mt-2" method="post" name="blog" accept-charset="utf-8">
-
+                        <?php echo csrf_field(); ?>
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <div class="form-group mb-2">

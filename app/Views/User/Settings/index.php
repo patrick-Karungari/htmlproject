@@ -14,6 +14,7 @@
             <div class="card-body">
                 <h4 class="card-title">Update Profile</h4>
                 <form method="post" enctype="multipart/form-data">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label>Profile Pic</label>
                         <input type="file" class="form-control-file" accept="image/*" name="avatar" />
@@ -36,6 +37,7 @@
             <div class="card-body">
                 <h4 class="card-title">Change Password</h4>
                 <form method="post" action="<?php echo site_url('user/settings/password') ?>">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label>Current Password</label>
                         <input type="password" class="form-control" name="password" value="<?php echo old('password') ?>" required />
