@@ -865,6 +865,7 @@
                                 </div>
                                 <div class="modal-body flex-grow-1 p-0">
                                     <form class="compose-form">
+                                        <?php echo csrf_field(); ?>
                                         <div class="compose-mail-form-field select2-primary">
                                             <label for="email-to" class="form-label">To: </label>
                                             <div class="flex-grow-1">

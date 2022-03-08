@@ -399,6 +399,7 @@ echo $plan->description;
                         </div>
                         <div class="wrapper">
                             <form method="post" action="<?php echo site_url('user/invest/create'); ?>">
+                                <?php echo csrf_field(); ?>
                                 <input type="hidden" name="plan" value="<?php echo $plan->id; ?>">
                                 <div class="form-group">
                                     <label>Amount to Invest</label>

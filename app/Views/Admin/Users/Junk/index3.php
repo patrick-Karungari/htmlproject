@@ -750,6 +750,7 @@
                     <div class="modal modal-slide-in new-user-modal fade" id="modals-slide-in">
                         <div class="modal-dialog">
                             <form class="add-new-user modal-content pt-0">
+                                <?php echo csrf_field(); ?>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                                 <div class="modal-header mb-1">
                                     <h5 class="modal-title" id="exampleModalLabel">New User</h5>

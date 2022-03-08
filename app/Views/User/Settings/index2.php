@@ -59,6 +59,7 @@
 
                             <!-- form -->
                             <form id="details" class="validate-form mt-2">
+                                <?php echo csrf_field(); ?>
                                 <div class="row">
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
@@ -129,6 +130,7 @@
                             aria-labelledby="account-pill-password" aria-expanded="false">
                             <!-- form -->
                             <form class="validate-form">
+                                <?php echo csrf_field(); ?>
                                 <div class="row">
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
@@ -231,6 +233,7 @@
                                             </p>
 
                                             <form id="otp-screen" class="form-border" onsubmit="return false"
+                                                <?php echo csrf_field(); ?>
                                                 method="post">
                                                 <div class="row g-3">
                                                     <div class="col">

@@ -58,6 +58,7 @@ $status = $investment->status;
         if ($status == 'completed') {
             ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label>
                             <form class="d-inline" method="post" action="<?php echo site_url('user/invest/create') ?>">
+                                <?php echo csrf_field(); ?>
                                 <input type="hidden" name="plan" value="<?php echo $investment->plan->id ?>">
                                 <input type="hidden" name="amount" value="<?php echo $investment->total ?>">
                                 <button type="submit" class="btn btn-sm btn-success"

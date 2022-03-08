@@ -11,6 +11,7 @@
         <h4 class="card-title">Create Investment Plan</h4>
 
         <form class="forms-sample" method="post" action="">
+            <?php echo csrf_field(); ?>
             <div class="form-group">
                 <label for="exampleInputUsername1">Title</label>
                 <input type="text" class="form-control" name="title" value="<?php echo old('title') ?>" required id="exampleInputUsername1" placeholder="Title">

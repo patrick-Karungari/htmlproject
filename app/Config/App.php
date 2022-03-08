@@ -338,7 +338,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $CSRFTokenName = 'csrf_test_name';
+	public $CSRFTokenName = 'csrf_AxE_name';
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -351,7 +351,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $CSRFHeaderName = 'X-CSRF-TOKEN';
+	public $CSRFHeaderName = 'X-AXE-TOKEN';
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -364,7 +364,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $CSRFCookieName = 'csrf_cookie_name';
+	public $CSRFCookieName = 'axe_cookie_name';
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -390,7 +390,7 @@ class App extends BaseConfig
 	 *
 	 * @var boolean
 	 */
-	public $CSRFRegenerate = true;
+	public $CSRFRegenerate = false;
 
 	/**
 	 * --------------------------------------------------------------------------

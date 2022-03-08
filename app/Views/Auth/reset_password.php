@@ -13,6 +13,7 @@ document.getElementById('myImage').src = '<?php echo site_url('assets/images/pag
 <h2 class="card-title font-weight-bold mb-1">Reset Password 🔒</h2>
 <p class="card-text mb-2">Your new password must be different from previously used passwords</p>
 <form class="auth-reset-password-form mt-2" action="" method="post">
+    <?php echo csrf_field(); ?>
     <div class="form-group">
         <input type="hidden" name="userid" value="<?php echo $user->id; ?>">
         <div class="d-flex justify-content-between">

@@ -3,25 +3,12 @@ $users = (new \App\Libraries\Auth())->select('users.id, username, email, phone, 
 
 //$json= json_encode($users);
 $data = json_encode(['data' => $users]);
-//dd($data);
+//d($users);
 //echo ( $data) ;
 //echo "<script >  let json =$json; </script>\n";
 
 ?>
 
-
-<!-- BEGIN: Vendor CSS-->
-<link rel="stylesheet" type="text/css"
-    href="<?php echo base_url('assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css') ?>">
-<link rel="stylesheet" type="text/css"
-    href="<?php echo base_url('assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css') ?>">
-<link rel="stylesheet" type="text/css"
-    href="<?php echo base_url('assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css') ?>">
-<!-- END: Vendor CSS-->
-
-<!-- BEGIN: Page CSS-->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/plugins/forms/form-validation.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/pages/app-user.css') ?>">
 
 
 <!-- END: Page CSS-->
@@ -49,24 +36,39 @@ $data = json_encode(['data' => $users]);
             <table class="user-list-table table">
                 <thead class="thead-light">
                     <tr>
-
-                        <th></th>
+                        <th>#</th>
                         <th>User</th>
                         <th>Phone</th>
                         <th>Status</th>
                         <th>Balance</th>
                         <th>Email</th>
-                        <th>Active Downlines</th>
-                        <th>Actions</th>
-                        <th></th>
                     </tr>
                 </thead>
+                <tbody>
+                <?php
+                $n = 0;
+                foreach ($users as $user) {
+                    $n++;
+                    ?>
+                    <tr>
+                        <td><?php echo $n; ?></td>
+                        <td><?php echo $user->getName(); ?></td>
+                        <td><?php echo $user->phone; ?></td>
+                        <td><?php echo $user->registration; ?></td>
+                        <td><?php echo $user->account; ?></td>
+                        <td><?php echo $user->email; ?></td>
+                    </tr>
+                    <?php
+                }
+                ?>
+                </tbody>
             </table>
         </div>
         <!-- Modal to add new user starts-->
         <div class="modal modal-slide-in new-user-modal fade" id="modals-slide-in">
             <div class="modal-dialog">
                 <form class="add-new-user modal-content pt-0">
+                    <?php echo csrf_field(); ?>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                     <div class="modal-header mb-1">
                         <h5 class="modal-title" id="exampleModalLabel">New User</h5>
@@ -384,14 +386,7 @@ $data = json_encode(['data' => $users]);
 document.getElementById("users").className += " active";
 </script>
 <!-- BEGIN: Page Vendor JS-->
-<script src="<?php echo base_url('assets/vendors/js/tables/datatable/jquery.dataTables.min.js') ?>">
-</script>
-<script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/vendors/js/tables/datatable/dataTables.responsive.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/vendors/js/tables/datatable/responsive.bootstrap4.js') ?>"></script>
-<script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.buttons.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/vendors/js/forms/validation/jquery.validate.min.js') ?>"></script>
+
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Page JS-->

@@ -68,6 +68,7 @@
                     <!-- Send Money Form
                               ============================ -->
                     <form id="form-send-money" method="post">
+                        <?php echo csrf_field(); ?>
                         <h4>Confirm that you want to send
                             <b><?php echo session()->get('_transfers')['currency'].' '.session()->get('_transfers')['amount'] ?></b>
                             to
@@ -109,6 +110,7 @@
                         <h6>BTC Balance: <b>USD <?php echo $current_user->account; ?></b></h6>
                     </div>
                     <form id="form-send-money" method="post">
+                        <?php echo csrf_field(); ?>
                         <div class="mb-1">
                             <label for="emailID" class="form-label">Recipient</label>
                             <input type="text" value="<?php echo old('username') ?>" class="form-control"

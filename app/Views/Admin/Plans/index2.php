@@ -47,7 +47,7 @@
   <div class="modal modal-slide-in new-user-modal fade" id="modals-slide-in">
       <div class="modal-dialog">
           <form class="add-new-plan modal-content pt-0" method="POST" action="plans/create">
-
+              <?php echo csrf_field(); ?>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
               <div class="modal-header mb-1">
                   <h5 class="modal-title" id="exampleModalLabel">New Plan</h5>

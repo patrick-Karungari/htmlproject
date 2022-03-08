@@ -31,6 +31,7 @@ if ($current_user->registration != 1) {
 }
 ?>
                 <form method="post">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label>Phone Number</label>
                         <input type="text" name="phone" class="form-control" value="<?php echo old('phone', $current_user->phone) ?>" required />

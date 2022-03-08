@@ -7,8 +7,8 @@ if (!empty($date_filter)) {
     $model->like('created_at', $date_filter, 'after');
 }
 $model->orderBy('id', 'DESC');
-$withdraws = $model->paginate(30);
-$pager = $model->pager;
+$withdraws = $model->findAll();
+//$pager = $model->pager;
 
 ?>
 <div class="card">
@@ -74,6 +74,7 @@ $pager = $model->pager;
                                                     </button>
                                                 </div>
                                                 <form class="d-inline " method='post'
+                                                    <?php echo csrf_field(); ?>
                                                       action="<?php echo site_url('admin/withdraws/manualwithdraw') ?>">
                                                     <input type="hidden" name="id" value="<?php echo $withdraw->id; ?>" />
                                                     <input type="hidden" name="user_id"
@@ -130,7 +131,7 @@ $pager = $model->pager;
                 </table>
             </div>
             <?php
-            echo $pager->links();
+            //echo $pager->links();
         } else {
             ?>
             <div class="alert alert-warning">

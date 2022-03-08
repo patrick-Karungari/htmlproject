@@ -519,6 +519,7 @@ Dessert chocolate cake lemon drops jujubes. Biscuit cupcake ice cream bear claw 
 
                             <!-- Submit Chat form -->
                             <form class="chat-app-form" action="javascript:void(0);" onsubmit="enterChat();">
+                                <?php echo csrf_field(); ?>
                                 <div class="input-group input-group-merge mr-1 form-send-message">
                                     <div class="input-group-prepend">
                                         <span class="speech-to-text input-group-text"><i data-feather="mic"

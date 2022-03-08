@@ -42,6 +42,7 @@ echo "You must have running investments of Kshs $minimum_running_investment. You
                     <h4 class="text-center">Withdraw via M-Pesa</h4>
                     <hr/>
                     <form method="post">
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label>Phone Number</label>
                             <input type="text" name="phone" class="form-control disabled" value="<?php echo old('phone', $current_user->phone) ?>" required />

@@ -39,6 +39,7 @@
     <div class="card-body">
         <h4 class="card-title">System Settings</h4>
         <form class="forms-sample" method="post">
+            <?php echo csrf_field(); ?>
             <div class="form-group">
                 <label for="exampleInputUsername1">Site Title</label>
                 <input type="text" name="site_title" value="<?php echo get_option('site_title', '"MLM Project'); ?>" class="form-control" id="exampleInputUsername1" placeholder="Site title">
@@ -57,6 +58,7 @@
             <div class="card-body">
                 <h4 class="card-title">Registration Settings</h4>
                 <form class="forms-sample" method="post">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label for="exampleInputUsername1">Registration Fee</label>
                         <input type="number" min="0" name="registration_fee" value="<?php echo get_option('registration_fee', '0'); ?>" class="form-control" id="exampleInputUsername1" placeholder="Registration Fee">
@@ -92,6 +94,7 @@
             <div class="card-body">
                 <h4 class="card-title">Referral Settings</h4>
                 <form class="forms-sample" method="post">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label for="exampleInputUsername1">Referral Bonus (%)</label>
                         <input type="number" min="0" max="100" name="referral_bonus" value="<?php echo get_option('referral_bonus', '0'); ?>" class="form-control" id="exampleInputUsername1" placeholder="Referral bonus">
@@ -119,6 +122,7 @@
             <div class="card-body">
                 <h4 class="card-title">Deposit Email Notification</h4>
                 <form method="post">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label for="deposit_emails_notifications">Email</label>
                         <input type="text" class="form-control" name="deposit_emails_notifications" id="deposit_emails_notifications" value="<?php echo old('deposit_emails_notifications', get_option('deposit_emails_notifications', '')) ?>" placeholder="Comma separated emails" />
@@ -142,6 +146,7 @@
             <div class="card-body">
                 <h4 class="card-title">Withdraw Email Notification</h4>
                 <form method="post">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label for="withdraw_emails_notifications">Email</label>
                         <input type="text" class="form-control" name="withdraw_emails_notifications" id="withdraw_emails_notifications" value="<?php echo old('withdraw_emails_notifications', get_option('withdraw_emails_notifications', '')) ?>" placeholder="Comma separated emails" />
@@ -169,6 +174,7 @@
             <div class="card-body">
                 <h4 class="card-title">Deposit Email Notification</h4>
                 <form method="post">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label>Email Template</label>
                         <textarea name="user_deposit_email_template" class="form-control" rows="4"><?php echo old('user_deposit_email_template', get_option('user_deposit_email_template', '')) ?></textarea>
@@ -187,6 +193,7 @@
             <div class="card-body">
                 <h4 class="card-title">Withdraw Email Notification</h4>
                 <form method="post">
+                    <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label>Email Template</label>
                         <textarea name="user_withdraw_email_template" class="form-control" rows="4"><?php echo old('user_withdraw_email_template', get_option('user_withdraw_email_template', '')) ?></textarea>

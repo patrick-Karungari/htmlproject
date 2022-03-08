@@ -118,6 +118,7 @@
 
                                         <!-- form -->
                                         <form class="validate-form mt-2">
+                                            <?php echo csrf_field(); ?>
                                             <div class="row">
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
@@ -165,6 +166,7 @@
                                     <div class="tab-pane fade" id="account-vertical-password" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
                                         <!-- form -->
                                         <form class="validate-form">
+                                            <?php echo csrf_field(); ?>
                                             <div class="row">
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
@@ -219,6 +221,7 @@
                                     <div class="tab-pane fade" id="account-vertical-info" role="tabpanel" aria-labelledby="account-pill-info" aria-expanded="false">
                                         <!-- form -->
                                         <form class="validate-form">
+                                            <?php echo csrf_field(); ?>
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
@@ -268,6 +271,7 @@
                                     <div class="tab-pane fade" id="account-vertical-social" role="tabpanel" aria-labelledby="account-pill-social" aria-expanded="false">
                                         <!-- form -->
                                         <form class="validate-form">
+                                            <?php echo csrf_field(); ?>
                                             <div class="row">
                                                 <!-- social header -->
                                                 <div class="col-12">
