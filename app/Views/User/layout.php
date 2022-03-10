@@ -39,6 +39,12 @@
 
         <!-- BEGIN: Page CSS-->
         <link rel="stylesheet" type="text/css"
+              href="<?php echo base_url('assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css') ?>">
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo base_url('assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css') ?>">
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo base_url('assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css') ?>">
+        <link rel="stylesheet" type="text/css"
             href="<?php echo base_url('assets/css/core/menu/menu-types/vertical-menu.css') ?>">
 
         <link rel="stylesheet" type="text/css"
@@ -739,6 +745,14 @@
 
 
         <!-- BEGIN: Theme JS-->
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/jquery.dataTables.min.js') ?>">
+        </script>
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/dataTables.responsive.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/responsive.bootstrap4.js') ?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/datatables.buttons.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/vendors/js/forms/validation/jquery.validate.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/core/app-menu.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/core/app.js') ?>"></script>
         <!-- END: Theme JS-->
@@ -754,6 +768,7 @@
                 });
             }
         })
+        $('table').DataTable();
         </script>
 
     </body>
