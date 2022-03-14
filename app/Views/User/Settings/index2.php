@@ -38,48 +38,59 @@
                         <!-- general tab -->
                         <div role="tabpanel" class="tab-pane active" id="account-vertical-general"
                             aria-labelledby="account-pill-general" aria-expanded="true">
-                            <!-- header media -->
-                            <div class="media">
-                                <a href="javascript:void(0);" class="mr-25">
-                                    <img src="../../../app-assets/images/portrait/small/avatar-s-11.jpg"
-                                        id="account-upload-img" class="rounded mr-50" alt="profile image" height="80"
-                                        width="80" />
-                                </a>
-                                <!-- upload and reset button -->
-                                <div class="media-body mt-75 ml-1">
-                                    <label for="account-upload"
-                                        class="btn btn-sm btn-primary mb-75 mr-75">Upload</label>
-                                    <input type="file" id="account-upload" hidden accept="image/*" />
-                                    <button class="btn btn-sm btn-outline-secondary mb-75">Reset</button>
-                                    <p>Allowed JPG, GIF or PNG. Max size of 800kB</p>
-                                </div>
-                                <!--/ upload and reset button -->
-                            </div>
-                            <!--/ header media -->
-
                             <!-- form -->
-                            <form id="details" class="validate-form mt-2">
+                            <form class="mt-2" method="post" enctype="multipart/form-data">
                                 <?php echo csrf_field(); ?>
+                                <!-- header media -->
+<!--                                <div class="media">-->
+<!--                                    <a href="javascript:void(0);" class="mr-25">-->
+<!--                                        <img src="../../../app-assets/images/portrait/small/avatar-s-11.jpg"-->
+<!--                                             id="account-upload-img" class="rounded mr-50" alt="profile image" height="80"-->
+<!--                                             width="80" />-->
+<!--                                    </a>-->
+<!--                                    <div class="media-body mt-75 ml-1">-->
+<!--                                        <label for="account-upload"-->
+<!--                                               class="btn btn-sm btn-primary mb-75 mr-75">Upload</label>-->
+<!--                                        <input type="file" id="account-upload" name="avatar" hidden accept="image/*" />-->
+<!--                                        <button class="btn btn-sm btn-outline-secondary mb-75">Reset</button>-->
+<!--                                        <p>Allowed JPG, GIF or PNG. Max size of 800kB</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <!--/ header media -->
                                 <div class="row">
-                                    <div class="col-12 col-sm-6">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Profile Image</label>
+                                            <input class="form-control-file" type="file" id="account-upload" name="avatar" accept="image/*" />
+                                            <small>Allowed JPG, GIF or PNG. Max size of 800kB</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
                                         <div class="form-group">
                                             <label for="account-username">Username</label>
                                             <input type="text" class="form-control" id="account-username"
-                                                name="username" placeholder="Username" value="johndoe" />
+                                                name="username" placeholder="Username" value="<?php echo user()->username; ?>" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-6">
+                                    <div class="col-12 col-sm-4">
                                         <div class="form-group">
-                                            <label for="account-name">Name</label>
-                                            <input type="text" class="form-control" id="account-name" name="name"
-                                                placeholder="Name" value="John Doe" />
+                                            <label for="account-name">First Name</label>
+                                            <input type="text" class="form-control" id="account-name" name="fname"
+                                                placeholder="Name" value="<?php echo user()->first_name; ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="account-name">Last Name</label>
+                                            <input type="text" class="form-control" id="account-name" name="lname"
+                                                placeholder="Name" value="<?php echo user()->last_name; ?>" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
                                             <label for="account-e-mail">E-mail</label>
                                             <input type="email" class="form-control" id="account-e-mail" name="email"
-                                                placeholder="Email" value="granger007@hogward.com" />
+                                                placeholder="Email" value="<?php echo user()->email; ?>" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
@@ -89,7 +100,7 @@
                                             <div class="form-group d-flex ">
                                                 <input class="form-control" id="phone" type="tel" name="phone"
                                                     aria-describedby="register-email" tabindex="2" required
-                                                    autocomplete="off" />
+                                                    autocomplete="off" value="<?php echo user()->phone; ?>" />
                                                 <buton type="button" id="verify"
                                                     class="btn w-50 h-75 d-flex btn-md justify-content-center <?php echo ($current_user->phone_verified == 0) ? 'btn-primary' : 'btn-outline-success'?> text-center ml-2 ">
                                                     <?php echo ($current_user->phone_verified == 1) ? 'Verified' : 'Verify' ?>

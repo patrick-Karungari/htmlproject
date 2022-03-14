@@ -90,7 +90,7 @@ class Deposits extends \App\Controllers\AdminController
                             'description' => "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $new_acc",
                         ];
                         (new Transactions())->save($transaction);
-
+                        user_notification($user->id, "Deposit", "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $new_acc");
                         if ($reg === true) {
                             $secure_trx = 'REG' . $this->secure_random_string(7);
                             $transaction = [
@@ -102,6 +102,7 @@ class Deposits extends \App\Controllers\AdminController
                                 'description' => "Registration fee of Kshs $registration_fee paid. New balance is Kshs $account",
                             ];
                             (new Transactions())->save($transaction);
+                            user_notification($user->id, "Registration fee", "Registration fee of Kshs $registration_fee paid. New balance is Kshs $account");
                         }
 
                         //Send Email

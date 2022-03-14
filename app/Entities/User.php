@@ -39,7 +39,7 @@ class User extends \CodeIgniter\Entity
             return base_url('uploads/avatars/' . $this->attributes['avatar']);
         }
 
-        return base_url('assets/images/faces/face1.jpg');
+        return base_url('assets/images/portrait/small/avatar-s-11.jpg');
     }
 
     public function getRoles()

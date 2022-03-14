@@ -47,11 +47,11 @@ $withdraws = $model->findAll();
                             <td>
                                 <?php
                                 $status = $withdraw->status;
-                                if ($status == 'completed') {
-                                    ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
-                                } else if ($status == 'pending') {
+                                if ($status == '1') {
+                                    ?> <span data-search="Completed" class="badge badge-pill ml-1 bg-light-success" text-uppercase=""><i class="" data-feather="check-circle"></i> Completed</span> <?php
+                                } else if ($status == '0') {
                                     ?>
-                                    <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label>
+                                    <span class="badge badge-pill ml-1 bg-light-warning"><i class="" data-feather="refresh-cw"></i> Pending</span>
                                     <button data-toggle="modal" data-target="#exampleModal<?php echo $withdraw->id ?>"
                                             data-amount="<?php echo $withdraw->amount; ?>"
                                             data-name="<?php echo $withdraw->user->name; ?>"
@@ -74,8 +74,8 @@ $withdraws = $model->findAll();
                                                     </button>
                                                 </div>
                                                 <form class="d-inline " method='post'
-                                                    <?php echo csrf_field(); ?>
                                                       action="<?php echo site_url('admin/withdraws/manualwithdraw') ?>">
+                                                    <?php echo csrf_field(); ?>
                                                     <input type="hidden" name="id" value="<?php echo $withdraw->id; ?>" />
                                                     <input type="hidden" name="user_id"
                                                            value="<?php echo $withdraw->user->id; ?>" />
@@ -112,12 +112,12 @@ $withdraws = $model->findAll();
                                         </div>
                                     </div>
                                     <?php
-                                } else if ($status == 'failed') {
+                                } else if ($status == '2') {
                                     ?>
-                                    <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label>
+                                    <span class="badge badge-pill ml-1 bg-light-danger"><i class="" data-feather="x-circle"></i> Failed</span>
                                     <?php
-                                } else if ($status == 'cancelled') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
+                                } else {
+                                    ?> <span class="badge badge-pill ml-1 bg-light-danger"><i class="" data-feather="x-circle"></i> Cancelled</span> <?php
                                 }
                                 ?>
                             </td>

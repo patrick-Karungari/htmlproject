@@ -155,11 +155,11 @@
                                 <td><?php echo $log->amount; ?> BTC</td>
                                 <td><?php
                                     if ($log->status == '0') {
-                                        echo 'pending';
-                                    }elseif($log->status == '1') {
-                                        echo 'complete';
-                                    }else{
-                                        echo 'failed';
+                                        ?> <span class="badge badge-pill ml-1 bg-light-warning"><i class="" data-feather="refresh-cw"></i> Pending</span> <?php
+                                    } elseif($log->status == '1') {
+                                        ?> <span data-search="Completed" class="badge badge-pill ml-1 bg-light-success" text-uppercase=""><i class="" data-feather="check-circle"></i> Completed</span> <?php
+                                    } else {
+                                        ?> <span class="badge badge-pill ml-1 bg-light-danger"><i class="" data-feather="x-circle"></i> Failed</span> <?php
                                     }
                                     ?></td>
                                 <td><?php echo $log->address; ?></td>

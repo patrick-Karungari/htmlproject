@@ -32,8 +32,14 @@ class Settings extends \App\Controllers\UserController
                 $data = [
                     'first_name' => trim($this->request->getPost('fname')),
                     'last_name' => trim($this->request->getPost('lname')),
+                    'phone'     => trim($this->request->getPost('phone')),
+                    'email'     => trim($this->request->getPost('email')),
+                    'username'  => trim($this->request->getPost('username')),
                 ];
-
+                //Mark phone number as not verified when we change it
+                if (user()->phone != $data['phone']) {
+                    $data['phone_verified'] = '0';
+                }
                 $file = $this->request->getFile('avatar');
                 if ($file) {
                     $newName = $file->getRandomName();
