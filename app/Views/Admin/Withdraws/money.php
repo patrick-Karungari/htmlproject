@@ -50,10 +50,10 @@ $withdraws = $model->findAll();
                                 <?php
                                 $status = $withdraw->status;
                                 if ($status == 'completed') {
-                                    ?> <label class="badge badge-outline-success mr-4 mr-xl-2">Completed</label> <?php
+                                    ?> <span data-search="Completed" class="badge badge-pill ml-1 bg-light-success" text-uppercase=""><i class="" data-feather="check-circle"></i> Completed</span> <?php
                                 } else if ($status == 'pending') {
                                     ?>
-                                    <label class="badge badge-outline-warning mr-4 mr-xl-2">Pending</label>
+                                    <span class="badge badge-pill ml-1 bg-light-warning"><i class="" data-feather="refresh-cw"></i> Pending</span>
                                     <button data-toggle="modal" data-target="#exampleModal<?php echo $withdraw->id ?>"
                                             data-amount="<?php echo $withdraw->amount; ?>"
                                             data-name="<?php echo $withdraw->user->name; ?>"
@@ -116,10 +116,10 @@ $withdraws = $model->findAll();
                                     <?php
                                 } else if ($status == 'failed') {
                                     ?>
-                                    <label class="badge badge-outline-danger mr-4 mr-xl-2">Failed</label>
+                                    <span class="badge badge-pill ml-1 bg-light-danger"><i class="" data-feather="x-circle"></i> Failed</span>
                                     <?php
                                 } else if ($status == 'cancelled') {
-                                    ?> <label class="badge badge-outline-danger mr-4 mr-xl-2">Cancelled</label> <?php
+                                    ?> <span class="badge badge-pill ml-1 bg-light-danger"><i class="" data-feather="x-circle"></i> Cancelled</span> <?php
                                 }
                                 ?>
                             </td>
