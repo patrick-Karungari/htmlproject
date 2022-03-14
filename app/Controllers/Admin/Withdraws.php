@@ -13,6 +13,7 @@ use App\Models\Transactions;
 
 
 use App\Models\Users;
+use Exception;
 
 class Withdraws extends \App\Controllers\AdminController
 {
@@ -57,7 +58,7 @@ class Withdraws extends \App\Controllers\AdminController
                         'description' => "Withdrawal of Kshs $entry->amount via M-pesa with transaction ID $TransactionReceipt. New balance is Kshs $user->account",
                     ];
                     (new Transactions())->save($transaction);
-
+                    user_notification($userID, "Withdraw", "Withdrawal of Kshs $entry->amount via M-pesa with transaction ID $TransactionReceipt. New balance is Kshs $user->account");
                     //Send Email
                     /* $template = get_option('withdraw_email_template', '');
                 $emails = get_option('withdraw_emails_notifications', '');

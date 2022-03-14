@@ -84,7 +84,7 @@ class Api extends BaseController
                     ];
 
                     (new Deposits())->save($deposit);
-
+                    user_notification($user->id, "M-Pesa Deposit", "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $account");
                     $reg = false;
                     if ($user->registration != '1') {
                         //Deduct the registration fee if money is enough
@@ -113,6 +113,7 @@ class Api extends BaseController
                             'description' => "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $new_acc",
                         ];
                         (new Transactions())->save($transaction);
+                        user_notification($user->id, "M-Pesa Deposit", "Deposit of Kshs $data->Amount via M-pesa with transaction ID $data->MpesaReceiptNumber. New balance is Kshs $account");
 
                         if ($reg === true) {
                             $secure_trx = 'REG' . $this->secure_random_string(7);
@@ -126,6 +127,7 @@ class Api extends BaseController
                                 'description' => "Registration fee of Kshs $registration_fee paid. New balance is Kshs $account",
                             ];
                             (new Transactions())->save($transaction);
+                            user_notification($user->id, "M-Pesa Deposit", "Registration fee of Kshs $registration_fee paid. New balance is Kshs $account");
                         }
 
                         //Send Email

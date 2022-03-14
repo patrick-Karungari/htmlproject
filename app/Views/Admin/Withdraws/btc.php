@@ -74,8 +74,8 @@ $withdraws = $model->findAll();
                                                     </button>
                                                 </div>
                                                 <form class="d-inline " method='post'
-                                                    <?php echo csrf_field(); ?>
                                                       action="<?php echo site_url('admin/withdraws/manualwithdraw') ?>">
+                                                    <?php echo csrf_field(); ?>
                                                     <input type="hidden" name="id" value="<?php echo $withdraw->id; ?>" />
                                                     <input type="hidden" name="user_id"
                                                            value="<?php echo $withdraw->user->id; ?>" />
