@@ -186,7 +186,17 @@
                                 <td><?php echo $log->account; ?></td>
                                 <td><?php echo $log->amount; ?> USD</td>
                                 <td><?php echo $log->trx_id; ?></td>
-                                <td><?php echo $log->status; ?></td>
+                                <td>
+                                    <?php
+                                    if ($log->status == 'pending') {
+                                    ?> <span class="badge badge-pill ml-1 bg-light-warning"><i class="" data-feather="refresh-cw"></i> Pending</span> <?php
+                                    }elseif($log->status == 'completed') {
+                                    ?> <span data-search="Completed" class="badge badge-pill ml-1 bg-light-success" text-uppercase=""><i class="" data-feather="check-circle"></i> Completed</span> <?php
+                                    }else{
+                                        ?> <span class="badge badge-pill ml-1 bg-light-danger"><i class="" data-feather="x-circle"></i> Failed</span> <?php
+                                    }
+                                    ?>
+                                </td>
                             </tr>
                             <?php
                         }
