@@ -55,6 +55,7 @@ class Cron extends BaseController
                     'description' => "[FAILED] Withdrawal of Kshs $amDeducted has been refunded for this transaction. New account balance is $newAccount",
                 ];
                 // dd($trx);
+                user_notification($user->id, "Withdraws", $dep->description);
                 (new Users())->save($user);
                 (new withdraws())->save($dep);
                 (new transactions())->save($trx);

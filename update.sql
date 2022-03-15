@@ -61,3 +61,9 @@ ALTER TABLE `withdraws`
     CHANGE `date` `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE CURRENT_TIMESTAMP AFTER `description`;
 ALTER TABLE `bitcoin_withdraws`
     ADD `trx_id` varchar(255) COLLATE 'utf8mb4_general_ci' NULL AFTER `address`;
+
+-- 15/03/2022 --
+
+ALTER TABLE `bitcoin_trx`
+    ADD `type` varchar(30) COLLATE 'utf8mb4_general_ci' NOT NULL DEFAULT 'money' COMMENT 'btc,money' AFTER `amount`,
+    CHANGE `updated_at` `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE CURRENT_TIMESTAMP AFTER `created_at`;
