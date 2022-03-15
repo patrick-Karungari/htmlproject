@@ -63,22 +63,25 @@ class Transfers extends \App\Controllers\UserController
                 $amount = $temp['amount'];
                 $recipient = $temp['user'];
                 $theirBitcoins = (new Bitcoins())->where('user', $recipient->id)->first();
-
-                (new Bitcoins())->update($this->current_user->id, ['balance' => $myBitcoins->balance-$amount]);
+                $myBalance = $myBitcoins->balance-$amount;
+                (new Bitcoins())->update($this->current_user->id, ['balance' => $myBalance]);
                 if ($theirBitcoins) {
                     $theirNewBalance = $theirBitcoins->balance + $amount;
                     (new Bitcoins())->update($theirBitcoins->id, ['balance' => $theirNewBalance]);
                 } else {
+                    $theirNewBalance = $amount;
                     (new Bitcoins())->save(['user' => $recipient->id, 'balance' => $amount]);
                 }
-
+                user_notification($this->current_user->id, "BTC Transfer", "You have successfully transferred BTC $amount to {$recipient->username}. New balance is BTC $myBalance");
+                user_notification($recipient->id, "BTC Transfer", "You have received BTC $amount from {$this->current_user->username}. New balance is BTC $theirNewBalance");
                 //Create transaction
                 $trxModel = new BitcoinTrx();
                 $trxModel->save([
                     'sender'    => $this->current_user->id,
                     'recipient' => $recipient->id,
                     'amount'    => $amount,
-                    'status'    => '1'
+                    'status'    => '1',
+                    'type'      => 'btc'
                 ]);
 
                 $step++;
@@ -135,12 +138,13 @@ class Transfers extends \App\Controllers\UserController
                 $temp = $session->get('_transfers');
                 $amount = $temp['amount'];
                 $recipient = $temp['user'];
+                $currency = $temp['currency'];
                 $theirAccount = $recipient->account;
-
-                (new Users())->update($this->current_user->id, ['account' => $balance-$amount]);
+                $myNewBalance = $balance-$amount;
+                (new Users())->update($this->current_user->id, ['account' => $myNewBalance]);
 
                     $theirNewBalance = $theirAccount + $amount;
-                    (new Users())->update($recipient->id, ['account' => $$theirNewBalance]);
+                    (new Users())->update($recipient->id, ['account' => $theirNewBalance]);
 
 
                 //TODO: Create transaction
@@ -149,9 +153,20 @@ class Transfers extends \App\Controllers\UserController
                     'sender'    => $this->current_user->id,
                     'recipient' => $recipient->id,
                     'amount'    => $amount,
-                    'status'    => '1'
+                    'status'    => '1',
+                    'type'      => 'money'
                 ]);
-
+                $description = "YOu have transferred $currency $amount from your account to {$recipient->username}. New balance is $currency $myNewBalance";
+                (new \App\Models\Transactions())->save([
+                    'user'      => $this->current_user->id,
+                    'amount'    => $amount,
+                    'trx'       => strtoupper(random_string()),
+                    'type'      => 'transfer',
+                    'status'    => 'completed',
+                    'description'   => $description
+                ]);
+                user_notification($this->current_user->id, "Money Transfer", $description);
+                user_notification($recipient->id, "Money Received", "You have received $currency $amount from {$this->current_user->username}. New balance is $currency $theirNewBalance");
                 $step++;
 
                 $this->data['step'] = $step;

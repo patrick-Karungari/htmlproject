@@ -79,6 +79,7 @@ class Cron extends BaseController
                     $transactionsModel->save($transaction);
                     $investment->status = 'completed';
                     $investmentsModel->save($investment);
+                    user_notification($investment->user->id, "Withdraws", $transaction['description']);
                 } catch (\ReflectionException $e) {
                     //fail silently. Admin will work this out
                     //TODO: Add manual settlements in case automatic settlements dont work. May not fail because we keep retrying though, but, shit happens

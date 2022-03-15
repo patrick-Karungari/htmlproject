@@ -27,7 +27,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = ['actions', 'capabilities', 'options', 'assets', 'language', 'alerts'];
+	protected $helpers = ['actions', 'capabilities', 'options', 'assets', 'language', 'alerts', 'text'];
     public $data = [];
 
     /**

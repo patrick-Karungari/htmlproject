@@ -93,7 +93,7 @@
                     <!-- Send Money Form
                               ============================ -->
                     <div class="alert alert-success">
-                        <h1>SUCCESS</h1>
+                        <i style="width: 96px; height: 96px" data-feather="check-circle"></i>
                     </div>
                     <a class="btn btn-success btn-block" href="<?php echo site_url('user/transfers'); ?>">Finish</a>
                     <!-- Send Money Form end -->
@@ -149,6 +149,68 @@
                 }
                 ?>
             </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Transactions</h4>
+        </div>
+        <?php
+        $transactions = (new \App\Models\BitcoinTrx())->where('type', 'btc')->groupStart()->where('sender', $current_user->id)->orWhere('recipient', $current_user->id)->groupEnd()->orderBy('id', 'DESC')->findAll();
+        ?>
+        <div class="card-body">
+            <?php
+            if (count($transactions) > 0) {
+                ?>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Transaction</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $n = 0;
+                        foreach ($transactions as $transaction) {
+                            $n++;
+                            ?>
+                            <tr>
+                                <td><?php echo $n; ?></td>
+                                <td><?php echo $transaction->created_at; ?></td>
+                                <td>BTC <?php echo $transaction->amount; ?></td>
+                                <td><?php
+                                    if ($transaction->sender == $current_user->id) {
+                                        //We sent
+                                        echo "Sent to ".$transaction->getReceiverObject()->getName();
+                                    } else {
+                                        //We received
+                                        echo "Received from ".$transaction->getSenderObject()->getName();
+                                    }
+                                    ?></td>
+                                <td>
+                                    <span data-search="Completed" class="badge badge-pill ml-1 bg-light-success" text-uppercase=""><i class="" data-feather="check-circle"></i> Completed</span>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+                <?php
+            } else {
+                ?>
+                <div class="alert alert-info">
+                    No transactions at the moment
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
 

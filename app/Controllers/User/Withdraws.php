@@ -212,7 +212,10 @@ class Withdraws extends \App\Controllers\UserController
                 }
 
                 try {
-                    (new Bitcoins())->update($this->current_user->id, ['balance' => $myBitcoins->balance - $amount]);
+                    $newBitcoinsBalance = $myBitcoins->balance - $amount;
+                    (new Bitcoins())->update($this->current_user->id, ['balance' => $newBitcoinsBalance]);
+                    $description = "Withdraw request of BTC $amount has been submitted. Kindly be patient while we process the request. Thank You!";
+                    user_notification($this->current_user->id, 'BTC Withdraw', $description);
                 } catch (\ReflectionException $e) {
                     return redirect()->back()->with('error', $e->getMessage());
                 }
@@ -274,6 +277,8 @@ class Withdraws extends \App\Controllers\UserController
                 //Save new user balance
                 try {
                     (new Users())->update($this->current_user->id, ['account' => $new_account]);
+                    $description = "Withdraw request of USD {$data['amount']} has been submitted. Kindly be patient while we process the request. Thank You!";
+                    user_notification($this->current_user->id, 'Money Withdraw', $description);
                 } catch (\ReflectionException $e) {
                     return redirect()->back()->with('error', $e->getMessage());
                 }
