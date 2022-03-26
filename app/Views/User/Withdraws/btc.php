@@ -88,7 +88,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text">BTC</span>
                                     <input type="number" class="form-control" data-bv-field="youSend" id="youSend"
-                                           name="amount" min="0" step="0.001" value="<?php echo old('amount') ?>"
+                                           name="amount" min="0" step="0.00000001" value="<?php echo old('amount') ?>"
                                            placeholder="">
 
                                 </div>

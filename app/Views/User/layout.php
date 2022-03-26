@@ -256,7 +256,7 @@
                     </li>
                     <?php
                     $notificationsModel = new \App\Models\Notifications();
-                    $newNotifications = $notificationsModel->orderBy('id', 'DESC')->where('read', '0')->findAll();
+                    $newNotifications = $notificationsModel->where('user', $current_user->id)->orderBy('id', 'DESC')->where('read', '0')->findAll();
                     ?>
                     <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link "
                             style="overflow: visible;" href="javascript:void(0);" data-toggle="dropdown"><i
