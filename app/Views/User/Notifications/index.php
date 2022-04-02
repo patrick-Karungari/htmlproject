@@ -1,7 +1,7 @@
 <?php
 $model = new \App\Models\Notifications();
 
-$notifications = $model->orderBy('id', 'DESC')->findAll();
+$notifications = $model->where('user', $current_user->id)->orderBy('id', 'DESC')->findAll();
 
 ?>
 <!-- User Invoice Starts-->

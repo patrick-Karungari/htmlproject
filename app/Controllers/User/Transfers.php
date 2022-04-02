@@ -64,6 +64,7 @@ class Transfers extends \App\Controllers\UserController
                 $recipient = $temp['user'];
                 $theirBitcoins = (new Bitcoins())->where('user', $recipient->id)->first();
                 $myBalance = $myBitcoins->balance-$amount;
+
                 (new Bitcoins())->update($this->current_user->id, ['balance' => $myBalance]);
                 if ($theirBitcoins) {
                     $theirNewBalance = $theirBitcoins->balance + $amount;
@@ -156,7 +157,7 @@ class Transfers extends \App\Controllers\UserController
                     'status'    => '1',
                     'type'      => 'money'
                 ]);
-                $description = "You have transferred $currency $amount from your account to {$recipient->username}. New balance is $currency $myNewBalance";
+                $description = "You have successfully transferred $currency $amount from your account to {$recipient->username}. New balance is $currency $myNewBalance";
                 (new \App\Models\Transactions())->save([
                     'user'      => $this->current_user->id,
                     'amount'    => $amount,
